@@ -2,5 +2,6 @@
 # This .gitignore file was automatically created by Microsoft(R) Visual Studio.
 ################################################################################
 
-/VendingMachine/UI/AcmeSodaConsoleApp/bin/Debug/net5.0
 /VendingMachine/UI/AcmeSodaConsoleApp/obj
+/VendingMachine/UI/AcmeSodaConsoleApp/bin
+/.vs
