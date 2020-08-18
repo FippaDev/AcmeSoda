@@ -15,6 +15,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		README.md = README.md
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WPF", "WPF", "{15A60E93-601D-4443-8FF5-7EDF42D516AE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AcmeSodaWpf", "VendingMachine\UI\WPF\AcmeSodaWpf\AcmeSodaWpf.csproj", "{BEB844ED-B7C1-4C75-A3B7-C76C11D1F97B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -25,6 +29,10 @@ Global
 		{1CBB9904-6D50-4BB4-9340-99A819429A60}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1CBB9904-6D50-4BB4-9340-99A819429A60}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1CBB9904-6D50-4BB4-9340-99A819429A60}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BEB844ED-B7C1-4C75-A3B7-C76C11D1F97B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BEB844ED-B7C1-4C75-A3B7-C76C11D1F97B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BEB844ED-B7C1-4C75-A3B7-C76C11D1F97B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BEB844ED-B7C1-4C75-A3B7-C76C11D1F97B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -32,6 +40,8 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{9E0B58C9-5FB1-463A-808E-CCD01EE23D9B} = {F2DDDA85-7C96-44C3-B79D-5F3FC0D2CB29}
 		{1CBB9904-6D50-4BB4-9340-99A819429A60} = {9E0B58C9-5FB1-463A-808E-CCD01EE23D9B}
+		{15A60E93-601D-4443-8FF5-7EDF42D516AE} = {9E0B58C9-5FB1-463A-808E-CCD01EE23D9B}
+		{BEB844ED-B7C1-4C75-A3B7-C76C11D1F97B} = {15A60E93-601D-4443-8FF5-7EDF42D516AE}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {044280C1-3B7F-481B-88F6-F21E100A27B8}

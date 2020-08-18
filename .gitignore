@@ -5,3 +5,7 @@
 /VendingMachine/UI/AcmeSodaConsoleApp/obj
 /VendingMachine/UI/AcmeSodaConsoleApp/bin
 /.vs
+/VendingMachine/UI/WPF/AcmeSodaWpf/bin/Release/net5.0
+/VendingMachine/UI/WPF/AcmeSodaWpf/obj/Release/net5.0
+/VendingMachine/UI/WPF/AcmeSodaWpf/bin/Debug/net5.0
+/VendingMachine/UI/WPF/AcmeSodaWpf/obj
