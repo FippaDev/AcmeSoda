@@ -1,4 +1,5 @@
 ﻿using System.Diagnostics.CodeAnalysis;
+using System.Globalization;
 using Fippa.Money.Formatters;
 using Xunit;
 
@@ -12,7 +13,8 @@ namespace Fippa.Money.Tests.Formatters
         {
             decimal d = 0.00m;
 
-            Assert.Equal("£0.00", d.DisplayAsCurrency());
+            var ri = new RegionInfo(System.Threading.Thread.CurrentThread.CurrentUICulture.LCID);
+            Assert.Equal($"{ri.CurrencySymbol}0.00", d.DisplayAsCurrency());
         }
 
         [Fact]
@@ -20,7 +22,8 @@ namespace Fippa.Money.Tests.Formatters
         {
             decimal d = 3.98m;
 
-            Assert.Equal("£3.98", d.DisplayAsCurrency());
+            var ri = new RegionInfo(System.Threading.Thread.CurrentThread.CurrentUICulture.LCID);
+            Assert.Equal($"{ri.CurrencySymbol}3.98", d.DisplayAsCurrency());
         }
     }
 }
