@@ -7,17 +7,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "VendingMachine", "VendingMa
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UI", "UI", "{9E0B58C9-5FB1-463A-808E-CCD01EE23D9B}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AcmeSodaConsoleApp", "VendingMachine\UI\AcmeSodaConsoleApp\AcmeSodaConsoleApp.csproj", "{1CBB9904-6D50-4BB4-9340-99A819429A60}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{F8C16FFD-2365-4848-90F7-6FB330B19767}"
 	ProjectSection(SolutionItems) = preProject
 		azure-pipelines.yml = azure-pipelines.yml
 		README.md = README.md
 	EndProjectSection
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WPF", "WPF", "{15A60E93-601D-4443-8FF5-7EDF42D516AE}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ConsoleApp", "ConsoleApp", "{0DD9852B-AB09-406D-8C40-AB900B16C20D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AcmeSodaWpf", "VendingMachine\UI\WPF\AcmeSodaWpf\AcmeSodaWpf.csproj", "{BEB844ED-B7C1-4C75-A3B7-C76C11D1F97B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AcmeSodaConsoleApp", "VendingMachine\UI\ConsoleApp\AcmeSodaConsoleApp\AcmeSodaConsoleApp.csproj", "{4C2C3BE3-B1CE-4943-ADED-04A13BB63603}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -25,23 +23,18 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{1CBB9904-6D50-4BB4-9340-99A819429A60}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1CBB9904-6D50-4BB4-9340-99A819429A60}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1CBB9904-6D50-4BB4-9340-99A819429A60}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{1CBB9904-6D50-4BB4-9340-99A819429A60}.Release|Any CPU.Build.0 = Release|Any CPU
-		{BEB844ED-B7C1-4C75-A3B7-C76C11D1F97B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{BEB844ED-B7C1-4C75-A3B7-C76C11D1F97B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{BEB844ED-B7C1-4C75-A3B7-C76C11D1F97B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{BEB844ED-B7C1-4C75-A3B7-C76C11D1F97B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4C2C3BE3-B1CE-4943-ADED-04A13BB63603}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4C2C3BE3-B1CE-4943-ADED-04A13BB63603}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4C2C3BE3-B1CE-4943-ADED-04A13BB63603}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4C2C3BE3-B1CE-4943-ADED-04A13BB63603}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{9E0B58C9-5FB1-463A-808E-CCD01EE23D9B} = {F2DDDA85-7C96-44C3-B79D-5F3FC0D2CB29}
-		{1CBB9904-6D50-4BB4-9340-99A819429A60} = {9E0B58C9-5FB1-463A-808E-CCD01EE23D9B}
-		{15A60E93-601D-4443-8FF5-7EDF42D516AE} = {9E0B58C9-5FB1-463A-808E-CCD01EE23D9B}
-		{BEB844ED-B7C1-4C75-A3B7-C76C11D1F97B} = {15A60E93-601D-4443-8FF5-7EDF42D516AE}
+		{0DD9852B-AB09-406D-8C40-AB900B16C20D} = {9E0B58C9-5FB1-463A-808E-CCD01EE23D9B}
+		{4C2C3BE3-B1CE-4943-ADED-04A13BB63603} = {0DD9852B-AB09-406D-8C40-AB900B16C20D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {044280C1-3B7F-481B-88F6-F21E100A27B8}
