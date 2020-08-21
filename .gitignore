@@ -3,6 +3,13 @@
 ################################################################################
 
 /.vs
-/VendingMachine/UI/ConsoleApp/AcmeSodaConsoleApp/bin/Debug/netcoreapp3.1
-/VendingMachine/UI/ConsoleApp/AcmeSodaConsoleApp/obj/Debug/netcoreapp3.1
+/VendingMachine/UI/ConsoleApp/AcmeSodaConsoleApp/bin
 /VendingMachine/UI/ConsoleApp/AcmeSodaConsoleApp/obj
+/Fippa/Fippa.Common/bin
+/Fippa/Fippa.Common/obj
+/Fippa/Fippa.Common.Tests/bin
+/Fippa/Fippa.Common.Tests/obj
+/Fippa/Fippa.Money/bin
+/Fippa/Fippa.Money/obj
+/Fippa/Fippa.Money.Tests/bin
+/Fippa/Fippa.Money.Tests/obj
