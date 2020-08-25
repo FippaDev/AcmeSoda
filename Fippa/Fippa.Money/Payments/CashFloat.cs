@@ -1,40 +1,33 @@
 ﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Runtime.InteropServices;
 using Fippa.Money.Currencies;
-using Fippa.Money.Currencies.Sterling;
 
 namespace Fippa.Money.Payments
 {
     public class CashFloat<T> where T : ICurrency, new()
     {
-        private class CoinStack
-        {
-            public IPayment Coin { get; private set; }
-            public ushort Count { get; set; }
-
-            public CoinStack(IPayment coin)
-            {
-                Coin = coin;
-                Count = 0;
-            }
-        }
-
-        private readonly List<CoinStack> _coins = new List<CoinStack>();
+        private readonly Dictionary<IPayment, ushort> _coins = new Dictionary<IPayment, ushort>();
 
         public CashFloat()
         {
             var currency = new T();
-            foreach (var coin in currency.Collection())
+            foreach (var coin in currency.Collection().OrderByDescending(c => c.Value))
             {
-                _coins.Add(new CoinStack(coin));
+                _coins.Add(coin, 0);
             }
         }
 
-        public Collection<Coin> CalculateChangeToReturnToCustomer(decimal transactionTotal)
+        public decimal Balance => _coins.Sum(c => c.Key.Value * c.Value);
+
+        public Collection<IPayment> CalculateChangeToReturnToCustomer(decimal transactionTotal)
         {
-            return new Collection<Coin>();
+            return new Collection<IPayment>();
+        }
+
+        public void AddCoinsToCashFloat(IPayment coin, ushort quantity)
+        {
+            _coins[coin] += quantity;
         }
     }
 }

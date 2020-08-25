@@ -1,6 +1,20 @@
-﻿namespace Fippa.Money.Tests.Calculators
+﻿using System.Diagnostics.CodeAnalysis;
+using Fippa.Money.Currencies.Sterling;
+using Fippa.Money.Payments;
+using Xunit;
+
+namespace Fippa.Money.Tests.Payment
 {
-    public partial class ChangeCalculatorTests
+    [ExcludeFromCodeCoverage]
+    public partial class ChangeCalculatorFloatTests
     {
+        [Fact]
+        public void Change_WhenEmptyFloat_ReturnsEmptyResult()
+        {
+            var cashFloat = new CashFloat<Sterling>();
+            var change = cashFloat.CalculateChangeToReturnToCustomer(0.99m);
+
+            Assert.Empty(change);
+        }
     }
 }

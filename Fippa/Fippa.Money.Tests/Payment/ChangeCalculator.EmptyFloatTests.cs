@@ -9,12 +9,22 @@ namespace Fippa.Money.Tests.Payment
     public partial class ChangeCalculatorTests
     {
         [Fact]
-        public void Change_WhenEmptyFloat_ReturnsEmptyResult()
+        public void AddCoinsToCashFloat_GivenTenPencePieces_BalanceReflectsTheCoinsAdded()
         {
             var cashFloat = new CashFloat<Sterling>();
-            var change = cashFloat.CalculateChangeToReturnToCustomer(0.99m);
+            cashFloat.AddCoinsToCashFloat(Coin.TenPence, 12);
 
-            Assert.Empty(change);
+            Assert.Equal(1.20m, cashFloat.Balance);
+        }
+
+        [Fact]
+        public void AddCoinsToCashFloat_GivenTenAndTwentyPencePieces_BalanceReflectsTheCoinsAdded()
+        {
+            var cashFloat = new CashFloat<Sterling>();
+            cashFloat.AddCoinsToCashFloat(Coin.TenPence, 1);
+            cashFloat.AddCoinsToCashFloat(Coin.TwentyPence, 2);
+
+            Assert.Equal(0.5m, cashFloat.Balance);
         }
     }
 }
