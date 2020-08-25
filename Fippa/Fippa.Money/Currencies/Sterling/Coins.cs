@@ -1,6 +1,7 @@
 ﻿using Fippa.Common.Enums;
+using Fippa.Money.Payments;
 
-namespace Fippa.Money.Payments
+namespace Fippa.Money.Currencies.Sterling
 {
     public sealed class Coin : DecimalEnum<Coin>, IPayment
     {
@@ -16,18 +17,6 @@ namespace Fippa.Money.Payments
         private Coin(string name, decimal value) 
             : base(name, value)
         {
-        }
-
-        public static Coin Parse(string valueString)
-        {
-            if (decimal.TryParse(valueString, out var value) 
-                &&
-                Coin.TryFromValue(value, out var coin))
-            {
-                return coin;
-            }
-
-            return InvalidCoin;
         }
     }
 }

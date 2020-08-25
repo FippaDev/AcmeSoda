@@ -23,4 +23,8 @@
     <ProjectReference Include="..\Fippa.Money\Fippa.Money.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Calculators\" />
+  </ItemGroup>
+
 </Project>
