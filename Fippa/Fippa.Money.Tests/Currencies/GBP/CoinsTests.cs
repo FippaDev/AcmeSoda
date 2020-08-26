@@ -1,5 +1,5 @@
 ﻿using System.Diagnostics.CodeAnalysis;
-using Fippa.Money.Currencies.Sterling;
+using Fippa.Money.Currencies.GBP;
 using Xunit;
 
 namespace Fippa.Money.Tests.Currencies
@@ -7,6 +7,18 @@ namespace Fippa.Money.Tests.Currencies
     [ExcludeFromCodeCoverage]
     public class CoinsTests
     {
+        [Fact]
+        public void OnePenny_HasRightMonetaryValue()
+        {
+            Assert.Equal(0.01m, Coin.OnePenny);
+        }
+
+        [Fact]
+        public void TwoPence_HasRightMonetaryValue()
+        {
+            Assert.Equal(0.02m, Coin.TwoPence);
+        }
+
         [Fact]
         public void FivePence_HasRightMonetaryValue()
         {

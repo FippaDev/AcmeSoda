@@ -1,11 +1,13 @@
 ﻿using Fippa.Money.Payments;
 
-namespace Fippa.Money.Currencies.Sterling
+namespace Fippa.Money.Currencies.GBP
 {
     public sealed class Coin : DecimalEnum<Coin>, ICashPayment
     {
         public static readonly Coin InvalidCoin = new Coin("Invalid", 0.00m);
 
+        public static readonly Coin OnePenny = new Coin(nameof(OnePenny), 0.01m);
+        public static readonly Coin TwoPence = new Coin(nameof(TwoPence), 0.02m);
         public static readonly Coin FivePence = new Coin(nameof(FivePence), 0.05m);
         public static readonly Coin TenPence = new Coin(nameof(TenPence), 0.10m);
         public static readonly Coin TwentyPence = new Coin(nameof(TwentyPence), 0.20M);

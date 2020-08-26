@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using Fippa.Money.Payments;
 
-namespace Fippa.Money.Currencies.Sterling
+namespace Fippa.Money.Currencies.GBP
 {
-    public sealed class Sterling : ICurrency
+    public sealed class GBP : ICurrency
     {
         public static Coin Parse(string valueString)
         {

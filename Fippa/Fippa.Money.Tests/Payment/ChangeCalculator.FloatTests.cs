@@ -1,5 +1,5 @@
 ﻿using System.Diagnostics.CodeAnalysis;
-using Fippa.Money.Currencies.Sterling;
+using Fippa.Money.Currencies.USD;
 using Fippa.Money.Payments;
 using Xunit;
 
@@ -13,7 +13,7 @@ namespace Fippa.Money.Tests.Payment
         [Fact]
         public void Change_WhenEmptyFloat_ReturnsEmptyResult()
         {
-            var cashFloat = new CashFloat<Sterling>(MaxCoinsPerDenomination);
+            var cashFloat = new CashFloat<USD>(MaxCoinsPerDenomination);
             var change = cashFloat.CalculateChangeToReturnToCustomer(0.99m);
 
             Assert.Empty(change);
