@@ -8,10 +8,12 @@ namespace Fippa.Money.Tests.Payment
     [ExcludeFromCodeCoverage]
     public partial class ChangeCalculatorTests
     {
+        private readonly ushort MaxCoinsPerDenomination = 10;
+
         [Fact]
         public void AddCoinsToCashFloat_GivenTenPencePieces_BalanceReflectsTheCoinsAdded()
         {
-            var cashFloat = new CashFloat<Sterling>();
+            var cashFloat = new CashFloat<Sterling>(MaxCoinsPerDenomination);
             cashFloat.AddCoinsToCashFloat(Coin.TenPence, 12);
 
             Assert.Equal(1.20m, cashFloat.Balance);
@@ -20,7 +22,7 @@ namespace Fippa.Money.Tests.Payment
         [Fact]
         public void AddCoinsToCashFloat_GivenTenAndTwentyPencePieces_BalanceReflectsTheCoinsAdded()
         {
-            var cashFloat = new CashFloat<Sterling>();
+            var cashFloat = new CashFloat<Sterling>(MaxCoinsPerDenomination);
             cashFloat.AddCoinsToCashFloat(Coin.TenPence, 1);
             cashFloat.AddCoinsToCashFloat(Coin.TwentyPence, 2);
 

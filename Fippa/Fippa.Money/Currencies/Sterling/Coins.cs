@@ -1,9 +1,8 @@
-﻿using Fippa.Common.Enums;
-using Fippa.Money.Payments;
+﻿using Fippa.Money.Payments;
 
 namespace Fippa.Money.Currencies.Sterling
 {
-    public sealed class Coin : DecimalEnum<Coin>, IPayment
+    public sealed class Coin : DecimalEnum<Coin>, ICashPayment
     {
         public static readonly Coin InvalidCoin = new Coin("Invalid", 0.00m);
 

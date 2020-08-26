@@ -5,6 +5,6 @@ namespace Fippa.Money.Currencies
 {
     public interface ICurrency
     {
-        IEnumerable<IPayment> Collection();
+        IEnumerable<ICashPayment> Collection();
     }
 }

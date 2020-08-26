@@ -1,6 +1,6 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 
-namespace Fippa.Common.Enums
+namespace Fippa.Money
 {
     [ExcludeFromCodeCoverage]
     public abstract class DecimalEnum<TEnum> : Ardalis.SmartEnum.SmartEnum<TEnum, decimal> 

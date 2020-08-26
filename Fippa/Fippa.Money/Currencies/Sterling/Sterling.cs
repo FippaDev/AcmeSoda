@@ -17,7 +17,7 @@ namespace Fippa.Money.Currencies.Sterling
             return Coin.InvalidCoin;
         }
 
-        IEnumerable<IPayment> ICurrency.Collection()
+        IEnumerable<ICashPayment> ICurrency.Collection()
         {
             return
                 new[]
