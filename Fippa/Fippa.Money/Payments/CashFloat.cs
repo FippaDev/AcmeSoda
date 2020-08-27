@@ -27,8 +27,13 @@ namespace Fippa.Money.Payments
             return new Collection<ICashPayment>();
         }
 
-        public ushort AddCoinsToCashFloat(ICashPayment coin, ushort quantity)
+        public ushort AddCoins(ICashPayment coin, ushort quantity)
         {
+            if (!_coins.ContainsKey(coin))
+            {
+                return quantity;
+            }
+
             ushort currentQuantity = _coins[coin];
             int freeSpace = _maxCoinsPerDenomination - currentQuantity;
             ushort excessCoins = 0;

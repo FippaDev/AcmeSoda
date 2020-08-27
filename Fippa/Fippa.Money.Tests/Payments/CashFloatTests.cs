@@ -11,7 +11,7 @@ namespace Fippa.Money.Tests.Payments
         private readonly ushort MaxCoinsPerDenomination = 100;
 
         [Fact]
-        public void Change_WhenEmptyFloat_ReturnsEmptyResult()
+        public void CalculateChangeToReturnToCustomer_WhenEmptyFloat_ReturnsEmptyResult()
         {
             var cashFloat = new CashFloat<GBPCoins>(MaxCoinsPerDenomination);
             var change = cashFloat.CalculateChangeToReturnToCustomer(0.99m);
@@ -23,7 +23,7 @@ namespace Fippa.Money.Tests.Payments
         public void AddCoinsToCashFloat_GivenTenPencePieces_BalanceReflectsTheCoinsAdded()
         {
             var cashFloat = new CashFloat<GBPCoins>(MaxCoinsPerDenomination);
-            cashFloat.AddCoinsToCashFloat(GBP.TenPence, 12);
+            cashFloat.AddCoins(GBP.TenPence, 12);
 
             Assert.Equal(1.20m, cashFloat.Balance);
         }
@@ -32,8 +32,8 @@ namespace Fippa.Money.Tests.Payments
         public void AddCoinsToCashFloat_GivenTenAndTwentyPencePieces_BalanceReflectsTheCoinsAdded()
         {
             var cashFloat = new CashFloat<GBPCoins>(MaxCoinsPerDenomination);
-            cashFloat.AddCoinsToCashFloat(GBP.TenPence, 1);
-            cashFloat.AddCoinsToCashFloat(GBP.TwentyPence, 2);
+            cashFloat.AddCoins(GBP.TenPence, 1);
+            cashFloat.AddCoins(GBP.TwentyPence, 2);
 
             Assert.Equal(0.5m, cashFloat.Balance);
         }
@@ -42,10 +42,29 @@ namespace Fippa.Money.Tests.Payments
         public void AddCoinsToCashFloat_WhenAddingMoreCoinsThanSlots_ReturnsExcessCoins()
         {
             var cashFloat = new CashFloat<GBPCoins>(MaxCoinsPerDenomination);
-            var excess = cashFloat.AddCoinsToCashFloat(GBP.TenPence, (ushort)(MaxCoinsPerDenomination + 2));
+            var excessCoins = cashFloat.AddCoins(GBP.TenPence, (ushort)(MaxCoinsPerDenomination + 2));
 
-            Assert.Equal(2, excess);
+            Assert.Equal(2, excessCoins);
             Assert.Equal(10.00m, cashFloat.Balance);
+        }
+
+        [Fact]
+        public void AddCoinsToCashFloat_GivenUSDCoins_ReturnsNotSupported()
+        {
+            ushort quantity = 2;
+            var cashFloat = new CashFloat<GBPCoins>(MaxCoinsPerDenomination);
+            var excessCoins = cashFloat.AddCoins(USD.Nickel, quantity);
+
+            Assert.Equal(quantity, excessCoins);
+        }
+
+        [Fact]
+        public void Change_WhenEmptyFloat_ReturnsEmptyResult()
+        {
+            var cashFloat = new CashFloat<GBPCoins>(MaxCoinsPerDenomination);
+            var change = cashFloat.CalculateChangeToReturnToCustomer(0.99m);
+
+            Assert.Empty(change);
         }
     }
 }
