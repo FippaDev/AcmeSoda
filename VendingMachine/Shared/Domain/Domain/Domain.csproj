@@ -5,6 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\..\..\Fippa\Fippa.Common\Fippa.Common.csproj" />
     <ProjectReference Include="..\..\..\..\Fippa\Fippa.Money\Fippa.Money.csproj" />
   </ItemGroup>
 
