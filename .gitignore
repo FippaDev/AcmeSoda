@@ -13,3 +13,7 @@
 /Fippa/Fippa.Money/obj
 /Fippa/Fippa.Money.Tests/bin
 /Fippa/Fippa.Money.Tests/obj
+/VendingMachine/Domain/bin
+/VendingMachine/Domain/obj
+/VendingMachine/DomainTests/bin
+/VendingMachine/DomainTests/obj
