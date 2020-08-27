@@ -1,0 +1,124 @@
+{
+  "runtimeTarget": {
+    "name": ".NETStandard,Version=v2.0/",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETStandard,Version=v2.0": {},
+    ".NETStandard,Version=v2.0/": {
+      "Domain/1.0.0": {
+        "dependencies": {
+          "Fippa.Money": "1.0.0",
+          "NETStandard.Library": "2.0.3"
+        },
+        "runtime": {
+          "Domain.dll": {}
+        }
+      },
+      "Ardalis.GuardClauses/3.0.0": {
+        "dependencies": {
+          "JetBrains.Annotations": "2019.1.3"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Ardalis.GuardClauses.dll": {
+            "assemblyVersion": "3.0.0.0",
+            "fileVersion": "3.0.0.0"
+          }
+        }
+      },
+      "Ardalis.SmartEnum/1.0.11": {
+        "runtime": {
+          "lib/netstandard2.0/Ardalis.SmartEnum.dll": {
+            "assemblyVersion": "1.0.11.0",
+            "fileVersion": "1.0.11.0"
+          }
+        }
+      },
+      "JetBrains.Annotations/2019.1.3": {
+        "runtime": {
+          "lib/netstandard2.0/JetBrains.Annotations.dll": {
+            "assemblyVersion": "2019.1.3.0",
+            "fileVersion": "2019.1.3.0"
+          }
+        }
+      },
+      "Microsoft.NETCore.Platforms/1.1.0": {},
+      "NETStandard.Library/2.0.3": {
+        "dependencies": {
+          "Microsoft.NETCore.Platforms": "1.1.0"
+        }
+      },
+      "Fippa.Common/1.0.0": {
+        "dependencies": {
+          "Ardalis.GuardClauses": "3.0.0",
+          "Ardalis.SmartEnum": "1.0.11"
+        },
+        "runtime": {
+          "Fippa.Common.dll": {}
+        }
+      },
+      "Fippa.Money/1.0.0": {
+        "dependencies": {
+          "Ardalis.SmartEnum": "1.0.11",
+          "Fippa.Common": "1.0.0"
+        },
+        "runtime": {
+          "Fippa.Money.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Domain/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Ardalis.GuardClauses/3.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-Mg2GohUI7ltaCt+QeMf4xNRMpJVCMx5HhnjXS4YQfIXAu6DH0wIgggDv1sH/dWRZ+TQMT1LrnF9MvUP/VHeZNw==",
+      "path": "ardalis.guardclauses/3.0.0",
+      "hashPath": "ardalis.guardclauses.3.0.0.nupkg.sha512"
+    },
+    "Ardalis.SmartEnum/1.0.11": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-U1+fExSZZ98+8CXpKjBRcp1turYqjBnIZUcOHI1Mk2GxwjA7wB/dlKw5zqkr3YMNJZia4s9e9rEPVyJaMhTnvw==",
+      "path": "ardalis.smartenum/1.0.11",
+      "hashPath": "ardalis.smartenum.1.0.11.nupkg.sha512"
+    },
+    "JetBrains.Annotations/2019.1.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-E0x48BwZJKoNMNCekWGKsV4saQS89lf58ydT2szseV44CMYIbaHXjc7+305WLw6up3ibZN9yH6QdGSZo5tQhLg==",
+      "path": "jetbrains.annotations/2019.1.3",
+      "hashPath": "jetbrains.annotations.2019.1.3.nupkg.sha512"
+    },
+    "Microsoft.NETCore.Platforms/1.1.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-a/iSwnRZb+LHFk49hQOyThh/ZNC3vsbZsF65XwQIb863qF6msmhdQtxGXFL28Ob2NsCz/drEj28BJd/YPpLRBg==",
+      "path": "microsoft.netcore.platforms/1.1.0",
+      "hashPath": "microsoft.netcore.platforms.1.1.0.nupkg.sha512"
+    },
+    "NETStandard.Library/2.0.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-st47PosZSHrjECdjeIzZQbzivYBJFv6P2nv4cj2ypdI204DO+vZ7l5raGMiX4eXMJ53RfOIg+/s4DHVZ54Nu2A==",
+      "path": "netstandard.library/2.0.3",
+      "hashPath": "netstandard.library.2.0.3.nupkg.sha512"
+    },
+    "Fippa.Common/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Fippa.Money/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
