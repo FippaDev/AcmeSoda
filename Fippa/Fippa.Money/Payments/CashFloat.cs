@@ -31,7 +31,7 @@ namespace Fippa.Money.Payments
         {
             ushort currentQuantity = _coins[coin];
             int freeSpace = _maxCoinsPerDenomination - currentQuantity;
-            ushort excess = 0;
+            ushort excessCoins = 0;
 
             if(quantity <= freeSpace)
             {
@@ -40,10 +40,10 @@ namespace Fippa.Money.Payments
             else
             {
                 _coins[coin] = _maxCoinsPerDenomination;
-                excess = (ushort)(quantity - freeSpace);
+                excessCoins = (ushort)(quantity - freeSpace);
             }
 
-            return excess;
+            return excessCoins;
         }
     }
 }

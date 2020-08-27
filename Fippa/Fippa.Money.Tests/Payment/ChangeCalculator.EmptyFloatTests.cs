@@ -28,5 +28,15 @@ namespace Fippa.Money.Tests.Payment
 
             Assert.Equal(0.5m, cashFloat.Balance);
         }
+
+        [Fact]
+        public void AddCoinsToCashFloat_WhenAddingMoreCoinsThanSlots_ReturnsExcessCoins()
+        {
+            var cashFloat = new CashFloat<GBPCoins>(MaxCoinsPerDenomination);
+            var excess = cashFloat.AddCoinsToCashFloat(GBP.TenPence, (ushort)(MaxCoinsPerDenomination + 2));
+
+            Assert.Equal(2, excess);
+            Assert.Equal(10.00m, cashFloat.Balance);
+        }
     }
 }
