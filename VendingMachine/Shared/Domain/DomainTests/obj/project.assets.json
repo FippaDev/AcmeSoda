@@ -3597,19 +3597,18 @@
     },
     "Fippa.Common/1.0.0": {
       "type": "project",
-      "path": "../../Fippa/Fippa.Common/Fippa.Common.csproj",
-      "msbuildProject": "../../Fippa/Fippa.Common/Fippa.Common.csproj"
+      "path": "../../../../Fippa/Fippa.Common/Fippa.Common.csproj",
+      "msbuildProject": "../../../../Fippa/Fippa.Common/Fippa.Common.csproj"
     },
     "Fippa.Money/1.0.0": {
       "type": "project",
-      "path": "../../Fippa/Fippa.Money/Fippa.Money.csproj",
-      "msbuildProject": "../../Fippa/Fippa.Money/Fippa.Money.csproj"
+      "path": "../../../../Fippa/Fippa.Money/Fippa.Money.csproj",
+      "msbuildProject": "../../../../Fippa/Fippa.Money/Fippa.Money.csproj"
     }
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.1": [
       "Domain >= 1.0.0",
-      "Fippa.Money >= 1.0.0",
       "Microsoft.NET.Test.Sdk >= 16.6.0",
       "coverlet.collector >= 1.2.0",
       "xunit >= 2.4.0",
@@ -3624,11 +3623,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\Source\\Github\\AcmeSoda\\VendingMachine\\DomainTests\\DomainTests.csproj",
+      "projectUniqueName": "E:\\Source\\Github\\AcmeSoda\\VendingMachine\\Shared\\Domain\\DomainTests\\DomainTests.csproj",
       "projectName": "DomainTests",
-      "projectPath": "E:\\Source\\Github\\AcmeSoda\\VendingMachine\\DomainTests\\DomainTests.csproj",
+      "projectPath": "E:\\Source\\Github\\AcmeSoda\\VendingMachine\\Shared\\Domain\\DomainTests\\DomainTests.csproj",
       "packagesPath": "C:\\Users\\Philip\\.nuget\\packages\\",
-      "outputPath": "E:\\Source\\Github\\AcmeSoda\\VendingMachine\\DomainTests\\obj\\",
+      "outputPath": "E:\\Source\\Github\\AcmeSoda\\VendingMachine\\Shared\\Domain\\DomainTests\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Microsoft\\Xamarin\\NuGet\\",
@@ -3650,11 +3649,8 @@
       "frameworks": {
         "netcoreapp3.1": {
           "projectReferences": {
-            "E:\\Source\\Github\\AcmeSoda\\Fippa\\Fippa.Money\\Fippa.Money.csproj": {
-              "projectPath": "E:\\Source\\Github\\AcmeSoda\\Fippa\\Fippa.Money\\Fippa.Money.csproj"
-            },
-            "E:\\Source\\Github\\AcmeSoda\\VendingMachine\\Domain\\Domain.csproj": {
-              "projectPath": "E:\\Source\\Github\\AcmeSoda\\VendingMachine\\Domain\\Domain.csproj"
+            "E:\\Source\\Github\\AcmeSoda\\VendingMachine\\Shared\\Domain\\Domain\\Domain.csproj": {
+              "projectPath": "E:\\Source\\Github\\AcmeSoda\\VendingMachine\\Shared\\Domain\\Domain\\Domain.csproj"
             }
           }
         }

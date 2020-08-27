@@ -17,3 +17,5 @@
 /VendingMachine/Domain/obj
 /VendingMachine/DomainTests/bin
 /VendingMachine/DomainTests/obj
+/VendingMachine/Shared/Domain/DomainTests/bin/Debug/netcoreapp3.1
+/VendingMachine/Shared/Domain/DomainTests/obj/Debug/netcoreapp3.1
