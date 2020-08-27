@@ -287,17 +287,18 @@
     },
     "Fippa.Common/1.0.0": {
       "type": "project",
-      "path": "../../Fippa/Fippa.Common/Fippa.Common.csproj",
-      "msbuildProject": "../../Fippa/Fippa.Common/Fippa.Common.csproj"
+      "path": "../../../../Fippa/Fippa.Common/Fippa.Common.csproj",
+      "msbuildProject": "../../../../Fippa/Fippa.Common/Fippa.Common.csproj"
     },
     "Fippa.Money/1.0.0": {
       "type": "project",
-      "path": "../../Fippa/Fippa.Money/Fippa.Money.csproj",
-      "msbuildProject": "../../Fippa/Fippa.Money/Fippa.Money.csproj"
+      "path": "../../../../Fippa/Fippa.Money/Fippa.Money.csproj",
+      "msbuildProject": "../../../../Fippa/Fippa.Money/Fippa.Money.csproj"
     }
   },
   "projectFileDependencyGroups": {
     ".NETStandard,Version=v2.0": [
+      "Fippa.Common >= 1.0.0",
       "Fippa.Money >= 1.0.0",
       "NETStandard.Library >= 2.0.3"
     ]
@@ -310,11 +311,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\Source\\Github\\AcmeSoda\\VendingMachine\\Domain\\Domain.csproj",
+      "projectUniqueName": "E:\\Source\\Github\\AcmeSoda\\VendingMachine\\Shared\\Domain\\Domain\\Domain.csproj",
       "projectName": "Domain",
-      "projectPath": "E:\\Source\\Github\\AcmeSoda\\VendingMachine\\Domain\\Domain.csproj",
+      "projectPath": "E:\\Source\\Github\\AcmeSoda\\VendingMachine\\Shared\\Domain\\Domain\\Domain.csproj",
       "packagesPath": "C:\\Users\\Philip\\.nuget\\packages\\",
-      "outputPath": "E:\\Source\\Github\\AcmeSoda\\VendingMachine\\Domain\\obj\\",
+      "outputPath": "E:\\Source\\Github\\AcmeSoda\\VendingMachine\\Shared\\Domain\\Domain\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Microsoft\\Xamarin\\NuGet\\",
@@ -336,6 +337,9 @@
       "frameworks": {
         "netstandard2.0": {
           "projectReferences": {
+            "E:\\Source\\Github\\AcmeSoda\\Fippa\\Fippa.Common\\Fippa.Common.csproj": {
+              "projectPath": "E:\\Source\\Github\\AcmeSoda\\Fippa\\Fippa.Common\\Fippa.Common.csproj"
+            },
             "E:\\Source\\Github\\AcmeSoda\\Fippa\\Fippa.Money\\Fippa.Money.csproj": {
               "projectPath": "E:\\Source\\Github\\AcmeSoda\\Fippa\\Fippa.Money\\Fippa.Money.csproj"
             }

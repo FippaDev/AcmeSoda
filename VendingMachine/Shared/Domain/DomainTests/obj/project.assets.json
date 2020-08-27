@@ -936,6 +936,7 @@
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
+          "Fippa.Common": "1.0.0",
           "Fippa.Money": "1.0.0"
         },
         "compile": {

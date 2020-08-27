@@ -257,6 +257,9 @@
         "frameworks": {
           "netstandard2.0": {
             "projectReferences": {
+              "E:\\Source\\Github\\AcmeSoda\\Fippa\\Fippa.Common\\Fippa.Common.csproj": {
+                "projectPath": "E:\\Source\\Github\\AcmeSoda\\Fippa\\Fippa.Common\\Fippa.Common.csproj"
+              },
               "E:\\Source\\Github\\AcmeSoda\\Fippa\\Fippa.Money\\Fippa.Money.csproj": {
                 "projectPath": "E:\\Source\\Github\\AcmeSoda\\Fippa\\Fippa.Money\\Fippa.Money.csproj"
               }
