@@ -5,9 +5,9 @@ using Fippa.Money.Payments;
 namespace Fippa.Money.Currencies
 {
     [ExcludeFromCodeCoverage]
-    public sealed class GBPCoins : ICurrency
+    public sealed class GBPCoins : IAcceptedCoins
     {
-        IEnumerable<ICashPayment> ICurrency.Collection()
+        IEnumerable<ICashPayment> IAcceptedCoins.Collection()
         {
             return
                 new[]

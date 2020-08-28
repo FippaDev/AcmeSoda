@@ -3,7 +3,7 @@ using Fippa.Money.Payments;
 
 namespace Fippa.Money.Currencies
 {
-    public interface ICurrency
+    public interface IAcceptedCoins
     {
         IEnumerable<ICashPayment> Collection();
     }
