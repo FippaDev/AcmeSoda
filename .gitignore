@@ -13,7 +13,8 @@
 /Fippa/Fippa.Money/obj
 /Fippa/Fippa.Money.Tests/bin
 /Fippa/Fippa.Money.Tests/obj
-/VendingMachine/Shared/Domain/Domain/bin
-/VendingMachine/Shared/Domain/Domain/obj
-/VendingMachine/Shared/Domain/DomainTests/bin
-/VendingMachine/Shared/Domain/DomainTests/obj
+
+/VendingMachine/Shared/Domain/Domain/bin/Debug/netstandard2.0
+/VendingMachine/Shared/Domain/Domain/obj/Debug/netstandard2.0
+/VendingMachine/Shared/Domain/DomainTests/bin/Debug/netcoreapp3.1
+/VendingMachine/Shared/Domain/DomainTests/obj/Debug/netcoreapp3.1
