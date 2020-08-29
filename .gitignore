@@ -17,3 +17,7 @@
 /Fippa/Fippa.IO/obj
 /Fippa/Fippa.IO.Tests/bin/Debug/net5.0
 /Fippa/Fippa.IO.Tests/obj
+/VendingMachine/Shared/Domain/Domain/bin
+/VendingMachine/Shared/Domain/Domain/obj
+/VendingMachine/Shared/Domain/DomainTests/bin
+/VendingMachine/Shared/Domain/DomainTests/obj
