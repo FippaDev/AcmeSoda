@@ -1,9 +1,11 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using Ardalis.GuardClauses;
 
 namespace Fippa.IO.Streams
 {
+    [ExcludeFromCodeCoverage]
     public class StreamReaderWrapper : IStreamReader, IDisposable
     {
         private readonly StreamReader _stream;
@@ -16,7 +18,7 @@ namespace Fippa.IO.Streams
 
         public void Dispose()
         {
-            _stream?.Dispose();
+            _stream.Dispose();
         }
 
         public string ReadToEnd()
