@@ -1,12 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Diagnostics;
 using System.Linq;
-using Ardalis.GuardClauses;
 using Fippa.Money.Currencies;
-using Fippa.Money.Exceptions;
-using JetBrains.Annotations;
 
 namespace Fippa.Money.Payments
 {

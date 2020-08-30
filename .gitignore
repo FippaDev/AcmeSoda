@@ -21,3 +21,17 @@
 /VendingMachine/Shared/Domain/Domain/obj
 /VendingMachine/Shared/Domain/DomainTests/bin
 /VendingMachine/Shared/Domain/DomainTests/obj
+/VendingMachine/Shared/Application/Services/bin/Debug/netstandard2.0
+/VendingMachine/Shared/Application/Services/obj
+/VendingMachine/Shared/Application/Services.Tests/bin/Debug/netcoreapp3.1
+/VendingMachine/Shared/Application/Services.Tests/obj
+/VendingMachine/Shared/Domain/BusinessLogic/obj
+/VendingMachine/Shared/Domain/BusinessLogic.Tests/bin/Debug/netcoreapp3.1
+/VendingMachine/Shared/Domain/BusinessLogic.Tests/obj
+/VendingMachine/Shared/Domain/Models/obj
+/VendingMachine/Shared/Domain/Models.Tests/bin/Debug/netcoreapp3.1
+/VendingMachine/Shared/Domain/Models.Tests/obj
+/VendingMachine/Shared/Domain/VendingLogic/bin/Debug/netstandard2.0
+/VendingMachine/Shared/Domain/VendingLogic/obj
+/VendingMachine/UI/ConsoleApp/AcmeSodaConsole.Tests/bin/Debug/net5.0
+/VendingMachine/UI/ConsoleApp/AcmeSodaConsole.Tests/obj
