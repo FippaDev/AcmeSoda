@@ -1,6 +1,8 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 using Fippa.Money.Payments;
 using Unity;
+using VendingLogic.Admin;
+using VendingLogic.Admin.Commands;
 using VendingLogic.Payments;
 
 namespace VendingLogic
@@ -12,6 +14,9 @@ namespace VendingLogic
         {
             builder.RegisterType<IPaymentModule<ICashPayment>, CoinModule>();
             builder.RegisterType<IVendingMachineLogic, VendingMachineLogic>();
+            builder.RegisterType<IAdminModule, AdminModule>();
+            builder.RegisterType<IAuthenticationModule, AuthenticationModule>();
+            builder.RegisterType<ICommandController, CommandController>();
         }
     }
 }

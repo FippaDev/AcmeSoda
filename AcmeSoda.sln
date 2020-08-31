@@ -55,7 +55,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Models", "VendingMachine\Sh
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Models.Tests", "VendingMachine\Shared\Domain\Models.Tests\Models.Tests.csproj", "{7A6512EA-28FD-4D2E-BF5F-C5A09812F40C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VendingLogic", "VendingMachine\Shared\Domain\VendingLogic\VendingLogic.csproj", "{633B1776-528C-42D7-BD24-33BC9A3FF3AA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VendingLogic", "VendingMachine\Shared\Domain\VendingLogic\VendingLogic.csproj", "{633B1776-528C-42D7-BD24-33BC9A3FF3AA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -16,4 +16,10 @@
     <ProjectReference Include="..\..\..\Shared\Domain\VendingLogic\VendingLogic.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="pepsi.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>

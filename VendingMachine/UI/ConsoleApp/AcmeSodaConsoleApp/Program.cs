@@ -1,16 +1,22 @@
 ﻿using System;
-using Fippa.Money.Currencies;
+using System.Diagnostics.CodeAnalysis;
+using System.Threading;
+using Unity;
 
 namespace AcmeSodaConsoleApp
 {
-    public class Program
+    [ExcludeFromCodeCoverage]
+    public static class Program
     {
         public static void Main()
         {
-            var coin = CurrencyParser<GBP>.Parse("0.10");
-            
-            Console.WriteLine("Hello World!");
-            Console.ReadKey();
+            var container = ContainerConfig.Configure();
+            var app = container.Resolve<IConsoleApplication>();
+            app.Run();
+
+            Console.WriteLine();
+            Console.WriteLine("Finished. Exiting..");
+            Thread.Sleep(2000);
         }
     }
 }
