@@ -1,22 +1,21 @@
 ﻿using System.Diagnostics.CodeAnalysis;
-using BusinessLogic.Payments;
 using Fippa.Money.Currencies;
-using Fippa.Money.Payments;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using VendingLogic.Payments;
+using Xunit;
 
-namespace BusinessLogic.Tests.Payments
+namespace VendingLogic.Tests.Payments
 {
-    [TestClass, ExcludeFromCodeCoverage]
+    [ExcludeFromCodeCoverage]
     public class CoinModuleTests
     {
-        [TestMethod]
+        [Fact]
         public void Constructor_HasZeroBalance()
         {
             var module = new CoinModule();
-            Assert.AreEqual(0.00m, module.AmountDeposited);
+            Assert.Equal(0.00m, module.AmountDeposited);
         }
 
-        [TestMethod]
+        [Fact]
         public void Add_TenPenceCoins_UpdatesBalance()
         {
             bool moneyAddedEventHandlerUsed = false;
@@ -25,8 +24,8 @@ namespace BusinessLogic.Tests.Payments
             
             module.Add(GBP.TenPence);
 
-            Assert.AreEqual(0.10m, module.AmountDeposited);
-            Assert.IsTrue(moneyAddedEventHandlerUsed);
+            Assert.Equal(0.10m, module.AmountDeposited);
+            Assert.True(moneyAddedEventHandlerUsed);
         }
     }
 }

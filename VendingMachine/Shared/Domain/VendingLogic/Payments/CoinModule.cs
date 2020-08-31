@@ -6,7 +6,7 @@ using System.Runtime.CompilerServices;
 using Fippa.Money.Payments;
 
 [assembly:InternalsVisibleTo("Models.Tests")]
-[assembly:InternalsVisibleTo("BusinessLogic.Tests")]
+[assembly:InternalsVisibleTo("VendingLogic.Tests")]
 namespace VendingLogic.Payments
 {
     internal class CoinModule : IPaymentModule<ICashPayment>

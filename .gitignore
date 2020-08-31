@@ -36,3 +36,5 @@
 /VendingMachine/UI/ConsoleApp/AcmeSodaConsole.Tests/bin/Debug/net5.0
 /VendingMachine/UI/ConsoleApp/AcmeSodaConsole.Tests/obj
 /VendingMachine/Shared/Domain/Models/bin/Debug/netstandard2.0
+/VendingMachine/Shared/Domain/VendingLogic.Tests/bin/Debug/net5.0
+/VendingMachine/Shared/Domain/VendingLogic.Tests/obj
