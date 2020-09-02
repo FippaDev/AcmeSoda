@@ -6,7 +6,7 @@ namespace Domain.Currencies
 {
     public sealed class AcceptedGBPCoins : IAcceptedCoins
     {
-        IEnumerable<ICashPayment> IAcceptedCoins.Collection()
+        public IEnumerable<ICashPayment> Collection()
         {
             return
                 new[]
