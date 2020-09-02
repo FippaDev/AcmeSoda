@@ -28,7 +28,7 @@ namespace AcmeSodaConsoleApp
             {
                 if (_commandLineMenu.IsHelpCommand(input))
                 {
-                    DisplayHelpInfo();
+                    _commandLineMenu.DisplayHelpInfo();
                 }
                 else
                 {
@@ -47,16 +47,6 @@ namespace AcmeSodaConsoleApp
         private static void OnBalanceChanged(object sender, BalanceChangedEvent e)
         {
             System.Console.WriteLine($"Balance(2): £{e.Balance}");
-        }
-
-        private static void DisplayHelpInfo()
-        {
-            System.Console.WriteLine("Usage:");
-            System.Console.WriteLine("  /?, /h, help => to display this help information.");
-            System.Console.WriteLine("  q, e, quit, exit => exit the application.");
-            System.Console.WriteLine("  b       Show the current balance");
-            System.Console.WriteLine("  1.00, 0.50, 0.20, 0.10, 0.5 => Insert £1, 50p, 20p, 10p, 5p");
-            System.Console.WriteLine("  a[X]    Make a selection (e.g. a0, a1, etc)");
         }
     }
 }
