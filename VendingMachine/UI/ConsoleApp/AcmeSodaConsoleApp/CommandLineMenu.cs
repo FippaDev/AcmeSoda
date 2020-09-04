@@ -28,6 +28,12 @@ namespace AcmeSodaConsoleApp
         {
             var cmd = input.ToLower();
 
+            if (IsHelpCommand(cmd))
+            {
+                DisplayHelpInfo();
+                return;
+            }
+
             if (cmd == "b")
             {
                 ShowBalance();
@@ -85,7 +91,7 @@ namespace AcmeSodaConsoleApp
             return HelpCommands.Contains(input.Trim().ToLower());
         }
 
-        void ICommandLineMenu.DisplayHelpInfo()
+        void DisplayHelpInfo()
         {
             _console.WriteLine("Usage:");
             _console.WriteLine("  /?, /h, help => to display this help information.");

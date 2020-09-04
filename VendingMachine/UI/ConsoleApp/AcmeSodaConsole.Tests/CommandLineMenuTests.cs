@@ -1,4 +1,6 @@
+using System;
 using System.Globalization;
+using System.Linq.Expressions;
 using AcmeSodaConsoleApp;
 using Fippa.IO.Console;
 using Fippa.Money.Currencies;
@@ -83,6 +85,21 @@ namespace AcmeSodaConsole.Tests
 
             var regionInfo = new RegionInfo(System.Threading.Thread.CurrentThread.CurrentUICulture.LCID);
             console.Verify(c => c.WriteLine($"Balance {regionInfo.CurrencySymbol}1.35"));
+        }
+
+        [Theory]
+        [InlineData(@"/?")]
+        [InlineData(@"/h")]
+        [InlineData(@"help")]
+        public void Action_GivenRequestForHelp_ShowsHelp(string argument)
+        {
+            var console = new Mock<IConsole>();
+            var cmd = new CommandLineMenu(console.Object, _mockVendingMachine.Object);
+            _mockVendingMachine.Setup(v => v.Balance).Returns(1.35m);
+
+            cmd.Action(argument);
+
+            console.Verify(c => c.WriteLine(It.Is<string>(s => s.StartsWith("Usage:"))));
         }
     }
 }

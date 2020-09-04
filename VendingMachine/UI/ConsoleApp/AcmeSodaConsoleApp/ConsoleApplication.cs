@@ -29,15 +29,7 @@ namespace AcmeSodaConsoleApp
             var input = System.Console.ReadLine();
             while (!_commandLineMenu.IsExitCommand(input))
             {
-                if (_commandLineMenu.IsHelpCommand(input))
-                {
-                    _commandLineMenu.DisplayHelpInfo();
-                }
-                else
-                {
-                    _commandLineMenu.Action(input);
-                }
-
+                _commandLineMenu.Action(input);
                 input = System.Console.ReadLine();
             }
         }
