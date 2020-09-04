@@ -133,9 +133,10 @@ namespace AcmeSodaConsole.Tests
             var cmd = new CommandLineMenu(console.Object, _mockVendingMachine.Object);
             var validSelection = SelectionResult.ValidSelection;
             _mockVendingMachine.Setup(v => v.MakeSelection(0)).Returns(validSelection);
-
+            
             cmd.Action("a0");
 
+            _mockVendingMachine.Verify(v => v.ItemDispensed, Times.Once);
             console.Verify(c => c.WriteLine("Dispensing.."));
         }
     }
