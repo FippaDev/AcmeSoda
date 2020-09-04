@@ -13,7 +13,7 @@ namespace Models.Pricing
             : base(stockKeepingUnit)
         {
             Guard.Against.NullOrEmpty(displayName, nameof(displayName));
-            if (retailPrice < 0.0m)
+            if (retailPrice <= 0.0m)
             {
                 throw new InvalidStockItemPriceException("Cannot have items with a negative retail price.");
             }

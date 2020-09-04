@@ -1,37 +1,37 @@
 using System.Diagnostics.CodeAnalysis;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Models.Stock;
+using Xunit;
 
 namespace Models.Tests
 {
-    [TestClass, ExcludeFromCodeCoverage]
+    [ExcludeFromCodeCoverage]
     public class SpiralDispenserTests
     {
-         [TestMethod]
+        [Fact]
         public void Constructor_MatchingNumberOfItemsAndCodes_InitialisesStockArray()
         {
             new SpiralDispenser();
         }
 
-        [TestMethod]
+        [Fact]
         public void Dispense_WhenEmpty_ReturnsNullObject()
         {
             var dispenser = new SpiralDispenser();
             var stockItem = dispenser.Dispense();
-            Assert.AreEqual(typeof(NullObjectStockItem), stockItem.GetType());
+            Assert.Equal(typeof(NullObjectStockItem), stockItem.GetType());
         }
 
-        [TestMethod]
+        [Fact]
         public void AddStockItem_WhilstLessThanMaxCapacity_AddsStockItemAndReturnsTrue()
         {
             var dispenser = new SpiralDispenser();
             bool added = dispenser.AddStockItem(new Confectionery("CHOC_WISPA"));
 
-            Assert.IsTrue(added);
-            Assert.AreEqual((uint)1, dispenser.StockCount());
+            Assert.True(added);
+            Assert.Equal((uint)1, dispenser.StockCount());
         }
 
-        [TestMethod]
+        [Fact]
         public void AddStockItem_WhenFull_CannotAddAnyMoreItemsAndReturnsFalse()
         {
             var dispenser = new SpiralDispenser();
@@ -43,22 +43,22 @@ namespace Models.Tests
 
             bool added = dispenser.AddStockItem(new Confectionery("SW01"));
 
-            Assert.IsFalse(added);
-            Assert.AreEqual((uint)SpiralDispenser.MaxCapacity, dispenser.StockCount());
+            Assert.False(added);
+            Assert.Equal((uint)SpiralDispenser.MaxCapacity, dispenser.StockCount());
         }
 
-        [TestMethod]
+        [Fact]
         public void AddStockItem_AddingDifferentTypesToTheQueue_ReturnsItemsInCorrectOrder()
         {
             var dispenser = new SpiralDispenser();
             dispenser.AddStockItem(new Confectionery("SW01"));
             dispenser.AddStockItem(new Crisps("CR01"));
             
-            Assert.AreEqual((uint)2, dispenser.StockCount());
+            Assert.Equal((uint)2, dispenser.StockCount());
             var item1 = dispenser.Dispense();
-            Assert.AreEqual(typeof(Confectionery), item1.GetType());
+            Assert.Equal(typeof(Confectionery), item1.GetType());
             var item2 = dispenser.Dispense();
-            Assert.AreEqual(typeof(Crisps), item2.GetType());
+            Assert.Equal(typeof(Crisps), item2.GetType());
         }
     }
 }

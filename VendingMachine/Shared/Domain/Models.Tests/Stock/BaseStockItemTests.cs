@@ -1,19 +1,19 @@
 ﻿using System.Diagnostics.CodeAnalysis;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Models.Stock;
+using Xunit;
 
 namespace Models.Tests.Stock
 {
-    [TestClass, ExcludeFromCodeCoverage]
+    [ExcludeFromCodeCoverage]
     public class BaseStockItemTests
     {
-        [TestMethod]
+        [Fact]
         public void Constructor_GetterSKU_ReturnsSKU()
         {
             const string sku = "sku99";
             var crisps = new Crisps(sku);
 
-            Assert.AreEqual<string>(sku, crisps.StockKeepingUnit);
+            Assert.Equal(sku, crisps.StockKeepingUnit);
         }
     }
 }

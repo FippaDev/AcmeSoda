@@ -1,26 +1,29 @@
 ﻿using System.Diagnostics.CodeAnalysis;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Models.Exceptions;
 using Models.Pricing;
+using Xunit;
 
 namespace Models.Tests
 {
-    [TestClass, ExcludeFromCodeCoverage]
+    [ExcludeFromCodeCoverage]
     public class PriceListStockItemTests
     {
-        [TestMethod, ExpectedException(typeof(InvalidStockItemPriceException))]
+        [Fact]
         public void Constructor_GivenInvalidPrice_ThrowsException()
         {
-            var priceListStockItem = new PriceListStockItem("SKU00", "Something", -0.99m);
+            Assert.Throws<InvalidStockItemPriceException>(() =>
+            {
+                var priceListStockItem = new PriceListStockItem("SKU00", "Something", -0.99m);
+            });
         }
 
-        [TestMethod]
+        [Fact]
         public void Constructor_GivenGoodValues_SetsProperties()
         {
             var listItem = new PriceListStockItem("SKU99", "Label", 0.99m);
-            Assert.AreEqual("SKU99", listItem.StockKeepingUnit);
-            Assert.AreEqual("Label", listItem.DisplayName);
-            Assert.AreEqual(0.99m, listItem.RetailPrice);
+            Assert.Equal("SKU99", listItem.StockKeepingUnit);
+            Assert.Equal("Label", listItem.DisplayName);
+            Assert.Equal(0.99m, listItem.RetailPrice);
         }
     }
 }
