@@ -13,8 +13,8 @@ namespace Fippa.Money.Tests.Formatters
         {
             decimal d = 0.00m;
 
-            var ri = new RegionInfo(System.Threading.Thread.CurrentThread.CurrentUICulture.LCID);
-            Assert.Equal($"{ri.CurrencySymbol}0.00", d.DisplayAsCurrency());
+            var regionInfo = new RegionInfo(System.Threading.Thread.CurrentThread.CurrentUICulture.LCID);
+            Assert.Equal($"{regionInfo.CurrencySymbol}0.00", d.DisplayAsCurrency());
         }
 
         [Fact]
@@ -22,8 +22,8 @@ namespace Fippa.Money.Tests.Formatters
         {
             decimal d = 3.98m;
 
-            var ri = new RegionInfo(System.Threading.Thread.CurrentThread.CurrentUICulture.LCID);
-            Assert.Equal($"{ri.CurrencySymbol}3.98", d.DisplayAsCurrency());
+            var regionInfo = new RegionInfo(System.Threading.Thread.CurrentThread.CurrentUICulture.LCID);
+            Assert.Equal($"{regionInfo.CurrencySymbol}3.98", d.DisplayAsCurrency());
         }
     }
 }

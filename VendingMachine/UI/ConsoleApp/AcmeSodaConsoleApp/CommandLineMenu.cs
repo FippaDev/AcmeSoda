@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Globalization;
+using System.Linq;
 using Ardalis.GuardClauses;
 using Fippa.IO.Console;
 using Fippa.Money.Currencies;
@@ -37,7 +38,8 @@ namespace AcmeSodaConsoleApp
             if (coin.GetType() != typeof(NotSupportedPayment))
             {
                 _vendingMachine.AddPayment(coin);
-                _console.WriteLine($"Inserted {coin}");
+                var regionInfo = new RegionInfo(System.Threading.Thread.CurrentThread.CurrentUICulture.LCID);
+                _console.WriteLine($"Inserted {regionInfo.CurrencySymbol}{coin.Value}");
                 return;
             }
 

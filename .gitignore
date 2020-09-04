@@ -39,3 +39,5 @@
 /VendingMachine/Shared/Domain/VendingLogic.Tests/bin/Debug/net5.0
 /VendingMachine/Shared/Domain/VendingLogic.Tests/obj
 /VendingMachine/Shared/Domain/VendingLogic.Tests/bin/Debug/netcoreapp3.1
+/Fippa/Fippa.IO.Tests/bin/Debug/netcoreapp3.1
+/VendingMachine/UI/ConsoleApp/AcmeSodaConsole.Tests/bin/Debug/netcoreapp3.1

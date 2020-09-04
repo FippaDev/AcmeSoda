@@ -1,3 +1,4 @@
+using System.Globalization;
 using AcmeSodaConsoleApp;
 using Fippa.IO.Console;
 using Fippa.Money.Currencies;
@@ -53,10 +54,13 @@ namespace AcmeSodaConsole.Tests
         public void Action_Given100_InsertsPoundCoin()
         {
             var cmd = new CommandLineMenu(_mockConsole.Object, _mockVendingMachine.Object);
+            var regionInfo = new RegionInfo(System.Threading.Thread.CurrentThread.CurrentUICulture.LCID);
+            var expectedOutput = $"Inserted {regionInfo.CurrencySymbol}1.00";
+
             cmd.Action("1.00");
 
             _mockVendingMachine.Verify(v => v.AddPayment(GBP.OnePound), Times.Once);
-            _mockConsole.Verify(c => c.WriteLine("Inserted £1.00"));
+            _mockConsole.Verify(c => c.WriteLine(expectedOutput));
         }
 
         [Fact]
@@ -69,7 +73,7 @@ namespace AcmeSodaConsole.Tests
         }
 
         [Fact]
-        public void Action_GivenB_ShowsBalance()
+        public void Action_GivenInputB_ShowsBalance()
         {
             var console = new Mock<IConsole>();
             var cmd = new CommandLineMenu(console.Object, _mockVendingMachine.Object);
@@ -77,7 +81,8 @@ namespace AcmeSodaConsole.Tests
 
             cmd.Action("b");
 
-            console.Verify(c => c.WriteLine("Balance £1.35"));
+            var regionInfo = new RegionInfo(System.Threading.Thread.CurrentThread.CurrentUICulture.LCID);
+            console.Verify(c => c.WriteLine($"Balance {regionInfo.CurrencySymbol}1.35"));
         }
     }
 }
