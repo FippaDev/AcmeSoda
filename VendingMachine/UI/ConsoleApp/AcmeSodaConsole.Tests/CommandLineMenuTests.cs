@@ -1,12 +1,11 @@
-using System;
 using System.Globalization;
-using System.Linq.Expressions;
 using AcmeSodaConsoleApp;
 using Fippa.IO.Console;
 using Fippa.Money.Currencies;
 using Fippa.Money.Payments;
 using Moq;
 using Services;
+using VendingLogic.Selection;
 using Xunit;
 
 namespace AcmeSodaConsole.Tests
@@ -95,11 +94,49 @@ namespace AcmeSodaConsole.Tests
         {
             var console = new Mock<IConsole>();
             var cmd = new CommandLineMenu(console.Object, _mockVendingMachine.Object);
-            _mockVendingMachine.Setup(v => v.Balance).Returns(1.35m);
 
             cmd.Action(argument);
 
             console.Verify(c => c.WriteLine(It.Is<string>(s => s.StartsWith("Usage:"))));
+        }
+
+        [Fact]
+        public void Action_GivenSelectionThatIsOutOfStock_ReturnsErrorMessage()
+        {
+            var console = new Mock<IConsole>();
+            var cmd = new CommandLineMenu(console.Object, _mockVendingMachine.Object);
+            var outOfStock = SelectionResult.OutOfStock;
+            _mockVendingMachine.Setup(v => v.MakeSelection(0)).Returns(outOfStock);
+
+            cmd.Action("a0");
+
+            console.Verify(c => c.WriteLine("Out of stock"));
+        }
+
+        [Fact]
+        public void Action_GivenSelectionWithoutSufficentFunds_ReturnsErrorMessage()
+        {
+            var console = new Mock<IConsole>();
+            var cmd = new CommandLineMenu(console.Object, _mockVendingMachine.Object);
+            var insufficientFunds = SelectionResult.InsufficientFunds;
+            _mockVendingMachine.Setup(v => v.MakeSelection(0)).Returns(insufficientFunds);
+
+            cmd.Action("a0");
+
+            console.Verify(c => c.WriteLine("Insufficient funds"));
+        }
+
+        [Fact]
+        public void Action_GivenValidSelectionWithSufficentFunds_DispensesItem()
+        {
+            var console = new Mock<IConsole>();
+            var cmd = new CommandLineMenu(console.Object, _mockVendingMachine.Object);
+            var validSelection = SelectionResult.ValidSelection;
+            _mockVendingMachine.Setup(v => v.MakeSelection(0)).Returns(validSelection);
+
+            cmd.Action("a0");
+
+            console.Verify(c => c.WriteLine("Dispensing.."));
         }
     }
 }

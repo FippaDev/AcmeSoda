@@ -4,6 +4,7 @@ using Ardalis.GuardClauses;
 using Fippa.IO.Console;
 using Fippa.Money.Currencies;
 using Services;
+using VendingLogic.Payments;
 using VendingLogic.Selection;
 
 namespace AcmeSodaConsoleApp
@@ -20,8 +21,14 @@ namespace AcmeSodaConsoleApp
         {
             Guard.Against.Null(vendingMachine, nameof(vendingMachine));
             _vendingMachine = vendingMachine;
+            _vendingMachine.ItemDispensed += OnItemDispensed;
             Guard.Against.Null(console, nameof(console));
             _console = console;
+        }
+
+        private void OnItemDispensed(object sender, ItemDispensedNotificationEvent e)
+        {
+            _console.WriteLine("Item dispensed");
         }
 
         public void Action(in string input)
@@ -58,11 +65,11 @@ namespace AcmeSodaConsoleApp
             var selectionResult = _vendingMachine.MakeSelection(selectionCode);
             if (selectionResult == SelectionResult.ValidSelection)
             {
-                // TODO: await dispensing
+                _console.WriteLine("Dispensing..");
             }
             else if (selectionResult == SelectionResult.InsufficientFunds)
             {
-                _console.WriteLine("Insufficient funds.");
+                _console.WriteLine("Insufficient funds");
             }
             else if (selectionResult == SelectionResult.OutOfStock)
             {
@@ -103,7 +110,8 @@ namespace AcmeSodaConsoleApp
 
         private void ShowBalance()
         {
-            _console.WriteLine($"Balance £{_vendingMachine.Balance}");
+            var regionInfo = new RegionInfo(System.Threading.Thread.CurrentThread.CurrentUICulture.LCID);
+            _console.WriteLine($"Balance {regionInfo.CurrencySymbol}{_vendingMachine.Balance}");
         }
     }
 }
