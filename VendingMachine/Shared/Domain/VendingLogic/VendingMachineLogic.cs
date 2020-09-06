@@ -84,7 +84,7 @@ namespace VendingLogic
             Balance -= selectedItem.RetailPrice;
 
             BalanceChanged?.Invoke(this, new BalanceChangedEvent(Balance));
-            ItemDispensed?.Invoke(this, new ItemDispensedNotificationEvent(selectedItem.DisplayName));
+            ItemDispensed?.Invoke(this, new ItemDispensedNotificationEvent(selectedItem));
 
             return SelectionResult.ValidSelection;
         }

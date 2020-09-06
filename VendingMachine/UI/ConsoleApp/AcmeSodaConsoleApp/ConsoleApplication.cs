@@ -36,7 +36,7 @@ namespace AcmeSodaConsoleApp
 
         private void OnItemDispensed(object sender, ItemDispensedNotificationEvent e)
         {
-            _console.WriteLine($"NOW DISPENSING: {e.Item}");
+            _console.WriteLine($"NOW DISPENSING: {e.Item.DisplayName}");
         }
 
         private void OnBalanceChanged(object sender, BalanceChangedEvent e)
