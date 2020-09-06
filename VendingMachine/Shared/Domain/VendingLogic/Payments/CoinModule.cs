@@ -33,8 +33,6 @@ namespace VendingLogic.Payments
             get { return _coins.Sum(c => c.Value); }
         }
 
-        decimal IPaymentModule<ICashPayment>.AmountDeposited { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-
         public void Add(ICashPayment coin)
         {
             _coins.Add(coin);

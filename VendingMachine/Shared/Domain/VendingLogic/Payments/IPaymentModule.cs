@@ -5,7 +5,7 @@ namespace VendingLogic.Payments
 {
     public interface IPaymentModule<T> where T : ICashPayment
     {
-        decimal AmountDeposited { get; set; }
+        decimal AmountDeposited { get; }
 
         EventHandler<MoneyAddedEvent> MoneyAdded { get; set; }
 

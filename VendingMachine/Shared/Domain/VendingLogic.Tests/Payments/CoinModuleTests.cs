@@ -27,5 +27,19 @@ namespace VendingLogic.Tests.Payments
             Assert.Equal(0.10m, module.AmountDeposited);
             Assert.True(moneyAddedEventHandlerUsed);
         }
+
+        [Fact]
+        public void ClearTransaction_ClearsCoinCollection()
+        {
+            var module = new CoinModule();
+            module.Add(GBP.FivePence);
+            module.Add(GBP.FiftyPence);
+
+            Assert.Equal(0.55m, module.AmountDeposited);
+
+            module.CancelTransaction();
+
+            Assert.Equal(0.00m, module.AmountDeposited);
+        }
     }
 }
