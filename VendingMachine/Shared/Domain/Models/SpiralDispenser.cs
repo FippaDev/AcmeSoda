@@ -8,30 +8,34 @@ namespace Models
     {
         public const int MaxCapacity = 10;
 
-        private readonly Queue<BaseStockItem> _stock;
+        public BaseStockItem StockItem =>
+            _spiral.Any()
+                ? _spiral.Peek()
+                : new NullObjectStockItem();
+
+        private readonly Queue<BaseStockItem> _spiral = new Queue<BaseStockItem>(MaxCapacity);
 
         public SpiralDispenser()
         {
-            _stock = new Queue<BaseStockItem>(MaxCapacity);
         }
 
         public BaseStockItem Dispense()
         {
-            return _stock.Any() 
-                ? _stock.Dequeue() 
+            return _spiral.Any() 
+                ? _spiral.Dequeue() 
                 : new NullObjectStockItem();
         }
 
         public uint StockCount()
         {
-            return (uint)_stock.Count;
+            return (uint)_spiral.Count;
         }
 
         public bool AddStockItem(BaseStockItem stockItem)
         {
-            if (_stock.Count < MaxCapacity)
+            if (_spiral.Count < MaxCapacity)
             {
-                _stock.Enqueue(stockItem);
+                _spiral.Enqueue(stockItem);
                 return true;
             }
 

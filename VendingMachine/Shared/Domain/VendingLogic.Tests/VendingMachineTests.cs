@@ -1,6 +1,7 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 using Fippa.Money.Currencies;
 using Fippa.Money.Payments;
+using Models;
 using Moq;
 using VendingLogic.Payments;
 using Xunit;
@@ -11,11 +12,12 @@ namespace VendingLogic.Tests
     public class VendingMachineTests
     {
         private readonly Mock<IPaymentModule<ICashPayment>> _mockCoinModule = new Mock<IPaymentModule<ICashPayment>>();
+        private readonly Mock<IDispenserModule> _mockDispenserModule = new Mock<IDispenserModule>();
 
         [Fact]
         public void CancelTransaction_ResetsBalance()
         {
-            var vendingMachine = new VendingMachineLogic(_mockCoinModule.Object);
+            var vendingMachine = new VendingMachineLogic(_mockDispenserModule.Object, _mockCoinModule.Object);
 
             vendingMachine.AddPayment(GBP.TenPence);
             vendingMachine.CancelTransaction();

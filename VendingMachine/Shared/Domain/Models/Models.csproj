@@ -11,4 +11,8 @@
     <PackageReference Include="Ardalis.SmartEnum" Version="1.0.11" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\Fippa\Fippa.Common\Fippa.Common.csproj" />
+  </ItemGroup>
+
 </Project>

@@ -1,7 +1,9 @@
 ﻿using System;
 using Ardalis.GuardClauses;
 using Fippa.Money.Payments;
+using Models;
 using Models.Pricing;
+using Models.Stock;
 using VendingLogic.Payments;
 using VendingLogic.Selection;
 
@@ -9,6 +11,7 @@ namespace VendingLogic
 {
     public class VendingMachineLogic : IVendingMachineLogic
     {
+        private readonly IDispenserModule _dispenserModule;
         private readonly IPaymentModule<ICashPayment> _coinModule;
         private decimal _balance;
 
@@ -28,8 +31,11 @@ namespace VendingLogic
             }
         }
 
-        public VendingMachineLogic(IPaymentModule<ICashPayment> coinModule)
+        public VendingMachineLogic(
+            IDispenserModule dispenserModule,
+            IPaymentModule<ICashPayment> coinModule)
         {
+            _dispenserModule = dispenserModule;
             _coinModule = coinModule;
             _coinModule.MoneyAdded += OnMoneyAdded;
         }
@@ -55,29 +61,30 @@ namespace VendingLogic
 
         public SelectionResult MakeSelection(ushort selectionCode)
         {
-            if (!_priceList.Has(selectionCode))
+            if (!_dispenserModule.IsValidSelectionCode(selectionCode))
             {
                 return SelectionResult.InvalidSelection;
             }
 
-            var selection = _priceList[selectionCode];
+            var sku = _dispenserModule.GetStockKeepingUnitCode(selectionCode);
+            var selectedItem = _priceList.GetItem(sku);
 
-            if (Balance < selection.RetailPrice)
+            if (Balance < selectedItem.RetailPrice)
             {
                 return SelectionResult.InsufficientFunds;
             }
 
-            return ProcessTransaction(selection);
+            return ProcessTransaction(selectedItem);
         }
 
-        private SelectionResult ProcessTransaction(PriceListStockItem selection)
+        private SelectionResult ProcessTransaction(PriceListStockItem selectedItem)
         {
             // TODO: Check the stock levels
 
-            Balance -= selection.RetailPrice;
+            Balance -= selectedItem.RetailPrice;
 
             BalanceChanged?.Invoke(this, new BalanceChangedEvent(Balance));
-            ItemDispensed?.Invoke(this, new ItemDispensedNotificationEvent(selection.DisplayName));
+            ItemDispensed?.Invoke(this, new ItemDispensedNotificationEvent(selectedItem.DisplayName));
 
             return SelectionResult.ValidSelection;
         }

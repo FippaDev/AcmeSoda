@@ -2,15 +2,15 @@
 
 namespace Models.Pricing
 {
+    // Key = SKU
+    // Value = PriceListStockItem (with DisplayName and RRP)
     public class PriceList
     {
-        private Dictionary<ushort, PriceListStockItem> Items { get; } = new Dictionary<ushort, PriceListStockItem>();
+        private Dictionary<string, PriceListStockItem> Items { get; } = new Dictionary<string, PriceListStockItem>();
 
-        public PriceListStockItem this[ushort selectionCode] => Items[selectionCode];
-
-        public bool Has(ushort selectionCode)
+        public PriceListStockItem GetItem(string sku)
         {
-            return Items.ContainsKey(selectionCode);
+            return Items[sku];
         }
     }
 }
