@@ -3,6 +3,7 @@ using System.Linq;
 using Ardalis.GuardClauses;
 using Fippa.IO.Console;
 using Fippa.Money.Currencies;
+using Fippa.Money.Payments;
 using Services;
 using VendingLogic.Payments;
 using VendingLogic.Selection;
@@ -14,8 +15,8 @@ namespace AcmeSodaConsoleApp
         private readonly IConsole _console;
         private readonly IVendingMachine _vendingMachine;
 
-        private static readonly string[] ExitCommands = new[] { "q", "quit", "e", "exit" };
-        private static readonly string[] HelpCommands = new[] { "/?", "/h", "help" };
+        private static readonly string[] ExitCommands = { "q", "quit", "e", "exit" };
+        private static readonly string[] HelpCommands = { "/?", "/h", "help" };
 
         public CommandLineMenu(IConsole console, IVendingMachine vendingMachine)
         {
@@ -50,9 +51,7 @@ namespace AcmeSodaConsoleApp
             var coin = CurrencyParser<GBP>.Parse(cmd);
             if (coin.GetType() != typeof(NotSupportedPayment))
             {
-                _vendingMachine.AddPayment(coin);
-                var regionInfo = new RegionInfo(System.Threading.Thread.CurrentThread.CurrentUICulture.LCID);
-                _console.WriteLine($"Inserted {regionInfo.CurrencySymbol}{coin.Value}");
+                AcknowledgeCoinInserted(coin);
                 return;
             }
 
@@ -75,6 +74,13 @@ namespace AcmeSodaConsoleApp
             {
                 _console.WriteLine("Out of stock");
             }
+        }
+
+        private void AcknowledgeCoinInserted(ICashPayment coin)
+        {
+            _vendingMachine.AddPayment(coin);
+            var regionInfo = new RegionInfo(System.Threading.Thread.CurrentThread.CurrentUICulture.LCID);
+            _console.WriteLine($"Inserted {regionInfo.CurrencySymbol}{coin.Value}");
         }
 
         private static bool IsValidSelection(string cmd, out ushort selectionCode)

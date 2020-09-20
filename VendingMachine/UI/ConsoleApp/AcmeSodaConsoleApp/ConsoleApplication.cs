@@ -1,10 +1,12 @@
-﻿using Fippa.IO.Console;
+﻿using System.Diagnostics.CodeAnalysis;
+using Fippa.IO.Console;
 using Services;
 using Services.Factories;
 using VendingLogic.Payments;
 
 namespace AcmeSodaConsoleApp
 {
+    [ExcludeFromCodeCoverage]
     public class ConsoleApplication : IConsoleApplication
     {
         private readonly IConsole _console;
