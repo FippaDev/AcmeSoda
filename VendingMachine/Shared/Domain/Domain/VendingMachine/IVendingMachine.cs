@@ -1,6 +1,4 @@
-﻿using System;
-using Fippa.Money.Payments;
-using VendingLogic.Payments;
+﻿using Fippa.Money.Payments;
 using VendingLogic.Selection;
 
 namespace Domain.VendingMachine
@@ -9,10 +7,7 @@ namespace Domain.VendingMachine
     {
         string Manufacturer { get; }
 
-        EventHandler<ItemDispensedNotificationEvent> ItemDispensed { get; set; }
-
         void AddPayment(IPayment payment);
         SelectionResult MakeSelection(ushort selectionCode);
-        void ShowBalance();
     }
 }

@@ -1,11 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Globalization;
-using System.Threading;
 using Domain.VendingMachine;
 using Fippa.IO.Console;
 using Fippa.Money.Currencies;
-using Fippa.Money.Payments;
 using UserInterface;
 using VendingLogic.Selection;
 
@@ -46,12 +43,6 @@ namespace AcmeSodaConsoleApp
                 return;
             }
 
-            if (cmd == "b")
-            {
-                _vendingMachine.ShowBalance();
-                return;
-            }
-
             var coin = CurrencyParser<GBP>.Parse(cmd);
             if (coin.GetType() != typeof(NotSupportedPayment))
             {
@@ -85,7 +76,6 @@ namespace AcmeSodaConsoleApp
             _console.WriteLine("Usage:");
             _console.WriteLine("  /?, /h, help => to display this help information.");
             _console.WriteLine("  q, e, quit, exit => exit the application.");
-            _console.WriteLine("  b       Show the current balance");
             _console.WriteLine("  1.00, 0.50, 0.20, 0.10, 0.5 => Insert £1, 50p, 20p, 10p, 5p");
             _console.WriteLine("  a[X]    Make a selection (e.g. a0, a1, etc)");
         }

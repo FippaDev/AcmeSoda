@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Runtime.CompilerServices;
-using System.Threading;
 using Ardalis.GuardClauses;
 using Domain.VendingMachine;
 using Fippa.IO.Serialization;
