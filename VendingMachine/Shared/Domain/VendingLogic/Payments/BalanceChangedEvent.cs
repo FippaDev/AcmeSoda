@@ -1,4 +1,5 @@
 ﻿using System;
+using Ardalis.GuardClauses;
 
 namespace VendingLogic.Payments
 {
@@ -8,6 +9,7 @@ namespace VendingLogic.Payments
 
         public BalanceChangedEvent(decimal balance)
         {
+            Guard.Against.Negative(balance, nameof(balance));
             Balance = balance;
         }
     }
