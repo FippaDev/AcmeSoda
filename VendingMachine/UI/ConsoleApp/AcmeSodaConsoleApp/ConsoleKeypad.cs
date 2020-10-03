@@ -55,7 +55,7 @@ namespace AcmeSodaConsoleApp
             var coin = CurrencyParser<GBP>.Parse(cmd);
             if (coin.GetType() != typeof(NotSupportedPayment))
             {
-                _vendingMachine.AcknowledgeCoinInserted(coin);
+                _vendingMachine.AddPayment(coin);
                 return;
             }
 
@@ -98,13 +98,6 @@ namespace AcmeSodaConsoleApp
         private bool IsHelpCommand(in string input)
         {
             return HelpCommands.Contains(input.Trim().ToLower());
-        }
-
-        private void AcknowledgeCoinInserted684427783(ICashPayment coin)
-        {
-            _vendingMachine.AddPayment(coin);
-            var regionInfo = new RegionInfo(Thread.CurrentThread.CurrentUICulture.LCID);
-            _console.WriteLine($"Inserted {regionInfo.CurrencySymbol}{coin.Value}");
         }
 
         private static bool IsValidSelection(string cmd, out ushort selectionCode)

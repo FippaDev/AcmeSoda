@@ -46,3 +46,4 @@
 /VendingMachine/Shared/Domain/Models/bin/Debug/netstandard2.1
 /VendingMachine/Shared/Domain/VendingLogic/bin/Debug/netstandard2.1
 /VendingMachine/Shared/UI/UserInterface/bin/Debug/netstandard2.1
+/VendingMachine/Shared/UI/UserInterface/obj

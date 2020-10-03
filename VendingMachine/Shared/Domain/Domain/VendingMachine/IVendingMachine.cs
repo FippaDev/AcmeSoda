@@ -9,13 +9,10 @@ namespace Domain.VendingMachine
     {
         string Manufacturer { get; }
 
-        decimal Balance { get; }
-        EventHandler<BalanceChangedEvent> BalanceChanged { get; set; }
         EventHandler<ItemDispensedNotificationEvent> ItemDispensed { get; set; }
 
         void AddPayment(IPayment payment);
         SelectionResult MakeSelection(ushort selectionCode);
         void ShowBalance();
-        void AcknowledgeCoinInserted(ICashPayment coin);
     }
 }

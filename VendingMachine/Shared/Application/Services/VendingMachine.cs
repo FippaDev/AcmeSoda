@@ -23,9 +23,6 @@ namespace Services
         private readonly IObjectSerializer<PriceList> _objectSerializer;
         private readonly IAdminModule _adminModule;
 
-        public decimal Balance => _vendingMachine.Balance;
-
-        public EventHandler<BalanceChangedEvent>? BalanceChanged { get; set; }
         public EventHandler<ItemDispensedNotificationEvent>? ItemDispensed { get; set; }
 
         public string Manufacturer { get; }
@@ -55,7 +52,7 @@ namespace Services
 
         private void OnBalanceChanged(object sender, BalanceChangedEvent e)
         {
-            BalanceChanged?.Invoke(this, e);
+            _output.ShowBalance(_vendingMachine.Balance);
         }
 
         public SelectionResult MakeSelection(ushort selectionCode)
@@ -71,8 +68,6 @@ namespace Services
         public void AcknowledgeCoinInserted(ICashPayment coin)
         {
             _output.Message($"{coin.Value} inserted");
-            Thread.Sleep(2000);
-            _output.ShowBalance(_vendingMachine.Balance);
         }
 
         internal void LoadPriceList(string filename)

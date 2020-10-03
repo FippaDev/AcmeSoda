@@ -42,13 +42,11 @@ namespace VendingLogic
         private void OnMoneyAdded(object sender, MoneyAddedEvent e)
         {
             Balance += e.Amount;
-            BalanceChanged?.Invoke(this, new BalanceChangedEvent(Balance));
         }
 
         public void AddPayment(IPayment payment)
         {
             Guard.Against.Null(payment, nameof(payment));
-            
             _coinModule.Add((ICashPayment)payment);
         }
 
