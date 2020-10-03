@@ -1,5 +1,6 @@
 ﻿using System;
 using Ardalis.GuardClauses;
+using Fippa.Common.GuardClauses.Ardalis.GuardClauses;
 using Fippa.Money.Payments;
 using Models;
 using Models.Pricing;
@@ -47,6 +48,7 @@ namespace VendingLogic
         public void AddPayment(IPayment payment)
         {
             Guard.Against.Null(payment, nameof(payment));
+            Guard.Against.TypeChecking(payment.GetType(), typeof(ICashPayment));
             _coinModule.Add((ICashPayment)payment);
         }
 

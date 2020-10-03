@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using Fippa.Money.Currencies;
 using Fippa.Money.Payments;
@@ -28,22 +29,22 @@ namespace VendingLogic.Tests
         }
 
         [Fact]
-        public void BalanceChanged_RaisesBalanceChangedEvent()
+        public void AddPayment_GivenCashPayment_CallsAddOnThePaymentModule()
         {
-            var receivedEvents = new List<decimal>();
             var vendingMachine = new VendingMachineLogic(_mockDispenserModule.Object, _mockCoinModule.Object);
 
-            vendingMachine.BalanceChanged +=
-                delegate(object sender, BalanceChangedEvent changedEvent)
-                {
-                    receivedEvents.Add(changedEvent.Balance);
-                };
-
-            vendingMachine.AddPayment(GBP.TwentyPence);
-            vendingMachine.AddPayment(GBP.TwentyPence);
             vendingMachine.AddPayment(GBP.TenPence);
 
-            receivedEvents.Count.Should().Be((int)0.5m);
+            _mockCoinModule.Verify(c => c.Add(GBP.TenPence));
+        }
+
+        [Fact]
+        public void AddPayment_CoinModuleGivenCardPayment_ThrowsGuardException()
+        {
+            var vendingMachine = new VendingMachineLogic(_mockDispenserModule.Object, _mockCoinModule.Object);
+
+            Assert.Throws<ArgumentException>(() =>
+                vendingMachine.AddPayment(new CardPayment(5.99m)));
         }
     }
 }

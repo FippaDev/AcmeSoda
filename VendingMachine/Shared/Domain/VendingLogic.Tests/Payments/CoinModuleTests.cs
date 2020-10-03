@@ -1,5 +1,7 @@
-﻿using System.Diagnostics.CodeAnalysis;
+﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using Fippa.Money.Currencies;
+using Fippa.Money.Payments;
 using VendingLogic.Payments;
 using Xunit;
 
