@@ -7,13 +7,19 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="CommandLineMenu.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Unity" Version="5.11.7" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\..\Fippa\Fippa.Money\Fippa.Money.csproj" />
     <ProjectReference Include="..\..\..\Shared\Application\Services\Services.csproj" />
+    <ProjectReference Include="..\..\..\Shared\Domain\Domain\Domain.csproj" />
     <ProjectReference Include="..\..\..\Shared\Domain\VendingLogic\VendingLogic.csproj" />
+    <ProjectReference Include="..\..\..\Shared\UI\UserInterface\UserInterface.csproj" />
   </ItemGroup>
 
   <ItemGroup>

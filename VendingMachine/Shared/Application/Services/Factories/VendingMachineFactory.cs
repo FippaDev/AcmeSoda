@@ -1,35 +1,38 @@
-﻿using System.Diagnostics.CodeAnalysis;
+﻿using Domain.VendingMachine;
 using Fippa.IO.Serialization;
 using Models.Pricing;
+using UserInterface;
 using VendingLogic;
 using VendingLogic.Admin;
 
 namespace Services.Factories
 {
-    // No need to include factories in the unit test coverage. There is no logic in here.
-    [ExcludeFromCodeCoverage]
     public class VendingMachineFactory : IVendingMachineFactory
     {
+        private readonly IUserOutput _output;
         private readonly IObjectSerializer<PriceList> _objectSerializer;
         private readonly IVendingMachineLogic _vendingMachineLogic;
         private readonly IAdminModule _adminModule;
 
         public VendingMachineFactory(
+            IUserOutput output,
             IObjectSerializer<PriceList> objectSerializer,
             IVendingMachineLogic vendingMachineLogic,
             IAdminModule adminModule)
         {
+            _output = output;
             _objectSerializer = objectSerializer;
             _vendingMachineLogic = vendingMachineLogic;
             _adminModule = adminModule;
         }
 
-        public IVendingMachine BuildVendingMachine(string branding, string priceListFilename)
+        public IVendingMachine BuildVendingMachine(IUserOutput userOutput, string branding, string priceListFilename)
         {
-            var vendingMachine = 
+            var vendingMachine =
                 new VendingMachine(
-                    _objectSerializer, 
-                    _vendingMachineLogic, 
+                    _output,
+                    _objectSerializer,
+                    _vendingMachineLogic,
                     _adminModule,
                     branding);
             vendingMachine.LoadPriceList(priceListFilename);

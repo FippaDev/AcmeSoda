@@ -1,10 +1,9 @@
 using System.Globalization;
-using AcmeSodaConsoleApp;
+using Domain.VendingMachine;
 using Fippa.IO.Console;
 using Fippa.Money.Currencies;
 using Fippa.Money.Payments;
 using Moq;
-using Services;
 using VendingLogic.Selection;
 using Xunit;
 

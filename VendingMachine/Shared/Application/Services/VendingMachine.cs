@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Runtime.CompilerServices;
+using System.Threading;
 using Ardalis.GuardClauses;
+using Domain.VendingMachine;
 using Fippa.IO.Serialization;
 using Fippa.IO.Streams;
 using Fippa.Money.Payments;
 using Models.Pricing;
+using UserInterface;
 using VendingLogic;
 using VendingLogic.Admin;
 using VendingLogic.Payments;
@@ -16,6 +19,7 @@ namespace Services
     internal class VendingMachine : IVendingMachine
     {
         private readonly IVendingMachineLogic _vendingMachine;
+        private readonly IUserOutput _output;
         private readonly IObjectSerializer<PriceList> _objectSerializer;
         private readonly IAdminModule _adminModule;
 
@@ -27,11 +31,13 @@ namespace Services
         public string Manufacturer { get; }
  
         public VendingMachine(
+            IUserOutput output,
             IObjectSerializer<PriceList> objectSerializer,
             IVendingMachineLogic vendingMachine,
             IAdminModule adminModule,
             string manufacturer)
         {
+            _output = output;
             _objectSerializer = objectSerializer;
             _vendingMachine = vendingMachine;
             _adminModule = adminModule;
@@ -55,6 +61,18 @@ namespace Services
         public SelectionResult MakeSelection(ushort selectionCode)
         {
             return _vendingMachine.MakeSelection(selectionCode);
+        }
+
+        public void ShowBalance()
+        {
+            _output.ShowBalance(_vendingMachine.Balance);
+        }
+
+        public void AcknowledgeCoinInserted(ICashPayment coin)
+        {
+            _output.Message($"{coin.Value} inserted");
+            Thread.Sleep(2000);
+            _output.ShowBalance(_vendingMachine.Balance);
         }
 
         internal void LoadPriceList(string filename)

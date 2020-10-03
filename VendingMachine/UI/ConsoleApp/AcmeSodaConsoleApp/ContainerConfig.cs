@@ -1,5 +1,7 @@
 ﻿using System.Diagnostics.CodeAnalysis;
+using Fippa.IO.Console;
 using Unity;
+using UserInterface;
 
 namespace AcmeSodaConsoleApp
 {
@@ -11,7 +13,9 @@ namespace AcmeSodaConsoleApp
             var builder = new UnityContainer();
 
             builder.RegisterType<IConsoleApplication, ConsoleApplication>();
-            builder.RegisterType<ICommandLineMenu, CommandLineMenu>();
+            builder.RegisterType<IConsole, CommandLineConsole>();
+            builder.RegisterType<IUserInput, ConsoleKeypad>();
+            builder.RegisterType<IUserOutput, ConsoleOutput>();
 
             Services.ContainerConfig.Configure(builder);
 

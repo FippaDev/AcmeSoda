@@ -1,4 +1,5 @@
 ﻿using System.Diagnostics.CodeAnalysis;
+using Domain.VendingMachine;
 using Fippa.IO.Serialization;
 using Services.Factories;
 using Unity;

@@ -1,7 +1,10 @@
-﻿namespace Services.Factories
+﻿using Domain.VendingMachine;
+using UserInterface;
+
+namespace Services.Factories
 {
     public interface IVendingMachineFactory
     {
-        IVendingMachine BuildVendingMachine(string branding, string priceListFile);
+        IVendingMachine BuildVendingMachine(IUserOutput userOutput, string branding, string priceListFile);
     }
 }

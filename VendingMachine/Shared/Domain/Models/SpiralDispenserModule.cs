@@ -1,14 +1,13 @@
 ﻿using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using Ardalis.GuardClauses;
-using Fippa.Common.GuardClauses.Ardalis.GuardClauses;
 using Models.Exceptions;
 using Models.Stock;
 
 [assembly:InternalsVisibleTo("Models.Tests")]
 namespace Models
 {
-    internal class SpiralDispenserModule : IDispenserModule
+    public class SpiralDispenserModule : IDispenserModule
     {
         private readonly Dictionary<byte, SpiralDispenser> _spirals;
 
@@ -18,15 +17,19 @@ namespace Models
         ushort IDispenserModule.MaxSelectionCode => MaxSelectionCode;
         ushort IDispenserModule.MinSelectionCode => MinSelectionCode;
 
-        public SpiralDispenserModule(ushort numberOfSpirals, IList<byte> spiralIdentifiers)
+        public SpiralDispenserModule()
+        {
+            _spirals = new Dictionary<byte, SpiralDispenser>();
+            Initialise(20);
+        }
+
+        private void Initialise(ushort numberOfSpirals)
         {
             Guard.Against.Zero(numberOfSpirals, nameof(numberOfSpirals));
-            
-            _spirals = new Dictionary<byte, SpiralDispenser>();
-            
-            for (int i = 0; i < numberOfSpirals; i++)
+
+            for (byte i = 0; i < numberOfSpirals; i++)
             {
-                _spirals.Add(spiralIdentifiers[i], new SpiralDispenser());
+                _spirals.Add(i, new SpiralDispenser());
             }
         }
 

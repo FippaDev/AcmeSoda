@@ -1,5 +1,4 @@
-﻿
-namespace AcmeSodaConsoleApp
+﻿namespace AcmeSodaConsoleApp
 {
     public interface IConsoleApplication
     {
