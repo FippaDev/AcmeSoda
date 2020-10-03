@@ -3,7 +3,6 @@ using Ardalis.GuardClauses;
 using Fippa.Money.Payments;
 using Models;
 using Models.Pricing;
-using Models.Stock;
 using VendingLogic.Payments;
 using VendingLogic.Selection;
 

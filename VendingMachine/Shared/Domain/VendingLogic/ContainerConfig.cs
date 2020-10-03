@@ -1,10 +1,7 @@
-﻿using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
+﻿using System.Diagnostics.CodeAnalysis;
 using Fippa.Money.Payments;
 using Models;
 using Unity;
-using Unity.Injection;
-using Unity.Resolution;
 using VendingLogic.Admin;
 using VendingLogic.Admin.Commands;
 using VendingLogic.Payments;
