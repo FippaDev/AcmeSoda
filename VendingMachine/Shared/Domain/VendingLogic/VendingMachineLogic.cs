@@ -1,6 +1,5 @@
 ﻿using System;
 using Ardalis.GuardClauses;
-using Fippa.Common.GuardClauses.Ardalis.GuardClauses;
 using Fippa.Money.Payments;
 using VendingMachine.Shared.Domain.Models;
 using VendingMachine.Shared.Domain.Models.Pricing;
@@ -48,8 +47,13 @@ namespace VendingMachine.Shared.Domain.VendingLogic
         public void AddPayment(IPayment payment)
         {
             Guard.Against.Null(payment, nameof(payment));
-            Guard.Against.TypeChecking(payment.GetType(), typeof(ICashPayment));
-            _coinModule.Add((ICashPayment)payment);
+            var cashPayment = payment as ICashPayment;
+            if (cashPayment == null)
+            {
+                throw new ArgumentException("Only cash payments are accepted. There is no card module");
+            }
+
+            _coinModule.Add(cashPayment);
         }
 
         public void CancelTransaction()
