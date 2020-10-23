@@ -52,3 +52,4 @@
 /VendingMachine/Shared/UI/UserInterface/bin
 /VendingMachine/Shared/Infrastructure/Infrastructure/bin
 /VendingMachine/Shared/Infrastructure/Infrastructure/obj
+/VendingMachine/Shared/Infrastructure/Infrastructure.Tests/bin/Debug/netcoreapp3.1
