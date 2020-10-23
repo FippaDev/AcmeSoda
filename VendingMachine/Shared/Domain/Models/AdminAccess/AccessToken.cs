@@ -4,7 +4,7 @@ namespace VendingMachine.Shared.Domain.Models.AdminAccess
 {
     public class AccessToken
     {
-        public Guid Token { get; private set; }
+        public Guid Token { get; }
         public bool IsValid => Token != Guid.Empty;
         
         public AccessToken(Guid guid)

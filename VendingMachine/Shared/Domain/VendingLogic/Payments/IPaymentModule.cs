@@ -3,7 +3,7 @@ using Fippa.Money.Payments;
 
 namespace VendingMachine.Shared.Domain.VendingLogic.Payments
 {
-    public interface IPaymentModule<T> where T : ICashPayment
+    public interface IPaymentModule<in T> where T : ICashPayment
     {
         decimal AmountDeposited { get; }
 

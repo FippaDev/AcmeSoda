@@ -1,8 +1,6 @@
-﻿using System.Runtime.Serialization;
-
-namespace Infrastructure
+﻿namespace Infrastructure
 {
-    public interface IDataLoader<T>
+    public interface IDataLoader<out T>
     {
         T Load(string filename);
     }

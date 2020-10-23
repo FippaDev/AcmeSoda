@@ -4,7 +4,7 @@
     {
         public bool RequiresAuthentication => true;
 
-        public string UserToken { get; private set; }
+        public string UserToken { get; }
 
         public AdminAccount(string userToken)
         {

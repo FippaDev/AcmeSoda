@@ -24,7 +24,7 @@ namespace VendingMachine.Shared.Services
             ConfigureInfrastructure(builder);
         }
 
-        public static void ConfigureInfrastructure(UnityContainer builder)
+        private static void ConfigureInfrastructure(UnityContainer builder)
         {
             builder.RegisterType(typeof(IObjectSerializer<>), typeof(JsonSerialization<>), new TransientLifetimeManager());
         }
