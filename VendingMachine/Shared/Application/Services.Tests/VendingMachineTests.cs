@@ -13,7 +13,6 @@ namespace VendingMachine.Shared.Services.Tests
     [TestClass, ExcludeFromCodeCoverage]
     public class VendingMachineTests
     {
-        private readonly Mock<IUserInput> _mockInput = new Mock<IUserInput>();
         private readonly Mock<IUserOutput> _mockOutput = new Mock<IUserOutput>();
         private readonly Mock<IDataLoader<PriceListDto>> _mockDataLoader = new Mock<IDataLoader<PriceListDto>>();
         private readonly Mock<IVendingMachineLogic> _mockLogic = new Mock<IVendingMachineLogic>();
@@ -39,7 +38,8 @@ namespace VendingMachine.Shared.Services.Tests
                 _mockLogic.Object,
                 _mockAdminModule.Object,
                 "Pepsi");
-            Assert.AreEqual<string>("Pepsi", pepsiMachine.Manufacturer);
+
+            Assert.AreEqual("Pepsi", pepsiMachine.Manufacturer);
         }
     }
 }

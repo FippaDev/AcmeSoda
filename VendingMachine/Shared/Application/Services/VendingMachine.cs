@@ -60,11 +60,6 @@ namespace VendingMachine.Shared.Services
             return _vendingMachine.MakeSelection(selectionCode);
         }
 
-        public void ShowBalance()
-        {
-            _output.ShowBalance(_vendingMachine.Balance);
-        }
-
         public void AcknowledgeCoinInserted(ICashPayment coin)
         {
             _output.Message($"{coin.Value} inserted");

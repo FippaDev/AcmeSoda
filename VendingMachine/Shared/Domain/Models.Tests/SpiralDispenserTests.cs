@@ -10,7 +10,7 @@ namespace VendingMachine.Shared.Domain.Models.Tests
         [Fact]
         public void Constructor_MatchingNumberOfItemsAndCodes_InitialisesStockArray()
         {
-            new SpiralDispenser();
+            var spiralDispenser = new SpiralDispenser();
         }
 
         [Fact]

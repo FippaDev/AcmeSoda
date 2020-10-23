@@ -1,29 +1,32 @@
 ﻿using System;
 using System.Diagnostics.CodeAnalysis;
-using System.IO;
 using Ardalis.GuardClauses;
 
 namespace Fippa.IO.Streams
 {
+    /// <summary>
+    /// Wrapping the IStreamReader interface, this class uses the concrete
+    /// (disposable) System.IO.StreamReader class.
+    /// </summary>
     [ExcludeFromCodeCoverage]
-    public class StreamReaderWrapper : IStreamReader, IDisposable
+    public class StreamReaderWrapper : IStreamReader
     {
-        private readonly StreamReader _stream;
+        private System.IO.StreamReader _stream;
 
-        public StreamReaderWrapper(string path)
+        public void Load(string filename)
         {
-            Guard.Against.NullOrWhiteSpace(path, nameof(path));
-            _stream = new StreamReader(path);
-        }
-
-        public void Dispose()
-        {
-            _stream.Dispose();
+            Guard.Against.NullOrWhiteSpace(filename, nameof(filename));
+            _stream = new System.IO.StreamReader(filename);
         }
 
         public string ReadToEnd()
         {
+            Guard.Against.Null(_stream, nameof(_stream));
             return _stream.ReadToEnd();
+        }
+        public void Dispose()
+        {
+            _stream.Dispose();
         }
     }
 }

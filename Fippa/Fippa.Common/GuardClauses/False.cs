@@ -14,6 +14,8 @@ namespace Fippa.Common.GuardClauses
             /// </summary>
             public static void False(this IGuardClause guardClause, bool input, string parameterName)
             {
+                Guard.Against.Null(guardClause, nameof(guardClause));
+
                 if (input == false)
                 {
                     throw new ArgumentException("False inputs are not allowed", parameterName);

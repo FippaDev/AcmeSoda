@@ -5,7 +5,6 @@ using Ardalis.GuardClauses;
 
 namespace Fippa.IO.Streams
 {
-    [ExcludeFromCodeCoverage]
     public class StreamWriterWrapper : IStreamWriter, IDisposable
     {
         private readonly StreamWriter _stream;

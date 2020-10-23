@@ -19,7 +19,7 @@ namespace VendingMachine.Shared.Domain.VendingLogic.Payments
             _coins.CollectionChanged += OnCoinCollectionChanged;
         }
 
-        private void OnCoinCollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
+        private void OnCoinCollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
         {
             if (e.Action == NotifyCollectionChangedAction.Add)
             {

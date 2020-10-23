@@ -26,7 +26,7 @@ namespace VendingMachine.Shared.Services.Factories
             _adminModule = adminModule;
         }
 
-        public IVendingMachine BuildVendingMachine(IUserOutput userOutput, string branding, string priceListFilename)
+        public IVendingMachine BuildVendingMachine(string branding, string priceListFilename)
         {
             var vendingMachine =
                 new VendingMachine(

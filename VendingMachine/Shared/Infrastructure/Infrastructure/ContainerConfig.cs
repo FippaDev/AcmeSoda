@@ -13,7 +13,6 @@ namespace Infrastructure
         {
             builder.RegisterType<IStreamReader, StreamReaderWrapper>();
 
-            //builder.RegisterType<IObjectSerializer<PriceListDto>, JsonSerialization<PriceListDto>>();
             builder.RegisterType(typeof(IObjectSerializer<>), typeof(JsonSerialization<>), new TransientLifetimeManager());
         }
     }
