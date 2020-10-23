@@ -1,0 +1,240 @@
+{
+  "format": 1,
+  "restore": {
+    "E:\\Source\\Github\\AcmeSoda\\VendingMachine\\Shared\\Infrastructure\\Infrastructure.Tests\\Infrastructure.Tests.csproj": {}
+  },
+  "projects": {
+    "E:\\Source\\Github\\AcmeSoda\\Fippa\\Fippa.IO\\Fippa.IO.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "E:\\Source\\Github\\AcmeSoda\\Fippa\\Fippa.IO\\Fippa.IO.csproj",
+        "projectName": "Fippa.IO",
+        "projectPath": "E:\\Source\\Github\\AcmeSoda\\Fippa\\Fippa.IO\\Fippa.IO.csproj",
+        "packagesPath": "C:\\Users\\Philip\\.nuget\\packages\\",
+        "outputPath": "E:\\Source\\Github\\AcmeSoda\\Fippa\\Fippa.IO\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Microsoft\\Xamarin\\NuGet\\",
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Philip\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netstandard2.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {},
+          "https://www.myget.org/F/caliburn-micro-builds/api/v3/index.json": {}
+        },
+        "frameworks": {
+          "netstandard2.0": {
+            "targetAlias": "netstandard2.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netstandard2.0": {
+          "targetAlias": "netstandard2.0",
+          "dependencies": {
+            "Ardalis.GuardClauses": {
+              "target": "Package",
+              "version": "[3.0.1, )"
+            },
+            "NETStandard.Library": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.0.3, )",
+              "autoReferenced": true
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[12.0.3, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.100-rc.2.20479.15\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "E:\\Source\\Github\\AcmeSoda\\VendingMachine\\Shared\\Infrastructure\\Infrastructure.Tests\\Infrastructure.Tests.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "E:\\Source\\Github\\AcmeSoda\\VendingMachine\\Shared\\Infrastructure\\Infrastructure.Tests\\Infrastructure.Tests.csproj",
+        "projectName": "VendingMachine.Shared.Infrastructure.Infrastructure.Tests",
+        "projectPath": "E:\\Source\\Github\\AcmeSoda\\VendingMachine\\Shared\\Infrastructure\\Infrastructure.Tests\\Infrastructure.Tests.csproj",
+        "packagesPath": "C:\\Users\\Philip\\.nuget\\packages\\",
+        "outputPath": "E:\\Source\\Github\\AcmeSoda\\VendingMachine\\Shared\\Infrastructure\\Infrastructure.Tests\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Microsoft\\Xamarin\\NuGet\\",
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Philip\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {},
+          "https://www.myget.org/F/caliburn-micro-builds/api/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "targetAlias": "netcoreapp3.1",
+            "projectReferences": {
+              "E:\\Source\\Github\\AcmeSoda\\VendingMachine\\Shared\\Infrastructure\\Infrastructure\\Infrastructure.csproj": {
+                "projectPath": "E:\\Source\\Github\\AcmeSoda\\VendingMachine\\Shared\\Infrastructure\\Infrastructure\\Infrastructure.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
+          "dependencies": {
+            "Microsoft.NET.Test.Sdk": {
+              "target": "Package",
+              "version": "[16.7.1, )"
+            },
+            "coverlet.collector": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[1.3.0, )"
+            },
+            "xunit": {
+              "target": "Package",
+              "version": "[2.4.1, )"
+            },
+            "xunit.runner.visualstudio": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.4.3, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.100-rc.2.20479.15\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "E:\\Source\\Github\\AcmeSoda\\VendingMachine\\Shared\\Infrastructure\\Infrastructure\\Infrastructure.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "E:\\Source\\Github\\AcmeSoda\\VendingMachine\\Shared\\Infrastructure\\Infrastructure\\Infrastructure.csproj",
+        "projectName": "VendingMachine.Shared.Infrastructure.Infrastructure",
+        "projectPath": "E:\\Source\\Github\\AcmeSoda\\VendingMachine\\Shared\\Infrastructure\\Infrastructure\\Infrastructure.csproj",
+        "packagesPath": "C:\\Users\\Philip\\.nuget\\packages\\",
+        "outputPath": "E:\\Source\\Github\\AcmeSoda\\VendingMachine\\Shared\\Infrastructure\\Infrastructure\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Microsoft\\Xamarin\\NuGet\\",
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Philip\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netstandard2.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {},
+          "https://www.myget.org/F/caliburn-micro-builds/api/v3/index.json": {}
+        },
+        "frameworks": {
+          "netstandard2.0": {
+            "targetAlias": "netstandard2.0",
+            "projectReferences": {
+              "E:\\Source\\Github\\AcmeSoda\\Fippa\\Fippa.IO\\Fippa.IO.csproj": {
+                "projectPath": "E:\\Source\\Github\\AcmeSoda\\Fippa\\Fippa.IO\\Fippa.IO.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netstandard2.0": {
+          "targetAlias": "netstandard2.0",
+          "dependencies": {
+            "FluentAssertions": {
+              "target": "Package",
+              "version": "[5.10.3, )"
+            },
+            "NETStandard.Library": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.0.3, )",
+              "autoReferenced": true
+            },
+            "Unity": {
+              "target": "Package",
+              "version": "[5.11.7, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.100-rc.2.20479.15\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
