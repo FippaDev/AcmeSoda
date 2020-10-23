@@ -1,22 +1,22 @@
-﻿using Domain.VendingMachine;
-using Fippa.IO.Serialization;
-using Models.Pricing;
+﻿using Infrastructure;
+using Infrastructure.DTOs;
 using UserInterface;
-using VendingLogic;
-using VendingLogic.Admin;
+using VendingMachine.Shared.Domain.Domain.VendingMachine;
+using VendingMachine.Shared.Domain.VendingLogic;
+using VendingMachine.Shared.Domain.VendingLogic.Admin;
 
-namespace Services.Factories
+namespace VendingMachine.Shared.Services.Factories
 {
     public class VendingMachineFactory : IVendingMachineFactory
     {
         private readonly IUserOutput _output;
-        private readonly IObjectSerializer<PriceList> _objectSerializer;
+        private readonly IDataLoader<PriceListDto> _objectSerializer;
         private readonly IVendingMachineLogic _vendingMachineLogic;
         private readonly IAdminModule _adminModule;
 
         public VendingMachineFactory(
             IUserOutput output,
-            IObjectSerializer<PriceList> objectSerializer,
+            IDataLoader<PriceListDto> objectSerializer,
             IVendingMachineLogic vendingMachineLogic,
             IAdminModule adminModule)
         {

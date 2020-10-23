@@ -1,21 +1,21 @@
 ﻿using System;
 using System.Diagnostics.CodeAnalysis;
-using Fippa.IO.Serialization;
+using Infrastructure;
+using Infrastructure.DTOs;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Models.Pricing;
 using Moq;
 using UserInterface;
-using VendingLogic;
-using VendingLogic.Admin;
+using VendingMachine.Shared.Domain.VendingLogic;
+using VendingMachine.Shared.Domain.VendingLogic.Admin;
 
-namespace Services.Tests
+namespace VendingMachine.Shared.Services.Tests
 {
     [TestClass, ExcludeFromCodeCoverage]
     public class VendingMachineTests
     {
         private readonly Mock<IUserInput> _mockInput = new Mock<IUserInput>();
         private readonly Mock<IUserOutput> _mockOutput = new Mock<IUserOutput>();
-        private readonly Mock<IObjectSerializer<PriceList>> _mockSerializer = new Mock<IObjectSerializer<PriceList>>();
+        private readonly Mock<IDataLoader<PriceListDto>> _mockDataLoader = new Mock<IDataLoader<PriceListDto>>();
         private readonly Mock<IVendingMachineLogic> _mockLogic = new Mock<IVendingMachineLogic>();
         private readonly Mock<IAdminModule> _mockAdminModule = new Mock<IAdminModule>();
 
@@ -24,7 +24,7 @@ namespace Services.Tests
         {
             var vendingMachine = new VendingMachine(
                 _mockOutput.Object,
-                _mockSerializer.Object,
+                _mockDataLoader.Object,
                 _mockLogic.Object,
                 _mockAdminModule.Object,
                 string.Empty);
@@ -35,11 +35,11 @@ namespace Services.Tests
         {
             var pepsiMachine = new VendingMachine(
                 _mockOutput.Object,
-                _mockSerializer.Object,
+                _mockDataLoader.Object,
                 _mockLogic.Object,
                 _mockAdminModule.Object,
                 "Pepsi");
-            Assert.AreEqual("Pepsi", pepsiMachine.Manufacturer);
+            Assert.AreEqual<string>("Pepsi", pepsiMachine.Manufacturer);
         }
     }
 }

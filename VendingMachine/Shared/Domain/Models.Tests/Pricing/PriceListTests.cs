@@ -1,6 +1,6 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 
-namespace Models.Tests.Pricing
+namespace VendingMachine.Shared.Domain.Models.Tests.Pricing
 {
     [ExcludeFromCodeCoverage]
     public class PriceListTests

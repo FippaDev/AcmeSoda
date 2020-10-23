@@ -1,7 +1,7 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 using Ardalis.SmartEnum;
 
-namespace VendingLogic.Selection
+namespace VendingMachine.Shared.Domain.VendingLogic.Selection
 {
     [ExcludeFromCodeCoverage]
     public sealed class SelectionResult : SmartEnum<SelectionResult>

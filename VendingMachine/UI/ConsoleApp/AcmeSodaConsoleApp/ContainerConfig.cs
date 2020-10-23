@@ -17,7 +17,8 @@ namespace AcmeSodaConsoleApp
             builder.RegisterType<IUserInput, ConsoleKeypad>();
             builder.RegisterType<IUserOutput, ConsoleOutput>();
 
-            Services.ContainerConfig.Configure(builder);
+            VendingMachine.Shared.Services.ContainerConfig.Configure(builder);
+            Infrastructure.ContainerConfig.Configure(builder);
 
             return builder;
         }

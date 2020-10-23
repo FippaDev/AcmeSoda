@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Models.AdminAccess
+namespace VendingMachine.Shared.Domain.Models.AdminAccess
 {
     public class InvalidAccessToken : AccessToken
     {

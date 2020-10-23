@@ -1,7 +1,7 @@
 ﻿using System;
 using Ardalis.GuardClauses;
 
-namespace VendingLogic.Payments
+namespace VendingMachine.Shared.Domain.VendingLogic.Payments
 {
     public class BalanceChangedEvent : EventArgs
     {

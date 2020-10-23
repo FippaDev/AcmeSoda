@@ -1,7 +1,7 @@
 ﻿using Fippa.Money.Payments;
-using VendingLogic.Selection;
+using VendingMachine.Shared.Domain.VendingLogic.Selection;
 
-namespace Domain.VendingMachine
+namespace VendingMachine.Shared.Domain.Domain.VendingMachine
 {
     public interface IVendingMachine
     {

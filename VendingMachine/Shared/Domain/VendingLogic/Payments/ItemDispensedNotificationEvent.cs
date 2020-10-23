@@ -1,14 +1,14 @@
 ﻿using System;
 using Ardalis.GuardClauses;
-using Models.Pricing;
+using VendingMachine.Shared.Domain.Models.Pricing;
 
-namespace VendingLogic.Payments
+namespace VendingMachine.Shared.Domain.VendingLogic.Payments
 {
     public class ItemDispensedNotificationEvent : EventArgs
     {
-        public PriceListStockItem Item { get; }
+        public PriceListStockItem2 Item { get; }
 
-        public ItemDispensedNotificationEvent(PriceListStockItem item)
+        public ItemDispensedNotificationEvent(PriceListStockItem2 item)
         {
             Guard.Against.Null(item, nameof(item));
             Item = item;

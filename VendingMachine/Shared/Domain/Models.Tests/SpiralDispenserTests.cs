@@ -1,8 +1,8 @@
 using System.Diagnostics.CodeAnalysis;
-using Models.Stock;
+using VendingMachine.Shared.Domain.Models.Stock;
 using Xunit;
 
-namespace Models.Tests
+namespace VendingMachine.Shared.Domain.Models.Tests
 {
     [ExcludeFromCodeCoverage]
     public class SpiralDispenserTests

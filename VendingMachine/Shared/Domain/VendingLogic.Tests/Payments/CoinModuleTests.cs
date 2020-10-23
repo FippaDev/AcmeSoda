@@ -1,11 +1,9 @@
-﻿using System;
-using System.Diagnostics.CodeAnalysis;
+﻿using System.Diagnostics.CodeAnalysis;
 using Fippa.Money.Currencies;
-using Fippa.Money.Payments;
-using VendingLogic.Payments;
+using VendingMachine.Shared.Domain.VendingLogic.Payments;
 using Xunit;
 
-namespace VendingLogic.Tests.Payments
+namespace VendingMachine.Shared.Domain.VendingLogic.Tests.Payments
 {
     [ExcludeFromCodeCoverage]
     public class CoinModuleTests

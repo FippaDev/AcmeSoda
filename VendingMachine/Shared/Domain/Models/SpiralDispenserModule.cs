@@ -1,11 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using Ardalis.GuardClauses;
-using Models.Exceptions;
-using Models.Stock;
+using VendingMachine.Shared.Domain.Models.Exceptions;
+using VendingMachine.Shared.Domain.Models.Stock;
 
-[assembly:InternalsVisibleTo("Models.Tests")]
-namespace Models
+[assembly:InternalsVisibleTo("VendingMachine.Shared.DOmain.Models.Tests")]
+namespace VendingMachine.Shared.Domain.Models
 {
     public class SpiralDispenserModule : IDispenserModule
     {

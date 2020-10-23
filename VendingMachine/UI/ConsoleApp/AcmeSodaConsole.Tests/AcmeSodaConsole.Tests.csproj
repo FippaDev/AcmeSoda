@@ -4,6 +4,10 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
 
     <IsPackable>false</IsPackable>
+
+    <AssemblyName>VendingMachine.Shared.UI.ConsoleApp.AcmeSodaConsole.Tests</AssemblyName>
+
+    <RootNamespace>VendingMachine.Shared.UI.ConsoleApp.AcmeSodaConsole.Tests</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>

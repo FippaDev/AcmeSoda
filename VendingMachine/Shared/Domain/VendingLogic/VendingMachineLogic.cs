@@ -2,12 +2,12 @@
 using Ardalis.GuardClauses;
 using Fippa.Common.GuardClauses.Ardalis.GuardClauses;
 using Fippa.Money.Payments;
-using Models;
-using Models.Pricing;
-using VendingLogic.Payments;
-using VendingLogic.Selection;
+using VendingMachine.Shared.Domain.Models;
+using VendingMachine.Shared.Domain.Models.Pricing;
+using VendingMachine.Shared.Domain.VendingLogic.Payments;
+using VendingMachine.Shared.Domain.VendingLogic.Selection;
 
-namespace VendingLogic
+namespace VendingMachine.Shared.Domain.VendingLogic
 {
     public class VendingMachineLogic : IVendingMachineLogic
     {
@@ -15,7 +15,7 @@ namespace VendingLogic
         private readonly IPaymentModule<ICashPayment> _coinModule;
         private decimal _balance;
 
-        private PriceList _priceList = new PriceList();
+        private PriceList2 _priceList;
 
         public EventHandler<BalanceChangedEvent> BalanceChanged { get; set; }
         public EventHandler<ItemDispensedNotificationEvent> ItemDispensed { get; set; }
@@ -76,7 +76,7 @@ namespace VendingLogic
             return ProcessTransaction(selectedItem);
         }
 
-        private SelectionResult ProcessTransaction(PriceListStockItem selectedItem)
+        private SelectionResult ProcessTransaction(PriceListStockItem2 selectedItem)
         {
             // TODO: Check the stock levels
 
@@ -88,7 +88,7 @@ namespace VendingLogic
             return SelectionResult.ValidSelection;
         }
 
-        public void UpdatePriceList(PriceList priceList)
+        public void UpdatePriceList(PriceList2 priceList)
         {
             _priceList = priceList;
         }

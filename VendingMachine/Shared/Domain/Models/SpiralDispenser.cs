@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Models.Stock;
+using VendingMachine.Shared.Domain.Models.Stock;
 
-namespace Models
+namespace VendingMachine.Shared.Domain.Models
 {
     internal class SpiralDispenser : IDispenser
     {

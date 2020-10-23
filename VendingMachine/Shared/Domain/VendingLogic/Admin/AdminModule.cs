@@ -1,7 +1,7 @@
-﻿using Models.AdminAccess;
-using VendingLogic.Admin.Commands;
+﻿using VendingMachine.Shared.Domain.Models.AdminAccess;
+using VendingMachine.Shared.Domain.VendingLogic.Admin.Commands;
 
-namespace VendingLogic.Admin
+namespace VendingMachine.Shared.Domain.VendingLogic.Admin
 {
     public class AdminModule : IAdminModule
     {

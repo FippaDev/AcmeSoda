@@ -1,8 +1,8 @@
 ﻿using System.Diagnostics.CodeAnalysis;
-using Models.Stock;
+using VendingMachine.Shared.Domain.Models.Stock;
 using Xunit;
 
-namespace Models.Tests.Stock
+namespace VendingMachine.Shared.Domain.Models.Tests.Stock
 {
     [ExcludeFromCodeCoverage]
     public class BaseStockItemTests

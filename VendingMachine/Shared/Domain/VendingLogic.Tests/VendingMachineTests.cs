@@ -1,15 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using Fippa.Money.Currencies;
 using Fippa.Money.Payments;
-using FluentAssertions;
-using Models;
 using Moq;
-using VendingLogic.Payments;
+using VendingMachine.Shared.Domain.Models;
+using VendingMachine.Shared.Domain.VendingLogic.Payments;
 using Xunit;
 
-namespace VendingLogic.Tests
+namespace VendingMachine.Shared.Domain.VendingLogic.Tests
 {
     [ExcludeFromCodeCoverage]
     public class VendingMachineTests

@@ -1,12 +1,12 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 using Fippa.Money.Payments;
-using Models;
 using Unity;
-using VendingLogic.Admin;
-using VendingLogic.Admin.Commands;
-using VendingLogic.Payments;
+using VendingMachine.Shared.Domain.Models;
+using VendingMachine.Shared.Domain.VendingLogic.Admin;
+using VendingMachine.Shared.Domain.VendingLogic.Admin.Commands;
+using VendingMachine.Shared.Domain.VendingLogic.Payments;
 
-namespace VendingLogic
+namespace VendingMachine.Shared.Domain.VendingLogic
 {
     [ExcludeFromCodeCoverage]
     public static class ContainerConfig

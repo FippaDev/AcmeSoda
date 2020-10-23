@@ -1,6 +1,6 @@
-﻿using Models.Stock;
+﻿using VendingMachine.Shared.Domain.Models.Stock;
 
-namespace Models
+namespace VendingMachine.Shared.Domain.Models
 {
     public interface IDispenser
     {

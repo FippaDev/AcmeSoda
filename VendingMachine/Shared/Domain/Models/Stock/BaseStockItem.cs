@@ -1,6 +1,6 @@
 ﻿using Ardalis.GuardClauses;
 
-namespace Models.Stock
+namespace VendingMachine.Shared.Domain.Models.Stock
 {
     public abstract class BaseStockItem
     {

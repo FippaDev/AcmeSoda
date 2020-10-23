@@ -1,7 +1,7 @@
-﻿using VendingLogic.Payments;
+﻿using VendingMachine.Shared.Domain.VendingLogic.Payments;
 using Xunit;
 
-namespace VendingLogic.Tests.Payments
+namespace VendingMachine.Shared.Domain.VendingLogic.Tests.Payments
 { 
     public class MoneyAddedEventTests
     {

@@ -4,6 +4,10 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
 
     <IsPackable>false</IsPackable>
+
+    <AssemblyName>VendingMachine.Shared.Domain.VendingLogic.Tests</AssemblyName>
+
+    <RootNamespace>VendingMachine.Shared.Domain.VendingLogic.Tests</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>

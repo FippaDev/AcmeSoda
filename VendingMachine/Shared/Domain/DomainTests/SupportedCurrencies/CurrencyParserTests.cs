@@ -2,7 +2,7 @@
 using Fippa.Money.Currencies;
 using Xunit;
 
-namespace DomainTests.SupportedCurrencies
+namespace VendingMachine.Shared.Domain.DomainTests.SupportedCurrencies
 {
     [ExcludeFromCodeCoverage]
     public class CurrencyParserTests

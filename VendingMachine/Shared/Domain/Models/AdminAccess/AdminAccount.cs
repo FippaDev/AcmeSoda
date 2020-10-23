@@ -1,4 +1,4 @@
-﻿namespace Models.AdminAccess
+﻿namespace VendingMachine.Shared.Domain.Models.AdminAccess
 {
     public class AdminAccount : IAccessKey
     {

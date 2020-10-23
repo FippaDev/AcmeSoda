@@ -1,9 +1,9 @@
 ﻿using System.Diagnostics.CodeAnalysis;
-using Domain.Currencies;
 using FluentAssertions;
+using VendingMachine.Shared.Domain.Domain.Currencies;
 using Xunit;
 
-namespace DomainTests.Currencies
+namespace VendingMachine.Shared.Domain.DomainTests.Currencies
 {
     [ExcludeFromCodeCoverage]
     public class AcceptedGBPCoinsTests

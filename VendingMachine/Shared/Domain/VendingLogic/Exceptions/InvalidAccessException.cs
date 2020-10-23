@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace VendingLogic.Exceptions
+namespace VendingMachine.Shared.Domain.VendingLogic.Exceptions
 {
     public class InvalidAccessException : Exception
     {

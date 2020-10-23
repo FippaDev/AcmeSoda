@@ -1,9 +1,9 @@
 ﻿using System.Diagnostics.CodeAnalysis;
-using Models.Exceptions;
-using Models.Pricing;
+using VendingMachine.Shared.Domain.Models.Exceptions;
+using VendingMachine.Shared.Domain.Models.Pricing;
 using Xunit;
 
-namespace Models.Tests
+namespace VendingMachine.Shared.Domain.Models.Tests
 {
     [ExcludeFromCodeCoverage]
     public class PriceListStockItemTests
@@ -13,14 +13,14 @@ namespace Models.Tests
         {
             Assert.Throws<InvalidStockItemPriceException>(() =>
             {
-                var priceListStockItem = new PriceListStockItem("SKU00", "Something", -0.99m);
+                var priceListStockItem = new PriceListStockItem2("SKU00", "Something", -0.99m);
             });
         }
 
         [Fact]
         public void Constructor_GivenGoodValues_SetsProperties()
         {
-            var listItem = new PriceListStockItem("SKU99", "Label", 0.99m);
+            var listItem = new PriceListStockItem2("SKU99", "Label", 0.99m);
             Assert.Equal("SKU99", listItem.StockKeepingUnit);
             Assert.Equal("Label", listItem.DisplayName);
             Assert.Equal(0.99m, listItem.RetailPrice);

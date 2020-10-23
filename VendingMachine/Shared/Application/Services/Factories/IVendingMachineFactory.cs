@@ -1,7 +1,7 @@
-﻿using Domain.VendingMachine;
-using UserInterface;
+﻿using UserInterface;
+using VendingMachine.Shared.Domain.Domain.VendingMachine;
 
-namespace Services.Factories
+namespace VendingMachine.Shared.Services.Factories
 {
     public interface IVendingMachineFactory
     {

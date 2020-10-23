@@ -1,7 +1,7 @@
 ﻿using System;
 using Fippa.Money.Payments;
 
-namespace VendingLogic.Payments
+namespace VendingMachine.Shared.Domain.VendingLogic.Payments
 {
     public interface IPaymentModule<T> where T : ICashPayment
     {

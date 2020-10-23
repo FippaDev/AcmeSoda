@@ -1,11 +1,11 @@
 ﻿using System.Diagnostics.CodeAnalysis;
-using Domain.VendingMachine;
 using Fippa.IO.Serialization;
-using Services.Factories;
 using Unity;
 using Unity.Lifetime;
+using VendingMachine.Shared.Domain.Domain.VendingMachine;
+using VendingMachine.Shared.Services.Factories;
 
-namespace Services
+namespace VendingMachine.Shared.Services
 {
     [ExcludeFromCodeCoverage]
     public static class ContainerConfig
@@ -20,7 +20,7 @@ namespace Services
 
         private static void RegisterProjectDependencies(UnityContainer builder)
         {
-            VendingLogic.ContainerConfig.Configure(builder);
+            Domain.VendingLogic.ContainerConfig.Configure(builder);
             ConfigureInfrastructure(builder);
         }
 

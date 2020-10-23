@@ -1,6 +1,6 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 
-namespace Models.Stock
+namespace VendingMachine.Shared.Domain.Models.Stock
 {
     [ExcludeFromCodeCoverage]
     internal class Confectionery : BaseStockItem

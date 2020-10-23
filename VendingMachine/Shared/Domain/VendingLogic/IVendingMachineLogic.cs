@@ -1,10 +1,10 @@
 ﻿using System;
 using Fippa.Money.Payments;
-using Models.Pricing;
-using VendingLogic.Payments;
-using VendingLogic.Selection;
+using VendingMachine.Shared.Domain.Models.Pricing;
+using VendingMachine.Shared.Domain.VendingLogic.Payments;
+using VendingMachine.Shared.Domain.VendingLogic.Selection;
 
-namespace VendingLogic
+namespace VendingMachine.Shared.Domain.VendingLogic
 {
     public interface IVendingMachineLogic
     {
@@ -15,6 +15,6 @@ namespace VendingLogic
 
         EventHandler<BalanceChangedEvent> BalanceChanged { get; set; }
         EventHandler<ItemDispensedNotificationEvent> ItemDispensed { get; set; }
-        void UpdatePriceList(PriceList priceList);
+        void UpdatePriceList(PriceList2 priceList);
     }
 }

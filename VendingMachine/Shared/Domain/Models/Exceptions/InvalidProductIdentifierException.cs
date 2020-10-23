@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Models.Exceptions
+namespace VendingMachine.Shared.Domain.Models.Exceptions
 {
     public class InvalidProductIdentifierException : Exception
     {

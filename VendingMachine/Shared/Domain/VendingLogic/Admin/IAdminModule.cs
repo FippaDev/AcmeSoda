@@ -1,6 +1,6 @@
-﻿using Models.AdminAccess;
+﻿using VendingMachine.Shared.Domain.Models.AdminAccess;
 
-namespace VendingLogic.Admin
+namespace VendingMachine.Shared.Domain.VendingLogic.Admin
 {
     public interface IAdminModule
     {

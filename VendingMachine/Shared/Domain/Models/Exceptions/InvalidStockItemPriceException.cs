@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Diagnostics.CodeAnalysis;
 
-namespace Models.Exceptions
+namespace VendingMachine.Shared.Domain.Models.Exceptions
 {
     [ExcludeFromCodeCoverage]
     public class InvalidStockItemPriceException : Exception

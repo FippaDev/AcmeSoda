@@ -1,7 +1,7 @@
 ﻿using System.Diagnostics.CodeAnalysis;
-using Domain.VendingMachine;
-using Services.Factories;
 using UserInterface;
+using VendingMachine.Shared.Domain.Domain.VendingMachine;
+using VendingMachine.Shared.Services.Factories;
 
 namespace AcmeSodaConsoleApp
 {

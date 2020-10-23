@@ -1,4 +1,4 @@
-﻿using Domain.VendingMachine;
+﻿using VendingMachine.Shared.Domain.Domain.VendingMachine;
 
 namespace UserInterface
 {

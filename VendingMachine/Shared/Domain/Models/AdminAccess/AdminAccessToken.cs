@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Diagnostics.CodeAnalysis;
 
-namespace Models.AdminAccess
+namespace VendingMachine.Shared.Domain.Models.AdminAccess
 {
     [ExcludeFromCodeCoverage]
     public class AdminAccessToken : AccessToken

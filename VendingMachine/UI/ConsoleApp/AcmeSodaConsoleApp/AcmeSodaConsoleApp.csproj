@@ -4,6 +4,7 @@
     <OutputType>Exe</OutputType>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <StartupObject>AcmeSodaConsoleApp.Program</StartupObject>
+    <AssemblyName>VendingMachine.Shared.UI.ConsoleApp.AcmeSodaConsoleApp</AssemblyName>
   </PropertyGroup>
 
   <ItemGroup>

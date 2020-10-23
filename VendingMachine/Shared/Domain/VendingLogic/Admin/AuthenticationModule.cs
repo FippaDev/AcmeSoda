@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using Models.AdminAccess;
+using VendingMachine.Shared.Domain.Models.AdminAccess;
 
-namespace VendingLogic.Admin
+namespace VendingMachine.Shared.Domain.VendingLogic.Admin
 {
     public class AuthenticationModule : IAuthenticationModule
     {

@@ -1,15 +1,15 @@
 ﻿using Ardalis.GuardClauses;
-using Models.Exceptions;
-using Models.Stock;
+using VendingMachine.Shared.Domain.Models.Exceptions;
+using VendingMachine.Shared.Domain.Models.Stock;
 
-namespace Models.Pricing
+namespace VendingMachine.Shared.Domain.Models.Pricing
 {
-    public class PriceListStockItem : BaseStockItem
+    public class PriceListStockItem2 : BaseStockItem
     {
         public string DisplayName { get; }
         public decimal RetailPrice { get; }
 
-        public PriceListStockItem(string stockKeepingUnit, string displayName, decimal retailPrice)
+        public PriceListStockItem2(string stockKeepingUnit, string displayName, decimal retailPrice)
             : base(stockKeepingUnit)
         {
             Guard.Against.NullOrEmpty(displayName, nameof(displayName));

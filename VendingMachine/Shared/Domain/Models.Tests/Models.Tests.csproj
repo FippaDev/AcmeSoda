@@ -5,6 +5,8 @@
     <IsPackable>false</IsPackable>
 	<LangVersion>latest</LangVersion>
 	<Nullable>enable</Nullable>
+	<AssemblyName>VendingMachine.Shared.Domain.Models.Tests</AssemblyName>
+	<RootNamespace>VendingMachine.Shared.Domain.Models.Tests</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>

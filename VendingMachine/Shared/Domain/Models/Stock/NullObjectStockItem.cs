@@ -1,6 +1,6 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 
-namespace Models.Stock
+namespace VendingMachine.Shared.Domain.Models.Stock
 {
     /// <summary>
     /// This object represents a null or missing object

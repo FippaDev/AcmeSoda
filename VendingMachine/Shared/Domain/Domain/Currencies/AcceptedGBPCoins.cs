@@ -2,7 +2,7 @@
 using Fippa.Money.Currencies;
 using Fippa.Money.Payments;
 
-namespace Domain.Currencies
+namespace VendingMachine.Shared.Domain.Domain.Currencies
 {
     public sealed class AcceptedGBPCoins : IAcceptedCoins
     {
