@@ -6,9 +6,9 @@ namespace VendingMachine.Shared.Domain.VendingLogic.Payments
 {
     public class ItemDispensedNotificationEvent : EventArgs
     {
-        public PriceListStockItem2 Item { get; }
+        public PriceListStockItem Item { get; }
 
-        public ItemDispensedNotificationEvent(PriceListStockItem2 item)
+        public ItemDispensedNotificationEvent(PriceListStockItem item)
         {
             Guard.Against.Null(item, nameof(item));
             Item = item;

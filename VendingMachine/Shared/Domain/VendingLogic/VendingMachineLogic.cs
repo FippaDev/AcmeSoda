@@ -15,7 +15,7 @@ namespace VendingMachine.Shared.Domain.VendingLogic
         private readonly IPaymentModule<ICashPayment> _coinModule;
         private decimal _balance;
 
-        private PriceList2 _priceList;
+        private PriceList _priceList;
 
         public EventHandler<BalanceChangedEvent> BalanceChanged { get; set; }
         public EventHandler<ItemDispensedNotificationEvent> ItemDispensed { get; set; }
@@ -76,7 +76,7 @@ namespace VendingMachine.Shared.Domain.VendingLogic
             return ProcessTransaction(selectedItem);
         }
 
-        private SelectionResult ProcessTransaction(PriceListStockItem2 selectedItem)
+        private SelectionResult ProcessTransaction(PriceListStockItem selectedItem)
         {
             // TODO: Check the stock levels
 
@@ -88,7 +88,7 @@ namespace VendingMachine.Shared.Domain.VendingLogic
             return SelectionResult.ValidSelection;
         }
 
-        public void UpdatePriceList(PriceList2 priceList)
+        public void UpdatePriceList(PriceList priceList)
         {
             _priceList = priceList;
         }

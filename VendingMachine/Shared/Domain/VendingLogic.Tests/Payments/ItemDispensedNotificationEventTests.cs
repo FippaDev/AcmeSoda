@@ -20,7 +20,7 @@ namespace VendingMachine.Shared.Domain.VendingLogic.Tests.Payments
             var displayName = "PepsiMax";
             var retailPrice = 0.79m;
 
-            var item = new PriceListStockItem2(sku, displayName, retailPrice);
+            var item = new PriceListStockItem(sku, displayName, retailPrice);
             var dispensedNotificationEvent = new ItemDispensedNotificationEvent(item);
 
             Assert.Equal(sku, dispensedNotificationEvent.Item.StockKeepingUnit);

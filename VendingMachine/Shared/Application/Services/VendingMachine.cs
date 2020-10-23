@@ -78,17 +78,17 @@ namespace VendingMachine.Shared.Services
             
             var dto = _dataLoader.Load(filename);
 
-            var items = new List<PriceListStockItem2>();
+            var items = new List<PriceListStockItem>();
             foreach (var item in dto.Items)
             {
                 items.Add(
-                    new PriceListStockItem2(
+                    new PriceListStockItem(
                     item.Key, 
                     item.Value.DisplayName, 
                     item.Value.RetailPrice));
             }
 
-            var priceList = new PriceList2(items);
+            var priceList = new PriceList(items);
 
             _vendingMachine.UpdatePriceList(priceList);
         }

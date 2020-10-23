@@ -14,7 +14,7 @@ namespace VendingMachine.Shared.Domain.Models.Tests.Pricing
         {
             Assert.Throws<ArgumentException>(() =>
             {
-                var item = new PriceListStockItem2(string.Empty, string.Empty, 0.00m);
+                var item = new PriceListStockItem(string.Empty, string.Empty, 0.00m);
             });
         }
 
@@ -23,7 +23,7 @@ namespace VendingMachine.Shared.Domain.Models.Tests.Pricing
         {
             Assert.Throws<InvalidStockItemPriceException>(() =>
             {
-                var item = new PriceListStockItem2("PC", "PepsiMax 330ml", 0.00m);
+                var item = new PriceListStockItem("PC", "PepsiMax 330ml", 0.00m);
             });
         }
     }

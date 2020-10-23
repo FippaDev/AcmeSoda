@@ -15,6 +15,6 @@ namespace VendingMachine.Shared.Domain.VendingLogic
 
         EventHandler<BalanceChangedEvent> BalanceChanged { get; set; }
         EventHandler<ItemDispensedNotificationEvent> ItemDispensed { get; set; }
-        void UpdatePriceList(PriceList2 priceList);
+        void UpdatePriceList(PriceList priceList);
     }
 }
