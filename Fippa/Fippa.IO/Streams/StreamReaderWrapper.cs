@@ -6,6 +6,8 @@ namespace Fippa.IO.Streams
     /// <summary>
     /// Wrapping the IStreamReader interface, this class uses the concrete
     /// (disposable) System.IO.StreamReader class.
+    ///
+    /// As a basic system wrapper this does not need unit testing.
     /// </summary>
     [ExcludeFromCodeCoverage]
     public class StreamReaderWrapper : IStreamReader

@@ -8,7 +8,7 @@ namespace Fippa.Money.Payments
 
         public CardPayment(decimal amount)
         {
-            Guard.Against.Negative(amount, nameof(Value));
+            Guard.Against.NegativeOrZero(amount, nameof(Value));
             Value = amount;
         }
     }

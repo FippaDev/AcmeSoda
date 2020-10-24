@@ -1,8 +1,16 @@
-﻿using System.IO;
+﻿using System.Diagnostics.CodeAnalysis;
+using System.IO;
 using Ardalis.GuardClauses;
 
 namespace Fippa.IO.Streams
 {
+    /// <summary>
+    /// Wrapping the IStreamReader interface, this class uses the concrete
+    /// (disposable) System.IO.StreamReader class.
+    ///
+    /// As a basic system wrapper this does not need unit testing.
+    /// </summary>
+    [ExcludeFromCodeCoverage]
     public class StreamWriterWrapper : IStreamWriter
     {
         private readonly StreamWriter _stream;
