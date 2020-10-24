@@ -1,11 +1,9 @@
-﻿using System;
-using System.Diagnostics.CodeAnalysis;
-using System.IO;
+﻿using System.IO;
 using Ardalis.GuardClauses;
 
 namespace Fippa.IO.Streams
 {
-    public class StreamWriterWrapper : IStreamWriter, IDisposable
+    public class StreamWriterWrapper : IStreamWriter
     {
         private readonly StreamWriter _stream;
 
@@ -15,14 +13,14 @@ namespace Fippa.IO.Streams
             _stream = new StreamWriter(path);
         }
 
-        public void Dispose()
-        {
-            _stream.Dispose();
-        }
-
         public void Write(string buffer)
         {
             _stream.Write(buffer);
+        }
+
+        public void Dispose()
+        {
+            _stream.Dispose();
         }
     }
 }

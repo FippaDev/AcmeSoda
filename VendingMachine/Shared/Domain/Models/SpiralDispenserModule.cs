@@ -35,8 +35,8 @@ namespace VendingMachine.Shared.Domain.Models
 
         public string GetStockKeepingUnitCode(ushort selectionCode)
         {
-            byte sprialIndex = GetSpiralIndex(selectionCode);
-            return _spirals[sprialIndex].StockItem.StockKeepingUnit;
+            byte spiralIndex = GetSpiralIndex(selectionCode);
+            return _spirals[spiralIndex].StockItem.StockKeepingUnit;
         }
 
         // Map the selection code to a spiral (e.g. selection 1 = spiral 0)

@@ -2,9 +2,6 @@
 {
     public class AdminSkeletonKey : IAccessKey
     {
-        public bool RequiresAuthentication
-        {
-            get { return false; }
-        }
+        public bool RequiresAuthentication => false;
     }
 }

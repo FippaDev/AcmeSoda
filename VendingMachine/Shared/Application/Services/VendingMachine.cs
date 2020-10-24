@@ -60,11 +60,6 @@ namespace VendingMachine.Shared.Services
             return _vendingMachine.MakeSelection(selectionCode);
         }
 
-        public void AcknowledgeCoinInserted(ICashPayment coin)
-        {
-            _output.Message($"{coin.Value} inserted");
-        }
-
         internal void LoadPriceList(string filename)
         {
             //using var reader = new StreamReaderWrapper(filename);

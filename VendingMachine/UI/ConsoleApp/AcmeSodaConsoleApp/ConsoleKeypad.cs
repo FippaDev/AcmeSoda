@@ -100,15 +100,5 @@ namespace AcmeSodaConsoleApp
                 &&
                 ushort.TryParse(cmd.Substring(1), out selectionCode);
         }
-
-        void DisplayHelpInfo339489256()
-        {
-            _console.WriteLine("Usage:");
-            _console.WriteLine("  /?, /h, help => to display this help information.");
-            _console.WriteLine("  q, e, quit, exit => exit the application.");
-            _console.WriteLine("  b       Show the current balance");
-            _console.WriteLine("  1.00, 0.50, 0.20, 0.10, 0.5 => Insert £1, 50p, 20p, 10p, 5p");
-            _console.WriteLine("  a[X]    Make a selection (e.g. a0, a1, etc)");
-        }
     }
 }
