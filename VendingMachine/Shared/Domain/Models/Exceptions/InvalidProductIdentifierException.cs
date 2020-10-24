@@ -1,4 +1,5 @@
 ﻿using System;
+using Ardalis.GuardClauses;
 
 namespace VendingMachine.Shared.Domain.Models.Exceptions
 {
@@ -6,6 +7,8 @@ namespace VendingMachine.Shared.Domain.Models.Exceptions
     {
         public InvalidProductIdentifierException(string message)
             : base(message)
-        { }
+        {
+            Guard.Against.NullOrEmpty(message, nameof(message));
+        }
     }
 }
