@@ -4,7 +4,7 @@ namespace VendingMachine.Shared.Domain.Models.AdminAccess
 {
     public class InvalidAccessToken : AccessToken
     {
-        public InvalidAccessToken() 
+        public InvalidAccessToken()
             : base(Guid.Empty)
         {
         }
