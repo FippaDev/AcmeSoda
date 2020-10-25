@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Infrastructure.DTOs
 {
-    [Serializable]
+    [Serializable, ExcludeFromCodeCoverage]
     public class PriceListDto
     {
         // Key = SKU

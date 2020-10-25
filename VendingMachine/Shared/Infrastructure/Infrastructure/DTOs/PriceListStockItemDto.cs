@@ -1,8 +1,9 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Infrastructure.DTOs
 {
-    [Serializable]
+    [Serializable, ExcludeFromCodeCoverage]
     public class PriceListStockItemDto
     {
         public string DisplayName { get; set; }

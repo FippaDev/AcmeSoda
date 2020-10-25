@@ -107,3 +107,5 @@ E:\Source\Github\AcmeSoda\VendingMachine\Shared\Infrastructure\Infrastructure.Te
 E:\Source\Github\AcmeSoda\VendingMachine\Shared\Infrastructure\Infrastructure.Tests\obj\Debug\netcoreapp3.1\VendingMachine.Shared.Infrastructure.Infrastructure.Tests.dll
 E:\Source\Github\AcmeSoda\VendingMachine\Shared\Infrastructure\Infrastructure.Tests\obj\Debug\netcoreapp3.1\VendingMachine.Shared.Infrastructure.Infrastructure.Tests.pdb
 E:\Source\Github\AcmeSoda\VendingMachine\Shared\Infrastructure\Infrastructure.Tests\obj\Debug\netcoreapp3.1\Infrastructure.Tests.genruntimeconfig.cache
+E:\Source\Github\AcmeSoda\VendingMachine\Shared\Infrastructure\Infrastructure.Tests\bin\Debug\netcoreapp3.1\Castle.Core.dll
+E:\Source\Github\AcmeSoda\VendingMachine\Shared\Infrastructure\Infrastructure.Tests\bin\Debug\netcoreapp3.1\Moq.dll
