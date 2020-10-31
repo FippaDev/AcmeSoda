@@ -9,7 +9,6 @@ using UserInterface;
 using VendingMachine.Shared.Domain.Domain.VendingMachine;
 using VendingMachine.Shared.Domain.Models.Pricing;
 using VendingMachine.Shared.Domain.VendingLogic;
-using VendingMachine.Shared.Domain.VendingLogic.Admin;
 using VendingMachine.Shared.Domain.VendingLogic.Payments;
 using VendingMachine.Shared.Domain.VendingLogic.Selection;
 
@@ -21,7 +20,6 @@ namespace VendingMachine.Shared.Services
         private readonly IVendingMachineLogic _vendingMachine;
         private readonly IUserOutput _output;
         private readonly IDataLoader<PriceListDto> _dataLoader;
-        private readonly IAdminModule _adminModule;
 
         public EventHandler<ItemDispensedNotificationEvent>? ItemDispensed { get; set; }
 
@@ -31,13 +29,11 @@ namespace VendingMachine.Shared.Services
             IUserOutput output,
             IDataLoader<PriceListDto> dataLoader,
             IVendingMachineLogic vendingMachine,
-            IAdminModule adminModule,
             string manufacturer)
         {
             _output = output;
             _dataLoader = dataLoader;
             _vendingMachine = vendingMachine;
-            _adminModule = adminModule;
             Guard.Against.NullOrEmpty(manufacturer, nameof(manufacturer));
             Manufacturer = manufacturer;
 

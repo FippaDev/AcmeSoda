@@ -2,7 +2,6 @@
 using Fippa.Money.Payments;
 using Unity;
 using VendingMachine.Shared.Domain.Models;
-using VendingMachine.Shared.Domain.VendingLogic.Admin;
 using VendingMachine.Shared.Domain.VendingLogic.Admin.Commands;
 using VendingMachine.Shared.Domain.VendingLogic.Payments;
 
@@ -15,8 +14,6 @@ namespace VendingMachine.Shared.Domain.VendingLogic
         {
             builder.RegisterType<IPaymentModule<ICashPayment>, CoinModule>();
             builder.RegisterType<IVendingMachineLogic, VendingMachineLogic>();
-            builder.RegisterType<IAdminModule, AdminModule>();
-            builder.RegisterType<IAuthenticationModule, AuthenticationModule>();
             builder.RegisterType<ICommandController, CommandController>();
             builder.RegisterType<IDispenserModule, SpiralDispenserModule>();
         }
