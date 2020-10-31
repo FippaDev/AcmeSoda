@@ -10,7 +10,7 @@ using Xunit;
 namespace VendingMachine.Shared.Domain.VendingLogic.Tests
 {
     [ExcludeFromCodeCoverage]
-    public class VendingMachineTests
+    public class VendingMachineLogicTests
     {
         private readonly Mock<IPaymentModule<ICashPayment>> _mockCoinModule = new Mock<IPaymentModule<ICashPayment>>();
         private readonly Mock<IDispenserModule> _mockDispenserModule = new Mock<IDispenserModule>();
