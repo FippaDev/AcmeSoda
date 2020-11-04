@@ -2,21 +2,25 @@
 using Infrastructure.DTOs;
 using UserInterface;
 using VendingMachine.Shared.Domain.Domain.VendingMachine;
+using VendingMachine.Shared.Domain.Models;
 using VendingMachine.Shared.Domain.VendingLogic;
 
 namespace VendingMachine.Shared.Services.Factories
 {
     public class VendingMachineFactory : IVendingMachineFactory
     {
+        private readonly IDispenserModule _dispenserModule;
         private readonly IUserOutput _output;
         private readonly IDataLoader<PriceListDto> _objectSerializer;
         private readonly IVendingMachineLogic _vendingMachineLogic;
 
         public VendingMachineFactory(
+            IDispenserModule dispenserModule,
             IUserOutput output,
             IDataLoader<PriceListDto> objectSerializer,
             IVendingMachineLogic vendingMachineLogic)
         {
+            _dispenserModule = dispenserModule;
             _output = output;
             _objectSerializer = objectSerializer;
             _vendingMachineLogic = vendingMachineLogic;
@@ -24,6 +28,7 @@ namespace VendingMachine.Shared.Services.Factories
 
         public IVendingMachine BuildVendingMachine(string branding, string priceListFilename)
         {
+            
             var vendingMachine =
                 new VendingMachine(
                     _output,

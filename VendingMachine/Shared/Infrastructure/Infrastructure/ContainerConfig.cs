@@ -14,6 +14,7 @@ namespace Infrastructure
             builder.RegisterType<IStreamReader, StreamReaderWrapper>();
 
             builder.RegisterType(typeof(IObjectSerializer<>), typeof(JsonSerialization<>), new TransientLifetimeManager());
+            builder.RegisterType(typeof(IDataLoader<>), typeof(DataLoader<>), new TransientLifetimeManager());
         }
     }
 }
