@@ -51,7 +51,7 @@ namespace VendingMachine.Shared.Services
             _output.ShowBalance(_vendingMachine.Balance);
         }
 
-        public SelectionResult MakeSelection(ushort selectionCode)
+        public SelectionResult MakeSelection(string selectionCode)
         {
             return _vendingMachine.MakeSelection(selectionCode);
         }

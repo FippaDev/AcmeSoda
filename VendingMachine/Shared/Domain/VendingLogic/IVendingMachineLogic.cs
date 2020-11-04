@@ -11,7 +11,7 @@ namespace VendingMachine.Shared.Domain.VendingLogic
         decimal Balance { get; }
         void AddPayment(IPayment payment);
         void CancelTransaction();
-        SelectionResult MakeSelection(ushort selectionCode);
+        SelectionResult MakeSelection(string selectionCode);
 
         EventHandler<BalanceChangedEvent> BalanceChanged { get; set; }
         EventHandler<ItemDispensedNotificationEvent> ItemDispensed { get; set; }

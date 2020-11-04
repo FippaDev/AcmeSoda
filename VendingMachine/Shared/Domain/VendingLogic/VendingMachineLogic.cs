@@ -62,15 +62,15 @@ namespace VendingMachine.Shared.Domain.VendingLogic
             Balance = 0.00m;
         }
 
-        public SelectionResult MakeSelection(ushort selectionCode)
+        public SelectionResult MakeSelection(string selectionCode)
         {
             if (!_dispenserModule.IsValidSelectionCode(selectionCode))
             {
                 return SelectionResult.InvalidSelection;
             }
 
-            var sku = _dispenserModule.GetStockKeepingUnitCode(selectionCode);
-            var selectedItem = _priceList.GetItem(sku);
+            var stockItem = _dispenserModule.QuerySpiral(selectionCode);
+            var selectedItem = _priceList.GetItem(stockItem.StockKeepingUnit);
 
             if (Balance < selectedItem.RetailPrice)
             {

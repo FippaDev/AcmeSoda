@@ -50,11 +50,8 @@ namespace AcmeSodaConsoleApp
                 return;
             }
 
-            if (!IsValidSelection(cmd, out var selectionCode))
-            {
-                _console.WriteLine("Invalid selection");
-                return;
-            }
+            // Assume cmd is a selection command
+            string selectionCode = cmd;
 
             var selectionResult = _vendingMachine.MakeSelection(selectionCode);
             if (selectionResult == SelectionResult.ValidSelection)
@@ -68,6 +65,10 @@ namespace AcmeSodaConsoleApp
             else if (selectionResult == SelectionResult.OutOfStock)
             {
                 _console.WriteLine("Out of stock");
+            }
+            else if (selectionResult == SelectionResult.InvalidSelection)
+            {
+                _console.WriteLine("Invalid selection");
             }
         }
 
@@ -88,17 +89,6 @@ namespace AcmeSodaConsoleApp
         private bool IsHelpCommand(in string input)
         {
             return HelpCommands.Contains(input.Trim().ToLower());
-        }
-
-        private static bool IsValidSelection(string cmd, out ushort selectionCode)
-        {
-            var cmdPrefix = cmd[0].ToString().ToLower();
-            selectionCode = 0;
-
-            return
-                cmdPrefix.Equals("a")
-                &&
-                ushort.TryParse(cmd.Substring(1), out selectionCode);
         }
     }
 }

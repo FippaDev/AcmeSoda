@@ -8,6 +8,6 @@ namespace VendingMachine.Shared.Domain.Domain.VendingMachine
         string Manufacturer { get; }
 
         void AddPayment(IPayment payment);
-        SelectionResult MakeSelection(ushort selectionCode);
+        SelectionResult MakeSelection(string selectionCode);
     }
 }

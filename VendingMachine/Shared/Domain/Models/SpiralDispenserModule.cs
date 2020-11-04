@@ -1,7 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Linq;
 using System.Runtime.CompilerServices;
 using Ardalis.GuardClauses;
-using VendingMachine.Shared.Domain.Models.Exceptions;
+using VendingMachine.Shared.Domain.Models.Pricing;
 using VendingMachine.Shared.Domain.Models.Stock;
 
 [assembly:InternalsVisibleTo("VendingMachine.Shared.DOmain.Models.Tests")]
@@ -9,56 +12,53 @@ namespace VendingMachine.Shared.Domain.Models
 {
     public class SpiralDispenserModule : IDispenserModule
     {
-        private readonly Dictionary<byte, SpiralDispenser> _spirals;
+        // Key = spiral identifier (e.g. A3)
+        // value = spiral
+        private readonly Dictionary<string, SpiralDispenser> _spirals;
 
-        private readonly ushort MinSelectionCode = 1;
-        private readonly ushort MaxSelectionCode = 20;
-
-        ushort IDispenserModule.MaxSelectionCode => MaxSelectionCode;
-        ushort IDispenserModule.MinSelectionCode => MinSelectionCode;
-
-        public SpiralDispenserModule()
+        public SpiralDispenserModule(ushort rows, ushort columns)
         {
-            _spirals = new Dictionary<byte, SpiralDispenser>();
-            Initialise(20);
-        }
+            Guard.Against.Zero(rows, nameof(rows));
+            Guard.Against.Zero(columns, nameof(columns));
 
-        private void Initialise(ushort numberOfSpirals)
-        {
-            Guard.Against.Zero(numberOfSpirals, nameof(numberOfSpirals));
-
-            for (byte i = 0; i < numberOfSpirals; i++)
+            _spirals = new Dictionary<string, SpiralDispenser>();
+            for (ushort r = 0; r < rows; r++)
             {
-                _spirals.Add(i, new SpiralDispenser());
+                for (ushort c = 1; c <= columns; c++)
+                {
+                    string id = $"{'A' + r}{c}";
+                    _spirals.Add(id, new SpiralDispenser());
+                }
             }
         }
 
-        public string GetStockKeepingUnitCode(ushort selectionCode)
+        public ReadOnlyCollection<string> GetSelectionCodes()
         {
-            byte spiralIndex = GetSpiralIndex(selectionCode);
-            return _spirals[spiralIndex].StockItem.StockKeepingUnit;
+            return _spirals.Keys.ToList().AsReadOnly();
         }
 
-        // Map the selection code to a spiral (e.g. selection 1 = spiral 0)
-        // This is can be done with a simple subtraction and cast, but could be mapped.
-        private byte GetSpiralIndex(ushort selectionCode)
+        public BaseStockItem QuerySpiral(string selectionCode)
         {
-            return (byte)(selectionCode - 1);
+            return 
+                _spirals[selectionCode].StockItem is PriceListStockItem 
+                    ? _spirals[selectionCode].StockItem
+                    : new NullObjectStockItem();
         }
 
-        public BaseStockItem Dispense(byte identifier)
+        public BaseStockItem Dispense(string selectionCode)
         {
-            if (!_spirals.ContainsKey(identifier))
+            if (!_spirals.ContainsKey(selectionCode))
             {
-                throw new InvalidProductIdentifierException($"Unknown item. Identifier:{identifier}");
+                throw new ArgumentException($"Selection code '{selectionCode}' does not exist.");
             }
 
-            return _spirals[identifier].Dispense();
+            return _spirals[selectionCode].Dispense();
         }
 
-        public bool IsValidSelectionCode(ushort selectionCode)
+        public bool IsValidSelectionCode(string selectionCode)
         {
-            return selectionCode >= MinSelectionCode && selectionCode <= MaxSelectionCode;
+            Guard.Against.NullOrWhiteSpace(selectionCode, nameof(selectionCode));
+            return _spirals.ContainsKey(selectionCode);
         }
     }
 }
