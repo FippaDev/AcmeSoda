@@ -8,7 +8,7 @@ using Fippa.Money.Payments;
 [assembly:InternalsVisibleTo("VendingMachine.Shared.Domain.VendingLogic.Tests")]
 namespace VendingMachine.Shared.Domain.VendingLogic.Payments
 {
-    internal class CoinModule : IPaymentModule<ICashPayment>
+    public class CoinModule : IPaymentModule<ICashPayment>
     {
         private readonly ObservableCollection<IPayment> _coins = new ObservableCollection<IPayment>();
 

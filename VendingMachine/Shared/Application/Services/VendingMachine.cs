@@ -15,7 +15,7 @@ using VendingMachine.Shared.Domain.VendingLogic.Selection;
 [assembly: InternalsVisibleTo("VendingMachine.Shared.Services.Tests")]
 namespace VendingMachine.Shared.Services
 {
-    internal class VendingMachine : IVendingMachine
+    public class VendingMachine : IVendingMachine
     {
         private readonly IVendingMachineLogic _vendingMachine;
         private readonly IUserOutput _output;
