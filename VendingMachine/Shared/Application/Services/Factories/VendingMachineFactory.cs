@@ -2,7 +2,6 @@
 using Infrastructure.DTOs;
 using UserInterface;
 using VendingMachine.Shared.Domain.Domain.VendingMachine;
-using VendingMachine.Shared.Domain.Models;
 using VendingMachine.Shared.Domain.VendingLogic;
 
 namespace VendingMachine.Shared.Services.Factories
@@ -23,7 +22,9 @@ namespace VendingMachine.Shared.Services.Factories
             _vendingMachineLogic = vendingMachineLogic;
         }
 
-        public IVendingMachine BuildVendingMachine(string branding, string priceListFilename)
+        public IVendingMachine BuildVendingMachine(
+            string branding,
+            string priceListFilename)
         {
             var vendingMachine =
                 new VendingMachine(

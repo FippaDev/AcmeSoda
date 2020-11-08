@@ -21,7 +21,7 @@ namespace VendingMachine.Shared.Services
         private readonly IUserOutput _output;
         private readonly IDataLoader<PriceListDto> _dataLoader;
 
-        public EventHandler<ItemDispensedNotificationEvent>? ItemDispensed { get; set; }
+        public EventHandler<ItemDispensedNotificationEvent>? ItemDispensed { get; private set; }
 
         public string Manufacturer { get; }
  
