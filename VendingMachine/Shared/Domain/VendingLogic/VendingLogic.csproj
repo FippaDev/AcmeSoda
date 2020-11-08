@@ -12,6 +12,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\..\Fippa\Fippa.Money\Fippa.Money.csproj" />
+    <ProjectReference Include="..\..\Infrastructure\Infrastructure\Infrastructure.csproj" />
     <ProjectReference Include="..\Models\Models.csproj" />
   </ItemGroup>
 

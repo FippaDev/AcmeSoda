@@ -6,21 +6,19 @@ using UserInterface;
 namespace AcmeSodaConsoleApp
 {
     [ExcludeFromCodeCoverage]
-    public class ContainerConfig
+    public sealed class ContainerConfig
     {
-        public static UnityContainer Configure()
+        public static UnityContainer Configure(UnityContainer container)
         {
-            var builder = new UnityContainer();
+            container.RegisterType<IConsoleApplication, ConsoleApplication>();
+            container.RegisterType<IConsole, CommandLineConsole>();
+            container.RegisterType<IUserInput, ConsoleKeypad>();
+            container.RegisterType<IUserOutput, ConsoleOutput>();
 
-            builder.RegisterType<IConsoleApplication, ConsoleApplication>();
-            builder.RegisterType<IConsole, CommandLineConsole>();
-            builder.RegisterType<IUserInput, ConsoleKeypad>();
-            builder.RegisterType<IUserOutput, ConsoleOutput>();
+            VendingMachine.Shared.Services.ContainerConfig.Configure(container);
+            Infrastructure.ContainerConfig.Configure(container);
 
-            VendingMachine.Shared.Services.ContainerConfig.Configure(builder);
-            Infrastructure.ContainerConfig.Configure(builder);
-
-            return builder;
+            return container;
         }
     }
 }

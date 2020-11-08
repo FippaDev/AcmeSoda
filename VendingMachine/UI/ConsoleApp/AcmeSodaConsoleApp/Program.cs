@@ -10,8 +10,10 @@ namespace AcmeSodaConsoleApp
     {
         public static void Main()
         {
-            var container = ContainerConfig.Configure();
-            var app = container.Resolve<IConsoleApplication>();
+            var unityContainer = DependencyContainer.Instance.Unity;
+            ContainerConfig.Configure(unityContainer);
+
+            var app = unityContainer.Resolve<IConsoleApplication>();
             app.Run();
 
             Console.WriteLine();

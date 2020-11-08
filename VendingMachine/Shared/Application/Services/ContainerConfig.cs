@@ -1,10 +1,8 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 using Fippa.IO.Serialization;
 using Unity;
-using Unity.Injection;
 using Unity.Lifetime;
 using VendingMachine.Shared.Domain.Domain.VendingMachine;
-using VendingMachine.Shared.Domain.Models;
 using VendingMachine.Shared.Services.Factories;
 
 namespace VendingMachine.Shared.Services
@@ -12,12 +10,12 @@ namespace VendingMachine.Shared.Services
     [ExcludeFromCodeCoverage]
     public static class ContainerConfig
     {
-        public static void Configure(UnityContainer builder)
+        public static void Configure(UnityContainer container)
         {
-            builder.RegisterType<IVendingMachineFactory, VendingMachineFactory>();
-            builder.RegisterType<IVendingMachine, VendingMachine>();
+            container.RegisterType<IVendingMachineFactory, VendingMachineFactory>();
+            container.RegisterType<IVendingMachine, VendingMachine>();
             
-            RegisterProjectDependencies(builder);
+            RegisterProjectDependencies(container);
         }
 
         private static void RegisterProjectDependencies(UnityContainer builder)
@@ -29,8 +27,6 @@ namespace VendingMachine.Shared.Services
 
         private static void ConfigureModels(UnityContainer builder)
         {
-            builder.RegisterType<IDispenserModule, SpiralDispenserModule>();
-                //new InjectionConstructor(8, 7));
         }
 
         private static void ConfigureDomain(UnityContainer builder)

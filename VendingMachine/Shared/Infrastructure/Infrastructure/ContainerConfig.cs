@@ -9,12 +9,12 @@ namespace Infrastructure
     [ExcludeFromCodeCoverage]
     public class ContainerConfig
     {
-        public static void Configure(UnityContainer builder)
+        public static void Configure(UnityContainer container)
         {
-            builder.RegisterType<IStreamReader, StreamReaderWrapper>();
+            container.RegisterType<IStreamReader, StreamReaderWrapper>();
 
-            builder.RegisterType(typeof(IObjectSerializer<>), typeof(JsonSerialization<>), new TransientLifetimeManager());
-            builder.RegisterType(typeof(IDataLoader<>), typeof(DataLoader<>), new TransientLifetimeManager());
+            container.RegisterType(typeof(IObjectSerializer<>), typeof(JsonSerialization<>), new TransientLifetimeManager());
+            container.RegisterType(typeof(IDataLoader<>), typeof(DataLoader<>), new TransientLifetimeManager());
         }
     }
 }
