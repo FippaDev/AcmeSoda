@@ -5,6 +5,7 @@ using Fippa.IO.Streams;
 using Fippa.Money.Payments;
 using Infrastructure;
 using Unity;
+using Unity.Injection;
 using Unity.Lifetime;
 using UserInterface;
 using VendingMachine.Shared.Domain.Domain.VendingMachine;
@@ -34,6 +35,7 @@ namespace AcmeSodaConsoleApp.DependencyInjection
         private static void ConfigureSharedDomainModels(UnityContainer container)
         {
             container.RegisterType<IDispenserModule, SpiralDispenserModule>();
+
             container.RegisterType<IPaymentModule<ICashPayment>, CoinModule>();
             container.RegisterType<IVendingMachineLogic, VendingMachineLogic>();
             container.RegisterType<ICommandController, CommandController>();

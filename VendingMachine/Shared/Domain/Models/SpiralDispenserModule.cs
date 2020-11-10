@@ -16,12 +16,7 @@ namespace VendingMachine.Shared.Domain.Models
         // value = spiral
         private readonly Dictionary<string, SpiralDispenser> _spirals;
 
-        public SpiralDispenserModule()
-            : this(8, 7)
-        {
-        }
-
-        public SpiralDispenserModule(ushort rows, ushort columns)
+        public SpiralDispenserModule(int rows, int columns)
         {
             Guard.Against.Zero(rows, nameof(rows));
             Guard.Against.Zero(columns, nameof(columns));

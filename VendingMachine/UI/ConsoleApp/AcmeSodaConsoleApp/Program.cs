@@ -11,7 +11,7 @@ namespace AcmeSodaConsoleApp
     {
         public static void Main()
         {
-            var unityContainer = DependencyContainer.Instance.Unity;
+            var unityContainer = DIContainer.Instance.Unity;
             ContainerConfig.Configure(unityContainer);
 
             var app = unityContainer.Resolve<IConsoleApplication>();

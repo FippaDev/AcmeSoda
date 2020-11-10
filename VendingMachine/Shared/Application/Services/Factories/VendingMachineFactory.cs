@@ -2,6 +2,7 @@
 using Infrastructure.DTOs;
 using UserInterface;
 using VendingMachine.Shared.Domain.Domain.VendingMachine;
+using VendingMachine.Shared.Domain.Models;
 using VendingMachine.Shared.Domain.VendingLogic;
 
 namespace VendingMachine.Shared.Services.Factories
@@ -23,9 +24,12 @@ namespace VendingMachine.Shared.Services.Factories
         }
 
         public IVendingMachine BuildVendingMachine(
+            SpiralDispenserModule spiralDispenserModule, 
             string branding,
             string priceListFilename)
         {
+            _vendingMachineLogic.With(spiralDispenserModule);
+
             var vendingMachine =
                 new VendingMachine(
                     _output,

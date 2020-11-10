@@ -10,11 +10,11 @@ namespace VendingMachine.Shared.Domain.VendingLogic
 {
     public class VendingMachineLogic : IVendingMachineLogic
     {
-        private readonly IDispenserModule _dispenserModule;
         private readonly IPaymentModule<ICashPayment> _coinModule;
         private decimal _balance;
 
         private PriceList _priceList;
+        private IDispenserModule _dispenserModule;
 
         public EventHandler<BalanceChangedEvent> BalanceChanged { get; set; }
         public EventHandler<ItemDispensedNotificationEvent> ItemDispensed { get; set; }
@@ -31,10 +31,8 @@ namespace VendingMachine.Shared.Domain.VendingLogic
         }
 
         public VendingMachineLogic(
-            IDispenserModule dispenserModule,
             IPaymentModule<ICashPayment> coinModule)
         {
-            _dispenserModule = dispenserModule;
             _coinModule = coinModule;
             _coinModule.MoneyAdded += OnMoneyAdded;
         }
@@ -70,6 +68,7 @@ namespace VendingMachine.Shared.Domain.VendingLogic
             }
 
             var stockItem = _dispenserModule.QuerySpiral(selectionCode);
+
             var selectedItem = _priceList.GetItem(stockItem.StockKeepingUnit);
 
             if (Balance < selectedItem.RetailPrice)
@@ -95,6 +94,11 @@ namespace VendingMachine.Shared.Domain.VendingLogic
         public void UpdatePriceList(PriceList priceList)
         {
             _priceList = priceList;
+        }
+
+        public void With(IDispenserModule dispenserModule)
+        {
+            _dispenserModule = dispenserModule;
         }
     }
 }

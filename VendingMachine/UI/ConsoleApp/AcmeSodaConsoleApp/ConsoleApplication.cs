@@ -1,4 +1,8 @@
 ﻿using System.Diagnostics.CodeAnalysis;
+using AcmeSodaConsoleApp.DependencyInjection;
+using Unity;
+using Unity.Injection;
+using Unity.Resolution;
 using UserInterface;
 using VendingMachine.Shared.Domain.Domain.VendingMachine;
 using VendingMachine.Shared.Domain.Models;
@@ -14,10 +18,16 @@ namespace AcmeSodaConsoleApp
 
         public ConsoleApplication(IUserInput userInput, IUserOutput userOutput, IVendingMachineFactory factory)
         {
-            var dispenserModule = new SpiralDispenserModule(6, 5);
+            var dispenserModule = DIContainer.Instance.Unity.Resolve<SpiralDispenserModule>(
+                new ResolverOverride[]
+                {
+                    new ParameterOverride("rows", 3),
+                    new ParameterOverride("columns", 4)
+                });
 
             _input = userInput;
             _vendingMachine = factory.BuildVendingMachine(
+                dispenserModule,
                 "Pepsi", 
                 "pepsi.json");
 

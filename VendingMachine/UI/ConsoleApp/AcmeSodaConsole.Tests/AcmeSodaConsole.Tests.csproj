@@ -34,4 +34,8 @@
     <ProjectReference Include="..\AcmeSodaConsoleApp\AcmeSodaConsoleApp.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="DI\" />
+  </ItemGroup>
+
 </Project>

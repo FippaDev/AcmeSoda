@@ -18,7 +18,7 @@ namespace VendingMachine.Shared.Domain.VendingLogic.Tests
         [Fact]
         public void CancelTransaction_ResetsBalance()
         {
-            var vendingMachine = new VendingMachineLogic(_mockDispenserModule.Object, _mockCoinModule.Object);
+            var vendingMachine = new VendingMachineLogic(/*_mockDispenserModule.Object,*/ _mockCoinModule.Object);
 
             vendingMachine.AddPayment(GBP.TenPence);
             vendingMachine.CancelTransaction();
@@ -29,7 +29,7 @@ namespace VendingMachine.Shared.Domain.VendingLogic.Tests
         [Fact]
         public void AddPayment_GivenCashPayment_CallsAddOnThePaymentModule()
         {
-            var vendingMachine = new VendingMachineLogic(_mockDispenserModule.Object, _mockCoinModule.Object);
+            var vendingMachine = new VendingMachineLogic(/*_mockDispenserModule.Object,*/ _mockCoinModule.Object);
 
             vendingMachine.AddPayment(GBP.TenPence);
 
@@ -39,7 +39,7 @@ namespace VendingMachine.Shared.Domain.VendingLogic.Tests
         [Fact]
         public void AddPayment_CoinModuleGivenCardPayment_ThrowsGuardException()
         {
-            var vendingMachine = new VendingMachineLogic(_mockDispenserModule.Object, _mockCoinModule.Object);
+            var vendingMachine = new VendingMachineLogic(/*_mockDispenserModule.Object,*/ _mockCoinModule.Object);
 
             Assert.Throws<ArgumentException>(() =>
                 vendingMachine.AddPayment(new CardPayment(5.99m)));

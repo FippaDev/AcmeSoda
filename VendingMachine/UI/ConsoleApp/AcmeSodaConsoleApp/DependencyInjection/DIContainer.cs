@@ -2,21 +2,21 @@
 
 namespace AcmeSodaConsoleApp.DependencyInjection
 {
-    public sealed class DependencyContainer
+    public sealed class DIContainer
     {
         public UnityContainer Unity { get; }
 
         // Explicit static constructor to tell C# compiler
         // not to mark type as beforefieldinit
-        static DependencyContainer()
+        static DIContainer()
         {
         }
 
-        private DependencyContainer()
+        private DIContainer()
         {
             Unity = new UnityContainer();
         }
 
-        public static DependencyContainer Instance { get; } = new DependencyContainer();
+        public static DIContainer Instance { get; } = new DIContainer();
     }
 }
