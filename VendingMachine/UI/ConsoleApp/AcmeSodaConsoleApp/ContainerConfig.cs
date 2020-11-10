@@ -19,7 +19,7 @@ namespace AcmeSodaConsoleApp
     [ExcludeFromCodeCoverage]
     public sealed class ContainerConfig
     {
-        public static UnityContainer Configure(UnityContainer container)
+        public static void Configure(UnityContainer container)
         {
             container.RegisterType<IConsoleApplication, ConsoleApplication>();
             container.RegisterType<IConsole, CommandLineConsole>();
@@ -27,11 +27,8 @@ namespace AcmeSodaConsoleApp
             container.RegisterType<IUserOutput, ConsoleOutput>();
 
             ConfigureSharedDomainModels(container);
-
             ConfigureSharedServices(container);
             ConfigureSharedInfrastructure(container);
-
-            return container;
         }
 
         private static void ConfigureSharedDomainModels(UnityContainer container)
@@ -52,7 +49,6 @@ namespace AcmeSodaConsoleApp
         private static void ConfigureSharedInfrastructure(UnityContainer container)
         {
             container.RegisterType<IStreamReader, StreamReaderWrapper>();
-
             container.RegisterType(typeof(IObjectSerializer<>), typeof(JsonSerialization<>), new TransientLifetimeManager());
             container.RegisterType(typeof(IDataLoader<>), typeof(DataLoader<>), new TransientLifetimeManager());
         }

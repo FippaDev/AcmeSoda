@@ -4,10 +4,7 @@ namespace AcmeSodaConsoleApp
 {
     public sealed class DependencyContainer
     {
-        private static readonly DependencyContainer _instance = new DependencyContainer();
-        private readonly UnityContainer _unityContainer;
-
-        public UnityContainer Unity => _unityContainer;
+        public UnityContainer Unity { get; }
 
         // Explicit static constructor to tell C# compiler
         // not to mark type as beforefieldinit
@@ -17,15 +14,9 @@ namespace AcmeSodaConsoleApp
 
         private DependencyContainer()
         {
-            _unityContainer = new UnityContainer();
+            Unity = new UnityContainer();
         }
 
-        public static DependencyContainer Instance
-        {
-            get
-            {
-                return _instance;
-            }
-        }
+        public static DependencyContainer Instance { get; } = new DependencyContainer();
     }
 }
