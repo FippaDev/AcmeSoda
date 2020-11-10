@@ -1,6 +1,6 @@
 ﻿using Unity;
 
-namespace AcmeSodaConsoleApp
+namespace AcmeSodaConsoleApp.DependencyInjection
 {
     public sealed class DependencyContainer
     {

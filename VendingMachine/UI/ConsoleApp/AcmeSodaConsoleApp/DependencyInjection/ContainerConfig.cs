@@ -14,7 +14,7 @@ using VendingMachine.Shared.Domain.VendingLogic.Admin.Commands;
 using VendingMachine.Shared.Domain.VendingLogic.Payments;
 using VendingMachine.Shared.Services.Factories;
 
-namespace AcmeSodaConsoleApp
+namespace AcmeSodaConsoleApp.DependencyInjection
 {
     [ExcludeFromCodeCoverage]
     public sealed class ContainerConfig
