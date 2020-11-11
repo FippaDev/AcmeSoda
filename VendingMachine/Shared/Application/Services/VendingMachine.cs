@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using Ardalis.GuardClauses;
 using Fippa.Money.Payments;
@@ -21,8 +20,6 @@ namespace VendingMachine.Shared.Services
         private readonly IUserOutput _output;
         private readonly IDataLoader<PriceListDto> _dataLoader;
 
-        public EventHandler<ItemDispensedNotificationEvent>? ItemDispensed { get; private set; }
-
         public string Manufacturer { get; }
  
         public VendingMachine(
@@ -34,11 +31,11 @@ namespace VendingMachine.Shared.Services
             _output = output;
             _dataLoader = dataLoader;
             _vendingMachine = vendingMachine;
+
             Guard.Against.NullOrEmpty(manufacturer, nameof(manufacturer));
             Manufacturer = manufacturer;
 
             _vendingMachine.BalanceChanged += OnBalanceChanged;
-            _vendingMachine.ItemDispensed += OnItemDispensed;
         }
 
         public void AddPayment(IPayment payment)
@@ -83,11 +80,6 @@ namespace VendingMachine.Shared.Services
             var priceList = new PriceList(items);
 
             _vendingMachine.UpdatePriceList(priceList);
-        }
-
-        private void OnItemDispensed(object sender, ItemDispensedNotificationEvent e)
-        {
-            ItemDispensed?.Invoke(this, e);
         }
     }
 }

@@ -25,7 +25,7 @@ namespace VendingMachine.Shared.Domain.Models.Tests
         public void AddStockItem_WhilstLessThanMaxCapacity_AddsStockItemAndReturnsTrue()
         {
             var dispenser = new SpiralDispenser();
-            bool added = dispenser.AddStockItem(new Confectionery("CHOC_WISPA"));
+            bool added = dispenser.AddStockItem(new Confectionery("Mars"));
 
             Assert.True(added);
             Assert.Equal((uint)1, dispenser.StockCount());

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using Ardalis.GuardClauses;
 using Fippa.Money.Payments;
 using VendingMachine.Shared.Domain.Models;
@@ -21,7 +22,7 @@ namespace VendingMachine.Shared.Domain.VendingLogic
 
         public decimal Balance
         {
-            get { return _balance; }
+            get => _balance;
 
             private set
             {
@@ -31,8 +32,10 @@ namespace VendingMachine.Shared.Domain.VendingLogic
         }
 
         public VendingMachineLogic(
+            IDispenserModule dispenserModule,
             IPaymentModule<ICashPayment> coinModule)
         {
+            _dispenserModule = dispenserModule;
             _coinModule = coinModule;
             _coinModule.MoneyAdded += OnMoneyAdded;
         }
@@ -76,17 +79,18 @@ namespace VendingMachine.Shared.Domain.VendingLogic
                 return SelectionResult.InsufficientFunds;
             }
 
-            return ProcessTransaction(selectedItem);
+            return ProcessTransaction(selectionCode, selectedItem);
         }
 
-        private SelectionResult ProcessTransaction(PriceListStockItem selectedItem)
+        private SelectionResult ProcessTransaction(string selectionCode, PriceListStockItem selectedItem)
         {
             // TODO: Check the stock levels
 
             Balance -= selectedItem.RetailPrice;
 
             BalanceChanged?.Invoke(this, new BalanceChangedEvent(Balance));
-            ItemDispensed?.Invoke(this, new ItemDispensedNotificationEvent(selectedItem));
+
+            _dispenserModule.Dispense(selectionCode);
 
             return SelectionResult.ValidSelection;
         }

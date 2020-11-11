@@ -1,12 +1,10 @@
 ﻿using System.Diagnostics.CodeAnalysis;
-using Fippa.DependencyInjection;
 using Fippa.IO.Console;
 using Fippa.IO.Serialization;
 using Fippa.IO.Streams;
 using Fippa.Money.Payments;
 using Infrastructure;
 using Unity;
-using Unity.Injection;
 using Unity.Lifetime;
 using UserInterface;
 using VendingMachine.Shared.Domain.Domain.VendingMachine;
@@ -23,7 +21,7 @@ namespace AcmeSodaConsoleApp.DependencyInjection
     {
         public static void Configure(IUnityContainer container)
         {
-            //container.RegisterType<IDIContainer, DIContainer>(TypeLifetime.Singleton);
+            //container.RegisterType<IDependencyInjectionContainer, DependencyInjectionContainer>(TypeLifetime.Singleton);
             container.RegisterType<IConsoleApplication, ConsoleApplication>();
             container.RegisterType<IConsole, CommandLineConsole>();
             container.RegisterType<IUserInput, ConsoleKeypad>();

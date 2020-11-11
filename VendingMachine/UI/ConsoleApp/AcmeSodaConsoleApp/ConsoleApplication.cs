@@ -1,6 +1,4 @@
 ﻿using System.Diagnostics.CodeAnalysis;
-using AcmeSodaConsoleApp.DependencyInjection;
-using Fippa.DependencyInjection;
 using Unity;
 using Unity.Resolution;
 using UserInterface;
@@ -19,12 +17,7 @@ namespace AcmeSodaConsoleApp
         public ConsoleApplication(IUnityContainer container)
         {
             _container = container;
-            var dispenserModule = _container.Resolve<SpiralDispenserModule>(
-                new ResolverOverride[]
-                {
-                    new ParameterOverride("rows", 3),
-                    new ParameterOverride("columns", 4)
-                });
+            var dispenserModule = _container.Resolve<SpiralDispenserModule>(new ParameterOverride("rows", 3), new ParameterOverride("columns", 4));
 
             var factory = container.Resolve<IVendingMachineFactory>();
             _vendingMachine = factory.BuildVendingMachine(dispenserModule, "Pepsi");

@@ -12,14 +12,10 @@ namespace AcmeSodaConsoleApp
     {
         public static void Main()
         {
-            var unityContainer = DIContainer.Instance.Unity;
+            var unityContainer = DependencyInjectionContainer.Instance.Unity;
             ContainerConfig.Configure(unityContainer);
 
-            var app = unityContainer.Resolve<IConsoleApplication>(
-                new ResolverOverride[]
-                {
-                    new ParameterOverride("unity", unityContainer)
-                });
+            var app = unityContainer.Resolve<IConsoleApplication>(new ParameterOverride("unity", unityContainer));
             app.Run();
 
             Console.WriteLine();

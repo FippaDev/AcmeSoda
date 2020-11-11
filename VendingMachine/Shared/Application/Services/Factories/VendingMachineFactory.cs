@@ -1,5 +1,4 @@
-﻿using Fippa.DependencyInjection;
-using Infrastructure;
+﻿using Infrastructure;
 using Infrastructure.DTOs;
 using Unity;
 using Unity.Resolution;
@@ -24,10 +23,7 @@ namespace VendingMachine.Shared.Services.Factories
             string branding)
         {
             var logic = _unityContainer.Resolve<IVendingMachineLogic>(
-                new ResolverOverride[]
-                {
-                    new ParameterOverride("dispenserModule", dispenserModule),
-                });
+                new ParameterOverride("dispenserModule", dispenserModule));
 
             var vendingMachine =
                 new VendingMachine(
