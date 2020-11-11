@@ -9,5 +9,6 @@ namespace VendingMachine.Shared.Domain.Domain.VendingMachine
 
         void AddPayment(IPayment payment);
         SelectionResult MakeSelection(string selectionCode);
+        void Initialise(string priceListFile);
     }
 }

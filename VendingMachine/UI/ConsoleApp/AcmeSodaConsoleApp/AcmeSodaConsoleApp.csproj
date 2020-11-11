@@ -16,6 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\..\..\Fippa\Fippa.DependencyInjection\Fippa.DependencyInjection.csproj" />
     <ProjectReference Include="..\..\..\..\Fippa\Fippa.Money\Fippa.Money.csproj" />
     <ProjectReference Include="..\..\..\Shared\Application\Services\Services.csproj" />
     <ProjectReference Include="..\..\..\Shared\Domain\Domain\Domain.csproj" />

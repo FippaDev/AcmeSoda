@@ -1,7 +1,7 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 using AcmeSodaConsoleApp.DependencyInjection;
+using Fippa.DependencyInjection;
 using Unity;
-using Unity.Injection;
 using Unity.Resolution;
 using UserInterface;
 using VendingMachine.Shared.Domain.Domain.VendingMachine;
@@ -13,30 +13,28 @@ namespace AcmeSodaConsoleApp
     [ExcludeFromCodeCoverage]
     public class ConsoleApplication : IConsoleApplication
     {
-        private readonly IUserInput _input;
+        private readonly IUnityContainer _container;
         private readonly IVendingMachine _vendingMachine;
 
-        public ConsoleApplication(IUserInput userInput, IUserOutput userOutput, IVendingMachineFactory factory)
+        public ConsoleApplication(IUnityContainer container)
         {
-            var dispenserModule = DIContainer.Instance.Unity.Resolve<SpiralDispenserModule>(
+            _container = container;
+            var dispenserModule = _container.Resolve<SpiralDispenserModule>(
                 new ResolverOverride[]
                 {
                     new ParameterOverride("rows", 3),
                     new ParameterOverride("columns", 4)
                 });
 
-            _input = userInput;
-            _vendingMachine = factory.BuildVendingMachine(
-                dispenserModule,
-                "Pepsi", 
-                "pepsi.json");
-
-            userOutput.ShowWelcomeMessage(_vendingMachine.Manufacturer);
+            var factory = container.Resolve<IVendingMachineFactory>();
+            _vendingMachine = factory.BuildVendingMachine(dispenserModule, "Pepsi");
         }
 
         public void Run()
         {
-            _input.Run(_vendingMachine);
+            _vendingMachine.Initialise("pepsi.json");
+            var input = _container.Resolve<IUserInput>();
+            input.Run(_vendingMachine);
         }
     }
 }

@@ -1,5 +1,8 @@
-﻿using Infrastructure;
+﻿using Fippa.DependencyInjection;
+using Infrastructure;
 using Infrastructure.DTOs;
+using Unity;
+using Unity.Resolution;
 using UserInterface;
 using VendingMachine.Shared.Domain.Domain.VendingMachine;
 using VendingMachine.Shared.Domain.Models;
@@ -9,34 +12,30 @@ namespace VendingMachine.Shared.Services.Factories
 {
     public class VendingMachineFactory : IVendingMachineFactory
     {
-        private readonly IUserOutput _output;
-        private readonly IDataLoader<PriceListDto> _objectSerializer;
-        private readonly IVendingMachineLogic _vendingMachineLogic;
+        private readonly IUnityContainer _unityContainer;
 
-        public VendingMachineFactory(
-            IUserOutput output,
-            IDataLoader<PriceListDto> objectSerializer,
-            IVendingMachineLogic vendingMachineLogic)
+        public VendingMachineFactory(IUnityContainer unityContainer)
         {
-            _output = output;
-            _objectSerializer = objectSerializer;
-            _vendingMachineLogic = vendingMachineLogic;
+            _unityContainer = unityContainer;
         }
 
         public IVendingMachine BuildVendingMachine(
-            SpiralDispenserModule spiralDispenserModule, 
-            string branding,
-            string priceListFilename)
+            IDispenserModule dispenserModule,
+            string branding)
         {
-            _vendingMachineLogic.With(spiralDispenserModule);
+            var logic = _unityContainer.Resolve<IVendingMachineLogic>(
+                new ResolverOverride[]
+                {
+                    new ParameterOverride("dispenserModule", dispenserModule),
+                });
 
             var vendingMachine =
                 new VendingMachine(
-                    _output,
-                    _objectSerializer,
-                    _vendingMachineLogic,
+                    _unityContainer.Resolve<IUserOutput>(),
+                    _unityContainer.Resolve<IDataLoader<PriceListDto>>(),
+                    logic,
                     branding);
-            vendingMachine.LoadPriceList(priceListFilename);
+
             return vendingMachine;
         }
     }

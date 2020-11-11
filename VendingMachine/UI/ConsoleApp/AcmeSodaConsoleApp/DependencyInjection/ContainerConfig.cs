@@ -1,4 +1,5 @@
 ﻿using System.Diagnostics.CodeAnalysis;
+using Fippa.DependencyInjection;
 using Fippa.IO.Console;
 using Fippa.IO.Serialization;
 using Fippa.IO.Streams;
@@ -20,8 +21,9 @@ namespace AcmeSodaConsoleApp.DependencyInjection
     [ExcludeFromCodeCoverage]
     public sealed class ContainerConfig
     {
-        public static void Configure(UnityContainer container)
+        public static void Configure(IUnityContainer container)
         {
+            //container.RegisterType<IDIContainer, DIContainer>(TypeLifetime.Singleton);
             container.RegisterType<IConsoleApplication, ConsoleApplication>();
             container.RegisterType<IConsole, CommandLineConsole>();
             container.RegisterType<IUserInput, ConsoleKeypad>();
@@ -32,7 +34,7 @@ namespace AcmeSodaConsoleApp.DependencyInjection
             ConfigureSharedInfrastructure(container);
         }
 
-        private static void ConfigureSharedDomainModels(UnityContainer container)
+        private static void ConfigureSharedDomainModels(IUnityContainer container)
         {
             container.RegisterType<IDispenserModule, SpiralDispenserModule>();
 
@@ -41,14 +43,14 @@ namespace AcmeSodaConsoleApp.DependencyInjection
             container.RegisterType<ICommandController, CommandController>();
         }
 
-        private static void ConfigureSharedServices(UnityContainer container)
+        private static void ConfigureSharedServices(IUnityContainer container)
         {
             container.RegisterType<IVendingMachineFactory, VendingMachineFactory>();
             container.RegisterType<IVendingMachine, VendingMachine.Shared.Services.VendingMachine>();
             container.RegisterType(typeof(IObjectSerializer<>), typeof(JsonSerialization<>), new TransientLifetimeManager());
         }
 
-        private static void ConfigureSharedInfrastructure(UnityContainer container)
+        private static void ConfigureSharedInfrastructure(IUnityContainer container)
         {
             container.RegisterType<IStreamReader, StreamReaderWrapper>();
             container.RegisterType(typeof(IObjectSerializer<>), typeof(JsonSerialization<>), new TransientLifetimeManager());

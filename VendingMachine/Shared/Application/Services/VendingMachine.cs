@@ -56,7 +56,13 @@ namespace VendingMachine.Shared.Services
             return _vendingMachine.MakeSelection(selectionCode);
         }
 
-        internal void LoadPriceList(string filename)
+        public void Initialise(string priceListFilename)
+        {
+            _output.ShowWelcomeMessage(Manufacturer);
+            LoadPriceList(priceListFilename);
+        }
+
+        private void LoadPriceList(string filename)
         {
             //using var reader = new StreamReaderWrapper(filename);
             //var priceList = _dataLoader.Load(reader);

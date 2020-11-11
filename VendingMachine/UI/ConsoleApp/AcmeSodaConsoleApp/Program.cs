@@ -3,6 +3,7 @@ using System.Diagnostics.CodeAnalysis;
 using System.Threading;
 using AcmeSodaConsoleApp.DependencyInjection;
 using Unity;
+using Unity.Resolution;
 
 namespace AcmeSodaConsoleApp
 {
@@ -14,7 +15,11 @@ namespace AcmeSodaConsoleApp
             var unityContainer = DIContainer.Instance.Unity;
             ContainerConfig.Configure(unityContainer);
 
-            var app = unityContainer.Resolve<IConsoleApplication>();
+            var app = unityContainer.Resolve<IConsoleApplication>(
+                new ResolverOverride[]
+                {
+                    new ParameterOverride("unity", unityContainer)
+                });
             app.Run();
 
             Console.WriteLine();

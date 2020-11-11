@@ -53,3 +53,5 @@
 /VendingMachine/Shared/Infrastructure/Infrastructure/bin
 /VendingMachine/Shared/Infrastructure/Infrastructure/obj
 /VendingMachine/Shared/Infrastructure/Infrastructure.Tests/bin/Debug/netcoreapp3.1
+/Fippa/Fippa.DependencyInjection/obj
+/Fippa/Fippa.DependencyInjection/bin/Debug/netstandard2.0
