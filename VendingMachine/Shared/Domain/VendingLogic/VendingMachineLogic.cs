@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Diagnostics;
 using Ardalis.GuardClauses;
 using Fippa.Money.Payments;
 using VendingMachine.Shared.Domain.Models;
@@ -18,7 +17,6 @@ namespace VendingMachine.Shared.Domain.VendingLogic
         private IDispenserModule _dispenserModule;
 
         public EventHandler<BalanceChangedEvent> BalanceChanged { get; set; }
-        public EventHandler<ItemDispensedNotificationEvent> ItemDispensed { get; set; }
 
         public decimal Balance
         {

@@ -15,7 +15,7 @@ namespace VendingMachine.Shared.Domain.VendingLogic
         SelectionResult MakeSelection(string selectionCode);
 
         EventHandler<BalanceChangedEvent> BalanceChanged { get; set; }
-        EventHandler<ItemDispensedNotificationEvent> ItemDispensed { get; set; }
+
         void UpdatePriceList(PriceList priceList);
         void With(IDispenserModule dispenserModule);
     }
