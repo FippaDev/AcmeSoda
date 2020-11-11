@@ -7,16 +7,18 @@ namespace VendingMachine.Shared.Domain.Models.Tests
     [ExcludeFromCodeCoverage]
     public class SpiralDispenserTests
     {
+        private const ushort SpiralCapacity = 10;
+
         [Fact]
         public void Constructor_MatchingNumberOfItemsAndCodes_InitialisesStockArray()
         {
-            var spiralDispenser = new SpiralDispenser();
+            var spiralDispenser = new SpiralDispenser(SpiralCapacity);
         }
 
         [Fact]
         public void Dispense_WhenEmpty_ReturnsNullObject()
         {
-            var dispenser = new SpiralDispenser();
+            var dispenser = new SpiralDispenser(SpiralCapacity);
             var stockItem = dispenser.Dispense();
             Assert.Equal(typeof(NullObjectStockItem), stockItem.GetType());
         }
@@ -24,7 +26,7 @@ namespace VendingMachine.Shared.Domain.Models.Tests
         [Fact]
         public void AddStockItem_WhilstLessThanMaxCapacity_AddsStockItemAndReturnsTrue()
         {
-            var dispenser = new SpiralDispenser();
+            var dispenser = new SpiralDispenser(SpiralCapacity);
             bool added = dispenser.AddStockItem(new Confectionery("Mars"));
 
             Assert.True(added);
@@ -34,7 +36,7 @@ namespace VendingMachine.Shared.Domain.Models.Tests
         [Fact]
         public void AddStockItem_WhenFull_CannotAddAnyMoreItemsAndReturnsFalse()
         {
-            var dispenser = new SpiralDispenser();
+            var dispenser = new SpiralDispenser(SpiralCapacity);
 
             for (int i = 0; i < SpiralDispenser.MaxCapacity; i++)
             {
@@ -44,13 +46,13 @@ namespace VendingMachine.Shared.Domain.Models.Tests
             bool added = dispenser.AddStockItem(new Confectionery("SW01"));
 
             Assert.False(added);
-            Assert.Equal((uint)SpiralDispenser.MaxCapacity, dispenser.StockCount());
+            Assert.Equal(SpiralDispenser.MaxCapacity, dispenser.StockCount());
         }
 
         [Fact]
         public void AddStockItem_AddingDifferentTypesToTheQueue_ReturnsItemsInCorrectOrder()
         {
-            var dispenser = new SpiralDispenser();
+            var dispenser = new SpiralDispenser(SpiralCapacity);
             dispenser.AddStockItem(new Confectionery("SW01"));
             dispenser.AddStockItem(new Crisps("CR01"));
             

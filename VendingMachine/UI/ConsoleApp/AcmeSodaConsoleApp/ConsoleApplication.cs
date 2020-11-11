@@ -17,7 +17,10 @@ namespace AcmeSodaConsoleApp
         public ConsoleApplication(IUnityContainer container)
         {
             _container = container;
-            var dispenserModule = _container.Resolve<SpiralDispenserModule>(new ParameterOverride("rows", 3), new ParameterOverride("columns", 4));
+            var dispenserModule = _container.Resolve<SpiralDispenserModule>(
+                new ParameterOverride("rows", (ushort)5),
+                new ParameterOverride("columns", (ushort)8),
+                new ParameterOverride("depth", (ushort)15));
 
             var factory = container.Resolve<IVendingMachineFactory>();
             _vendingMachine = factory.BuildVendingMachine(dispenserModule, "Pepsi");

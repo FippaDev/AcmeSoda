@@ -16,10 +16,11 @@ namespace VendingMachine.Shared.Domain.Models
         // value = spiral
         private readonly Dictionary<string, SpiralDispenser> _spirals;
 
-        public SpiralDispenserModule(int rows, int columns)
+        public SpiralDispenserModule(ushort rows, ushort columns, ushort depth)
         {
             Guard.Against.Zero(rows, nameof(rows));
             Guard.Against.Zero(columns, nameof(columns));
+            Guard.Against.Zero(depth, nameof(depth));
 
             _spirals = new Dictionary<string, SpiralDispenser>();
             for (ushort r = 0; r < rows; r++)
@@ -27,7 +28,7 @@ namespace VendingMachine.Shared.Domain.Models
                 for (ushort c = 1; c <= columns; c++)
                 {
                     string id = $"{'A' + r}{c}";
-                    _spirals.Add(id, new SpiralDispenser());
+                    _spirals.Add(id, new SpiralDispenser(depth));
                 }
             }
         }

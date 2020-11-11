@@ -1,22 +1,26 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using Ardalis.GuardClauses;
 using VendingMachine.Shared.Domain.Models.Stock;
 
 namespace VendingMachine.Shared.Domain.Models
 {
     internal class SpiralDispenser : IDispenser
     {
-        public const int MaxCapacity = 10;
+        private readonly Queue<BaseStockItem> _spiral;
+
+        public static ushort MaxCapacity { get; private set; }
 
         public BaseStockItem StockItem =>
             _spiral.Any()
                 ? _spiral.Peek()
                 : new NullObjectStockItem();
 
-        private readonly Queue<BaseStockItem> _spiral = new Queue<BaseStockItem>(MaxCapacity);
-
-        public SpiralDispenser()
+        public SpiralDispenser(ushort depth)
         {
+            Guard.Against.Zero(depth, nameof(depth));
+            MaxCapacity = depth;
+            _spiral = new Queue<BaseStockItem>(MaxCapacity);
         }
 
         public BaseStockItem Dispense()

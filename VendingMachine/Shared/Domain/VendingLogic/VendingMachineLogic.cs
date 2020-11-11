@@ -47,6 +47,7 @@ namespace VendingMachine.Shared.Domain.VendingLogic
         {
             Guard.Against.Null(payment, nameof(payment));
             var cashPayment = payment as ICashPayment;
+
             if (cashPayment == null)
             {
                 throw new ArgumentException("Only cash payments are accepted. There is no card module");
