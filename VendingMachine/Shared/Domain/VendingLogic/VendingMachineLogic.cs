@@ -1,8 +1,11 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using Ardalis.GuardClauses;
 using Fippa.Money.Payments;
 using VendingMachine.Shared.Domain.Models;
 using VendingMachine.Shared.Domain.Models.Pricing;
+using VendingMachine.Shared.Domain.VendingLogic.Commands;
 using VendingMachine.Shared.Domain.VendingLogic.Payments;
 using VendingMachine.Shared.Domain.VendingLogic.Selection;
 
@@ -14,7 +17,10 @@ namespace VendingMachine.Shared.Domain.VendingLogic
         private decimal _balance;
 
         private PriceList _priceList;
-        private IDispenserModule _dispenserModule;
+        private readonly IDispenserModule _dispenserModule;
+
+        private List<PaymentCommand> _deposits = new List<PaymentCommand>();
+        private List<ProductCommand> _purchases = new List<ProductCommand>();
 
         public EventHandler<BalanceChangedEvent> BalanceChanged { get; set; }
 
@@ -62,6 +68,23 @@ namespace VendingMachine.Shared.Domain.VendingLogic
             Balance = 0.00m;
         }
 
+        public void AddDeposit(PaymentCommand command)
+        {
+            _deposits.Add(command);
+            Balance += command.Value;
+
+            if (Balance > _purchases.Sum(c => c.Value))
+            {
+                // TODO: Make automatic purchase
+            }
+        }
+
+        public void AddPurchase(ProductCommand command)
+        {
+            _purchases.Add(command);
+            Balance -= command.Value;
+        }
+
         public SelectionResult MakeSelection(string selectionCode)
         {
             if (!_dispenserModule.IsValidSelectionCode(selectionCode))
@@ -69,9 +92,9 @@ namespace VendingMachine.Shared.Domain.VendingLogic
                 return SelectionResult.InvalidSelection;
             }
 
-            var stockItem = _dispenserModule.QuerySpiral(selectionCode);
+            var stockItem = _dispenserModule.IdentifyProductBySelectionCode(selectionCode);
 
-            var selectedItem = _priceList.GetItem(stockItem.StockKeepingUnit);
+            var selectedItem = _priceList.GetProductDetails(stockItem.StockKeepingUnit);
 
             if (Balance < selectedItem.RetailPrice)
             {
@@ -79,6 +102,21 @@ namespace VendingMachine.Shared.Domain.VendingLogic
             }
 
             return ProcessTransaction(selectionCode, selectedItem);
+        }
+
+        public Tuple<ProductCommand, SelectionResult> IdentifyProductBySelectionCode(string selectionCode)
+        {
+            if (_dispenserModule.IsValidSelectionCode(selectionCode))
+            {
+                var stockItem = _dispenserModule.IdentifyProductBySelectionCode(selectionCode);
+                var product = _priceList.GetProductDetails(stockItem.StockKeepingUnit);
+                return new Tuple<ProductCommand, SelectionResult>(
+                    new ProductCommand(product.RetailPrice), SelectionResult.ValidSelection);
+            }
+
+            return
+                new Tuple<ProductCommand, SelectionResult>(
+                    null, SelectionResult.InvalidSelection);
         }
 
         private SelectionResult ProcessTransaction(string selectionCode, PriceListStockItem selectedItem)
@@ -97,11 +135,6 @@ namespace VendingMachine.Shared.Domain.VendingLogic
         public void UpdatePriceList(PriceList priceList)
         {
             _priceList = priceList;
-        }
-
-        public void With(IDispenserModule dispenserModule)
-        {
-            _dispenserModule = dispenserModule;
         }
     }
 }

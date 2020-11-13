@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using Ardalis.GuardClauses;
 using Fippa.Money.Payments;
@@ -8,6 +9,7 @@ using UserInterface;
 using VendingMachine.Shared.Domain.Domain.VendingMachine;
 using VendingMachine.Shared.Domain.Models.Pricing;
 using VendingMachine.Shared.Domain.VendingLogic;
+using VendingMachine.Shared.Domain.VendingLogic.Commands;
 using VendingMachine.Shared.Domain.VendingLogic.Payments;
 using VendingMachine.Shared.Domain.VendingLogic.Selection;
 
@@ -16,7 +18,7 @@ namespace VendingMachine.Shared.Services
 {
     public class VendingMachine : IVendingMachine
     {
-        private readonly IVendingMachineLogic _vendingMachine;
+        private readonly IVendingMachineLogic _logic;
         private readonly IUserOutput _output;
         private readonly IDataLoader<PriceListDto> _dataLoader;
 
@@ -25,32 +27,37 @@ namespace VendingMachine.Shared.Services
         public VendingMachine(
             IUserOutput output,
             IDataLoader<PriceListDto> dataLoader,
-            IVendingMachineLogic vendingMachine,
+            IVendingMachineLogic logic,
             string manufacturer)
         {
             _output = output;
             _dataLoader = dataLoader;
-            _vendingMachine = vendingMachine;
+            _logic = logic;
 
             Guard.Against.NullOrEmpty(manufacturer, nameof(manufacturer));
             Manufacturer = manufacturer;
 
-            _vendingMachine.BalanceChanged += OnBalanceChanged;
+            _logic.BalanceChanged += OnBalanceChanged;
         }
 
-        public void AddPayment(IPayment payment)
+        public void AddCommand(Command command)
         {
-            _vendingMachine.AddPayment(payment);
+            _logic.AddCommand(command);
+        }
+
+        public Tuple<ProductCommand, SelectionResult> IdentifyProductBySelectionCode(string selectionCode)
+        {
+            return _logic.IdentifyProductBySelectionCode(selectionCode);
         }
 
         private void OnBalanceChanged(object sender, BalanceChangedEvent e)
         {
-            _output.ShowBalance(_vendingMachine.Balance);
+            _output.ShowBalance(_logic.Balance);
         }
 
         public SelectionResult MakeSelection(string selectionCode)
         {
-            return _vendingMachine.MakeSelection(selectionCode);
+            return _logic.MakeSelection(selectionCode);
         }
 
         public void Initialise(string priceListFilename)
@@ -63,7 +70,7 @@ namespace VendingMachine.Shared.Services
         {
             //using var reader = new StreamReaderWrapper(filename);
             //var priceList = _dataLoader.Load(reader);
-            //_vendingMachine.UpdatePriceList(priceList);
+            //_logic.UpdatePriceList(priceList);
             
             var dto = _dataLoader.Load(filename);
 
@@ -79,7 +86,7 @@ namespace VendingMachine.Shared.Services
 
             var priceList = new PriceList(items);
 
-            _vendingMachine.UpdatePriceList(priceList);
+            _logic.UpdatePriceList(priceList);
         }
     }
 }

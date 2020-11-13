@@ -10,7 +10,6 @@ using UserInterface;
 using VendingMachine.Shared.Domain.Domain.VendingMachine;
 using VendingMachine.Shared.Domain.Models;
 using VendingMachine.Shared.Domain.VendingLogic;
-using VendingMachine.Shared.Domain.VendingLogic.Admin.Commands;
 using VendingMachine.Shared.Domain.VendingLogic.Payments;
 using VendingMachine.Shared.Services.Factories;
 
@@ -38,7 +37,6 @@ namespace AcmeSodaConsoleApp.DependencyInjection
 
             container.RegisterType<IPaymentModule<ICashPayment>, CoinModule>();
             container.RegisterType<IVendingMachineLogic, VendingMachineLogic>();
-            container.RegisterType<ICommandController, CommandController>();
         }
 
         private static void ConfigureSharedServices(IUnityContainer container)

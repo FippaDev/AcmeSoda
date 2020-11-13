@@ -10,7 +10,7 @@ namespace VendingMachine.Shared.Domain.Models.Pricing
         // Value = PriceListStockItem (with DisplayName and RRP)
         private readonly Dictionary<string, PriceListStockItem> _items;
 
-        public PriceListStockItem GetItem(string sku)
+        public PriceListStockItem GetProductDetails(string sku)
         {
             return _items[sku];
         }

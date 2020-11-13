@@ -38,10 +38,10 @@ namespace VendingMachine.Shared.Domain.Models
             return _spirals.Keys.ToList().AsReadOnly();
         }
 
-        public BaseStockItem QuerySpiral(string selectionCode)
+        public BaseStockItem IdentifyProductBySelectionCode(string selectionCode)
         {
             return 
-                _spirals[selectionCode].StockItem is PriceListStockItem 
+                _spirals[selectionCode].StockItem is PriceListStockItem
                     ? _spirals[selectionCode].StockItem
                     : new NullObjectStockItem();
         }

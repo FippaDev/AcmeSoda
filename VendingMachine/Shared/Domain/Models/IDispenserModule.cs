@@ -6,7 +6,7 @@ namespace VendingMachine.Shared.Domain.Models
     public interface IDispenserModule
     {
         ReadOnlyCollection<string> GetSelectionCodes();
-        BaseStockItem QuerySpiral(string selectionCode);
+        BaseStockItem IdentifyProductBySelectionCode(string selectionCode);
         BaseStockItem Dispense(string selectionCode);
         bool IsValidSelectionCode(string selectionCode);
     }

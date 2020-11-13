@@ -1,4 +1,5 @@
-﻿using Fippa.Money.Payments;
+﻿using System;
+using VendingMachine.Shared.Domain.VendingLogic.Commands;
 using VendingMachine.Shared.Domain.VendingLogic.Selection;
 
 namespace VendingMachine.Shared.Domain.Domain.VendingMachine
@@ -7,8 +8,8 @@ namespace VendingMachine.Shared.Domain.Domain.VendingMachine
     {
         string Manufacturer { get; }
 
-        void AddPayment(IPayment payment);
-        SelectionResult MakeSelection(string selectionCode);
         void Initialise(string priceListFile);
+        void AddCommand(VendingLogic.Commands.Command command);
+        Tuple<ProductCommand,SelectionResult> IdentifyProductBySelectionCode(string selectionCode);
     }
 }
