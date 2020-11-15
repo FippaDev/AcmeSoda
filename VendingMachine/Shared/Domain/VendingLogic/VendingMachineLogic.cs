@@ -4,6 +4,7 @@ using System.Linq;
 using Ardalis.GuardClauses;
 using Fippa.Money.Payments;
 using VendingMachine.Shared.Domain.Models;
+using VendingMachine.Shared.Domain.Models.Dispenser;
 using VendingMachine.Shared.Domain.VendingLogic.Commands;
 using VendingMachine.Shared.Domain.VendingLogic.Payments;
 using VendingMachine.Shared.Domain.VendingLogic.Selection;

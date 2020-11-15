@@ -8,7 +8,7 @@ using VendingMachine.Shared.Domain.Models.Pricing;
 using VendingMachine.Shared.Domain.Models.Stock;
 
 [assembly:InternalsVisibleTo("VendingMachine.Shared.Domain.Models.Tests")]
-namespace VendingMachine.Shared.Domain.Models
+namespace VendingMachine.Shared.Domain.Models.Dispenser
 {
     public class SpiralDispenserModule : IDispenserModule
     {

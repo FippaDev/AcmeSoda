@@ -3,6 +3,7 @@ using Unity.Resolution;
 using UserInterface;
 using VendingMachine.Shared.Domain.Domain.VendingMachine;
 using VendingMachine.Shared.Domain.Models;
+using VendingMachine.Shared.Domain.Models.Dispenser;
 using VendingMachine.Shared.Domain.VendingLogic;
 
 namespace VendingMachine.Shared.Services.Factories

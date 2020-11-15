@@ -1,4 +1,5 @@
 using System.Diagnostics.CodeAnalysis;
+using VendingMachine.Shared.Domain.Models.Dispenser;
 using VendingMachine.Shared.Domain.Models.Stock;
 using Xunit;
 
