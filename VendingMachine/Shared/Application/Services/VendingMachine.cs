@@ -20,18 +20,15 @@ namespace VendingMachine.Shared.Services
     {
         private readonly IVendingMachineLogic _logic;
         private readonly IUserOutput _output;
-        private readonly IDataLoader<PriceListDto> _dataLoader;
 
         public string Manufacturer { get; }
  
         public VendingMachine(
             IUserOutput output,
-            IDataLoader<PriceListDto> dataLoader,
             IVendingMachineLogic logic,
             string manufacturer)
         {
             _output = output;
-            _dataLoader = dataLoader;
             _logic = logic;
 
             Guard.Against.NullOrEmpty(manufacturer, nameof(manufacturer));
@@ -40,53 +37,41 @@ namespace VendingMachine.Shared.Services
             _logic.BalanceChanged += OnBalanceChanged;
         }
 
-        public void AddCommand(Command command)
-        {
-            _logic.AddCommand(command);
-        }
-
-        public Tuple<ProductCommand, SelectionResult> IdentifyProductBySelectionCode(string selectionCode)
-        {
-            return _logic.IdentifyProductBySelectionCode(selectionCode);
-        }
-
         private void OnBalanceChanged(object sender, BalanceChangedEvent e)
         {
             _output.ShowBalance(_logic.Balance);
         }
 
-        public SelectionResult MakeSelection(string selectionCode)
+        public SelectionResult MakeSelection(Selection selection)
         {
-            return _logic.MakeSelection(selectionCode);
+            return _logic.MakeSelection(selection);
         }
 
-        public void Initialise(string priceListFilename)
+        public void Initialise()
         {
             _output.ShowWelcomeMessage(Manufacturer);
-            LoadPriceList(priceListFilename);
         }
 
-        private void LoadPriceList(string filename)
+        public void AddPayment(PaymentCommand command)
         {
-            //using var reader = new StreamReaderWrapper(filename);
-            //var priceList = _dataLoader.Load(reader);
-            //_logic.UpdatePriceList(priceList);
-            
-            var dto = _dataLoader.Load(filename);
+            _logic.AddPayment(command);
+        }
 
-            var items = new List<PriceListStockItem>();
-            foreach (var item in dto.Items)
-            {
-                items.Add(
-                    new PriceListStockItem(
-                    item.Key, 
-                    item.Value.DisplayName, 
-                    item.Value.RetailPrice));
-            }
+        public void AddProduct(ProductCommand command)
+        {
+            _logic.AddProduct(command);
+        }
 
-            var priceList = new PriceList(items);
-
-            _logic.UpdatePriceList(priceList);
+        /// <summary>
+        /// Check that the selection code is valid and whether there is a product at that location.
+        /// </summary>
+        /// <param name="selectionCode"></param>
+        /// <returns></returns>
+        public Tuple<SelectionResult, Selection> ValidateSelection(string selectionCode)
+        {
+            return new Tuple<SelectionResult, Selection>(
+                SelectionResult.InvalidSelection,
+                new Selection(null, null, 0.00m));
         }
     }
 }

@@ -11,10 +11,9 @@ namespace VendingMachine.Shared.Domain.VendingLogic
         decimal Balance { get; }
         EventHandler<BalanceChangedEvent> BalanceChanged { get; set; }
 
-        void UpdatePriceList(PriceList priceList);
-        void AddDeposit(PaymentCommand command);
-        void AddPurchase(ProductCommand command);
-        SelectionResult MakeSelection(string selectionCode);
+        void AddPayment(PaymentCommand command);
+        void AddProduct(ProductCommand command);
+        SelectionResult MakeSelection(Selection.Selection selection);
         Tuple<ProductCommand, SelectionResult> IdentifyProductBySelectionCode(string selectionCode);
     }
 }

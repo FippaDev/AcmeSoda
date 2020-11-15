@@ -4,6 +4,7 @@ using Unity.Resolution;
 using UserInterface;
 using VendingMachine.Shared.Domain.Domain.VendingMachine;
 using VendingMachine.Shared.Domain.Models;
+using VendingMachine.Shared.Domain.VendingLogic;
 using VendingMachine.Shared.Services.Factories;
 
 namespace AcmeSodaConsoleApp
@@ -23,12 +24,12 @@ namespace AcmeSodaConsoleApp
                 new ParameterOverride("depth", (ushort)15));
 
             var factory = container.Resolve<IVendingMachineFactory>();
-            _vendingMachine = factory.BuildVendingMachine(dispenserModule, "Pepsi");
+            _vendingMachine = factory.BuildVendingMachine(dispenserModule, "Pepsi", "pepsi.json");
         }
 
         public void Run()
         {
-            _vendingMachine.Initialise("pepsi.json");
+            _vendingMachine.Initialise();
             var input = _container.Resolve<IUserInput>();
             input.Run(_vendingMachine);
         }

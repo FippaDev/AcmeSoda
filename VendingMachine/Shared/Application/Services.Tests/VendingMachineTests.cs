@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Diagnostics.CodeAnalysis;
-using Infrastructure;
-using Infrastructure.DTOs;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using UserInterface;
@@ -13,17 +11,18 @@ namespace VendingMachine.Shared.Services.Tests
     public class VendingMachineTests
     {
         private readonly Mock<IUserOutput> _mockOutput = new Mock<IUserOutput>();
-        private readonly Mock<IDataLoader<PriceListDto>> _mockDataLoader = new Mock<IDataLoader<PriceListDto>>();
         private readonly Mock<IVendingMachineLogic> _mockLogic = new Mock<IVendingMachineLogic>();
 
-        [TestMethod, ExpectedException(typeof(ArgumentException))]
+        [TestMethod]
         public void VendingMachine_WithEmptyManufacturerName_ThrowsException()
         {
-            var vendingMachine = new VendingMachine(
-                _mockOutput.Object,
-                _mockDataLoader.Object,
-                _mockLogic.Object,
-                string.Empty);
+            Assert.ThrowsException<ArgumentException>(() =>
+            {
+                new VendingMachine(
+                    _mockOutput.Object,
+                    _mockLogic.Object,
+                    string.Empty);
+            });
         }
 
         [TestMethod]
@@ -31,7 +30,6 @@ namespace VendingMachine.Shared.Services.Tests
         {
             var pepsiMachine = new VendingMachine(
                 _mockOutput.Object,
-                _mockDataLoader.Object,
                 _mockLogic.Object,
                 "Pepsi");
 

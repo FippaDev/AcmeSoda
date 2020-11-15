@@ -14,9 +14,9 @@ namespace VendingMachine.Shared.Domain.VendingLogic
     public class VendingMachineLogic : IVendingMachineLogic
     {
         private readonly IPaymentModule<ICashPayment> _coinModule;
+        private readonly IPriceListService _priceListService;
         private decimal _balance;
 
-        private PriceList _priceList;
         private readonly IDispenserModule _dispenserModule;
 
         private List<PaymentCommand> _deposits = new List<PaymentCommand>();
@@ -37,10 +37,12 @@ namespace VendingMachine.Shared.Domain.VendingLogic
 
         public VendingMachineLogic(
             IDispenserModule dispenserModule,
-            IPaymentModule<ICashPayment> coinModule)
+            IPaymentModule<ICashPayment> coinModule,
+            IPriceListService priceListService)
         {
             _dispenserModule = dispenserModule;
             _coinModule = coinModule;
+            _priceListService = priceListService;
             _coinModule.MoneyAdded += OnMoneyAdded;
         }
 
@@ -68,7 +70,7 @@ namespace VendingMachine.Shared.Domain.VendingLogic
             Balance = 0.00m;
         }
 
-        public void AddDeposit(PaymentCommand command)
+        public void AddPayment(PaymentCommand command)
         {
             _deposits.Add(command);
             Balance += command.Value;
@@ -79,29 +81,25 @@ namespace VendingMachine.Shared.Domain.VendingLogic
             }
         }
 
-        public void AddPurchase(ProductCommand command)
+        public void AddProduct(ProductCommand command)
         {
             _purchases.Add(command);
             Balance -= command.Value;
         }
 
-        public SelectionResult MakeSelection(string selectionCode)
+        public SelectionResult MakeSelection(Selection.Selection selection)
         {
-            if (!_dispenserModule.IsValidSelectionCode(selectionCode))
+            if (!_dispenserModule.IsValidSelectionCode(selection.Code))
             {
                 return SelectionResult.InvalidSelection;
             }
 
-            var stockItem = _dispenserModule.IdentifyProductBySelectionCode(selectionCode);
-
-            var selectedItem = _priceList.GetProductDetails(stockItem.StockKeepingUnit);
-
-            if (Balance < selectedItem.RetailPrice)
+            if (Balance < selection.Price)
             {
                 return SelectionResult.InsufficientFunds;
             }
 
-            return ProcessTransaction(selectionCode, selectedItem);
+            return ProcessTransaction(selection);
         }
 
         public Tuple<ProductCommand, SelectionResult> IdentifyProductBySelectionCode(string selectionCode)
@@ -109,9 +107,9 @@ namespace VendingMachine.Shared.Domain.VendingLogic
             if (_dispenserModule.IsValidSelectionCode(selectionCode))
             {
                 var stockItem = _dispenserModule.IdentifyProductBySelectionCode(selectionCode);
-                var product = _priceList.GetProductDetails(stockItem.StockKeepingUnit);
+                var itemPrice = _priceListService.PriceLookup(stockItem.StockKeepingUnit);
                 return new Tuple<ProductCommand, SelectionResult>(
-                    new ProductCommand(product.RetailPrice), SelectionResult.ValidSelection);
+                    new ProductCommand(itemPrice), SelectionResult.ValidSelection);
             }
 
             return
@@ -119,22 +117,17 @@ namespace VendingMachine.Shared.Domain.VendingLogic
                     null, SelectionResult.InvalidSelection);
         }
 
-        private SelectionResult ProcessTransaction(string selectionCode, PriceListStockItem selectedItem)
+        private SelectionResult ProcessTransaction(Selection.Selection selection)
         {
             // TODO: Check the stock levels
 
-            Balance -= selectedItem.RetailPrice;
+            Balance -= selection.Price;
 
             BalanceChanged?.Invoke(this, new BalanceChangedEvent(Balance));
 
-            _dispenserModule.Dispense(selectionCode);
+            _dispenserModule.Dispense(selection.Code);
 
             return SelectionResult.ValidSelection;
-        }
-
-        public void UpdatePriceList(PriceList priceList)
-        {
-            _priceList = priceList;
         }
     }
 }

@@ -37,6 +37,8 @@ namespace AcmeSodaConsoleApp.DependencyInjection
 
             container.RegisterType<IPaymentModule<ICashPayment>, CoinModule>();
             container.RegisterType<IVendingMachineLogic, VendingMachineLogic>();
+
+            container.RegisterSingleton<IPriceListService, PriceListService>();
         }
 
         private static void ConfigureSharedServices(IUnityContainer container)

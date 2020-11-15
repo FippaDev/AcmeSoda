@@ -15,6 +15,11 @@ namespace VendingMachine.Shared.Domain.VendingLogic.Commands
             Guard.Against.PositiveOrZero(value, nameof(value));
         }
 
+        public ProductCommand(Selection.Selection selection)
+            : base(selection.Price)
+        {
+        }
+
         public override void Execute()
         {
             throw new NotImplementedException();

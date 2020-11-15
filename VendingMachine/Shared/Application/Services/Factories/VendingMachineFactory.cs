@@ -5,6 +5,7 @@ using Unity.Resolution;
 using UserInterface;
 using VendingMachine.Shared.Domain.Domain.VendingMachine;
 using VendingMachine.Shared.Domain.Models;
+using VendingMachine.Shared.Domain.Models.Pricing;
 using VendingMachine.Shared.Domain.VendingLogic;
 
 namespace VendingMachine.Shared.Services.Factories
@@ -20,15 +21,18 @@ namespace VendingMachine.Shared.Services.Factories
 
         public IVendingMachine BuildVendingMachine(
             IDispenserModule dispenserModule,
-            string branding)
+            string branding, 
+            string priceListFile)
         {
+            var priceListService = _unityContainer.Resolve<IPriceListService>();
+            priceListService.Load(priceListFile);
+
             var logic = _unityContainer.Resolve<IVendingMachineLogic>(
                 new ParameterOverride("dispenserModule", dispenserModule));
 
             var vendingMachine =
                 new VendingMachine(
                     _unityContainer.Resolve<IUserOutput>(),
-                    _unityContainer.Resolve<IDataLoader<PriceListDto>>(),
                     logic,
                     branding);
 

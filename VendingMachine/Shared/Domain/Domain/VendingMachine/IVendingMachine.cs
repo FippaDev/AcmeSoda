@@ -8,8 +8,9 @@ namespace VendingMachine.Shared.Domain.Domain.VendingMachine
     {
         string Manufacturer { get; }
 
-        void Initialise(string priceListFile);
-        void AddCommand(VendingLogic.Commands.Command command);
-        Tuple<ProductCommand,SelectionResult> IdentifyProductBySelectionCode(string selectionCode);
+        void Initialise();
+        void AddPayment(PaymentCommand command);
+        void AddProduct(ProductCommand command);
+        Tuple<SelectionResult, Selection> ValidateSelection(string selectionCode);
     }
 }

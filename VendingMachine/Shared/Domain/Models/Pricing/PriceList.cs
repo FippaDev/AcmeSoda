@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Ardalis.GuardClauses;
 
@@ -28,6 +29,13 @@ namespace VendingMachine.Shared.Domain.Models.Pricing
                     i.StockKeepingUnit, 
                     new PriceListStockItem(i.StockKeepingUnit, i.DisplayName, i.RetailPrice));
             }
+        }
+
+        public decimal PriceLookup(string sku)
+        {
+            return _items
+                .Single(i => i.Key.Equals(sku, StringComparison.OrdinalIgnoreCase))
+                .Value.RetailPrice;
         }
     }
 }
