@@ -1,11 +1,8 @@
-﻿using Infrastructure;
-using Infrastructure.DTOs;
-using Unity;
+﻿using Unity;
 using Unity.Resolution;
 using UserInterface;
 using VendingMachine.Shared.Domain.Domain.VendingMachine;
 using VendingMachine.Shared.Domain.Models;
-using VendingMachine.Shared.Domain.Models.Pricing;
 using VendingMachine.Shared.Domain.VendingLogic;
 
 namespace VendingMachine.Shared.Services.Factories

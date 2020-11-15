@@ -1,13 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using Ardalis.GuardClauses;
-using Fippa.Money.Payments;
-using Infrastructure;
-using Infrastructure.DTOs;
 using UserInterface;
 using VendingMachine.Shared.Domain.Domain.VendingMachine;
-using VendingMachine.Shared.Domain.Models.Pricing;
 using VendingMachine.Shared.Domain.VendingLogic;
 using VendingMachine.Shared.Domain.VendingLogic.Commands;
 using VendingMachine.Shared.Domain.VendingLogic.Payments;

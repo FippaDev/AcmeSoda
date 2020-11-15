@@ -4,7 +4,6 @@ using Unity.Resolution;
 using UserInterface;
 using VendingMachine.Shared.Domain.Domain.VendingMachine;
 using VendingMachine.Shared.Domain.Models;
-using VendingMachine.Shared.Domain.VendingLogic;
 using VendingMachine.Shared.Services.Factories;
 
 namespace AcmeSodaConsoleApp

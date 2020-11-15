@@ -1,5 +1,4 @@
 ﻿using System;
-using VendingMachine.Shared.Domain.Models.Pricing;
 using VendingMachine.Shared.Domain.VendingLogic.Commands;
 using VendingMachine.Shared.Domain.VendingLogic.Payments;
 using VendingMachine.Shared.Domain.VendingLogic.Selection;
