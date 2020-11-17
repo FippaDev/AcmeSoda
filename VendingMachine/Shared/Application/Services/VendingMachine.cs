@@ -3,10 +3,11 @@ using System.Runtime.CompilerServices;
 using Ardalis.GuardClauses;
 using UserInterface;
 using VendingMachine.Shared.Domain.Domain.VendingMachine;
+using VendingMachine.Shared.Domain.Models.Selection;
+using VendingMachine.Shared.Domain.Models.Stock;
 using VendingMachine.Shared.Domain.VendingLogic;
 using VendingMachine.Shared.Domain.VendingLogic.Commands;
 using VendingMachine.Shared.Domain.VendingLogic.Payments;
-using VendingMachine.Shared.Domain.VendingLogic.Selection;
 
 [assembly: InternalsVisibleTo("VendingMachine.Shared.Services.Tests")]
 namespace VendingMachine.Shared.Services
@@ -37,11 +38,6 @@ namespace VendingMachine.Shared.Services
             _output.ShowBalance(_logic.Balance);
         }
 
-        public SelectionResult MakeSelection(Selection selection)
-        {
-            return _logic.MakeSelection(selection);
-        }
-
         public void Initialise()
         {
             _output.ShowWelcomeMessage(Manufacturer);
@@ -57,16 +53,9 @@ namespace VendingMachine.Shared.Services
             _logic.AddProduct(command);
         }
 
-        /// <summary>
-        /// Check that the selection code is valid and whether there is a product at that location.
-        /// </summary>
-        /// <param name="selectionCode"></param>
-        /// <returns></returns>
-        public Tuple<SelectionResult, Selection> ValidateSelection(string selectionCode)
+        public Tuple<SelectionResult, BaseStockItem> FindStockItem(ISelection selection)
         {
-            return new Tuple<SelectionResult, Selection>(
-                SelectionResult.InvalidSelection,
-                new Selection(null, null, 0.00m));
+            return _logic.FindStockItem(selection);
         }
     }
 }

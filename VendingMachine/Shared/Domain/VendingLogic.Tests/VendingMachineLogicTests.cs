@@ -3,7 +3,6 @@ using System.Diagnostics.CodeAnalysis;
 using Fippa.Money.Currencies;
 using Fippa.Money.Payments;
 using Moq;
-using VendingMachine.Shared.Domain.Models;
 using VendingMachine.Shared.Domain.Models.Dispenser;
 using VendingMachine.Shared.Domain.VendingLogic.Payments;
 using Xunit;

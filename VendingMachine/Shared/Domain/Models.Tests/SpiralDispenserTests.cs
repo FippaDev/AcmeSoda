@@ -13,13 +13,13 @@ namespace VendingMachine.Shared.Domain.Models.Tests
         [Fact]
         public void Constructor_MatchingNumberOfItemsAndCodes_InitialisesStockArray()
         {
-            var spiralDispenser = new SpiralDispenser(SpiralCapacity);
+            var spiralDispenser = new SpiralDispenser(0, SpiralCapacity);
         }
 
         [Fact]
         public void Dispense_WhenEmpty_ReturnsNullObject()
         {
-            var dispenser = new SpiralDispenser(SpiralCapacity);
+            var dispenser = new SpiralDispenser(0, SpiralCapacity);
             var stockItem = dispenser.Dispense();
             Assert.Equal(typeof(NullObjectStockItem), stockItem.GetType());
         }
@@ -27,7 +27,7 @@ namespace VendingMachine.Shared.Domain.Models.Tests
         [Fact]
         public void AddStockItem_WhilstLessThanMaxCapacity_AddsStockItemAndReturnsTrue()
         {
-            var dispenser = new SpiralDispenser(SpiralCapacity);
+            var dispenser = new SpiralDispenser(0, SpiralCapacity);
             bool added = dispenser.AddStockItem(new Confectionery("Mars"));
 
             Assert.True(added);
@@ -37,7 +37,7 @@ namespace VendingMachine.Shared.Domain.Models.Tests
         [Fact]
         public void AddStockItem_WhenFull_CannotAddAnyMoreItemsAndReturnsFalse()
         {
-            var dispenser = new SpiralDispenser(SpiralCapacity);
+            var dispenser = new SpiralDispenser(0, SpiralCapacity);
 
             for (int i = 0; i < SpiralDispenser.MaxCapacity; i++)
             {
@@ -53,7 +53,7 @@ namespace VendingMachine.Shared.Domain.Models.Tests
         [Fact]
         public void AddStockItem_AddingDifferentTypesToTheQueue_ReturnsItemsInCorrectOrder()
         {
-            var dispenser = new SpiralDispenser(SpiralCapacity);
+            var dispenser = new SpiralDispenser(0, SpiralCapacity);
             dispenser.AddStockItem(new Confectionery("SW01"));
             dispenser.AddStockItem(new Crisps("CR01"));
             

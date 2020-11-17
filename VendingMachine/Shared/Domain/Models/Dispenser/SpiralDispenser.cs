@@ -11,14 +11,18 @@ namespace VendingMachine.Shared.Domain.Models.Dispenser
 
         public static ushort MaxCapacity { get; private set; }
 
+        public ushort Id { get; }
+
         public BaseStockItem StockItem =>
             _spiral.Any()
                 ? _spiral.Peek()
                 : new NullObjectStockItem();
 
-        public SpiralDispenser(ushort depth)
+        public SpiralDispenser(ushort id, ushort depth)
         {
+            Guard.Against.NegativeOrZero(id, nameof(id));
             Guard.Against.Zero(depth, nameof(depth));
+            Id = id;
             MaxCapacity = depth;
             _spiral = new Queue<BaseStockItem>(MaxCapacity);
         }

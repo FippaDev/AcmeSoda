@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using Ardalis.GuardClauses;
 using Fippa.Money.Payments;
-using VendingMachine.Shared.Domain.Models;
 using VendingMachine.Shared.Domain.Models.Dispenser;
+using VendingMachine.Shared.Domain.Models.Selection;
+using VendingMachine.Shared.Domain.Models.Stock;
 using VendingMachine.Shared.Domain.VendingLogic.Commands;
 using VendingMachine.Shared.Domain.VendingLogic.Payments;
-using VendingMachine.Shared.Domain.VendingLogic.Selection;
 
 namespace VendingMachine.Shared.Domain.VendingLogic
 {
@@ -87,47 +87,9 @@ namespace VendingMachine.Shared.Domain.VendingLogic
             Balance -= command.Value;
         }
 
-        public SelectionResult MakeSelection(Selection.Selection selection)
+        public Tuple<SelectionResult, BaseStockItem> FindStockItem(ISelection selection)
         {
-            if (!_dispenserModule.IsValidSelectionCode(selection.Code))
-            {
-                return SelectionResult.InvalidSelection;
-            }
-
-            if (Balance < selection.Price)
-            {
-                return SelectionResult.InsufficientFunds;
-            }
-
-            return ProcessTransaction(selection);
-        }
-
-        public Tuple<ProductCommand, SelectionResult> IdentifyProductBySelectionCode(string selectionCode)
-        {
-            if (_dispenserModule.IsValidSelectionCode(selectionCode))
-            {
-                var stockItem = _dispenserModule.IdentifyProductBySelectionCode(selectionCode);
-                var itemPrice = _priceListService.PriceLookup(stockItem.StockKeepingUnit);
-                return new Tuple<ProductCommand, SelectionResult>(
-                    new ProductCommand(itemPrice), SelectionResult.ValidSelection);
-            }
-
-            return
-                new Tuple<ProductCommand, SelectionResult>(
-                    null, SelectionResult.InvalidSelection);
-        }
-
-        private SelectionResult ProcessTransaction(Selection.Selection selection)
-        {
-            // TODO: Check the stock levels
-
-            Balance -= selection.Price;
-
-            BalanceChanged?.Invoke(this, new BalanceChangedEvent(Balance));
-
-            _dispenserModule.Dispense(selection.Code);
-
-            return SelectionResult.ValidSelection;
+            return _dispenserModule.FindStockItem(selection);
         }
     }
 }

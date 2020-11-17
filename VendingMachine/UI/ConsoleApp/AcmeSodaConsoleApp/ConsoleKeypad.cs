@@ -4,8 +4,9 @@ using Fippa.IO.Console;
 using Fippa.Money.Currencies;
 using UserInterface;
 using VendingMachine.Shared.Domain.Domain.VendingMachine;
+using VendingMachine.Shared.Domain.Models.Selection;
+using VendingMachine.Shared.Domain.Models.Stock;
 using VendingMachine.Shared.Domain.VendingLogic.Commands;
-using VendingMachine.Shared.Domain.VendingLogic.Selection;
 
 namespace AcmeSodaConsoleApp
 {
@@ -52,15 +53,14 @@ namespace AcmeSodaConsoleApp
             }
 
             // Assume cmd is a selection command
-            string selectionCode = cmd;
-
-            Tuple<SelectionResult, Selection> result = _vendingMachine.ValidateSelection(selectionCode);
+            var selection = new DispenserSelection(ushort.Parse(cmd));
+            Tuple<SelectionResult, BaseStockItem> result = _vendingMachine.FindStockItem(selection);
             SelectionResult selectionResult = result.Item1;
-            Selection selection = result.Item2;
+            BaseStockItem stockItem = result.Item2;
 
             if (selectionResult == SelectionResult.ValidSelection)
             {
-                _vendingMachine.AddProduct(new ProductCommand(selection));
+                _vendingMachine.AddProduct(new ProductCommand(stockItem, selectionResult.Value));
             }
             else if (selectionResult == SelectionResult.InsufficientFunds)
             {

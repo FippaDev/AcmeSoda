@@ -1,7 +1,7 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 using Ardalis.SmartEnum;
 
-namespace VendingMachine.Shared.Domain.VendingLogic.Selection
+namespace VendingMachine.Shared.Domain.Models.Selection
 {
     [ExcludeFromCodeCoverage]
     public sealed class SelectionResult : SmartEnum<SelectionResult>
@@ -11,7 +11,7 @@ namespace VendingMachine.Shared.Domain.VendingLogic.Selection
         public static readonly SelectionResult OutOfStock = new SelectionResult(nameof(OutOfStock), 1);
         public static readonly SelectionResult InsufficientFunds = new SelectionResult(nameof(InsufficientFunds), 2);
 
-        private SelectionResult(string name, int value) 
+        private SelectionResult(string name, int value)
             : base(name, value)
         {
         }

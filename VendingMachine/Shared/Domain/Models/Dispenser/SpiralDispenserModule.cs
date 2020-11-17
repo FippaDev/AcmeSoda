@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
 using System.Runtime.CompilerServices;
 using Ardalis.GuardClauses;
-using VendingMachine.Shared.Domain.Models.Pricing;
+using VendingMachine.Shared.Domain.Models.Selection;
 using VendingMachine.Shared.Domain.Models.Stock;
 
 [assembly:InternalsVisibleTo("VendingMachine.Shared.Domain.Models.Tests")]
@@ -12,54 +10,43 @@ namespace VendingMachine.Shared.Domain.Models.Dispenser
 {
     public class SpiralDispenserModule : IDispenserModule
     {
+        private readonly IProductSelectionStrategy _productSelectionStrategy;
+
         // Key = spiral identifier (e.g. A3)
         // value = spiral
-        private readonly Dictionary<string, SpiralDispenser> _spirals;
+        private readonly List<SpiralDispenser> _spirals;
 
-        public SpiralDispenserModule(ushort rows, ushort columns, ushort depth)
+        public SpiralDispenserModule(IProductSelectionStrategy productSelectionStrategy, ushort rows, ushort columns, ushort depth)
         {
+            _productSelectionStrategy = productSelectionStrategy;
+            Guard.Against.Null(productSelectionStrategy, nameof(productSelectionStrategy));
             Guard.Against.Zero(rows, nameof(rows));
             Guard.Against.Zero(columns, nameof(columns));
             Guard.Against.Zero(depth, nameof(depth));
 
-            _spirals = new Dictionary<string, SpiralDispenser>();
-            for (ushort r = 0; r < rows; r++)
+            _spirals = new List<SpiralDispenser>();
+            for (ushort id = 0; id < rows * columns; id++)
             {
-                for (ushort c = 1; c <= columns; c++)
-                {
-                    string id = $"{'A' + r}{c}";
-                    _spirals.Add(id, new SpiralDispenser(depth));
-                }
+                _spirals.Add(new SpiralDispenser(id++, depth));
             }
         }
 
-        public ReadOnlyCollection<string> GetSelectionCodes()
+        public BaseStockItem Dispense(ISelection selection)
         {
-            return _spirals.Keys.ToList().AsReadOnly();
+            return
+                _productSelectionStrategy
+                    .FindProduct(_spirals, selection)
+                    .Dispense();
         }
 
-        public BaseStockItem IdentifyProductBySelectionCode(string selectionCode)
+        public bool IsValid(ISelection selection)
         {
-            return 
-                _spirals[selectionCode].StockItem is PriceListStockItem
-                    ? _spirals[selectionCode].StockItem
-                    : new NullObjectStockItem();
+            return _productSelectionStrategy.IsValid(_spirals, selection);
         }
 
-        public BaseStockItem Dispense(string selectionCode)
+        public Tuple<SelectionResult, BaseStockItem> FindStockItem(ISelection selection)
         {
-            if (!_spirals.ContainsKey(selectionCode))
-            {
-                throw new ArgumentException($"Selection code '{selectionCode}' does not exist.");
-            }
-
-            return _spirals[selectionCode].Dispense();
-        }
-
-        public bool IsValidSelectionCode(string selectionCode)
-        {
-            Guard.Against.NullOrWhiteSpace(selectionCode, nameof(selectionCode));
-            return _spirals.ContainsKey(selectionCode);
+            return _productSelectionStrategy.FindProduct(_spirals, selection);
         }
     }
 }

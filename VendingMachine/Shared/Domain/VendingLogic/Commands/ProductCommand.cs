@@ -1,6 +1,7 @@
 ﻿using System;
 using Ardalis.GuardClauses;
 using Fippa.Common.GuardClauses.Ardalis.GuardClauses;
+using VendingMachine.Shared.Domain.Models.Stock;
 
 namespace VendingMachine.Shared.Domain.VendingLogic.Commands
 {
@@ -9,15 +10,13 @@ namespace VendingMachine.Shared.Domain.VendingLogic.Commands
     /// </summary>
     public class ProductCommand : Command
     {
-        public ProductCommand(decimal value)
+        private BaseStockItem _stockItem;
+
+        public ProductCommand(BaseStockItem stockItem, decimal value)
             : base(value)
         {
             Guard.Against.PositiveOrZero(value, nameof(value));
-        }
-
-        public ProductCommand(Selection.Selection selection)
-            : base(selection.Price)
-        {
+            _stockItem = stockItem;
         }
 
         public override void Execute()
