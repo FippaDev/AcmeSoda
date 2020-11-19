@@ -12,7 +12,7 @@ namespace VendingMachine.Shared.Domain.Models.Dispenser
     /// </summary>
     public class OneToManyStrategy : IProductSelectionStrategy
     {
-        public IDispenser FindProduct(IEnumerable<IDispenser> dispensers, ISelection selection)
+        public Tuple<SelectionResult, IDispenser> ValidateSelection(IEnumerable<IDispenser> dispensers, ISelection selection)
         {
             var dispenserCollection = dispensers as IDispenser[] ?? dispensers.ToArray();
 
@@ -21,22 +21,20 @@ namespace VendingMachine.Shared.Domain.Models.Dispenser
             Guard.Against.Null(selection, nameof(selection));
 
             ProductSelection s = (ProductSelection)selection;
-            var dispenser = dispenserCollection.FirstOrDefault(dispenser => dispenser.StockItem.StockKeepingUnit.Equals(s.SKU));
-            return
-                dispenser != null
-                    ? dispenser
-                    : new NullDispenserObject();
-        }
+            var dispenser = dispenserCollection.FirstOrDefault(dd => dd.StockItem.StockKeepingUnit == s.SKU);
 
-        public bool IsValid(IEnumerable<IDispenser> dispensers, ISelection selection)
-        {
-            var s = selection as ProductSelection;
-            if (s == null)
+            if (dispenser == null)
             {
-                throw new ArgumentException("Selection must be a ProductSelection");
+                return new Tuple<SelectionResult, IDispenser>(SelectionResult.InvalidSelection, new NullDispenserObject());
             }
 
-            return dispensers.Any(d => d.StockItem.StockKeepingUnit == s.SKU);
+            var stockCount = dispenser.StockCount();
+            if (stockCount == 0)
+            {
+                return new Tuple<SelectionResult, IDispenser>(SelectionResult.OutOfStock, new NullDispenserObject());
+            }
+
+            return new Tuple<SelectionResult, IDispenser>(SelectionResult.ValidSelection, dispenser);
         }
     }
 }

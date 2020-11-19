@@ -1,6 +1,5 @@
 ﻿using System;
 using VendingMachine.Shared.Domain.Models.Selection;
-using VendingMachine.Shared.Domain.Models.Stock;
 using VendingMachine.Shared.Domain.VendingLogic.Commands;
 using VendingMachine.Shared.Domain.VendingLogic.Payments;
 
@@ -13,6 +12,7 @@ namespace VendingMachine.Shared.Domain.VendingLogic
 
         void AddPayment(PaymentCommand command);
         void AddProduct(ProductCommand command);
-        Tuple<SelectionResult, BaseStockItem> FindStockItem(ISelection selection);
+
+        SelectionResult MakeSelection(ISelection selection);
     }
 }

@@ -1,10 +1,8 @@
-﻿using System;
-using System.Runtime.CompilerServices;
+﻿using System.Runtime.CompilerServices;
 using Ardalis.GuardClauses;
 using UserInterface;
 using VendingMachine.Shared.Domain.Domain.VendingMachine;
 using VendingMachine.Shared.Domain.Models.Selection;
-using VendingMachine.Shared.Domain.Models.Stock;
 using VendingMachine.Shared.Domain.VendingLogic;
 using VendingMachine.Shared.Domain.VendingLogic.Commands;
 using VendingMachine.Shared.Domain.VendingLogic.Payments;
@@ -53,9 +51,9 @@ namespace VendingMachine.Shared.Services
             _logic.AddProduct(command);
         }
 
-        public Tuple<SelectionResult, BaseStockItem> FindStockItem(ISelection selection)
+        public SelectionResult MakeSelection(ISelection selection)
         {
-            return _logic.FindStockItem(selection);
+            return _logic.MakeSelection(selection);
         }
     }
 }

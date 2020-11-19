@@ -5,7 +5,6 @@ using Ardalis.GuardClauses;
 using Fippa.Money.Payments;
 using VendingMachine.Shared.Domain.Models.Dispenser;
 using VendingMachine.Shared.Domain.Models.Selection;
-using VendingMachine.Shared.Domain.Models.Stock;
 using VendingMachine.Shared.Domain.VendingLogic.Commands;
 using VendingMachine.Shared.Domain.VendingLogic.Payments;
 
@@ -87,9 +86,19 @@ namespace VendingMachine.Shared.Domain.VendingLogic
             Balance -= command.Value;
         }
 
-        public Tuple<SelectionResult, BaseStockItem> FindStockItem(ISelection selection)
+        public SelectionResult MakeSelection(ISelection selection)
         {
-            return _dispenserModule.FindStockItem(selection);
+            var result = _dispenserModule.ValidateSelection(selection);
+            var selectionResult = result.Item1;
+            var dispenser = result.Item2;
+
+            if (selectionResult == SelectionResult.ValidSelection)
+            {
+                var rrp = _priceListService.PriceLookup(dispenser.StockItem.StockKeepingUnit);
+                _purchases.Add(new ProductCommand(dispenser.StockItem, rrp));
+            }
+
+            return selectionResult;
         }
     }
 }

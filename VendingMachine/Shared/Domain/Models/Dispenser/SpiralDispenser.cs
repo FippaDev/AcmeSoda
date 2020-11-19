@@ -29,8 +29,8 @@ namespace VendingMachine.Shared.Domain.Models.Dispenser
 
         public BaseStockItem Dispense()
         {
-            return _spiral.Any() 
-                ? _spiral.Dequeue() 
+            return _spiral.Any()
+                ? _spiral.Dequeue()
                 : new NullObjectStockItem();
         }
 

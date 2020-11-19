@@ -54,13 +54,11 @@ namespace AcmeSodaConsoleApp
 
             // Assume cmd is a selection command
             var selection = new DispenserSelection(ushort.Parse(cmd));
-            Tuple<SelectionResult, BaseStockItem> result = _vendingMachine.FindStockItem(selection);
-            SelectionResult selectionResult = result.Item1;
-            BaseStockItem stockItem = result.Item2;
+            var selectionResult = _vendingMachine.MakeSelection(selection);
 
-            if (selectionResult == SelectionResult.ValidSelection)
+            if (selectionResult == SelectionResult.InvalidSelection)
             {
-                _vendingMachine.AddProduct(new ProductCommand(stockItem, selectionResult.Value));
+                _console.WriteLine("Invalid selection");
             }
             else if (selectionResult == SelectionResult.InsufficientFunds)
             {
@@ -69,10 +67,6 @@ namespace AcmeSodaConsoleApp
             else if (selectionResult == SelectionResult.OutOfStock)
             {
                 _console.WriteLine("Out of stock");
-            }
-            else if (selectionResult == SelectionResult.InvalidSelection)
-            {
-                _console.WriteLine("Invalid selection");
             }
         }
 

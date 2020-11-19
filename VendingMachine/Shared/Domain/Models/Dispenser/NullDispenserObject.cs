@@ -7,7 +7,7 @@ namespace VendingMachine.Shared.Domain.Models.Dispenser
     {
         public ushort Id => 0;
 
-        public BaseStockItem StockItem { get; }
+        public BaseStockItem StockItem => new NullObjectStockItem();
 
         public BaseStockItem Dispense()
         {

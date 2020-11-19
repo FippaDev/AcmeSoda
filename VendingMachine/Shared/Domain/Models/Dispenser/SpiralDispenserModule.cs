@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Runtime.CompilerServices;
 using Ardalis.GuardClauses;
 using VendingMachine.Shared.Domain.Models.Selection;
@@ -33,20 +34,19 @@ namespace VendingMachine.Shared.Domain.Models.Dispenser
 
         public BaseStockItem Dispense(ISelection selection)
         {
-            return
+            var resultAndStockItem =
                 _productSelectionStrategy
-                    .FindProduct(_spirals, selection)
-                    .Dispense();
+                    .ValidateSelection(_spirals, selection);
+            var selectionResult = resultAndStockItem.Item1;
+            var dispenser = resultAndStockItem.Item2;
+
+            Debug.Assert(selectionResult == SelectionResult.ValidSelection);
+            return dispenser.Dispense();
         }
 
-        public bool IsValid(ISelection selection)
+        public Tuple<SelectionResult, IDispenser> ValidateSelection(ISelection selection)
         {
-            return _productSelectionStrategy.IsValid(_spirals, selection);
-        }
-
-        public Tuple<SelectionResult, BaseStockItem> FindStockItem(ISelection selection)
-        {
-            return _productSelectionStrategy.FindProduct(_spirals, selection);
+            return _productSelectionStrategy.ValidateSelection(_spirals, selection);
         }
     }
 }
