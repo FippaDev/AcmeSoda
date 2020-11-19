@@ -18,8 +18,8 @@ namespace VendingMachine.Shared.Domain.VendingLogic
 
         private readonly IDispenserModule _dispenserModule;
 
-        private List<PaymentCommand> _deposits = new List<PaymentCommand>();
-        private List<ProductCommand> _purchases = new List<ProductCommand>();
+        private readonly List<PaymentCommand> _deposits = new List<PaymentCommand>();
+        private readonly List<ProductCommand> _purchases = new List<ProductCommand>();
 
         public EventHandler<BalanceChangedEvent> BalanceChanged { get; set; }
 

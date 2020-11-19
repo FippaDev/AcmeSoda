@@ -5,7 +5,6 @@ using Fippa.Money.Currencies;
 using UserInterface;
 using VendingMachine.Shared.Domain.Domain.VendingMachine;
 using VendingMachine.Shared.Domain.Models.Selection;
-using VendingMachine.Shared.Domain.Models.Stock;
 using VendingMachine.Shared.Domain.VendingLogic.Commands;
 
 namespace AcmeSodaConsoleApp
