@@ -21,7 +21,7 @@ namespace Fippa.Common.GuardClauses
                 var enumerable = input as T[] ?? input.ToArray();
                 Guard.Against.Null(enumerable, nameof(input));
 
-                if (enumerable.Any())
+                if (!enumerable.Any())
                 {
                     throw new ArgumentException("Empty collections are not allowed", parameterName);
                 }

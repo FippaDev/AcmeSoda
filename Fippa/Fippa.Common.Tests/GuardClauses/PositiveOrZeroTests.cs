@@ -8,19 +8,19 @@ namespace Fippa.Common.Tests.GuardClauses
     public class PositiveOrZeroTests
     {
         [Theory]
-        [InlineData(-1.00)]
+        [InlineData(1.00)]
         [InlineData(0.00)]
-        public void GreaterThanZero_Scenarios_AsExpected(decimal given)
+        public void PositiveOrZero_Scenarios_ThrowException(decimal given)
         {
             Assert.Throws<ArgumentException>(() =>
                 Guard.Against.PositiveOrZero(given, string.Empty));
         }
 
-        [Fact]
-        public void GreaterThanZero_IfNegative_DoesNothing()
+        [Theory]
+        [InlineData(-1.00)]
+        public void PositiveOrZero_IfNegative_DoesNothing(decimal given)
         {
-            Assert.Throws<ArgumentException>(() =>
-                Guard.Against.PositiveOrZero(-1, string.Empty));
+            Guard.Against.PositiveOrZero(given, string.Empty);
         }
     }
 }
