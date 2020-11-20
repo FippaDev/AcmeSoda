@@ -1,4 +1,5 @@
 ﻿using Fippa.Common.Extensions.system;
+using FluentAssertions;
 using Xunit;
 
 namespace Fippa.Common.Tests.Extensions
@@ -6,12 +7,13 @@ namespace Fippa.Common.Tests.Extensions
     public class DecimalExtensionsTests
     {
         [Theory]
-        [InlineData(false, -1.00)]
-        [InlineData(false, 0.00)]
-        [InlineData(true, 1.01)]
-        public void GreaterThanZero_Scenarios_AsExpected(bool expected, decimal given)
+        [InlineData(false, null)]
+        [InlineData(false, "")]
+        [InlineData(false, " ")]
+        [InlineData(true, "!")]
+        public void HasValue_Scenarios_AsExpected(bool expected, string given)
         {
-            Assert.Equal(expected, given.GreaterThanZero());
+            expected.Should().Be(given.HasValue(), $"Expected {expected} when given '{given}'");
         }
     }
 }
