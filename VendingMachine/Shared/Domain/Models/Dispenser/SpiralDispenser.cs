@@ -20,7 +20,7 @@ namespace VendingMachine.Shared.Domain.Models.Dispenser
 
         public SpiralDispenser(ushort id, ushort depth)
         {
-            Guard.Against.NegativeOrZero(id, nameof(id));
+            Guard.Against.Negative(id, nameof(id));
             Guard.Against.Zero(depth, nameof(depth));
             Id = id;
             MaxCapacity = depth;
