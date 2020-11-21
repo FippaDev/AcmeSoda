@@ -1,0 +1,76 @@
+{
+  "Items": [
+    {
+      "DispenserId": 0,
+      "DisplayName": "Pepsi",
+      "RetailPrice": 0.85,
+      "StockKeepingUnit": "P1"
+    },
+    {
+      "DispenserId": 1,
+      "DisplayName": "Pepsi",
+      "RetailPrice": 0.85,
+      "StockKeepingUnit": "P1"
+    },
+    {
+      "DispenserId": 2,
+      "DisplayName": "Pepsi",
+      "RetailPrice": 0.85,
+      "StockKeepingUnit": "P1"
+    },
+    {
+      "DispenserId": 3,
+      "DisplayName": "Pepsi Max",
+      "RetailPrice": 0.85,
+      "StockKeepingUnit": "P2"
+    },
+    {
+      "DispenserId": 4,
+      "DisplayName": "Pepsi Max",
+      "RetailPrice": 0.85,
+      "StockKeepingUnit": "P2"
+    },
+    {
+      "DispenserId": 5,
+      "DisplayName": "Pepsi Max",
+      "RetailPrice": 0.85,
+      "StockKeepingUnit": "P2"
+    },
+    {
+      "DispenserId": 6,
+      "DisplayName": "Diet Pepsi",
+      "RetailPrice": 0.85,
+      "StockKeepingUnit": "P3"
+    },
+    {
+      "DispenserId": 7,
+      "DisplayName": "Diet Pepsi",
+      "RetailPrice": 0.85,
+      "StockKeepingUnit": "P3"
+    },
+    {
+      "DispenserId": 8,
+      "DisplayName": "Diet Pepsi",
+      "RetailPrice": 0.85,
+      "StockKeepingUnit": "P3"
+    },
+    {
+      "DispenserId": 9,
+      "DisplayName": "Pepsi Max Cherry",
+      "RetailPrice": 0.85,
+      "StockKeepingUnit": "P4"
+    },
+    {
+      "DispenserId": 10,
+      "DisplayName": "Pepsi Max Cherry",
+      "RetailPrice": 0.85,
+      "StockKeepingUnit": "P4"
+    },
+    {
+      "DispenserId": 11,
+      "DisplayName": "Pepsi Max Cherry",
+      "RetailPrice": 0.85,
+      "StockKeepingUnit": "P4"
+    }
+  ]
+}
