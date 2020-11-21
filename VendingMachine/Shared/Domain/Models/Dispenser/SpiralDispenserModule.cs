@@ -11,16 +11,16 @@ namespace VendingMachine.Shared.Domain.Models.Dispenser
 {
     public class SpiralDispenserModule : IDispenserModule
     {
-        private readonly IProductSelectionStrategy _productSelectionStrategy;
+        private readonly ISelectionStrategy _selectionStrategy;
 
         // Key = spiral identifier (e.g. A3)
         // value = spiral
         private readonly List<SpiralDispenser> _spirals;
 
-        public SpiralDispenserModule(IProductSelectionStrategy productSelectionStrategy, ushort rows, ushort columns, ushort depth)
+        public SpiralDispenserModule(ISelectionStrategy selectionStrategy, ushort rows, ushort columns, ushort depth)
         {
-            _productSelectionStrategy = productSelectionStrategy;
-            Guard.Against.Null(productSelectionStrategy, nameof(productSelectionStrategy));
+            _selectionStrategy = selectionStrategy;
+            Guard.Against.Null(selectionStrategy, nameof(selectionStrategy));
             Guard.Against.Zero(rows, nameof(rows));
             Guard.Against.Zero(columns, nameof(columns));
             Guard.Against.Zero(depth, nameof(depth));
@@ -35,7 +35,7 @@ namespace VendingMachine.Shared.Domain.Models.Dispenser
         public BaseStockItem Dispense(ISelection selection)
         {
             var resultAndStockItem =
-                _productSelectionStrategy
+                _selectionStrategy
                     .ValidateSelection(_spirals, selection);
             var selectionResult = resultAndStockItem.Item1;
             var dispenser = resultAndStockItem.Item2;
@@ -46,7 +46,7 @@ namespace VendingMachine.Shared.Domain.Models.Dispenser
 
         public Tuple<SelectionResult, IDispenser> ValidateSelection(ISelection selection)
         {
-            return _productSelectionStrategy.ValidateSelection(_spirals, selection);
+            return _selectionStrategy.ValidateSelection(_spirals, selection);
         }
     }
 }

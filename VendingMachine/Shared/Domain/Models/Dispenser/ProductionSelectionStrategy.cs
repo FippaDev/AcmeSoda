@@ -6,7 +6,7 @@ namespace VendingMachine.Shared.Domain.Models.Dispenser
     /// <summary>
     /// Customers select by product, allowing the machine to select the 
     /// </summary>
-    public class OneToManyStrategy : AbstractSelectionStrategy, IProductSelectionStrategy
+    public class ProductSelectionStrategy : AbstractSelectionStrategy
     {
         protected override Func<IDispenser, bool> SelectionPredicate(ISelection selection)
         {

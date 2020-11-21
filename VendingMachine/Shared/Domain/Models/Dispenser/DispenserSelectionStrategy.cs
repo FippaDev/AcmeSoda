@@ -6,7 +6,7 @@ namespace VendingMachine.Shared.Domain.Models.Dispenser
     /// <summary>
     /// Customers can select a product from a selection code (e.g. A3 on a spiral dispenser)
     /// </summary>
-    public class OneToOneStrategy : AbstractSelectionStrategy, IProductSelectionStrategy
+    public class DispenserSelectionStrategy : AbstractSelectionStrategy
     {
         protected override Func<IDispenser, bool> SelectionPredicate(ISelection selection)
         {
