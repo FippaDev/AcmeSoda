@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Runtime.CompilerServices;
+using System.Text;
 using Ardalis.GuardClauses;
 using VendingMachine.Shared.Domain.Models.Selection;
 using VendingMachine.Shared.Domain.Models.Stock;
@@ -45,6 +46,17 @@ namespace VendingMachine.Shared.Domain.Models.Dispenser
         public Tuple<SelectionResult, IDispenser> GetDispenser(string input)
         {
             return _selectionStrategy.GetDispenser(_spirals, input);
+        }
+
+        public string GetStockReport()
+        {
+            var builder = new StringBuilder();
+            foreach (var d in _spirals)
+            {
+                builder.AppendFormat($" {d.Id}:({d.StockItem.StockKeepingUnit}/{d.StockCount()})");
+            }
+
+            return builder.ToString().Trim();
         }
     }
 }

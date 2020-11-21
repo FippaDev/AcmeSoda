@@ -14,5 +14,6 @@ namespace VendingMachine.Shared.Domain.VendingLogic
         void AddProduct(ProductCommand command);
 
         SelectionResult MakeSelection(string input);
+        string GetStockReport();
     }
 }

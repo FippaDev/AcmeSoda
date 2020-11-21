@@ -12,5 +12,6 @@ namespace VendingMachine.Shared.Domain.Domain.VendingMachine
         void AddProduct(ProductCommand command);
 
         SelectionResult MakeSelection(string input);
+        void ShowStockLevels();
     }
 }

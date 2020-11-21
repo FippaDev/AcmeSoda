@@ -36,11 +36,17 @@ namespace AcmeSodaConsoleApp
 
         private void ProcessInput(in string input)
         {
-            var cmd = input.ToLower();
+            var cmd = input.ToLower().Trim();
 
             if (IsHelpCommand(cmd))
             {
                 DisplayHelpInfo();
+                return;
+            }
+
+            if (cmd == "s")
+            {
+                _vendingMachine.ShowStockLevels();
                 return;
             }
 
@@ -73,6 +79,7 @@ namespace AcmeSodaConsoleApp
             _console.WriteLine("Usage:");
             _console.WriteLine("  /?, /h, help => to display this help information.");
             _console.WriteLine("  q, e, quit, exit => exit the application.");
+            _console.WriteLine("  v => view stock levels");
             _console.WriteLine("  1.00, 0.50, 0.20, 0.10, 0.5 => Insert £1, 50p, 20p, 10p, 5p");
             _console.WriteLine("  a[X]    Make a selection (e.g. a0, a1, etc)");
         }

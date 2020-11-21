@@ -100,5 +100,10 @@ namespace VendingMachine.Shared.Domain.VendingLogic
 
             return selectionResult;
         }
+
+        public string GetStockReport()
+        {
+            return _dispenserModule.GetStockReport();
+        }
     }
 }

@@ -8,5 +8,6 @@ namespace VendingMachine.Shared.Domain.Models.Dispenser
     {
         BaseStockItem Dispense(string input);
         Tuple<SelectionResult, IDispenser> GetDispenser(string input);
+        string GetStockReport();
     }
 }

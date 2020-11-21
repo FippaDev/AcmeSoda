@@ -55,5 +55,12 @@ namespace VendingMachine.Shared.Services
         {
             return _logic.MakeSelection(input);
         }
+
+        public void ShowStockLevels()
+        {
+            _output.Message("-----------------------------------");
+            _output.Message(_logic.GetStockReport());
+            _output.Message("-----------------------------------");
+        }
     }
 }
