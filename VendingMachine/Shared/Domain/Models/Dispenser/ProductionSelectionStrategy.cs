@@ -1,17 +1,32 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using Ardalis.GuardClauses;
 using VendingMachine.Shared.Domain.Models.Selection;
 
 namespace VendingMachine.Shared.Domain.Models.Dispenser
 {
     /// <summary>
-    /// Customers select by product, allowing the machine to select the 
+    /// Customers can select a product from a selection code (e.g. A3 on a spiral dispenser)
     /// </summary>
     public class ProductSelectionStrategy : AbstractSelectionStrategy
     {
-        protected override Func<IDispenser, bool> SelectionPredicate(ISelection selection)
+        protected override Func<IDispenser, bool> SelectionPredicate(string input)
         {
-            var s = (ProductSelection) selection;
-            return dd => dd.StockItem.StockKeepingUnit == s.SKU;
+            return dispenser => dispenser.StockItem.StockKeepingUnit == input;
+        }
+
+        protected override bool ValidateInput(IEnumerable<IDispenser> dispensers, string input)
+        {
+            Guard.Against.NullOrEmpty(input, nameof(input));
+
+            var dispenser = dispensers.FirstOrDefault(SelectionPredicate(input));
+            if (dispensers == null)
+            {
+                return false;
+            }
+
+            return true;
         }
     }
 }

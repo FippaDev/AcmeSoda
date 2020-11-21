@@ -86,9 +86,9 @@ namespace VendingMachine.Shared.Domain.VendingLogic
             Balance -= command.Value;
         }
 
-        public SelectionResult MakeSelection(ISelection selection)
+        public SelectionResult MakeSelection(string input)
         {
-            var result = _dispenserModule.ValidateSelection(selection);
+            var result = _dispenserModule.GetDispenser(input);
             var selectionResult = result.Item1;
             var dispenser = result.Item2;
 

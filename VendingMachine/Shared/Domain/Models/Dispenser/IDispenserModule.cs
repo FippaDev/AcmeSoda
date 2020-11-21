@@ -6,7 +6,7 @@ namespace VendingMachine.Shared.Domain.Models.Dispenser
 {
     public interface IDispenserModule
     {
-        BaseStockItem Dispense(ISelection selection);
-        Tuple<SelectionResult, IDispenser> ValidateSelection(ISelection selection);
+        BaseStockItem Dispense(string input);
+        Tuple<SelectionResult, IDispenser> GetDispenser(string input);
     }
 }

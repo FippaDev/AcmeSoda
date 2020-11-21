@@ -52,8 +52,7 @@ namespace AcmeSodaConsoleApp
             }
 
             // Assume cmd is a selection command
-            var selection = new DispenserSelection(ushort.Parse(cmd));
-            var selectionResult = _vendingMachine.MakeSelection(selection);
+            var selectionResult = _vendingMachine.MakeSelection(cmd);
 
             if (selectionResult == SelectionResult.InvalidSelection)
             {

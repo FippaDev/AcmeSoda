@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using Ardalis.GuardClauses;
 using VendingMachine.Shared.Domain.Models.Selection;
 
 namespace VendingMachine.Shared.Domain.Models.Dispenser
@@ -8,10 +11,28 @@ namespace VendingMachine.Shared.Domain.Models.Dispenser
     /// </summary>
     public class DispenserSelectionStrategy : AbstractSelectionStrategy
     {
-        protected override Func<IDispenser, bool> SelectionPredicate(ISelection selection)
+        protected override Func<IDispenser, bool> SelectionPredicate(string input)
         {
-            var d = (DispenserSelection)selection;
-            return dispenser => dispenser.Id == d.DispenserId;
+            var id = ushort.Parse(input);
+            return dispenser => dispenser.Id == id;
+        }
+
+        protected override bool ValidateInput(IEnumerable<IDispenser> dispensers, string input)
+        {
+            Guard.Against.NullOrEmpty(input, nameof(input));
+
+            ushort selection;
+            if (!ushort.TryParse(input, out selection))
+            {
+                return false;
+            }
+
+            if (!dispensers.Any(d => d.Id == selection))
+            {
+                return false;
+            }
+
+            return true;
         }
     }
 }

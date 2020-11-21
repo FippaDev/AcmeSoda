@@ -11,6 +11,6 @@ namespace VendingMachine.Shared.Domain.Domain.VendingMachine
         void AddPayment(PaymentCommand command);
         void AddProduct(ProductCommand command);
 
-        SelectionResult MakeSelection(ISelection selection);
+        SelectionResult MakeSelection(string input);
     }
 }

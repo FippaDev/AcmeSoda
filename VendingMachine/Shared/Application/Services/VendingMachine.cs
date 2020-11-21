@@ -51,9 +51,9 @@ namespace VendingMachine.Shared.Services
             _logic.AddProduct(command);
         }
 
-        public SelectionResult MakeSelection(ISelection selection)
+        public SelectionResult MakeSelection(string input)
         {
-            return _logic.MakeSelection(selection);
+            return _logic.MakeSelection(input);
         }
     }
 }

@@ -33,6 +33,7 @@ namespace AcmeSodaConsoleApp.DependencyInjection
 
         private static void ConfigureSharedDomainModels(IUnityContainer container)
         {
+            container.RegisterType<ISelectionStrategy, DispenserSelectionStrategy>();
             container.RegisterType<IDispenserModule, SpiralDispenserModule>();
 
             container.RegisterType<IPaymentModule<ICashPayment>, CoinModule>();

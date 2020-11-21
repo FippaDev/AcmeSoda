@@ -32,11 +32,9 @@ namespace VendingMachine.Shared.Domain.Models.Dispenser
             }
         }
 
-        public BaseStockItem Dispense(ISelection selection)
+        public BaseStockItem Dispense(string input)
         {
-            var resultAndStockItem =
-                _selectionStrategy
-                    .ValidateSelection(_spirals, selection);
+            var resultAndStockItem = _selectionStrategy.GetDispenser(_spirals, input);
             var selectionResult = resultAndStockItem.Item1;
             var dispenser = resultAndStockItem.Item2;
 
@@ -44,9 +42,9 @@ namespace VendingMachine.Shared.Domain.Models.Dispenser
             return dispenser.Dispense();
         }
 
-        public Tuple<SelectionResult, IDispenser> ValidateSelection(ISelection selection)
+        public Tuple<SelectionResult, IDispenser> GetDispenser(string input)
         {
-            return _selectionStrategy.ValidateSelection(_spirals, selection);
+            return _selectionStrategy.GetDispenser(_spirals, input);
         }
     }
 }

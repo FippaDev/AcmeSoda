@@ -10,16 +10,23 @@ namespace VendingMachine.Shared.Domain.Models.Dispenser
 {
     public class AbstractSelectionStrategy : ISelectionStrategy
     {
-        public Tuple<SelectionResult, IDispenser> ValidateSelection(IEnumerable<IDispenser> dispensers, ISelection selection)
+        public Tuple<SelectionResult, IDispenser> GetDispenser(IEnumerable<IDispenser> dispensers, string input)
         {
-            var dispenserCollection = dispensers as IDispenser[] ?? dispensers.ToArray();
+            var dispsenerList = dispensers.ToList();
+            var dispenserCollection = dispensers as IDispenser[] ?? dispsenerList.ToArray();
 
             Guard.Against.Null(dispenserCollection, nameof(dispensers));
             Guard.Against.EmptyCollection(dispenserCollection, nameof(dispensers));
-            Guard.Against.Null(selection, nameof(selection));
+            Guard.Against.NullOrEmpty(input, nameof(input));
 
-            var dispenser = dispenserCollection.FirstOrDefault(SelectionPredicate(selection));
+            var validInput = ValidateInput(dispsenerList, input);
+            if (!validInput)
+            {
+                return new Tuple<SelectionResult, IDispenser>(
+                    SelectionResult.InvalidSelection, new NullDispenserObject());
+            }
 
+            var dispenser = dispensers.FirstOrDefault(SelectionPredicate(input));
             if (dispenser == null)
             {
                 return new Tuple<SelectionResult, IDispenser>(SelectionResult.InvalidSelection, new NullDispenserObject());
@@ -34,9 +41,14 @@ namespace VendingMachine.Shared.Domain.Models.Dispenser
             return new Tuple<SelectionResult, IDispenser>(SelectionResult.ValidSelection, dispenser);
         }
 
-        protected virtual Func<IDispenser, bool> SelectionPredicate(ISelection selection)
+        protected virtual Func<IDispenser, bool> SelectionPredicate(string input)
         {
-            throw new NotImplementedException();
+            throw new NotImplementedException("Must be overriden.");
+        }
+
+        protected virtual bool ValidateInput(IEnumerable<IDispenser> dispensers, string input)
+        {
+            throw new NotImplementedException("Must be overriden.");
         }
     }
 }

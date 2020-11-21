@@ -6,6 +6,6 @@ namespace VendingMachine.Shared.Domain.Models.Dispenser
 {
     public interface ISelectionStrategy
     {
-        Tuple<SelectionResult, IDispenser> ValidateSelection(IEnumerable<IDispenser> dispensers, ISelection selection);
+        Tuple<SelectionResult, IDispenser> GetDispenser(IEnumerable<IDispenser> dispensers, string input);
     }
 }

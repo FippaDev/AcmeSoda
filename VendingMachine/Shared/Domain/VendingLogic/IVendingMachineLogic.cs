@@ -13,6 +13,6 @@ namespace VendingMachine.Shared.Domain.VendingLogic
         void AddPayment(PaymentCommand command);
         void AddProduct(ProductCommand command);
 
-        SelectionResult MakeSelection(ISelection selection);
+        SelectionResult MakeSelection(string input);
     }
 }
