@@ -10,9 +10,9 @@ namespace VendingMachine.Shared.Domain.VendingLogic.Commands
     /// </summary>
     public class ProductCommand : Command
     {
-        private BaseStockItem _stockItem;
+        private StockItem _stockItem;
 
-        public ProductCommand(BaseStockItem stockItem, decimal value)
+        public ProductCommand(StockItem stockItem, decimal value)
             : base(value)
         {
             Guard.Against.PositiveOrZero(value, nameof(value));

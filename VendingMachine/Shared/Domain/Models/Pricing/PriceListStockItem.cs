@@ -4,7 +4,7 @@ using VendingMachine.Shared.Domain.Models.Stock;
 
 namespace VendingMachine.Shared.Domain.Models.Pricing
 {
-    public class PriceListStockItem : BaseStockItem
+    public class PriceListStockItem : StockItem
     {
         public string DisplayName { get; }
         public decimal RetailPrice { get; }

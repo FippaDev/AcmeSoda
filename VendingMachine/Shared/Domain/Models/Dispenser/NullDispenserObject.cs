@@ -7,9 +7,9 @@ namespace VendingMachine.Shared.Domain.Models.Dispenser
     {
         public ushort Id => 0;
 
-        public BaseStockItem StockItem => new NullObjectStockItem();
+        public StockItem StockItem => new NullObjectStockItem();
 
-        public BaseStockItem Dispense()
+        public StockItem Dispense()
         {
             throw new NotImplementedException();
         }
@@ -19,7 +19,7 @@ namespace VendingMachine.Shared.Domain.Models.Dispenser
             throw new NotImplementedException();
         }
 
-        public bool AddStockItem(BaseStockItem stockItem)
+        public bool AddStockItem(StockItem stockItem)
         {
             throw new NotImplementedException();
         }

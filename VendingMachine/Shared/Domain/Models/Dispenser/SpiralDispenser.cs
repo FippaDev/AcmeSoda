@@ -7,13 +7,13 @@ namespace VendingMachine.Shared.Domain.Models.Dispenser
 {
     internal class SpiralDispenser : IDispenser
     {
-        private readonly Queue<BaseStockItem> _spiral;
+        private readonly Queue<StockItem> _spiral;
 
         public static ushort MaxCapacity { get; private set; }
 
         public ushort Id { get; }
 
-        public BaseStockItem StockItem =>
+        public StockItem StockItem =>
             _spiral.Any()
                 ? _spiral.Peek()
                 : new NullObjectStockItem();
@@ -24,10 +24,10 @@ namespace VendingMachine.Shared.Domain.Models.Dispenser
             Guard.Against.Zero(depth, nameof(depth));
             Id = id;
             MaxCapacity = depth;
-            _spiral = new Queue<BaseStockItem>(MaxCapacity);
+            _spiral = new Queue<StockItem>(MaxCapacity);
         }
 
-        public BaseStockItem Dispense()
+        public StockItem Dispense()
         {
             return _spiral.Any()
                 ? _spiral.Dequeue()
@@ -39,7 +39,7 @@ namespace VendingMachine.Shared.Domain.Models.Dispenser
             return (uint)_spiral.Count;
         }
 
-        public bool AddStockItem(BaseStockItem stockItem)
+        public bool AddStockItem(StockItem stockItem)
         {
             if (_spiral.Count < MaxCapacity)
             {

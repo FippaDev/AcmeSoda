@@ -12,6 +12,7 @@ namespace VendingMachine.Shared.Services.Tests
     {
         private readonly Mock<IUserOutput> _mockOutput = new Mock<IUserOutput>();
         private readonly Mock<IPriceListService> _mockPriceListService = new Mock<IPriceListService>();
+        private readonly Mock<IStockLoaderService> _mockStockLoaderService = new Mock<IStockLoaderService>();
         private readonly Mock<IVendingMachineLogic> _mockLogic = new Mock<IVendingMachineLogic>();
 
         [TestMethod]
@@ -22,6 +23,7 @@ namespace VendingMachine.Shared.Services.Tests
                 new VendingMachine(
                     _mockOutput.Object,
                     _mockPriceListService.Object,
+                    _mockStockLoaderService.Object,
                     _mockLogic.Object,
                     string.Empty);
             });
@@ -33,6 +35,7 @@ namespace VendingMachine.Shared.Services.Tests
             var pepsiMachine = new VendingMachine(
                 _mockOutput.Object,
                 _mockPriceListService.Object,
+                _mockStockLoaderService.Object,
                 _mockLogic.Object,
                 "Pepsi");
 

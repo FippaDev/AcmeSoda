@@ -6,7 +6,7 @@ namespace VendingMachine.Shared.Domain.Models.Stock
     /// This object represents a null or missing object
     /// </summary>
     [ExcludeFromCodeCoverage]
-    internal class NullObjectStockItem : BaseStockItem
+    internal class NullObjectStockItem : StockItem
     {
         public NullObjectStockItem() 
             : base("NullObject") 

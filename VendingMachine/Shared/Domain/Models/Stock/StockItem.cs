@@ -2,14 +2,14 @@
 
 namespace VendingMachine.Shared.Domain.Models.Stock
 {
-    public abstract class BaseStockItem
+    public class StockItem
     {
         /// <summary>
         /// SKU
         /// </summary>
         public string StockKeepingUnit { get; }
 
-        protected BaseStockItem(string stockKeepingUnit)
+        public StockItem(string stockKeepingUnit)
         {
             Guard.Against.NullOrEmpty(stockKeepingUnit, nameof(stockKeepingUnit));
 

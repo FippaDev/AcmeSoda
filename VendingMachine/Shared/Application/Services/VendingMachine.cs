@@ -1,8 +1,11 @@
-﻿using System.Runtime.CompilerServices;
+﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Runtime.CompilerServices;
 using Ardalis.GuardClauses;
 using UserInterface;
 using VendingMachine.Shared.Domain.Domain.VendingMachine;
 using VendingMachine.Shared.Domain.Models.Selection;
+using VendingMachine.Shared.Domain.Models.Stock;
 using VendingMachine.Shared.Domain.VendingLogic;
 using VendingMachine.Shared.Domain.VendingLogic.Commands;
 using VendingMachine.Shared.Domain.VendingLogic.Payments;
@@ -15,18 +18,20 @@ namespace VendingMachine.Shared.Services
         private readonly IVendingMachineLogic _logic;
         private readonly IUserOutput _output;
         private readonly IPriceListService _priceListService;
+        private readonly IStockLoaderService _stockLoaderService;
 
         public string Manufacturer { get; }
  
-        public VendingMachine(
-            IUserOutput output,
+        public VendingMachine(IUserOutput output,
             IPriceListService priceListService,
+            IStockLoaderService stockLoaderService,
             IVendingMachineLogic logic,
             string manufacturer)
         {
             _output = output;
             _logic = logic;
             _priceListService = priceListService;
+            _stockLoaderService = stockLoaderService;
 
             Guard.Against.NullOrEmpty(manufacturer, nameof(manufacturer));
             Manufacturer = manufacturer;
@@ -69,6 +74,12 @@ namespace VendingMachine.Shared.Services
         public void LoadPriceList(string filename)
         {
             _logic.PriceList = _priceListService.Load(filename);
+        }
+
+        public void LoadStock(string filename)
+        {
+            var items = _stockLoaderService.Load(filename);
+            _logic.LoadInventory(items);
         }
     }
 }

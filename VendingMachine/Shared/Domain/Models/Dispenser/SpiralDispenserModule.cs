@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using Ardalis.GuardClauses;
@@ -18,6 +19,8 @@ namespace VendingMachine.Shared.Domain.Models.Dispenser
         // value = spiral
         private readonly List<SpiralDispenser> _spirals;
 
+        public bool IsEmpty => _spirals.All(s => s.StockCount() == 0);
+
         public SpiralDispenserModule(ISelectionStrategy selectionStrategy, ushort rows, ushort columns, ushort depth)
         {
             _selectionStrategy = selectionStrategy;
@@ -33,7 +36,7 @@ namespace VendingMachine.Shared.Domain.Models.Dispenser
             }
         }
 
-        public BaseStockItem Dispense(string input)
+        public StockItem Dispense(string input)
         {
             var resultAndStockItem = _selectionStrategy.GetDispenser(_spirals, input);
             var selectionResult = resultAndStockItem.Item1;
@@ -57,6 +60,17 @@ namespace VendingMachine.Shared.Domain.Models.Dispenser
             }
 
             return builder.ToString().Trim();
+        }
+
+        public void Load(IEnumerable<InventoryItem> items)
+        {
+            foreach (var item in items)
+            {
+                for (ushort i = 0; i < item.Quantity; i++)
+                {
+                    _spirals[item.DispenserId].AddStockItem(new StockItem(item.SKU));
+                }
+            }
         }
     }
 }

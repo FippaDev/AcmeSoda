@@ -5,15 +5,15 @@ using Xunit;
 namespace VendingMachine.Shared.Domain.Models.Tests.Stock
 {
     [ExcludeFromCodeCoverage]
-    public class BaseStockItemTests
+    public class StockItemTests
     {
         [Fact]
         public void Constructor_GetterSKU_ReturnsSKU()
         {
             const string sku = "sku99";
-            var crisps = new Crisps(sku);
+            var item = new StockItem(sku);
 
-            Assert.Equal(sku, crisps.StockKeepingUnit);
+            Assert.Equal(sku, item.StockKeepingUnit);
         }
     }
 }

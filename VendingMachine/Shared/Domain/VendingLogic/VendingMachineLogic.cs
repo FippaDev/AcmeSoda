@@ -6,6 +6,7 @@ using Fippa.Money.Payments;
 using VendingMachine.Shared.Domain.Models.Dispenser;
 using VendingMachine.Shared.Domain.Models.Pricing;
 using VendingMachine.Shared.Domain.Models.Selection;
+using VendingMachine.Shared.Domain.Models.Stock;
 using VendingMachine.Shared.Domain.VendingLogic.Commands;
 using VendingMachine.Shared.Domain.VendingLogic.Payments;
 
@@ -40,6 +41,7 @@ namespace VendingMachine.Shared.Domain.VendingLogic
             IPaymentModule<ICashPayment> coinModule)
         {
             _dispenserModule = dispenserModule;
+
             _coinModule = coinModule;
             _coinModule.MoneyAdded += OnMoneyAdded;
         }
@@ -103,6 +105,11 @@ namespace VendingMachine.Shared.Domain.VendingLogic
         public string GetStockReport()
         {
             return _dispenserModule.GetStockReport();
+        }
+
+        public void LoadInventory(IEnumerable<InventoryItem> items)
+        {
+            _dispenserModule.Load(items);
         }
     }
 }

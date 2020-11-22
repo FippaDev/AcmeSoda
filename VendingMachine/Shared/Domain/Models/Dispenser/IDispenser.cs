@@ -5,10 +5,10 @@ namespace VendingMachine.Shared.Domain.Models.Dispenser
     public interface IDispenser
     {
         ushort Id { get; }
-        BaseStockItem StockItem { get; }
+        StockItem StockItem { get; }
 
-        BaseStockItem Dispense();
+        StockItem Dispense();
         uint StockCount();
-        bool AddStockItem(BaseStockItem stockItem);
+        bool AddStockItem(StockItem stockItem);
     }
 }
