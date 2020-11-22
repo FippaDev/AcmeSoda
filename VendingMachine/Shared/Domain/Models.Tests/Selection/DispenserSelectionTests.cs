@@ -1,5 +1,4 @@
-﻿using System;
-using FluentAssertions;
+﻿using FluentAssertions;
 using VendingMachine.Shared.Domain.Models.Selection;
 using Xunit;
 

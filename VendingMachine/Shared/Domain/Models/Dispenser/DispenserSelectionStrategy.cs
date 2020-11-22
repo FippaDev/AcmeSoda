@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using Ardalis.GuardClauses;
-using VendingMachine.Shared.Domain.Models.Selection;
 
 namespace VendingMachine.Shared.Domain.Models.Dispenser
 {

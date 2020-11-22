@@ -5,6 +5,6 @@ namespace VendingMachine.Shared.Services.Factories
 {
     public interface IVendingMachineFactory
     {
-        IVendingMachine BuildVendingMachine(IDispenserModule dispenserModule, string branding, string pepsiJson);
+        IVendingMachine BuildVendingMachine(IDispenserModule dispenserModule, string branding);
     }
 }

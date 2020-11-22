@@ -23,14 +23,17 @@ namespace AcmeSodaConsoleApp
                 new ParameterOverride("depth", (ushort)15));
 
             var factory = container.Resolve<IVendingMachineFactory>();
-            _vendingMachine = factory.BuildVendingMachine(dispenserModule, "Pepsi", "pepsi.json");
+            var branding = "Pepsi";
+            _vendingMachine = factory.BuildVendingMachine(dispenserModule, branding);
         }
 
         public void Run()
         {
-            _vendingMachine.Initialise();
+            _vendingMachine.LoadPriceList("pepsi.json");
+
             var input = _container.Resolve<IUserInput>();
             input.Run(_vendingMachine);
+            _vendingMachine.Initialise();
         }
     }
 }

@@ -20,7 +20,6 @@ namespace AcmeSodaConsoleApp.DependencyInjection
     {
         public static void Configure(IUnityContainer container)
         {
-            //container.RegisterType<IDependencyInjectionContainer, DependencyInjectionContainer>(TypeLifetime.Singleton);
             container.RegisterType<IConsoleApplication, ConsoleApplication>();
             container.RegisterType<IConsole, CommandLineConsole>();
             container.RegisterType<IUserInput, ConsoleKeypad>();

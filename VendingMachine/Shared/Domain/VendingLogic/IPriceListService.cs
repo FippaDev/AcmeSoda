@@ -1,8 +1,9 @@
-﻿namespace VendingMachine.Shared.Domain.VendingLogic
+﻿using VendingMachine.Shared.Domain.Models.Pricing;
+
+namespace VendingMachine.Shared.Domain.VendingLogic
 {
     public interface IPriceListService
     {
-        void Load(string filename);
-        decimal PriceLookup(string sku);
+        PriceList Load(string filename);
     }
 }

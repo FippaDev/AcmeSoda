@@ -31,7 +31,7 @@ namespace VendingMachine.Shared.Domain.Models.Pricing
             }
         }
 
-        public decimal PriceLookup(string sku)
+        public decimal LookupByStockKeepingUnit(string sku)
         {
             return _items
                 .Single(i => i.Key.Equals(sku, StringComparison.OrdinalIgnoreCase))

@@ -4,6 +4,7 @@ using System.Linq;
 using Ardalis.GuardClauses;
 using Fippa.Money.Payments;
 using VendingMachine.Shared.Domain.Models.Dispenser;
+using VendingMachine.Shared.Domain.Models.Pricing;
 using VendingMachine.Shared.Domain.Models.Selection;
 using VendingMachine.Shared.Domain.VendingLogic.Commands;
 using VendingMachine.Shared.Domain.VendingLogic.Payments;
@@ -13,7 +14,6 @@ namespace VendingMachine.Shared.Domain.VendingLogic
     public class VendingMachineLogic : IVendingMachineLogic
     {
         private readonly IPaymentModule<ICashPayment> _coinModule;
-        private readonly IPriceListService _priceListService;
         private decimal _balance;
 
         private readonly IDispenserModule _dispenserModule;
@@ -21,6 +21,7 @@ namespace VendingMachine.Shared.Domain.VendingLogic
         private readonly List<PaymentCommand> _deposits = new List<PaymentCommand>();
         private readonly List<ProductCommand> _purchases = new List<ProductCommand>();
 
+        public PriceList PriceList { get; set; }
         public EventHandler<BalanceChangedEvent> BalanceChanged { get; set; }
 
         public decimal Balance
@@ -36,12 +37,10 @@ namespace VendingMachine.Shared.Domain.VendingLogic
 
         public VendingMachineLogic(
             IDispenserModule dispenserModule,
-            IPaymentModule<ICashPayment> coinModule,
-            IPriceListService priceListService)
+            IPaymentModule<ICashPayment> coinModule)
         {
             _dispenserModule = dispenserModule;
             _coinModule = coinModule;
-            _priceListService = priceListService;
             _coinModule.MoneyAdded += OnMoneyAdded;
         }
 
@@ -94,7 +93,7 @@ namespace VendingMachine.Shared.Domain.VendingLogic
 
             if (selectionResult == SelectionResult.ValidSelection)
             {
-                var rrp = _priceListService.PriceLookup(dispenser.StockItem.StockKeepingUnit);
+                var rrp = PriceList.LookupByStockKeepingUnit(dispenser.StockItem.StockKeepingUnit);
                 _purchases.Add(new ProductCommand(dispenser.StockItem, rrp));
             }
 

@@ -13,5 +13,6 @@ namespace VendingMachine.Shared.Domain.Domain.VendingMachine
 
         SelectionResult MakeSelection(string input);
         void ShowStockLevels();
+        void LoadPriceList(string pepsiJson);
     }
 }

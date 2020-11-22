@@ -14,16 +14,19 @@ namespace VendingMachine.Shared.Services
     {
         private readonly IVendingMachineLogic _logic;
         private readonly IUserOutput _output;
+        private readonly IPriceListService _priceListService;
 
         public string Manufacturer { get; }
  
         public VendingMachine(
             IUserOutput output,
+            IPriceListService priceListService,
             IVendingMachineLogic logic,
             string manufacturer)
         {
             _output = output;
             _logic = logic;
+            _priceListService = priceListService;
 
             Guard.Against.NullOrEmpty(manufacturer, nameof(manufacturer));
             Manufacturer = manufacturer;
@@ -61,6 +64,11 @@ namespace VendingMachine.Shared.Services
             _output.Message("-----------------------------------");
             _output.Message(_logic.GetStockReport());
             _output.Message("-----------------------------------");
+        }
+
+        public void LoadPriceList(string filename)
+        {
+            _logic.PriceList = _priceListService.Load(filename);
         }
     }
 }
