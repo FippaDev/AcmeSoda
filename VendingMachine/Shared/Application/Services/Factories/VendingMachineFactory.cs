@@ -23,9 +23,6 @@ namespace VendingMachine.Shared.Services.Factories
             var logic = _unityContainer.Resolve<IVendingMachineLogic>(
                 new ParameterOverride("dispenserModule", dispenserModule));
 
-            var inventory = _unityContainer.Resolve<IStockLoaderService>(
-                new ParameterOverride("dispenserModule", dispenserModule));
-
             var vendingMachine =
                 new VendingMachine(
                     _unityContainer.Resolve<IUserOutput>(),
