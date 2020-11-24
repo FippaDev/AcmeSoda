@@ -1,0 +1,65 @@
+{
+  "Dispenser": "Spiral",
+  "Items": [
+    {
+      "DispenserId": 0,
+      "Quantity": 0.85,
+      "StockKeepingUnit": "M1"
+    },
+    {
+      "DispenserId": 1,
+      "Quantity": 10,
+      "StockKeepingUnit": "M2"
+    },
+    {
+      "DispenserId": 2,
+      "Quantity": 10,
+      "StockKeepingUnit": "M3"
+    },
+    {
+      "DispenserId": 3,
+      "Quantity": 10,
+      "StockKeepingUnit": "M4"
+    },
+    {
+      "DispenserId": 4,
+      "RetailPrice": 0.25,
+      "StockKeepingUnit": "M5"
+    },
+    {
+      "DispenserId": 5,
+      "Quantity": 10,
+      "StockKeepingUnit": "M6"
+    },
+    {
+      "DispenserId": 6,
+      "Quantity": 10,
+      "StockKeepingUnit": "M7"
+    },
+    {
+      "DispenserId": 7,
+      "Quantity": 10,
+      "StockKeepingUnit": "M8"
+    },
+    {
+      "DispenserId": 8,
+      "Quantity": 10,
+      "StockKeepingUnit": "M9"
+    },
+    {
+      "DispenserId": 9,
+      "Quantity": 10,
+      "StockKeepingUnit": "M10"
+    },
+    {
+      "DispenserId": 10,
+      "Quantity": 10,
+      "StockKeepingUnit": "M11"
+    },
+    {
+      "DispenserId": 11,
+      "Quantity": 10,
+      "StockKeepingUnit": "M12"
+    }
+  ]
+}

@@ -1,0 +1,64 @@
+{
+  "Items": [
+    {
+      "DisplayName": "Mars",
+      "RetailPrice": 0.85,
+      "StockKeepingUnit": "M1"
+    },
+    {
+      "DisplayName": "Mars Caramel",
+      "RetailPrice": 0.85,
+      "StockKeepingUnit": "M2"
+    },
+    {
+      "DisplayName": "Skittles (Original)",
+      "RetailPrice": 0.85,
+      "StockKeepingUnit": "M3"
+    },
+    {
+      "DisplayName": "Skitles (Sour)",
+      "RetailPrice": 0.85,
+      "StockKeepingUnit": "M4"
+    },
+    {
+      "DisplayName": "Milky way",
+      "RetailPrice": 0.85, 
+      "StockKeepingUnit": "M5"
+    },
+    {
+      "DisplayName": "Bounty (Milk)",
+      "RetailPrice": 0.85,
+      "StockKeepingUnit": "M6"
+    },
+    {
+      "DisplayName": "Bounty (Plain)",
+      "RetailPrice": 0.85,
+      "StockKeepingUnit": "M7"
+    },
+    {
+      "DisplayName": "Snickers",
+      "RetailPrice": 0.85,
+      "StockKeepingUnit": "M8"
+    },
+    {
+      "DisplayName": "Snickers (Protein)",
+      "RetailPrice": 0.85,
+      "StockKeepingUnit": "M9"
+    },
+    {
+      "DisplayName": "M&M (chocolate)",
+      "RetailPrice": 0.85,
+      "StockKeepingUnit": "M10"
+    },
+    {
+      "DisplayName": "M&M (peanut)",
+      "RetailPrice": 0.85,
+      "StockKeepingUnit": "M11"
+    },
+    {
+      "DisplayName": "Twix",
+      "RetailPrice": 0.85,
+      "StockKeepingUnit": "M12"
+    }
+  ]
+}
