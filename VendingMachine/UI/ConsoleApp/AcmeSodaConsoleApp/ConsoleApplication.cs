@@ -29,8 +29,8 @@ namespace AcmeSodaConsoleApp
 
         public void Run()
         {
-            _vendingMachine.LoadStock("pepsiStock.json");
-            _vendingMachine.LoadPriceList("pepsi.json");
+            _vendingMachine.LoadPriceList(@"data\pepsi\pepsiPrice.json");
+            _vendingMachine.LoadStock(@"data\pepsi\pepsiStock.json");
 
             var input = _container.Resolve<IUserInput>();
             input.Run(_vendingMachine);

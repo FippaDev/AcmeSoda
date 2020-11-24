@@ -21,15 +21,20 @@ namespace VendingMachine.Shared.Domain.Models.Dispenser
 
         public bool IsEmpty => _spirals.All(s => s.StockCount() == 0);
 
-        public SpiralDispenserModule(ISelectionStrategy selectionStrategy, ushort rows, ushort columns, ushort depth)
+        public SpiralDispenserModule(ISelectionStrategy selectionStrategy)
         {
             _selectionStrategy = selectionStrategy;
             Guard.Against.Null(selectionStrategy, nameof(selectionStrategy));
+
+            _spirals = new List<SpiralDispenser>();
+        }
+
+        public void Intialise(ushort rows, ushort columns, ushort depth)
+        {
             Guard.Against.Zero(rows, nameof(rows));
             Guard.Against.Zero(columns, nameof(columns));
             Guard.Against.Zero(depth, nameof(depth));
 
-            _spirals = new List<SpiralDispenser>();
             for (ushort id = 0; id < rows * columns; id++)
             {
                 _spirals.Add(new SpiralDispenser(id++, depth));

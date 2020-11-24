@@ -2,10 +2,10 @@
 {
     public class InventoryItem
     {
-        public InventoryItem(ushort dispenserId, string sKU, ushort quantity)
+        public InventoryItem(ushort dispenserId, string sku, ushort quantity)
         {
             DispenserId = dispenserId;
-            SKU = sKU;
+            SKU = sku;
             Quantity = quantity;
         }
 

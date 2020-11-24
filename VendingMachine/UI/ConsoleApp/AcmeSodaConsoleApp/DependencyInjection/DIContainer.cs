@@ -15,7 +15,11 @@ namespace AcmeSodaConsoleApp.DependencyInjection
 
         private DependencyInjectionContainer()
         {
+#if DEBUG
+            Unity = new UnityContainer().AddExtension(new Diagnostic());
+#else
             Unity = new UnityContainer();
+#endif
         }
 
         public static DependencyInjectionContainer Instance { get; } = new DependencyInjectionContainer();
