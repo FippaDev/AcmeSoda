@@ -3,7 +3,7 @@ using System.Linq;
 using Ardalis.GuardClauses;
 using VendingMachine.Shared.Domain.Models.Stock;
 
-namespace VendingMachine.Shared.Domain.Models.Dispenser
+namespace VendingMachine.Shared.Domain.Models.Dispenser.Spiral
 {
     internal class SpiralDispenser : IDispenser
     {

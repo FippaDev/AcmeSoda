@@ -9,7 +9,7 @@ using VendingMachine.Shared.Domain.Models.Selection;
 using VendingMachine.Shared.Domain.Models.Stock;
 
 [assembly:InternalsVisibleTo("VendingMachine.Shared.Domain.Models.Tests")]
-namespace VendingMachine.Shared.Domain.Models.Dispenser
+namespace VendingMachine.Shared.Domain.Models.Dispenser.Spiral
 {
     public class SpiralDispenserModule : IDispenserModule
     {
@@ -29,7 +29,7 @@ namespace VendingMachine.Shared.Domain.Models.Dispenser
             _spirals = new List<SpiralDispenser>();
         }
 
-        public void Intialise(ushort rows, ushort columns, ushort depth)
+        public void Initialise(ushort rows, ushort columns, ushort depth)
         {
             Guard.Against.Zero(rows, nameof(rows));
             Guard.Against.Zero(columns, nameof(columns));

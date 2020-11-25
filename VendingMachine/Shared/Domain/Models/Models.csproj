@@ -18,4 +18,8 @@
     <ProjectReference Include="..\..\..\..\Fippa\Fippa.Common\Fippa.Common.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Dispenser\Can\" />
+  </ItemGroup>
+
 </Project>
