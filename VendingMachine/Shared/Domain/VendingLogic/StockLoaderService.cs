@@ -32,13 +32,11 @@ namespace VendingMachine.Shared.Domain.VendingLogic
             var items = new List<InventoryItem>();
             foreach (var item in _dataLoader.Load(filename).Items)
             {
-                ushort dispenserId = item.Key;
-                var inventoryItem = item.Value;
                 items.Add(
                     new InventoryItem(
-                        dispenserId,
-                        inventoryItem.SKU,
-                        item.Value.Quantity));
+                        item.DispenserId,
+                        item.StockKeepingUnit,
+                        item.Quantity));
             }
 
             return items.AsReadOnly();

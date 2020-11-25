@@ -7,7 +7,7 @@ namespace Infrastructure.DTOs
     public class InventoryItemDto
     {
         public ushort DispenserId { get; set; }
-        public string SKU { get; set; }
         public ushort Quantity { get; set; }
+        public string StockKeepingUnit { get; set; }
     }
 }

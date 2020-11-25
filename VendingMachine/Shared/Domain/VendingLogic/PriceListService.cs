@@ -22,9 +22,9 @@ namespace VendingMachine.Shared.Domain.VendingLogic
             {
                 items.Add(
                     new PriceListStockItem(
-                        item.Key,
-                        item.Value.DisplayName,
-                        item.Value.RetailPrice));
+                        item.StockKeepingUnit,
+                        item.DisplayName,
+                        item.RetailPrice));
             }
 
             return new PriceList(items);

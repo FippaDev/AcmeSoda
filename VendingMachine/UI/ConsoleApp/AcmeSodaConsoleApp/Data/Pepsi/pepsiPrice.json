@@ -1,24 +1,24 @@
 {
-  "Items": {
-    "0": {
+  "Items": [
+    {
       "DisplayName": "Pepsi",
       "RetailPrice": 1.50,
-      "StockKeepingUnit": "SKU001"
+      "StockKeepingUnit": "P1"
     },
-    "1": {
+    {
       "DisplayName": "Diet Pepsi",
       "RetailPrice": 1.50,
-      "StockKeepingUnit": "SKU001"
+      "StockKeepingUnit": "P2"
     },
-    "2": {
+    {
       "DisplayName": "Pepsi Max",
       "RetailPrice": 1.50,
-      "StockKeepingUnit": "SKU001"
+      "StockKeepingUnit": "P3"
     },
-    "3": {
+    {
       "DisplayName": "Pepsi Max Cherry",
       "RetailPrice": 1.50,
-      "StockKeepingUnit": "SKU001"
+      "StockKeepingUnit": "P4"
     }
-  }
+  ]
 }

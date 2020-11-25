@@ -7,8 +7,8 @@ namespace Infrastructure.DTOs
     [Serializable, ExcludeFromCodeCoverage]
     public class PriceListDto
     {
-        // Key = SKU
+        // Key = StockKeepingUnit
         // Value = PriceListStockItem (with DisplayName and RRP)
-        public Dictionary<string, PriceListStockItemDto> Items { get; set; }
+        public List<PriceListStockItemDto> Items { get; set; }
     }
 }

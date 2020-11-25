@@ -8,5 +8,6 @@ namespace Infrastructure.DTOs
     {
         public string DisplayName { get; set; }
         public decimal RetailPrice { get; set; }
+        public string StockKeepingUnit { get; set; }
     }
 }

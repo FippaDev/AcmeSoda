@@ -1,75 +1,62 @@
 {
-  "Dispenser": "Can",
   "Items": [
     {
       "DispenserId": 0,
-      "DisplayName": "Pepsi",
       "Quantity": 10,
       "StockKeepingUnit": "P1"
     },
     {
       "DispenserId": 1,
-      "DisplayName": "Pepsi",
       "Quantity": 10,
       "StockKeepingUnit": "P1"
     },
     {
       "DispenserId": 2,
-      "DisplayName": "Pepsi",
       "Quantity": 10,
       "StockKeepingUnit": "P1"
     },
     {
       "DispenserId": 3,
-      "DisplayName": "Pepsi Max",
       "Quantity": 10,
       "StockKeepingUnit": "P2"
     },
     {
       "DispenserId": 4,
-      "DisplayName": "Pepsi Max",
       "Quantity": 10,
       "StockKeepingUnit": "P2"
     },
     {
       "DispenserId": 5,
-      "DisplayName": "Pepsi Max",
       "Quantity": 10,
       "StockKeepingUnit": "P2"
     },
     {
       "DispenserId": 6,
-      "DisplayName": "Diet Pepsi",
       "Quantity": 10,
       "StockKeepingUnit": "P3"
     },
     {
       "DispenserId": 7,
-      "DisplayName": "Diet Pepsi",
       "Quantity": 10,
       "StockKeepingUnit": "P3"
     },
     {
       "DispenserId": 8,
-      "DisplayName": "Diet Pepsi",
       "Quantity": 10,
       "StockKeepingUnit": "P3"
     },
     {
       "DispenserId": 9,
-      "DisplayName": "Pepsi Max Cherry",
       "Quantity": 10,
       "StockKeepingUnit": "P4"
     },
     {
       "DispenserId": 10,
-      "DisplayName": "Pepsi Max Cherry",
       "Quantity": 10,
       "StockKeepingUnit": "P4"
     },
     {
       "DispenserId": 11,
-      "DisplayName": "Pepsi Max Cherry",
       "Quantity": 10,
       "StockKeepingUnit": "P4"
     }

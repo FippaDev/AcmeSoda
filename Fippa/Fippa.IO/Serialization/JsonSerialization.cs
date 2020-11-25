@@ -1,4 +1,5 @@
-﻿using Ardalis.GuardClauses;
+﻿using System;
+using Ardalis.GuardClauses;
 using Fippa.IO.Streams;
 using Newtonsoft.Json;
 
@@ -23,10 +24,17 @@ namespace Fippa.IO.Serialization
 
             string json = streamReader.ReadToEnd();
 
-            return
-                json != null
-                    ? JsonConvert.DeserializeObject<T>(json)
-                    : new T();
+            try
+            {
+                return
+                    json != null
+                        ? JsonConvert.DeserializeObject<T>(json)
+                        : new T();
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
         }
     }
 }
