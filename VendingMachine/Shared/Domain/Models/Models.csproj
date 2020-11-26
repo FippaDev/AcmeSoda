@@ -16,10 +16,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\..\Fippa\Fippa.Common\Fippa.Common.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Dispenser\Can\" />
+    <ProjectReference Include="..\..\..\..\Fippa\Fippa.Money\Fippa.Money.csproj" />
   </ItemGroup>
 
 </Project>

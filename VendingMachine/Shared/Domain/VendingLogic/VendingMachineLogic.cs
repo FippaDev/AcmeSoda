@@ -104,7 +104,7 @@ namespace VendingMachine.Shared.Domain.VendingLogic
 
         public string GetStockReport()
         {
-            return _dispenserModule.GetStockReport();
+            return _dispenserModule.GetStockReport(PriceList);
         }
 
         public void LoadInventory(IEnumerable<InventoryItem> items)

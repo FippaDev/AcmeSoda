@@ -1,10 +1,8 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 using Unity;
-using Unity.Resolution;
 using UserInterface;
 using VendingMachine.Shared.Domain.Domain.VendingMachine;
-using VendingMachine.Shared.Domain.Models.Dispenser;
-using VendingMachine.Shared.Domain.Models.Dispenser.Spiral;
+using VendingMachine.Shared.Domain.Models.Dispenser.Modules;
 using VendingMachine.Shared.Services.Factories;
 
 namespace AcmeSodaConsoleApp
@@ -18,10 +16,14 @@ namespace AcmeSodaConsoleApp
         public ConsoleApplication(IUnityContainer container)
         {
             _container = container;
-            var dispenserModule = _container.Resolve<SpiralDispenserModule>(
-                new ParameterOverride("rows", (ushort)5),
-                new ParameterOverride("columns", (ushort)8),
-                new ParameterOverride("depth", (ushort)15));
+            var dispenserModule = _container.Resolve<SpiralDispenserModule>();
+            dispenserModule.Initialise(
+                new[]
+                {
+                    (ushort)3, // rows
+                    (ushort)4, // columns,
+                    (ushort)15, // depth
+                });
 
             var factory = container.Resolve<IVendingMachineFactory>();
             var branding = "Pepsi";
@@ -32,10 +34,10 @@ namespace AcmeSodaConsoleApp
         {
             _vendingMachine.LoadPriceList(@"data\pepsi\pepsiPrice.json");
             _vendingMachine.LoadStock(@"data\pepsi\pepsiStock.json");
+            _vendingMachine.Initialise();
 
             var input = _container.Resolve<IUserInput>();
             input.Run(_vendingMachine);
-            _vendingMachine.Initialise();
         }
     }
 }
