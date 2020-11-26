@@ -34,9 +34,9 @@ namespace VendingMachine.Shared.Domain.Models.Dispenser
                 : new NullObjectStockItem();
         }
 
-        public uint StockCount()
+        public ushort StockCount()
         {
-            return (uint)_holder.Count;
+            return (ushort)_holder.Count;
         }
 
         public bool AddStockItem(StockItem stockItem)

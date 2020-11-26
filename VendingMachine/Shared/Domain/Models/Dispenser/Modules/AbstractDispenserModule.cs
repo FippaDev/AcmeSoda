@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Linq;
 using System.Runtime.CompilerServices;
-using System.Text;
 using Ardalis.GuardClauses;
-using Fippa.Money.Formatters;
 using VendingMachine.Shared.Domain.Models.Pricing;
 using VendingMachine.Shared.Domain.Models.Selection;
 using VendingMachine.Shared.Domain.Models.Stock;
@@ -50,16 +49,18 @@ namespace VendingMachine.Shared.Domain.Models.Dispenser.Modules
             return _selectionStrategy.GetDispenser(_holders, input);
         }
 
-        public string GetStockReport(PriceList priceList)
+        public ReadOnlyCollection<StockReportLine> GetStockReport(PriceList priceList)
         {
-            var builder = new StringBuilder();
+            var lines = new List<StockReportLine>();
             foreach (var d in _holders)
             {
                 var details = priceList.GetProductDetails(d.StockItem.StockKeepingUnit);
-                builder.AppendFormat($"Dispenser:{d.Id} Item:{details.DisplayName} RRP:{details.RetailPrice.DisplayAsCurrency()} SKU:{d.StockItem.StockKeepingUnit} Qty:{d.StockCount()}{Environment.NewLine}");
+                lines.Add(
+                    new StockReportLine(
+                        d.Id, details.DisplayName, details.RetailPrice, d.StockCount()));
             }
 
-            return builder.ToString().Trim();
+            return lines.AsReadOnly();
         }
 
         public void Load(IEnumerable<InventoryItem> items)

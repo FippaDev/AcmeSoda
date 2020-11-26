@@ -14,7 +14,7 @@ namespace VendingMachine.Shared.Domain.Models.Dispenser
             throw new NotImplementedException();
         }
 
-        public uint StockCount()
+        public ushort StockCount()
         {
             throw new NotImplementedException();
         }

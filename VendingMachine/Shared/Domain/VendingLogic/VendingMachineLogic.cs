@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using Ardalis.GuardClauses;
 using Fippa.Money.Payments;
@@ -102,9 +103,14 @@ namespace VendingMachine.Shared.Domain.VendingLogic
             return selectionResult;
         }
 
-        public string GetStockReport()
+        public ReadOnlyCollection<StockReportLine> GetStockReport()
         {
             return _dispenserModule.GetStockReport(PriceList);
+        }
+
+        public virtual void ShowStockReport(IEnumerable<IDispenser> dispensers, PriceList priceList)
+        {
+            throw new NotImplementedException();
         }
 
         public void LoadInventory(IEnumerable<InventoryItem> items)

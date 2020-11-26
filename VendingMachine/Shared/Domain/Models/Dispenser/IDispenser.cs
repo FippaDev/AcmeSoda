@@ -8,7 +8,7 @@ namespace VendingMachine.Shared.Domain.Models.Dispenser
         StockItem StockItem { get; }
 
         StockItem Dispense();
-        uint StockCount();
+        ushort StockCount();
         bool AddStockItem(StockItem stockItem);
     }
 }

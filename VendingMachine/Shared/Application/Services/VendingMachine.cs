@@ -63,9 +63,7 @@ namespace VendingMachine.Shared.Services
 
         public void ShowStockLevels()
         {
-            _output.Message("-----------------------------------");
-            _output.Message(_logic.GetStockReport());
-            _output.Message("-----------------------------------");
+            _output.ShowStockReport(_logic.GetStockReport());
         }
 
         public void LoadPriceList(string filename)
