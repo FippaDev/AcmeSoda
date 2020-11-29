@@ -1,7 +1,9 @@
+using System;
 using System.Diagnostics.CodeAnalysis;
 using Fippa.IO.Serialization;
 using Fippa.IO.Streams;
 using Moq;
+using Newtonsoft.Json;
 using Xunit;
 
 namespace Fippa.IO.Tests
@@ -42,6 +44,19 @@ namespace Fippa.IO.Tests
             reader.Load(mockStream.Object);
 
             mockStream.Verify(s => s.ReadToEnd(), Times.Once);
+        }
+
+        [Fact]
+        public void Load_GivenBadJson_ThrowsException()
+        {
+            var mockStream = new Mock<IStreamReader>();
+            mockStream.Setup(s => s.ReadToEnd()).Returns("{");
+            var reader = new JsonSerialization<GroupOfValues>();
+
+            Assert.Throws<JsonSerializationException>(() =>
+            {
+                reader.Load(mockStream.Object);
+            });
         }
     }
 }
