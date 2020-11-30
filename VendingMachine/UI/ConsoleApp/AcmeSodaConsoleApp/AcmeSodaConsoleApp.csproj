@@ -12,17 +12,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="obj\AcmeSodaConsoleApp.csproj.nuget.dgspec.json" />
-    <Content Include="obj\project.assets.json" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Include="obj\AcmeSodaConsoleApp.csproj.nuget.g.props" />
-    <None Include="obj\AcmeSodaConsoleApp.csproj.nuget.g.targets" />
-    <None Include="obj\project.nuget.cache" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="Unity" Version="5.11.9" />
   </ItemGroup>
 

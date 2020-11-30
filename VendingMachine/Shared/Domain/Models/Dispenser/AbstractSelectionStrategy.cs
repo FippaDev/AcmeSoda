@@ -11,21 +11,19 @@ namespace VendingMachine.Shared.Domain.Models.Dispenser
     {
         public Tuple<SelectionResult, IDispenser> GetDispenser(IEnumerable<IDispenser> dispensers, string input)
         {
-            var dispsenerList = dispensers.ToList();
-            var dispenserCollection = dispensers as IDispenser[] ?? dispsenerList.ToArray();
-
+            var dispenserCollection = dispensers.ToList();
             Guard.Against.Null(dispenserCollection, nameof(dispensers));
             Guard.Against.EmptyCollection(dispenserCollection, nameof(dispensers));
             Guard.Against.NullOrEmpty(input, nameof(input));
 
-            var validInput = ValidateInput(dispsenerList, input);
+            var validInput = ValidateInput(dispenserCollection, input);
             if (!validInput)
             {
                 return new Tuple<SelectionResult, IDispenser>(
                     SelectionResult.InvalidSelection, new NullDispenserObject());
             }
 
-            var dispenser = dispensers.FirstOrDefault(SelectionPredicate(input));
+            var dispenser = dispenserCollection.FirstOrDefault(SelectionPredicate(input));
             if (dispenser == null)
             {
                 return new Tuple<SelectionResult, IDispenser>(SelectionResult.InvalidSelection, new NullDispenserObject());

@@ -20,18 +20,10 @@ namespace VendingMachine.Shared.Domain.Models.Dispenser
         {
             Guard.Against.NullOrEmpty(input, nameof(input));
 
-            ushort selection;
-            if (!ushort.TryParse(input, out selection))
-            {
-                return false;
-            }
-
-            if (!dispensers.Any(d => d.Id == selection))
-            {
-                return false;
-            }
-
-            return true;
+            return 
+                ushort.TryParse(input, out var selection)
+                &&
+                dispensers.Any(d => d.Id == selection);
         }
     }
 }

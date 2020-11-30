@@ -24,17 +24,10 @@ namespace Fippa.IO.Serialization
 
             string json = streamReader.ReadToEnd();
 
-            try
-            {
-                return
-                    json != null
-                        ? JsonConvert.DeserializeObject<T>(json)
-                        : new T();
-            }
-            catch (Exception ex)
-            {
-                throw;
-            }
+            return
+                json != null
+                    ? JsonConvert.DeserializeObject<T>(json)
+                    : new T();
         }
     }
 }

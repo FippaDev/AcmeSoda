@@ -1,4 +1,3 @@
-using System;
 using System.Diagnostics.CodeAnalysis;
 using Fippa.IO.Serialization;
 using Fippa.IO.Streams;

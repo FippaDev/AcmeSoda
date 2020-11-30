@@ -20,12 +20,7 @@ namespace VendingMachine.Shared.Domain.Models.Dispenser
             Guard.Against.NullOrEmpty(input, nameof(input));
 
             var dispenser = dispensers.FirstOrDefault(SelectionPredicate(input));
-            if (dispensers == null)
-            {
-                return false;
-            }
-
-            return true;
+            return dispenser != null;
         }
     }
 }

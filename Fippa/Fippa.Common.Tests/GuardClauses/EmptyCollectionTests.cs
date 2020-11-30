@@ -19,7 +19,7 @@ namespace Fippa.Common.Tests.GuardClauses
         [Fact]
         public void EmptyCollection_IfInputIsAnEmptyCollection_ThrowsException()
         {
-            int[] collection = new int[0];
+            var collection = new int[0];
             Assert.Throws<ArgumentException>(() =>
                 Guard.Against.EmptyCollection(collection, string.Empty));
         }
@@ -27,7 +27,7 @@ namespace Fippa.Common.Tests.GuardClauses
         [Fact]
         public void EmptyCollection_IfInputIsNotEmpty_DoesNothing()
         {
-            int[] collection = new int[1] {33};
+            var collection = new[] {33};
             Guard.Against.EmptyCollection(collection, string.Empty);
         }
     }
