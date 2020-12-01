@@ -1,4 +1,5 @@
 ﻿using System.Diagnostics.CodeAnalysis;
+using AcmeSodaConsoleApp.StockReport;
 using Fippa.IO.Console;
 using Fippa.IO.Serialization;
 using Fippa.IO.Streams;
@@ -12,6 +13,7 @@ using VendingMachine.Shared.Domain.Models.Dispenser;
 using VendingMachine.Shared.Domain.Models.Dispenser.Modules;
 using VendingMachine.Shared.Domain.VendingLogic;
 using VendingMachine.Shared.Domain.VendingLogic.Payments;
+using VendingMachine.Shared.Services;
 using VendingMachine.Shared.Services.Factories;
 
 namespace AcmeSodaConsoleApp.DependencyInjection
@@ -25,6 +27,8 @@ namespace AcmeSodaConsoleApp.DependencyInjection
             container.RegisterType<IConsole, CommandLineConsole>();
             container.RegisterType<IUserInput, ConsoleKeypad>();
             container.RegisterType<IUserOutput, ConsoleOutput>();
+
+            container.RegisterType<IStockReporting, ConsoleStockReporting>();
 
             ConfigureSharedDomainModels(container);
             ConfigureSharedServices(container);

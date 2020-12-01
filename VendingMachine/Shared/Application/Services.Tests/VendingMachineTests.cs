@@ -2,7 +2,6 @@
 using System.Diagnostics.CodeAnalysis;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
-using UserInterface;
 using VendingMachine.Shared.Domain.VendingLogic;
 
 namespace VendingMachine.Shared.Services.Tests
@@ -14,6 +13,7 @@ namespace VendingMachine.Shared.Services.Tests
         private readonly Mock<IPriceListService> _mockPriceListService = new Mock<IPriceListService>();
         private readonly Mock<IStockLoaderService> _mockStockLoaderService = new Mock<IStockLoaderService>();
         private readonly Mock<IVendingMachineLogic> _mockLogic = new Mock<IVendingMachineLogic>();
+        private readonly Mock<IStockReporting> _mockStockReporting = new Mock<IStockReporting>();
 
         [TestMethod]
         public void VendingMachine_WithEmptyManufacturerName_ThrowsException()
@@ -24,6 +24,7 @@ namespace VendingMachine.Shared.Services.Tests
                     _mockOutput.Object,
                     _mockPriceListService.Object,
                     _mockStockLoaderService.Object,
+                    _mockStockReporting.Object,
                     _mockLogic.Object,
                     string.Empty);
             });
@@ -36,6 +37,7 @@ namespace VendingMachine.Shared.Services.Tests
                 _mockOutput.Object,
                 _mockPriceListService.Object,
                 _mockStockLoaderService.Object,
+                _mockStockReporting.Object,
                 _mockLogic.Object,
                 "Pepsi");
 

@@ -20,7 +20,6 @@
     <ProjectReference Include="..\..\Domain\Models\Models.csproj" />
     <ProjectReference Include="..\..\Domain\VendingLogic\VendingLogic.csproj" />
     <ProjectReference Include="..\..\Infrastructure\Infrastructure\Infrastructure.csproj" />
-    <ProjectReference Include="..\..\UI\UserInterface\UserInterface.csproj" />
   </ItemGroup>
 
 </Project>

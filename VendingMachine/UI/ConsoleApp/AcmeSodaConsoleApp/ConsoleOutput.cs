@@ -1,10 +1,7 @@
-﻿using System.Collections.Generic;
-using System.Globalization;
+﻿using System.Globalization;
 using System.Threading;
 using Fippa.IO.Console;
-using Fippa.Money.Formatters;
-using UserInterface;
-using VendingMachine.Shared.Domain.Models.Stock;
+using VendingMachine.Shared.Services;
 
 namespace AcmeSodaConsoleApp
 {
@@ -32,20 +29,6 @@ namespace AcmeSodaConsoleApp
         public void Message(string message)
         {
             _console.WriteLine(message);
-        }
-
-        public void ShowStockReport(IEnumerable<StockReportLine> stockLines)
-        {
-            // TODO: https://github.com/Athari/CsConsoleFormat
-
-            _console.WriteLine("----------------------------");
-            foreach (var line in stockLines)
-            {
-                _console.WriteLine(
-                    $"{line.DispenserId} {line.DisplayName} {line.Price.DisplayAsCurrency()} {line.StockLevel}");
-            }
-
-            _console.WriteLine("----------------------------");
         }
     }
 }
