@@ -1,4 +1,6 @@
-﻿namespace VendingMachine.Shared.Domain.Models.Stock
+﻿using Ardalis.GuardClauses;
+
+namespace VendingMachine.Shared.Domain.Models.Stock
 {
     public class StockReportLine
     {
@@ -13,6 +15,9 @@
             decimal price,
             ushort stockLevel)
         {
+            Guard.Against.NullOrEmpty(displayName, nameof(displayName));
+            Guard.Against.NegativeOrZero(price, nameof(price));
+
             DispenserId = dispenserId;
             DisplayName = displayName;
             Price = price;
