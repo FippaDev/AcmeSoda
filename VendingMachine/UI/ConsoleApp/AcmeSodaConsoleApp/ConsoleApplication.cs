@@ -1,8 +1,8 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 using Unity;
 using UserInterface;
-using VendingMachine.Shared.Domain.Domain.VendingMachine;
 using VendingMachine.Shared.Domain.Models.Dispenser.Modules;
+using VendingMachine.Shared.Domain.Models.VendingMachine;
 using VendingMachine.Shared.Services.Factories;
 
 namespace AcmeSodaConsoleApp

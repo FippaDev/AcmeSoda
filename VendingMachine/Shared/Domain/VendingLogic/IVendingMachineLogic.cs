@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using VendingMachine.Shared.Domain.Models.Commands;
 using VendingMachine.Shared.Domain.Models.Pricing;
 using VendingMachine.Shared.Domain.Models.Selection;
 using VendingMachine.Shared.Domain.Models.Stock;
@@ -15,8 +16,8 @@ namespace VendingMachine.Shared.Domain.VendingLogic
         PriceList PriceList { get; set; }
         EventHandler<BalanceChangedEvent> BalanceChanged { get; set; }
 
-        void AddPayment(PaymentCommand command);
-        void AddProduct(ProductCommand command);
+        void AddPayment(IPaymentCommand command);
+        void AddProduct(IProductCommand command);
 
         SelectionResult MakeSelection(string input);
         ReadOnlyCollection<StockReportLine> GetStockReport();

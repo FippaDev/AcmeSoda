@@ -1,6 +1,7 @@
 ﻿using System;
 using Ardalis.GuardClauses;
 using Fippa.Common.GuardClauses.Ardalis.GuardClauses;
+using VendingMachine.Shared.Domain.Models.Commands;
 using VendingMachine.Shared.Domain.Models.Stock;
 
 namespace VendingMachine.Shared.Domain.VendingLogic.Commands
@@ -8,7 +9,7 @@ namespace VendingMachine.Shared.Domain.VendingLogic.Commands
     /// <summary>
     /// A product, with a negative monetary value. E.g. Can of soda @-1.50
     /// </summary>
-    public class ProductCommand : Command
+    public class ProductCommand : Command, IProductCommand
     {
         private StockItem _stockItem;
 

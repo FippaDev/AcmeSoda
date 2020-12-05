@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using Ardalis.GuardClauses;
 using Fippa.Money.Payments;
+using VendingMachine.Shared.Domain.Models.Commands;
 using VendingMachine.Shared.Domain.Models.Dispenser;
 using VendingMachine.Shared.Domain.Models.Pricing;
 using VendingMachine.Shared.Domain.Models.Selection;
@@ -20,8 +21,8 @@ namespace VendingMachine.Shared.Domain.VendingLogic
 
         private readonly IDispenserModule _dispenserModule;
 
-        private readonly List<PaymentCommand> _deposits = new List<PaymentCommand>();
-        private readonly List<ProductCommand> _purchases = new List<ProductCommand>();
+        private readonly List<IPaymentCommand> _deposits = new List<IPaymentCommand>();
+        private readonly List<IProductCommand> _purchases = new List<IProductCommand>();
 
         public PriceList PriceList { get; set; }
         public EventHandler<BalanceChangedEvent> BalanceChanged { get; set; }
@@ -71,7 +72,7 @@ namespace VendingMachine.Shared.Domain.VendingLogic
             Balance = 0.00m;
         }
 
-        public void AddPayment(PaymentCommand command)
+        public void AddPayment(IPaymentCommand command)
         {
             _deposits.Add(command);
             Balance += command.Value;
@@ -82,7 +83,7 @@ namespace VendingMachine.Shared.Domain.VendingLogic
             }
         }
 
-        public void AddProduct(ProductCommand command)
+        public void AddProduct(IProductCommand command)
         {
             _purchases.Add(command);
             Balance -= command.Value;

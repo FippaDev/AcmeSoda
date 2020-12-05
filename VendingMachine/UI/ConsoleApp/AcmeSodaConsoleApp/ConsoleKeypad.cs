@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using Fippa.IO.Console;
 using Fippa.Money.Currencies;
 using UserInterface;
-using VendingMachine.Shared.Domain.Domain.VendingMachine;
 using VendingMachine.Shared.Domain.Models.Selection;
+using VendingMachine.Shared.Domain.Models.VendingMachine;
 using VendingMachine.Shared.Domain.VendingLogic.Commands;
 
 namespace AcmeSodaConsoleApp

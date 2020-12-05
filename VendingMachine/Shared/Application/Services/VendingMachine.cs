@@ -1,7 +1,8 @@
 ﻿using System.Runtime.CompilerServices;
 using Ardalis.GuardClauses;
-using VendingMachine.Shared.Domain.Domain.VendingMachine;
+using VendingMachine.Shared.Domain.Models.Commands;
 using VendingMachine.Shared.Domain.Models.Selection;
+using VendingMachine.Shared.Domain.Models.VendingMachine;
 using VendingMachine.Shared.Domain.VendingLogic;
 using VendingMachine.Shared.Domain.VendingLogic.Commands;
 using VendingMachine.Shared.Domain.VendingLogic.Payments;
@@ -48,12 +49,12 @@ namespace VendingMachine.Shared.Services
             _output.ShowWelcomeMessage(Manufacturer);
         }
 
-        public void AddPayment(PaymentCommand command)
+        public void AddPayment(IPaymentCommand command)
         {
             _logic.AddPayment(command);
         }
 
-        public void AddProduct(ProductCommand command)
+        public void AddProduct(IProductCommand command)
         {
             _logic.AddProduct(command);
         }

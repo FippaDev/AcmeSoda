@@ -1,15 +1,15 @@
-﻿using VendingMachine.Shared.Domain.Models.Selection;
-using VendingMachine.Shared.Domain.VendingLogic.Commands;
+﻿using VendingMachine.Shared.Domain.Models.Commands;
+using VendingMachine.Shared.Domain.Models.Selection;
 
-namespace VendingMachine.Shared.Domain.Domain.VendingMachine
+namespace VendingMachine.Shared.Domain.Models.VendingMachine
 {
     public interface IVendingMachine
     {
         string Manufacturer { get; }
 
         void Initialise();
-        void AddPayment(PaymentCommand command);
-        void AddProduct(ProductCommand command);
+        void AddPayment(IPaymentCommand command);
+        void AddProduct(IProductCommand command);
 
         SelectionResult MakeSelection(string input);
         void ShowStockLevels();

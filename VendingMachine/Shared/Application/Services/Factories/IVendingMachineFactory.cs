@@ -1,5 +1,5 @@
-﻿using VendingMachine.Shared.Domain.Domain.VendingMachine;
-using VendingMachine.Shared.Domain.Models.Dispenser;
+﻿using VendingMachine.Shared.Domain.Models.Dispenser;
+using VendingMachine.Shared.Domain.Models.VendingMachine;
 
 namespace VendingMachine.Shared.Services.Factories
 {
