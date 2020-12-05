@@ -17,8 +17,6 @@ namespace AcmeSodaConsoleApp.StockReport
 
         public void ShowStockReport(IEnumerable<StockReportLine> stockLines)
         {
-            // TODO: https://github.com/Athari/CsConsoleFormat
-
             _console.WriteLine("----------------------------");
             foreach (var line in stockLines)
             {

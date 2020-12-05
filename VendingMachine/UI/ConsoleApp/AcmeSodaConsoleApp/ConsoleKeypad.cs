@@ -84,12 +84,12 @@ namespace AcmeSodaConsoleApp
             _console.WriteLine("  a[X]    Make a selection (e.g. a0, a1, etc)");
         }
 
-        private bool IsExitCommand(in string input)
+        private static bool IsExitCommand(in string input)
         {
             return ExitCommands.Contains(input.Trim().ToLower());
         }
 
-        private bool IsHelpCommand(in string input)
+        private static bool IsHelpCommand(in string input)
         {
             return HelpCommands.Contains(input.Trim().ToLower());
         }
