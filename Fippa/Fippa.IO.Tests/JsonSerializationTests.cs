@@ -10,36 +10,36 @@ namespace Fippa.IO.Tests
     [ExcludeFromCodeCoverage]
     public class JsonSerializationTests
     {
-        private struct GroupOfValues
+        private struct TestSerializableObject
         {
-            public string StringValue { get; set; }
-            public float FloatValue { get; set; }
-            public int IntValue { get; set; }
+            public string Attribute1 { get; set; }
+            public float Attribute2 { get; set; }
+            public int Attribute3 { get; set; }
         }
 
         [Fact]
         public void Save_GivenObject_WritesJsonToStream()
         {
             var toSave =
-                new GroupOfValues
+                new TestSerializableObject
                 {
-                    StringValue = "ABC",
-                    FloatValue = 3.14f,
-                    IntValue = 42
+                    Attribute1 = "ABC",
+                    Attribute2 = 3.14f,
+                    Attribute3 = 42
                 };
 
             var mockStream = new Mock<IStreamWriter>();
-            var writer = new JsonSerialization<GroupOfValues>();
+            var writer = new JsonSerialization<TestSerializableObject>();
             writer.Save(mockStream.Object, toSave);
 
-            mockStream.Verify(s => s.Write("{\r\n  \"StringValue\": \"ABC\",\r\n  \"FloatValue\": 3.14,\r\n  \"IntValue\": 42\r\n}"), Times.Once);
+            mockStream.Verify(s => s.Write("{\r\n  \"Attribute1\": \"ABC\",\r\n  \"Attribute2\": 3.14,\r\n  \"Attribute3\": 42\r\n}"), Times.Once);
         }
 
         [Fact]
         public void Load_CallsReadToEnd()
         {
             var mockStream = new Mock<IStreamReader>();
-            var reader = new JsonSerialization<GroupOfValues>();
+            var reader = new JsonSerialization<TestSerializableObject>();
             reader.Load(mockStream.Object);
 
             mockStream.Verify(s => s.ReadToEnd(), Times.Once);
@@ -50,7 +50,7 @@ namespace Fippa.IO.Tests
         {
             var mockStream = new Mock<IStreamReader>();
             mockStream.Setup(s => s.ReadToEnd()).Returns("{");
-            var reader = new JsonSerialization<GroupOfValues>();
+            var reader = new JsonSerialization<TestSerializableObject>();
 
             Assert.Throws<JsonSerializationException>(() =>
             {
