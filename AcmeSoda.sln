@@ -31,10 +31,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{392624
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Domain", "Domain", "{7A563E01-4F81-44C4-A61C-FCAFB2B69BCA}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain", "VendingMachine\Shared\Domain\Domain\Domain.csproj", "{57E28850-6A35-4E55-A57A-FA4D896AECE2}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DomainTests", "VendingMachine\Shared\Domain\DomainTests\DomainTests.csproj", "{ACF24BA0-E4F3-4A19-BBDD-C42D6C08FE9D}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fippa.IO", "Fippa\Fippa.IO\Fippa.IO.csproj", "{6C41736A-EDA1-484C-9547-92594AA4D352}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fippa.IO.Tests", "Fippa\Fippa.IO.Tests\Fippa.IO.Tests.csproj", "{43187220-0011-4944-AD2D-214BDD7C657B}"
@@ -51,9 +47,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Models", "VendingMachine\Sh
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Models.Tests", "VendingMachine\Shared\Domain\Models.Tests\Models.Tests.csproj", "{7A6512EA-28FD-4D2E-BF5F-C5A09812F40C}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VendingLogic", "VendingMachine\Shared\Domain\VendingLogic\VendingLogic.csproj", "{633B1776-528C-42D7-BD24-33BC9A3FF3AA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DomainServices", "VendingMachine\Shared\Domain\VendingLogic\DomainServices.csproj", "{633B1776-528C-42D7-BD24-33BC9A3FF3AA}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VendingLogic.Tests", "VendingMachine\Shared\Domain\VendingLogic.Tests\VendingLogic.Tests.csproj", "{BD68D5C0-7E72-44FE-8764-7078AC8B6B46}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DomainServices.Tests", "VendingMachine\Shared\Domain\VendingLogic.Tests\DomainServices.Tests.csproj", "{BD68D5C0-7E72-44FE-8764-7078AC8B6B46}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UI", "UI", "{1CB8AC43-28F0-4B0F-9817-CAE03B2E259F}"
 EndProject
@@ -65,7 +61,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure.Tests", "Ven
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure", "VendingMachine\Shared\Infrastructure\Infrastructure\Infrastructure.csproj", "{C4281783-11AE-4D4F-AD64-9BB12325C719}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fippa.DependencyInjection", "Fippa\Fippa.DependencyInjection\Fippa.DependencyInjection.csproj", "{F56D9696-08B8-4818-A384-B827203D6F73}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fippa.DependencyInjection", "Fippa\Fippa.DependencyInjection\Fippa.DependencyInjection.csproj", "{F56D9696-08B8-4818-A384-B827203D6F73}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -93,14 +89,6 @@ Global
 		{EEFD4AFB-E344-4F6D-AE74-B56FDCCDC2FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EEFD4AFB-E344-4F6D-AE74-B56FDCCDC2FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EEFD4AFB-E344-4F6D-AE74-B56FDCCDC2FE}.Release|Any CPU.Build.0 = Release|Any CPU
-		{57E28850-6A35-4E55-A57A-FA4D896AECE2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{57E28850-6A35-4E55-A57A-FA4D896AECE2}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{57E28850-6A35-4E55-A57A-FA4D896AECE2}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{57E28850-6A35-4E55-A57A-FA4D896AECE2}.Release|Any CPU.Build.0 = Release|Any CPU
-		{ACF24BA0-E4F3-4A19-BBDD-C42D6C08FE9D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{ACF24BA0-E4F3-4A19-BBDD-C42D6C08FE9D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{ACF24BA0-E4F3-4A19-BBDD-C42D6C08FE9D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{ACF24BA0-E4F3-4A19-BBDD-C42D6C08FE9D}.Release|Any CPU.Build.0 = Release|Any CPU
 		{6C41736A-EDA1-484C-9547-92594AA4D352}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{6C41736A-EDA1-484C-9547-92594AA4D352}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6C41736A-EDA1-484C-9547-92594AA4D352}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -167,8 +155,6 @@ Global
 		{EEFD4AFB-E344-4F6D-AE74-B56FDCCDC2FE} = {E227A2CE-6469-4D7C-9579-D093B4CCFC98}
 		{392624C7-5672-413A-ADE6-BE4A995F84B9} = {F2DDDA85-7C96-44C3-B79D-5F3FC0D2CB29}
 		{7A563E01-4F81-44C4-A61C-FCAFB2B69BCA} = {392624C7-5672-413A-ADE6-BE4A995F84B9}
-		{57E28850-6A35-4E55-A57A-FA4D896AECE2} = {7A563E01-4F81-44C4-A61C-FCAFB2B69BCA}
-		{ACF24BA0-E4F3-4A19-BBDD-C42D6C08FE9D} = {7A563E01-4F81-44C4-A61C-FCAFB2B69BCA}
 		{6C41736A-EDA1-484C-9547-92594AA4D352} = {E227A2CE-6469-4D7C-9579-D093B4CCFC98}
 		{43187220-0011-4944-AD2D-214BDD7C657B} = {E227A2CE-6469-4D7C-9579-D093B4CCFC98}
 		{E0B29507-BF6D-4082-8E45-7C527CE0D7E5} = {0DD9852B-AB09-406D-8C40-AB900B16C20D}

@@ -1,6 +1,6 @@
 ﻿using VendingMachine.Shared.Domain.Models.Pricing;
 
-namespace VendingMachine.Shared.Domain.VendingLogic
+namespace VendingMachine.Shared.Domain.DomainServices
 {
     public interface IPriceListService
     {

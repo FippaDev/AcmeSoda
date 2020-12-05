@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace VendingMachine.Shared.Domain.VendingLogic.Payments
+namespace VendingMachine.Shared.Domain.DomainServices.Payments
 {
     public class MoneyAddedEvent : EventArgs
     {

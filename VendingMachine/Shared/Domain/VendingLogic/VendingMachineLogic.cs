@@ -4,15 +4,15 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using Ardalis.GuardClauses;
 using Fippa.Money.Payments;
+using VendingMachine.Shared.Domain.DomainServices.Commands;
+using VendingMachine.Shared.Domain.DomainServices.Payments;
 using VendingMachine.Shared.Domain.Models.Commands;
 using VendingMachine.Shared.Domain.Models.Dispenser;
 using VendingMachine.Shared.Domain.Models.Pricing;
 using VendingMachine.Shared.Domain.Models.Selection;
 using VendingMachine.Shared.Domain.Models.Stock;
-using VendingMachine.Shared.Domain.VendingLogic.Commands;
-using VendingMachine.Shared.Domain.VendingLogic.Payments;
 
-namespace VendingMachine.Shared.Domain.VendingLogic
+namespace VendingMachine.Shared.Domain.DomainServices
 {
     public class VendingMachineLogic : IVendingMachineLogic
     {

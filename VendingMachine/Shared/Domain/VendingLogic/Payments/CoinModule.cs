@@ -6,7 +6,7 @@ using System.Runtime.CompilerServices;
 using Fippa.Money.Payments;
 
 [assembly:InternalsVisibleTo("VendingMachine.Shared.Domain.VendingLogic.Tests")]
-namespace VendingMachine.Shared.Domain.VendingLogic.Payments
+namespace VendingMachine.Shared.Domain.DomainServices.Payments
 {
     public class CoinModule : IPaymentModule<ICashPayment>
     {

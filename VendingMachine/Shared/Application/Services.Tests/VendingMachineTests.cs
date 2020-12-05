@@ -2,7 +2,7 @@
 using System.Diagnostics.CodeAnalysis;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
-using VendingMachine.Shared.Domain.VendingLogic;
+using VendingMachine.Shared.Domain.DomainServices;
 
 namespace VendingMachine.Shared.Services.Tests
 {

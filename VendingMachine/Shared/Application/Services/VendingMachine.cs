@@ -1,11 +1,10 @@
 ﻿using System.Runtime.CompilerServices;
 using Ardalis.GuardClauses;
+using VendingMachine.Shared.Domain.DomainServices;
+using VendingMachine.Shared.Domain.DomainServices.Payments;
 using VendingMachine.Shared.Domain.Models.Commands;
 using VendingMachine.Shared.Domain.Models.Selection;
 using VendingMachine.Shared.Domain.Models.VendingMachine;
-using VendingMachine.Shared.Domain.VendingLogic;
-using VendingMachine.Shared.Domain.VendingLogic.Commands;
-using VendingMachine.Shared.Domain.VendingLogic.Payments;
 
 [assembly: InternalsVisibleTo("VendingMachine.Shared.Services.Tests")]
 namespace VendingMachine.Shared.Services

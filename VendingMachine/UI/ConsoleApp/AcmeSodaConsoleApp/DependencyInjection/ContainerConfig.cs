@@ -8,11 +8,11 @@ using Infrastructure;
 using Unity;
 using Unity.Lifetime;
 using UserInterface;
+using VendingMachine.Shared.Domain.DomainServices;
+using VendingMachine.Shared.Domain.DomainServices.Payments;
 using VendingMachine.Shared.Domain.Models.Dispenser;
 using VendingMachine.Shared.Domain.Models.Dispenser.Modules;
 using VendingMachine.Shared.Domain.Models.VendingMachine;
-using VendingMachine.Shared.Domain.VendingLogic;
-using VendingMachine.Shared.Domain.VendingLogic.Payments;
 using VendingMachine.Shared.Services;
 using VendingMachine.Shared.Services.Factories;
 

@@ -19,8 +19,7 @@
     <ProjectReference Include="..\..\..\..\Fippa\Fippa.DependencyInjection\Fippa.DependencyInjection.csproj" />
     <ProjectReference Include="..\..\..\..\Fippa\Fippa.Money\Fippa.Money.csproj" />
     <ProjectReference Include="..\..\..\Shared\Application\Services\Services.csproj" />
-    <ProjectReference Include="..\..\..\Shared\Domain\Domain\Domain.csproj" />
-    <ProjectReference Include="..\..\..\Shared\Domain\VendingLogic\VendingLogic.csproj" />
+    <ProjectReference Include="..\..\..\Shared\Domain\VendingLogic\DomainServices.csproj" />
     <ProjectReference Include="..\..\..\Shared\UI\UserInterface\UserInterface.csproj" />
   </ItemGroup>
 

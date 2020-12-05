@@ -1,14 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using VendingMachine.Shared.Domain.DomainServices.Payments;
 using VendingMachine.Shared.Domain.Models.Commands;
 using VendingMachine.Shared.Domain.Models.Pricing;
 using VendingMachine.Shared.Domain.Models.Selection;
 using VendingMachine.Shared.Domain.Models.Stock;
-using VendingMachine.Shared.Domain.VendingLogic.Commands;
-using VendingMachine.Shared.Domain.VendingLogic.Payments;
 
-namespace VendingMachine.Shared.Domain.VendingLogic
+namespace VendingMachine.Shared.Domain.DomainServices
 {
     public interface IVendingMachineLogic
     {

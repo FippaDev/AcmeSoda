@@ -5,9 +5,9 @@
 
     <IsPackable>false</IsPackable>
 
-    <AssemblyName>VendingMachine.Shared.Domain.VendingLogic.Tests</AssemblyName>
+    <AssemblyName>VendingMachine.Shared.Domain.DomainServices.Tests</AssemblyName>
 
-    <RootNamespace>VendingMachine.Shared.Domain.VendingLogic.Tests</RootNamespace>
+    <RootNamespace>VendingMachine.Shared.Domain.DomainServices.Tests</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
@@ -26,7 +26,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\VendingLogic\VendingLogic.csproj" />
+    <ProjectReference Include="..\VendingLogic\DomainServices.csproj" />
   </ItemGroup>
 
 </Project>

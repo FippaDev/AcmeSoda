@@ -2,7 +2,7 @@
 using Ardalis.GuardClauses;
 using VendingMachine.Shared.Domain.Models.Pricing;
 
-namespace VendingMachine.Shared.Domain.VendingLogic.Payments
+namespace VendingMachine.Shared.Domain.DomainServices.Payments
 {
     public class ItemDispensedNotificationEvent : EventArgs
     {

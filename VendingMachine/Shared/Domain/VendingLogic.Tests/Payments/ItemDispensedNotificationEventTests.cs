@@ -1,9 +1,9 @@
 ﻿using System;
+using VendingMachine.Shared.Domain.DomainServices.Payments;
 using VendingMachine.Shared.Domain.Models.Pricing;
-using VendingMachine.Shared.Domain.VendingLogic.Payments;
 using Xunit;
 
-namespace VendingMachine.Shared.Domain.VendingLogic.Tests.Payments
+namespace VendingMachine.Shared.Domain.DomainServices.Tests.Payments
 { 
     public class ItemDispensedNotificationEventTests
     {

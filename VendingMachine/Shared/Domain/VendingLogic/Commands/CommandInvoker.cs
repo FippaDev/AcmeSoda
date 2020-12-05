@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-namespace VendingMachine.Shared.Domain.VendingLogic.Commands
+namespace VendingMachine.Shared.Domain.DomainServices.Commands
 {
     /// <summary>
     /// Command 'invoker' - a collection of commands, then processes them.

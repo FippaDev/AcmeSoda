@@ -2,7 +2,7 @@
 using Ardalis.GuardClauses;
 using VendingMachine.Shared.Domain.Models.Commands;
 
-namespace VendingMachine.Shared.Domain.VendingLogic.Commands
+namespace VendingMachine.Shared.Domain.DomainServices.Commands
 {
     /// <summary>
     /// A representative payment (coin or card payment). E.g. 0.25

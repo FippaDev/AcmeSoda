@@ -1,4 +1,4 @@
-﻿namespace VendingMachine.Shared.Domain.VendingLogic.Commands
+﻿namespace VendingMachine.Shared.Domain.DomainServices.Commands
 {
     public class CommandReceiver
     {
