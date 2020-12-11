@@ -56,3 +56,4 @@
 /Fippa/Fippa.DependencyInjection/obj
 /Fippa/Fippa.DependencyInjection/bin/Debug/netstandard2.0
 /VendingMachine/Shared/Infrastructure/Infrastructure.Tests/bin/Debug/net5.0
+/VendingMachine/Shared/Infrastructure/Infrastructure.Tests/obj

@@ -18,6 +18,9 @@ namespace Fippa.Common.Tests.Results
 
             result.Should().NotBe(null);
             result.Error.Should().Be(null);
+
+            result.Successful.Should().Be(true);
+            result.Failed.Should().Be(false);
         }
 
         [Fact]
@@ -27,12 +30,15 @@ namespace Fippa.Common.Tests.Results
 
             result.Should().NotBe(null);
             result.Error.Should().BeOfType(typeof(TestError));
+
+            result.Successful.Should().Be(false);
+            result.Failed.Should().Be(true);
         }
 
         [Fact]
         public void Fail_WithNull_ThrowsAnException()
         {
-            Assert.Throws<InvalidOperationException>(() =>
+            Assert.Throws<ArgumentException>(() =>
             {
                 Result.Fail(null);
             });

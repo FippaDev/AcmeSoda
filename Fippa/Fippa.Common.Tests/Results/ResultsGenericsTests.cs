@@ -20,28 +20,34 @@ namespace Fippa.Common.Tests.Results
         [Fact]
         public void Success_DoesNotThrowAnyException()
         {
-            var result = Result.Success<string>();
+            var result = Result.Success<string>("testValue");
 
             result.Should().NotBe(null);
             result.Error.Should().Be(null);
+
+            result.Successful.Should().Be(true);
+            result.Failed.Should().Be(false);
+            result.Value.Should().Be("testValue");
         }
 
         [Fact]
         public void Fail_TestError_DoesNotThrowAnyException()
         {
-            var result = Result.Fail<string>(new TestError<string>("Something went wrong"));
-
+            var result = Result.Fail(new TestError<string>("Something went wrong"));
             result.Should().NotBe(null);
             result.Error.Should().BeOfType(typeof(TestError<string>));
             ((TestError<string>)result.Error).Value.Should().Be("Something went wrong");
+
+            result.Successful.Should().Be(false);
+            result.Failed.Should().Be(true);
         }
 
         [Fact]
         public void Fail_WithNull_ThrowsAnException()
         {
-            Assert.Throws<InvalidOperationException>(() =>
+            Assert.Throws<ArgumentException>(() =>
             {
-                Result.Fail<string>(null);
+                Result.Fail(null);
             });
         }
     }

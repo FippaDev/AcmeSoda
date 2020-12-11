@@ -7,16 +7,16 @@ namespace Fippa.Common.GuardClauses
     // extensions no matter where they are in your codebase.
     namespace Ardalis.GuardClauses
     {
-        public static class FalseGuard
+        public static class ExpressionBeingFalseGuard
         {
             /// <summary>
             /// Throws an exception is the input is false
             /// </summary>
-            public static void False(this IGuardClause guardClause, bool input, string parameterName)
+            public static void ExpressionBeingFalse(this IGuardClause guardClause, bool expression, string parameterName)
             {
                 Guard.Against.Null(guardClause, nameof(guardClause));
 
-                if (input == false)
+                if (expression == false)
                 {
                     throw new ArgumentException("False inputs are not allowed", parameterName);
                 }

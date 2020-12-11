@@ -13,13 +13,13 @@ namespace Fippa.Common.Tests.GuardClauses
         public void False_IfInputIsFalse_ThrowsException()
         {
             Assert.Throws<ArgumentException>(() =>
-                Guard.Against.False(false, string.Empty));
+                Guard.Against.ExpressionBeingFalse(false, string.Empty));
         }
 
         [Fact]
         public void False_IfInputIsTrue_NoExceptionThrown()
         {
-            Guard.Against.False(true, string.Empty);
+            Guard.Against.ExpressionBeingFalse(true, string.Empty);
         }
     }
 }
