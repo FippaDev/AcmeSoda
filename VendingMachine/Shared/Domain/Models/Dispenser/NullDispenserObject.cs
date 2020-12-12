@@ -23,5 +23,10 @@ namespace VendingMachine.Shared.Domain.Models.Dispenser
         {
             throw new NotImplementedException();
         }
+
+        public void BulkLoadItems(in string itemSku, in ushort itemQuantity)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

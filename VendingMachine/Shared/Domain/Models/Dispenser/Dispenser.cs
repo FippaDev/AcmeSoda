@@ -50,7 +50,7 @@ namespace VendingMachine.Shared.Domain.Models.Dispenser
             return false;
         }
 
-        public void BulkLoadItems(string sku, ushort quantity)
+        public void BulkLoadItems(in string sku, in ushort quantity)
         {
             for (ushort i = 0; i < quantity; i++)
             {

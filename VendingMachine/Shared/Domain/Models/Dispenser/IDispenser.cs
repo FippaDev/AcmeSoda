@@ -10,5 +10,6 @@ namespace VendingMachine.Shared.Domain.Models.Dispenser
         StockItem Dispense();
         ushort StockCount();
         bool AddStockItem(StockItem stockItem);
+        void BulkLoadItems(in string itemSku, in ushort itemQuantity);
     }
 }

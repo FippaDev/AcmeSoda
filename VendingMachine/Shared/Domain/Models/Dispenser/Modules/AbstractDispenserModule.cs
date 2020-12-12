@@ -18,7 +18,7 @@ namespace VendingMachine.Shared.Domain.Models.Dispenser.Modules
 
         // Key = spiral identifier (e.g. A3)
         // value = spiral
-        protected readonly List<Dispenser> _holders;
+        protected readonly List<IDispenser> _holders;
 
         public bool IsEmpty => _holders.All(s => s.StockCount() == 0);
 
@@ -27,7 +27,7 @@ namespace VendingMachine.Shared.Domain.Models.Dispenser.Modules
             _selectionStrategy = selectionStrategy;
             Guard.Against.Null(selectionStrategy, nameof(selectionStrategy));
 
-            _holders = new List<Dispenser>();
+            _holders = new List<IDispenser>();
         }
 
         public virtual void Initialise(ushort[] dimensions)
