@@ -65,7 +65,8 @@ namespace VendingMachine.Shared.Services
 
         public void ShowStockLevels()
         {
-            _stockReporting.ShowStockReport(_logic.GetStockReport());
+            var stockReportData = _logic.GetStockReport();
+            _stockReporting.ShowStockReport(stockReportData);
         }
 
         public void LoadPriceList(string filename)

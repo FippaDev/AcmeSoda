@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq;
 using Ardalis.GuardClauses;
 using Fippa.Money.Payments;
@@ -43,8 +42,8 @@ namespace VendingMachine.Shared.Domain.DomainServices
             IPaymentModule<ICashPayment> coinModule)
         {
             _dispenserModule = dispenserModule;
-
             _coinModule = coinModule;
+
             _coinModule.MoneyAdded += OnMoneyAdded;
         }
 
@@ -104,19 +103,14 @@ namespace VendingMachine.Shared.Domain.DomainServices
             return selectionResult;
         }
 
-        public ReadOnlyCollection<StockReportLine> GetStockReport()
-        {
-            return _dispenserModule.GetStockReport(PriceList);
-        }
-
-        public virtual void ShowStockReport(IEnumerable<IDispenser> dispensers, PriceList priceList)
-        {
-            throw new NotImplementedException();
-        }
-
         public void LoadInventory(IEnumerable<InventoryItem> items)
         {
             _dispenserModule.Load(items);
+        }
+
+        public IEnumerable<StockReportLine> GetStockReport()
+        {
+            return _dispenserModule.GetStockReport(PriceList);
         }
     }
 }

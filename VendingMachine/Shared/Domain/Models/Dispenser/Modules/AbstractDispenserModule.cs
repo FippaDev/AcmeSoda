@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Linq;
 using System.Runtime.CompilerServices;
@@ -18,7 +17,8 @@ namespace VendingMachine.Shared.Domain.Models.Dispenser.Modules
 
         // Key = spiral identifier (e.g. A3)
         // value = spiral
-        protected readonly List<IDispenser> _holders;
+        protected internal readonly List<IDispenser> _holders;
+        private readonly DispenserReport _dispenserReport;
 
         public bool IsEmpty => _holders.All(s => s.StockCount() == 0);
 
@@ -28,6 +28,7 @@ namespace VendingMachine.Shared.Domain.Models.Dispenser.Modules
             Guard.Against.Null(selectionStrategy, nameof(selectionStrategy));
 
             _holders = new List<IDispenser>();
+            _dispenserReport = new DispenserReport(this);
         }
 
         public virtual void Initialise(ushort[] dimensions)
@@ -49,20 +50,6 @@ namespace VendingMachine.Shared.Domain.Models.Dispenser.Modules
             return _selectionStrategy.GetDispenser(_holders, input);
         }
 
-        public ReadOnlyCollection<StockReportLine> GetStockReport(PriceList priceList)
-        {
-            var lines = new List<StockReportLine>();
-            foreach (var d in _holders)
-            {
-                var details = priceList.GetProductDetails(d.StockItem.StockKeepingUnit);
-                lines.Add(
-                    new StockReportLine(
-                        d.Id, details.DisplayName, details.RetailPrice, d.StockCount()));
-            }
-
-            return lines.AsReadOnly();
-        }
-
         public void Load(IEnumerable<InventoryItem> items)
         {
             Debug.Assert(_holders.Count > 0, "No dispensers found. Forgotten to initialise the dispenser module?");
@@ -72,6 +59,12 @@ namespace VendingMachine.Shared.Domain.Models.Dispenser.Modules
                 var dispenser = _holders[item.DispenserId];
                 dispenser.BulkLoadItems(item.SKU, item.Quantity);
             }
+        }
+
+        public IEnumerable<StockReportLine> GetStockReport(PriceList priceList)
+        {
+            var dispenserReport = new DispenserReport(this);
+            return dispenserReport.GetStockReport(priceList);
         }
     }
 }
