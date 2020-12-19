@@ -1,4 +1,5 @@
-﻿using System.Globalization;
+﻿using System.Collections.Generic;
+using System.Globalization;
 using System.Threading;
 using Fippa.IO.Console;
 using VendingMachine.Shared.Services;
@@ -29,6 +30,14 @@ namespace AcmeSodaConsoleApp
         public void Message(string message)
         {
             _console.WriteLine(message);
+        }
+
+        public void Show(IEnumerable<string> lines)
+        {
+            foreach (var line in lines)
+            {
+                _console.WriteLine(line);
+            }
         }
     }
 }

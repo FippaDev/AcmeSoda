@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using Ardalis.GuardClauses;
 using Fippa.Money.Payments;
@@ -108,9 +109,9 @@ namespace VendingMachine.Shared.Domain.DomainServices
             _dispenserModule.Load(items);
         }
 
-        public IEnumerable<StockReportLine> GetStockReport()
+        public ReadOnlyCollection<StockReportLine> GetStockReport(IStockReporting reportGenerator)
         {
-            return _dispenserModule.GetStockReport(PriceList);
+            return _dispenserModule.GetStockReport(reportGenerator, PriceList);
         }
     }
 }

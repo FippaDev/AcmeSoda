@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using VendingMachine.Shared.Domain.Models.Pricing;
 using VendingMachine.Shared.Domain.Models.Selection;
 using VendingMachine.Shared.Domain.Models.Stock;
@@ -12,6 +13,6 @@ namespace VendingMachine.Shared.Domain.Models.Dispenser
         Tuple<SelectionResult, IDispenser> GetDispenser(string input);
         bool IsEmpty { get; }
         void Load(IEnumerable<InventoryItem> items);
-        IEnumerable<StockReportLine> GetStockReport(PriceList priceList);
+        ReadOnlyCollection<StockReportLine> GetStockReport(IStockReporting reportGenerator, PriceList priceList);
     }
 }

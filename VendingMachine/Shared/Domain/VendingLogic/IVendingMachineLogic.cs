@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using VendingMachine.Shared.Domain.DomainServices.Payments;
 using VendingMachine.Shared.Domain.Models.Commands;
 using VendingMachine.Shared.Domain.Models.Pricing;
@@ -19,6 +20,6 @@ namespace VendingMachine.Shared.Domain.DomainServices
 
         SelectionResult MakeSelection(string input);
         void LoadInventory(IEnumerable<InventoryItem> items);
-        IEnumerable<StockReportLine> GetStockReport();
+        ReadOnlyCollection<StockReportLine> GetStockReport(IStockReporting reportGenerator);
     }
 }

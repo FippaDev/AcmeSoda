@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using Ardalis.GuardClauses;
 
@@ -10,6 +12,7 @@ namespace VendingMachine.Shared.Domain.Models.Pricing
         // Key = SKU
         // Value = PriceListStockItem (with DisplayName and RRP)
         private readonly Dictionary<string, PriceListStockItem> _items;
+        public ReadOnlyCollection<PriceListStockItem> Items => _items.Values.ToList().AsReadOnly();
 
         public PriceListStockItem GetProductDetails(string sku)
         {

@@ -3,6 +3,7 @@ using System.Diagnostics.CodeAnalysis;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using VendingMachine.Shared.Domain.DomainServices;
+using VendingMachine.Shared.Domain.Models.Stock;
 
 namespace VendingMachine.Shared.Services.Tests
 {
@@ -24,7 +25,6 @@ namespace VendingMachine.Shared.Services.Tests
                     _mockOutput.Object,
                     _mockPriceListService.Object,
                     _mockStockLoaderService.Object,
-                    _mockStockReporting.Object,
                     _mockLogic.Object,
                     string.Empty);
             });
@@ -37,7 +37,6 @@ namespace VendingMachine.Shared.Services.Tests
                 _mockOutput.Object,
                 _mockPriceListService.Object,
                 _mockStockLoaderService.Object,
-                _mockStockReporting.Object,
                 _mockLogic.Object,
                 "Pepsi");
 

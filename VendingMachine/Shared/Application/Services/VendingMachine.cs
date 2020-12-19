@@ -4,6 +4,7 @@ using VendingMachine.Shared.Domain.DomainServices;
 using VendingMachine.Shared.Domain.DomainServices.Payments;
 using VendingMachine.Shared.Domain.Models.Commands;
 using VendingMachine.Shared.Domain.Models.Selection;
+using VendingMachine.Shared.Domain.Models.Stock;
 using VendingMachine.Shared.Domain.Models.VendingMachine;
 
 [assembly: InternalsVisibleTo("VendingMachine.Shared.Services.Tests")]
@@ -15,14 +16,12 @@ namespace VendingMachine.Shared.Services
         private readonly IUserOutput _output;
         private readonly IPriceListService _priceListService;
         private readonly IStockLoaderService _stockLoaderService;
-        private readonly IStockReporting _stockReporting;
 
         public string Manufacturer { get; }
  
         public VendingMachine(IUserOutput output,
             IPriceListService priceListService,
             IStockLoaderService stockLoaderService,
-            IStockReporting stockReporting,
             IVendingMachineLogic logic,
             string manufacturer)
         {
@@ -30,7 +29,6 @@ namespace VendingMachine.Shared.Services
             _logic = logic;
             _priceListService = priceListService;
             _stockLoaderService = stockLoaderService;
-            _stockReporting = stockReporting;
 
             Guard.Against.NullOrEmpty(manufacturer, nameof(manufacturer));
             Manufacturer = manufacturer;
@@ -63,10 +61,11 @@ namespace VendingMachine.Shared.Services
             return _logic.MakeSelection(input);
         }
 
-        public void ShowStockLevels()
+        public void ShowStockLevels(IStockReporting reportGenerator)
         {
-            var stockReportData = _logic.GetStockReport();
-            _stockReporting.ShowStockReport(stockReportData);
+            var stockReportData = _logic.GetStockReport(reportGenerator);
+            var report = reportGenerator.ShowStockReport(stockReportData);
+            _output.Show(report);
         }
 
         public void LoadPriceList(string filename)

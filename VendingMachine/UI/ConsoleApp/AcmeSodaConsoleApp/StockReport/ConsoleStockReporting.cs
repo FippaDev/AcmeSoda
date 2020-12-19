@@ -1,30 +1,24 @@
 ﻿using System.Collections.Generic;
-using Fippa.IO.Console;
+using System.Collections.ObjectModel;
+using System.Linq;
 using Fippa.Money.Formatters;
 using VendingMachine.Shared.Domain.Models.Stock;
-using VendingMachine.Shared.Services;
 
 namespace AcmeSodaConsoleApp.StockReport
 {
     public class ConsoleStockReporting : IStockReporting
     {
-        private readonly IConsole _console;
-
-        public ConsoleStockReporting(IConsole console)
+        public ConsoleStockReporting()
         {
-            _console = console;
         }
 
-        public void ShowStockReport(IEnumerable<StockReportLine> stockLines)
+        public ReadOnlyCollection<string> ShowStockReport(IEnumerable<StockReportLine> stockLines)
         {
-            _console.WriteLine("----------------------------");
-            foreach (var line in stockLines)
-            {
-                _console.WriteLine(
-                    $"{line.DispenserId} {line.DisplayName} {line.Price.DisplayAsCurrency()} {line.StockLevel}");
-            }
-
-            _console.WriteLine("----------------------------");
+            var lines = new List<string>();
+            lines.Add("----------------------------");
+            lines.AddRange(stockLines.Select(line => $"{line.DispenserId} {line.DisplayName} {line.Price.DisplayAsCurrency()} {line.StockLevel}"));
+            lines.Add("----------------------------");
+            return lines.AsReadOnly();
         }
     }
 }

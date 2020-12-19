@@ -24,15 +24,11 @@ namespace VendingMachine.Shared.Services.Factories
 
             var userOutput = _unityContainer.Resolve<IUserOutput>();
 
-            var reporting = _unityContainer.Resolve<IStockReporting>(
-                new ParameterOverride("userOutput", userOutput));
-
             var vendingMachine =
                 new VendingMachine(
                     userOutput,
                     _unityContainer.Resolve<IPriceListService>(),
                     _unityContainer.Resolve<IStockLoaderService>(),
-                    reporting,
                     logic,
                     branding);
 

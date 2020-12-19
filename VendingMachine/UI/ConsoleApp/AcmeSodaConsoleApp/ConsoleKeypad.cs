@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using Fippa.IO.Console;
 using Fippa.Money.Currencies;
+using Unity;
 using UserInterface;
 using VendingMachine.Shared.Domain.DomainServices.Commands;
 using VendingMachine.Shared.Domain.Models.Selection;
+using VendingMachine.Shared.Domain.Models.Stock;
 using VendingMachine.Shared.Domain.Models.VendingMachine;
 
 namespace AcmeSodaConsoleApp
@@ -12,14 +14,16 @@ namespace AcmeSodaConsoleApp
     internal class ConsoleKeypad : IUserInput
     {
         private readonly IConsole _console;
+        private readonly IUnityContainer _unityContainer;
         private IVendingMachine _vendingMachine;
 
         private static readonly IList<string> ExitCommands = new List<string> { "q", "quit", "e", "exit" };
         private static readonly IList<string> HelpCommands = new List<string> { "/?", "/h", "help" };
 
-        public ConsoleKeypad(IConsole console)
+        public ConsoleKeypad(IConsole console, IUnityContainer unityContainer)
         {
             _console = console;
+            _unityContainer = unityContainer;
         }
 
         public void Run(IVendingMachine vendingMachine)
@@ -46,7 +50,8 @@ namespace AcmeSodaConsoleApp
 
             if (cmd == "s")
             {
-                _vendingMachine.ShowStockLevels();
+                var reportGenerator = _unityContainer.Resolve<IStockReporting>();
+                _vendingMachine.ShowStockLevels(reportGenerator);
                 return;
             }
 

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Linq;
 using System.Runtime.CompilerServices;
@@ -18,7 +19,6 @@ namespace VendingMachine.Shared.Domain.Models.Dispenser.Modules
         // Key = spiral identifier (e.g. A3)
         // value = spiral
         protected internal readonly List<IDispenser> _holders;
-        private readonly DispenserReport _dispenserReport;
 
         public bool IsEmpty => _holders.All(s => s.StockCount() == 0);
 
@@ -28,7 +28,6 @@ namespace VendingMachine.Shared.Domain.Models.Dispenser.Modules
             Guard.Against.Null(selectionStrategy, nameof(selectionStrategy));
 
             _holders = new List<IDispenser>();
-            _dispenserReport = new DispenserReport(this);
         }
 
         public virtual void Initialise(ushort[] dimensions)
@@ -61,10 +60,9 @@ namespace VendingMachine.Shared.Domain.Models.Dispenser.Modules
             }
         }
 
-        public IEnumerable<StockReportLine> GetStockReport(PriceList priceList)
+        public virtual ReadOnlyCollection<StockReportLine> GetStockReport(IStockReporting reportGenerator, PriceList priceList)
         {
-            var dispenserReport = new DispenserReport(this);
-            return dispenserReport.GetStockReport(priceList);
+            return new List<StockReportLine>().AsReadOnly();
         }
     }
 }

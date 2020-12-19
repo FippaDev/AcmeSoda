@@ -1,5 +1,6 @@
 ﻿using VendingMachine.Shared.Domain.Models.Commands;
 using VendingMachine.Shared.Domain.Models.Selection;
+using VendingMachine.Shared.Domain.Models.Stock;
 
 namespace VendingMachine.Shared.Domain.Models.VendingMachine
 {
@@ -12,7 +13,7 @@ namespace VendingMachine.Shared.Domain.Models.VendingMachine
         void AddProduct(IProductCommand command);
 
         SelectionResult MakeSelection(string input);
-        void ShowStockLevels();
+        void ShowStockLevels(IStockReporting reportGenerator);
         void LoadPriceList(string filename);
         void LoadStock(string filename);
     }
