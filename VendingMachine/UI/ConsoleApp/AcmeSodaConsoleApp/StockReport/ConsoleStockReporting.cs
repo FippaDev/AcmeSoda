@@ -11,7 +11,7 @@ namespace AcmeSodaConsoleApp.StockReport
         {
         }
 
-        public object GeneratCreateReport(IEnumerable<StockReportLine> stockLines)
+        public object CreateReport(IEnumerable<StockReportLine> stockLines)
         {
             var lines = new List<string>();
             lines.Add("----------------------------");
