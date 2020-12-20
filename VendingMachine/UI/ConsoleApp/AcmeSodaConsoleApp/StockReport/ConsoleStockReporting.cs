@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq;
 using Fippa.Money.Formatters;
 using VendingMachine.Shared.Domain.Models.Stock;
@@ -12,7 +11,7 @@ namespace AcmeSodaConsoleApp.StockReport
         {
         }
 
-        public ReadOnlyCollection<string> ShowStockReport(IEnumerable<StockReportLine> stockLines)
+        public object GeneratCreateReport(IEnumerable<StockReportLine> stockLines)
         {
             var lines = new List<string>();
             lines.Add("----------------------------");

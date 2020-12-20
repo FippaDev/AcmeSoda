@@ -1,4 +1,5 @@
-﻿using System.Runtime.CompilerServices;
+﻿using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using Ardalis.GuardClauses;
 using VendingMachine.Shared.Domain.DomainServices;
 using VendingMachine.Shared.Domain.DomainServices.Payments;
@@ -64,8 +65,8 @@ namespace VendingMachine.Shared.Services
         public void ShowStockLevels(IStockReporting reportGenerator)
         {
             var stockReportData = _logic.GetStockReport(reportGenerator);
-            var report = reportGenerator.ShowStockReport(stockReportData);
-            _output.Show(report);
+            var report = reportGenerator.GeneratCreateReport(stockReportData);
+            _output.Show((IEnumerable<string>)report);
         }
 
         public void LoadPriceList(string filename)
