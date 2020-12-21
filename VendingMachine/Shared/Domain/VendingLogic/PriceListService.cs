@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+﻿using System.Linq;
 using Infrastructure;
 using Infrastructure.DTOs;
 using VendingMachine.Shared.Domain.Models.Pricing;
@@ -17,17 +17,14 @@ namespace VendingMachine.Shared.Domain.DomainServices
         public PriceList Load(string filename)
         {
             var dto = _dataLoader.Load(filename);
-            var items = new List<PriceListStockItem>();
-            foreach (var item in dto.Items)
-            {
-                items.Add(
-                    new PriceListStockItem(
-                        item.StockKeepingUnit,
-                        item.DisplayName,
-                        item.RetailPrice));
-            }
-
-            return new PriceList(items);
+            return new PriceList(
+                dto.Items
+                    .Select(item =>
+                        new PriceListStockItem(
+                            item.StockKeepingUnit,
+                            item.DisplayName,
+                            item.RetailPrice))
+                    .ToList());
         }
     }
 }
