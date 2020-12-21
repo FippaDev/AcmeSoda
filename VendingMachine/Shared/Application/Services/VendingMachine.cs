@@ -65,8 +65,8 @@ namespace VendingMachine.Shared.Services
         public void ShowStockLevels(IStockReporting reportGenerator)
         {
             var stockReportData = _logic.GetStockReport(reportGenerator);
-            var report = reportGenerator.CreateReport(stockReportData);
-            _output.Show((IEnumerable<string>)report);
+            var report = (IEnumerable<string>)reportGenerator.CreateReport(stockReportData);
+            _output.Show(report);
         }
 
         public void LoadPriceList(string filename)
