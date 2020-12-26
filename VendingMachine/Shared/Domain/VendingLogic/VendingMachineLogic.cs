@@ -1,12 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
 using Ardalis.GuardClauses;
 using Fippa.Money.Payments;
-using VendingMachine.Shared.Domain.DomainServices.Commands;
 using VendingMachine.Shared.Domain.DomainServices.Payments;
-using VendingMachine.Shared.Domain.Models.Commands;
 using VendingMachine.Shared.Domain.Models.Dispenser;
 using VendingMachine.Shared.Domain.Models.Pricing;
 using VendingMachine.Shared.Domain.Models.Selection;
@@ -21,8 +18,8 @@ namespace VendingMachine.Shared.Domain.DomainServices
 
         private readonly IDispenserModule _dispenserModule;
 
-        private readonly List<IPaymentCommand> _deposits = new List<IPaymentCommand>();
-        private readonly List<IProductCommand> _purchases = new List<IProductCommand>();
+        private readonly List<IPayment> _deposits = new List<IPayment>();
+        private readonly List<StockItem> _purchases = new List<StockItem>();
 
         public PriceList PriceList { get; set; }
         public EventHandler<BalanceChangedEvent> BalanceChanged { get; set; }
@@ -64,6 +61,7 @@ namespace VendingMachine.Shared.Domain.DomainServices
             }
 
             _coinModule.Add(cashPayment);
+            Balance += cashPayment.Value;
         }
 
         public void CancelTransaction()
@@ -72,21 +70,11 @@ namespace VendingMachine.Shared.Domain.DomainServices
             Balance = 0.00m;
         }
 
-        public void AddPayment(IPaymentCommand command)
+        public void AddProduct(StockItem item)
         {
-            _deposits.Add(command);
-            Balance += command.Value;
-
-            if (Balance > _purchases.Sum(c => c.Value))
-            {
-                // TODO: Make automatic purchase
-            }
-        }
-
-        public void AddProduct(IProductCommand command)
-        {
-            _purchases.Add(command);
-            Balance -= command.Value;
+            _purchases.Add(item);
+            var lookup = PriceList.GetProductDetails(item.StockKeepingUnit);
+            Balance -= lookup.RetailPrice;
         }
 
         public SelectionResult MakeSelection(string input)
@@ -98,7 +86,7 @@ namespace VendingMachine.Shared.Domain.DomainServices
             if (selectionResult == SelectionResult.ValidSelection)
             {
                 var rrp = PriceList.LookupByStockKeepingUnit(dispenser.StockItem.StockKeepingUnit);
-                _purchases.Add(new ProductCommand(dispenser.StockItem, rrp));
+                _purchases.Add(new StockItem(dispenser.StockItem.StockKeepingUnit));
             }
 
             return selectionResult;

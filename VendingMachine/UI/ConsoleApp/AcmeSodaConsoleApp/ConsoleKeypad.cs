@@ -4,7 +4,6 @@ using Fippa.IO.Console;
 using Fippa.Money.Currencies;
 using Unity;
 using UserInterface;
-using VendingMachine.Shared.Domain.DomainServices.Commands;
 using VendingMachine.Shared.Domain.Models.Selection;
 using VendingMachine.Shared.Domain.Models.Stock;
 using VendingMachine.Shared.Domain.Models.VendingMachine;
@@ -58,7 +57,7 @@ namespace AcmeSodaConsoleApp
             var coin = CurrencyParser<GBP>.Parse(cmd);
             if (coin.GetType() != typeof(NotSupportedPayment))
             {
-                _vendingMachine.AddPayment(new PaymentCommand(coin.Value));
+                _vendingMachine.AddPayment(coin);
                 return;
             }
 

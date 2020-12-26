@@ -1,4 +1,4 @@
-﻿using VendingMachine.Shared.Domain.Models.Commands;
+﻿using Fippa.Money.Payments;
 using VendingMachine.Shared.Domain.Models.Selection;
 using VendingMachine.Shared.Domain.Models.Stock;
 
@@ -9,8 +9,8 @@ namespace VendingMachine.Shared.Domain.Models.VendingMachine
         string Manufacturer { get; }
 
         void Initialise();
-        void AddPayment(IPaymentCommand command);
-        void AddProduct(IProductCommand command);
+        void AddPayment(IPayment payment);
+        void AddProduct(StockItem item);
 
         SelectionResult MakeSelection(string input);
         void ShowStockLevels(IStockReporting reportGenerator);

@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using Ardalis.GuardClauses;
+using Fippa.Money.Payments;
 using VendingMachine.Shared.Domain.DomainServices;
 using VendingMachine.Shared.Domain.DomainServices.Payments;
-using VendingMachine.Shared.Domain.Models.Commands;
 using VendingMachine.Shared.Domain.Models.Selection;
 using VendingMachine.Shared.Domain.Models.Stock;
 using VendingMachine.Shared.Domain.Models.VendingMachine;
@@ -47,14 +47,14 @@ namespace VendingMachine.Shared.Services
             _output.ShowWelcomeMessage(Manufacturer);
         }
 
-        public void AddPayment(IPaymentCommand command)
+        public void AddPayment(IPayment payment)
         {
-            _logic.AddPayment(command);
+            _logic.AddPayment(payment);
         }
 
-        public void AddProduct(IProductCommand command)
+        public void AddProduct(StockItem item)
         {
-            _logic.AddProduct(command);
+            _logic.AddProduct(item);
         }
 
         public SelectionResult MakeSelection(string input)
