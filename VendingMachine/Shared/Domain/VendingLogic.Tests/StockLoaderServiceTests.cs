@@ -3,7 +3,6 @@ using FluentAssertions;
 using Infrastructure;
 using Infrastructure.DTOs;
 using Moq;
-using VendingMachine.Shared.Domain.Models.Dispenser;
 using Xunit;
 
 namespace VendingMachine.Shared.Domain.DomainServices.Tests
