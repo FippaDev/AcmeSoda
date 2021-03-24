@@ -20,7 +20,6 @@ namespace Fippa.Common.Tests.Results
             result.Error.Should().Be(null);
 
             result.Successful.Should().Be(true);
-            result.Failed.Should().Be(false);
         }
 
         [Fact]
@@ -32,7 +31,6 @@ namespace Fippa.Common.Tests.Results
             result.Error.Should().BeOfType(typeof(TestError));
 
             result.Successful.Should().Be(false);
-            result.Failed.Should().Be(true);
         }
 
         [Fact]

@@ -26,7 +26,6 @@ namespace Fippa.Common.Tests.Results
             result.Error.Should().Be(null);
 
             result.Successful.Should().Be(true);
-            result.Failed.Should().Be(false);
             result.Value.Should().Be("testValue");
         }
 
@@ -39,7 +38,6 @@ namespace Fippa.Common.Tests.Results
             ((TestError<string>)result.Error).Value.Should().Be("Something went wrong");
 
             result.Successful.Should().Be(false);
-            result.Failed.Should().Be(true);
         }
 
         [Fact]
