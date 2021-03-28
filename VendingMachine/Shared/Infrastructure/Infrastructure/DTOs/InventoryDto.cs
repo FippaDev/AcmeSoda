@@ -7,6 +7,6 @@ namespace Infrastructure.DTOs
     [Serializable, ExcludeFromCodeCoverage]
     public class InventoryDto
     {
-        public List<InventoryItemDto> Items { get; set; }
+        public List<InventoryItemDto> Items { get; set; } = new List<InventoryItemDto>();
     }
 }

@@ -18,7 +18,9 @@ namespace VendingMachine.Shared.Domain.DomainServices
         public ReadOnlyCollection<InventoryItem> Load(string filename)
         {
             var items = new List<InventoryItem>();
-            foreach (var item in _dataLoader.Load(filename).Items)
+            var inventoryDto = _dataLoader.Load(filename);
+
+            foreach (var item in inventoryDto.Items)
             {
                 items.Add(
                     new InventoryItem(
