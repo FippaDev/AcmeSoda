@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using Ardalis.GuardClauses;
 using Fippa.Common.Results;
 using Fippa.Money.Change.Errors;
 using Fippa.Money.Currencies;
@@ -12,10 +13,13 @@ namespace Fippa.Money.Change
     {
         public ChangeCalculator(CashFloat<GBPCoins> cashFloat)
         {
+            Guard.Against.Null(cashFloat, nameof(cashFloat));
         }
 
         public Result GetChange(IEnumerable<T> coinsIn, decimal purchase)
         {
+            Guard.Against.Null(coinsIn, nameof(coinsIn));
+
             var coinsOut = new Collection<T>();
             decimal coinsInSum = coinsIn.Sum(c => c.Value);
             if (purchase > coinsInSum)
