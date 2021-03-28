@@ -1,4 +1,6 @@
-﻿namespace Fippa.Common.Results
+﻿using Ardalis.GuardClauses;
+
+namespace Fippa.Common.Results
 {
     public class Result
     {
@@ -13,6 +15,7 @@
 
         public static Result Fail(IError error)
         {
+            Guard.Against.Null(error, nameof(error));
             return new Result(error);
         }
 

@@ -36,7 +36,7 @@ namespace Fippa.Common.Tests.Results
         [Fact]
         public void Fail_WithNull_ThrowsAnException()
         {
-            Assert.Throws<ArgumentException>(() =>
+            Assert.Throws<ArgumentNullException>(() =>
             {
                 Result.Fail(null);
             });
