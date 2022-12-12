@@ -57,3 +57,7 @@
 /Fippa/Fippa.DependencyInjection/bin
 /VendingMachine/Shared/Infrastructure/Infrastructure.Tests/obj
 /.idea/.idea.AcmeSoda/.idea
+AcmeSoda.sln.DotSettings
+.gitignore
+*.sarif
+*.clef
