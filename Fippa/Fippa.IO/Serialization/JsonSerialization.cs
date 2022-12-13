@@ -21,12 +21,10 @@ namespace Fippa.IO.Serialization
         {
             Guard.Against.Null(streamReader, nameof(streamReader));
 
-            string json = streamReader.ReadToEnd();
+            var json = streamReader.ReadToEnd();
 
-            return
-                json != null
-                    ? JsonConvert.DeserializeObject<T>(json)
-                    : new T();
+            var obj = JsonConvert.DeserializeObject<T>(json);
+            return obj ?? new T();
         }
     }
 }
