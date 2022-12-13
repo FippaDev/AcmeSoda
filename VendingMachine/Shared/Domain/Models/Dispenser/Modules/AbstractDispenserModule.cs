@@ -56,7 +56,7 @@ namespace VendingMachine.Shared.Domain.Models.Dispenser.Modules
             foreach (var item in items)
             {
                 var dispenser = _holders[item.DispenserId];
-                dispenser.BulkLoadItems(item.SKU, item.Quantity);
+                dispenser.BulkLoadItems(item.StockKeepingUnit, item.Quantity);
             }
         }
 

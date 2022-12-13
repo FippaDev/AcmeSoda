@@ -27,7 +27,7 @@ namespace VendingMachine.Shared.Domain.Models.Tests.Selection
             var sku = "CHOC01";
             var selection = new ProductSelection(sku);
 
-            selection.SKU.Should().Be(sku);
+            selection.StockKeepingUnit.Should().Be(sku);
         }
     }
 }

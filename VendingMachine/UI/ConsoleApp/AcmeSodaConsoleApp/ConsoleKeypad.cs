@@ -62,7 +62,7 @@ namespace AcmeSodaConsoleApp
                 return;
             }
 
-            var coin = CurrencyParser<GBP>.Parse(cmd);
+            var coin = CurrencyParser<PoundSterling>.Parse(cmd);
             if (coin.GetType() != typeof(NotSupportedPayment))
             {
                 _vendingMachine.AddPayment(coin);

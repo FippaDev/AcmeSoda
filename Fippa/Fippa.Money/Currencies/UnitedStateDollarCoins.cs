@@ -5,18 +5,18 @@ using Fippa.Money.Payments;
 namespace Fippa.Money.Currencies
 {
     [ExcludeFromCodeCoverage]
-    public sealed class USDCoins : IAcceptedCoins
+    public sealed class UnitedStateDollarCoins : IAcceptedCoins
     {
         IEnumerable<ICashPayment> IAcceptedCoins.Collection()
         {
             return
                 new[]
                 {
-                    USD.Cent,
-                    USD.Nickel,
-                    USD.Dime,
-                    USD.Quarter,
-                    USD.HalfDollar
+                    UnitedStatesDollar.Cent,
+                    UnitedStatesDollar.Nickel,
+                    UnitedStatesDollar.Dime,
+                    UnitedStatesDollar.Quarter,
+                    UnitedStatesDollar.HalfDollar
                 };
         }
     }

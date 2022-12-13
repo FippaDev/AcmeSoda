@@ -22,7 +22,7 @@ namespace VendingMachine.Shared.Domain.DomainServices.Tests.Payments
             var module = new CoinModule();
             module.MoneyAdded += delegate { moneyAddedEventHandlerUsed = true; };
             
-            module.Add(GBP.TenPence);
+            module.Add(PoundSterling.TenPence);
 
             Assert.Equal(0.10m, module.AmountDeposited);
             Assert.True(moneyAddedEventHandlerUsed);
@@ -32,8 +32,8 @@ namespace VendingMachine.Shared.Domain.DomainServices.Tests.Payments
         public void ClearTransaction_ClearsCoinCollection()
         {
             var module = new CoinModule();
-            module.Add(GBP.FivePence);
-            module.Add(GBP.FiftyPence);
+            module.Add(PoundSterling.FivePence);
+            module.Add(PoundSterling.FiftyPence);
 
             Assert.Equal(0.55m, module.AmountDeposited);
 

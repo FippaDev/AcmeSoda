@@ -51,7 +51,7 @@ namespace VendingMachine.Shared.Domain.DomainServices.Tests
             stockItems.Count.Should().Be(1);
             stockItems[0].DispenserId.Should().Be(3);
             stockItems[0].Quantity.Should().Be(4);
-            stockItems[0].SKU.Should().Be("RC2L");
+            stockItems[0].StockKeepingUnit.Should().Be("RC2L");
         }
     }
 }

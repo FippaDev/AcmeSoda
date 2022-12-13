@@ -8,7 +8,7 @@ namespace VendingMachine.Shared.Domain.Models.Pricing
 {
     public class PriceList
     {
-        // Key = SKU
+        // Key = StockKeepingUnit
         // Value = PriceListStockItem (with DisplayName and RRP)
         private readonly Dictionary<string, PriceListStockItem> _items;
         public ReadOnlyCollection<PriceListStockItem> Items => _items.Values.ToList().AsReadOnly();

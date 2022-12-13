@@ -10,7 +10,7 @@ namespace Fippa.Money.Tests.Currencies
         [Fact]
         public void Parse_GivenEmptyString_ReturnsInvalidCoin()
         {
-            var coin = CurrencyParser<GBP>.Parse(string.Empty);
+            var coin = CurrencyParser<PoundSterling>.Parse(string.Empty);
 
             Assert.Equal(typeof(NotSupportedPayment), coin.GetType());
         }
@@ -18,7 +18,7 @@ namespace Fippa.Money.Tests.Currencies
         [Fact]
         public void Parse_NonNumericString_ReturnsFalse()
         {
-            var coin = CurrencyParser<GBP>.Parse("+");
+            var coin = CurrencyParser<PoundSterling>.Parse("+");
 
             Assert.Equal(typeof(NotSupportedPayment), coin.GetType());
         }
@@ -26,7 +26,7 @@ namespace Fippa.Money.Tests.Currencies
         [Fact]
         public void Parse_Given0pt60_ReturnsFalse()
         {
-            var coin = CurrencyParser<GBP>.Parse("0.60");
+            var coin = CurrencyParser<PoundSterling>.Parse("0.60");
 
             Assert.Equal(typeof(NotSupportedPayment), coin.GetType());
         }
@@ -34,17 +34,17 @@ namespace Fippa.Money.Tests.Currencies
         [Fact]
         public void Parse_Given0pt50_ReturnsTrueAndIdentifiedAsFiftyPence()
         {
-            var coin  = CurrencyParser<GBP>.Parse("0.50");
+            var coin  = CurrencyParser<PoundSterling>.Parse("0.50");
 
-            Assert.Equal(GBP.FiftyPence, coin);
+            Assert.Equal(PoundSterling.FiftyPence, coin);
         }
 
         [Fact]
         public void Parse_Given0pt5_ReturnsTrueAndIdentifiedAsFiftyPence()
         {
-            var coin = CurrencyParser<GBP>.Parse("0.5");
+            var coin = CurrencyParser<PoundSterling>.Parse("0.5");
 
-            Assert.Equal(GBP.FiftyPence, coin);
+            Assert.Equal(PoundSterling.FiftyPence, coin);
         }
     }
 }

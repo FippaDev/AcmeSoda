@@ -11,7 +11,7 @@ namespace Fippa.Money.Change
 {
     public class ChangeCalculator<T> where T : ICashPayment
     {
-        public ChangeCalculator(CashFloat<GBPCoins> cashFloat)
+        public ChangeCalculator(CashFloat<PoundSterlingCoins> cashFloat)
         {
             Guard.Against.Null(cashFloat, nameof(cashFloat));
         }

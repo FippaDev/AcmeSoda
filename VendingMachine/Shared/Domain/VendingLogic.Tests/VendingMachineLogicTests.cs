@@ -22,7 +22,7 @@ namespace VendingMachine.Shared.Domain.DomainServices.Tests
                 _mockDispenserModule.Object,
                 _mockCoinModule.Object);
 
-            vendingMachine.AddPayment(GBP.TenPence);
+            vendingMachine.AddPayment(PoundSterling.TenPence);
             vendingMachine.CancelTransaction();
 
             Assert.Equal(0.00m, vendingMachine.Balance);
@@ -35,9 +35,9 @@ namespace VendingMachine.Shared.Domain.DomainServices.Tests
                 _mockDispenserModule.Object,
                 _mockCoinModule.Object);
 
-            vendingMachine.AddPayment(GBP.TenPence);
+            vendingMachine.AddPayment(PoundSterling.TenPence);
 
-            _mockCoinModule.Verify(c => c.Add(GBP.TenPence));
+            _mockCoinModule.Verify(c => c.Add(PoundSterling.TenPence));
         }
 
         [Fact]

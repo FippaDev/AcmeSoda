@@ -6,12 +6,12 @@ using Xunit;
 namespace VendingMachine.Shared.Domain.Models.Tests.Currencies
 {
     [ExcludeFromCodeCoverage]
-    public class AcceptedGBPCoinsTests
+    public class AcceptedPoundSterlingCoinsTests
     {
         [Fact]
-        public void AcceptedGBPCoins_MustHaveAtLeastOneCoin()
+        public void AcceptedPoundSterlingCoins_MustHaveAtLeastOneCoin()
         {
-            var coins = new AcceptedGBPCoins();
+            var coins = new AcceptedPoundSterlingCoins();
             coins.Collection().Should().NotBeEmpty();
         }
     }

@@ -12,9 +12,9 @@ namespace Fippa.Money.Tests.Change
         public void GetChange_WhenNoCoinsInNoChangeGive()
         {
             var cashFloat = CashFloatSetup.SmallFloat();
-            var calculator = new ChangeCalculator<GBP>(cashFloat);
+            var calculator = new ChangeCalculator<PoundSterling>(cashFloat);
 
-            var coinsIn = new List<GBP>();
+            var coinsIn = new List<PoundSterling>();
             decimal purchase = 1.25m;
 
             var result = calculator.GetChange(coinsIn, purchase);
@@ -26,9 +26,9 @@ namespace Fippa.Money.Tests.Change
         public void GetChange_WhenPurchaseGreaterThanCoinsIn_ReturnsInsufficientFundsError()
         {
             var cashFloat = CashFloatSetup.SmallFloat();
-            var calculator = new ChangeCalculator<GBP>(cashFloat);
+            var calculator = new ChangeCalculator<PoundSterling>(cashFloat);
 
-            var coinsIn = new List<GBP>(new [] {GBP.OnePound });
+            var coinsIn = new List<PoundSterling>(new [] {PoundSterling.OnePound });
             decimal purchase = 1.25m;
 
             var result = calculator.GetChange(coinsIn, purchase);

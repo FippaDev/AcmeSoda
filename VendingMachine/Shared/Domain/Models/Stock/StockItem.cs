@@ -5,7 +5,7 @@ namespace VendingMachine.Shared.Domain.Models.Stock
     public class StockItem
     {
         /// <summary>
-        /// SKU
+        /// StockKeepingUnit
         /// </summary>
         public string StockKeepingUnit { get; }
 
