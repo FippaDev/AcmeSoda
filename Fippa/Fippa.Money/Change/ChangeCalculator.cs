@@ -18,10 +18,11 @@ namespace Fippa.Money.Change
 
         public IResult GetChange(IEnumerable<T> coinsIn, decimal purchase)
         {
-            Guard.Against.Null(coinsIn, nameof(coinsIn));
+            var coins = coinsIn as T[] ?? coinsIn.ToArray();
+            Guard.Against.Null(coins, nameof(coinsIn));
 
             var coinsOut = new Collection<T>();
-            decimal coinsInSum = coinsIn.Sum(c => c.Value);
+            decimal coinsInSum = coins.Sum(c => c.Value);
             if (purchase > coinsInSum)
             {
                 return new Failure(new InsufficientFundsError(purchase, coinsInSum));
