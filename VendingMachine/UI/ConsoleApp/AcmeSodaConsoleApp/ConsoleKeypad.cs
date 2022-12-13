@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Ardalis.GuardClauses;
 using Fippa.IO.Console;
 using Fippa.Money.Currencies;
 using Unity;
@@ -14,7 +15,7 @@ namespace AcmeSodaConsoleApp
     {
         private readonly IConsole _console;
         private readonly IUnityContainer _unityContainer;
-        private IVendingMachine _vendingMachine;
+        private IVendingMachine? _vendingMachine;
 
         private static readonly IList<string> ExitCommands = new List<string> { "q", "quit", "e", "exit" };
         private static readonly IList<string> HelpCommands = new List<string> { "/?", "/h", "help" };
@@ -25,12 +26,17 @@ namespace AcmeSodaConsoleApp
             _unityContainer = unityContainer;
         }
 
-        public void Run(IVendingMachine vendingMachine)
+        public void SetVendingMachineType(IVendingMachine vendingMachine)
         {
             _vendingMachine = vendingMachine;
+        }
+
+        public void Run()
+        {
+            Guard.Against.Null(_vendingMachine, "The vending machine type must be specified before running");
 
             var input = _console.ReadLine();
-            while (!IsExitCommand(input))
+            while (input != null && !IsExitCommand(input))
             {
                 ProcessInput(input);
                 input = Console.ReadLine();
@@ -39,6 +45,8 @@ namespace AcmeSodaConsoleApp
 
         private void ProcessInput(in string input)
         {
+            Guard.Against.Null(_vendingMachine, "The vending machine type must be specified before running");
+
             var cmd = input.ToLower().Trim();
 
             if (IsHelpCommand(cmd))

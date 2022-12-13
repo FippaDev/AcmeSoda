@@ -12,7 +12,7 @@ namespace VendingMachine.Shared.Domain.DomainServices.Payments
     {
         private readonly ObservableCollection<IPayment> _coins = new ObservableCollection<IPayment>();
 
-        public EventHandler<MoneyAddedEvent> MoneyAdded { get; set; }
+        public EventHandler<MoneyAddedEvent>? MoneyAdded { get; set; }
         
         public CoinModule()
         {

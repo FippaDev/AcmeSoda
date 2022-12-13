@@ -4,6 +4,7 @@ namespace UserInterface
 {
     public interface IUserInput
     {
-        void Run(IVendingMachine vendingMachine);
+        void SetVendingMachineType(IVendingMachine vendingMachine);
+        void Run();
     }
 }

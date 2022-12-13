@@ -39,6 +39,8 @@ namespace Fippa.IO.Tests
         public void Load_CallsReadToEnd()
         {
             var mockStream = new Mock<IStreamReader>();
+            mockStream.Setup(s => s.ReadToEnd()).Returns("{\r\n  \"Attribute1\": \"ABC\",\r\n  \"Attribute2\": 3.14,\r\n  \"Attribute3\": 42\r\n}");
+
             var reader = new JsonSerialization<TestSerializableObject>();
             reader.Load(mockStream.Object);
 

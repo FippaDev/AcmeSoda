@@ -1,18 +1,19 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>netstandard2.1</TargetFramework>
-    <AssemblyName>Fippa.Money</AssemblyName>
-    <RootNamespace>Fippa.Money</RootNamespace>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFramework>netstandard2.1</TargetFramework>
+		<AssemblyName>Fippa.Money</AssemblyName>
+		<RootNamespace>Fippa.Money</RootNamespace>
+		<Nullable>enable</Nullable>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Ardalis.SmartEnum" Version="2.1.0" />
-  </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="Ardalis.SmartEnum" Version="2.1.0" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\Fippa.Common\Fippa.Common.csproj" />
-  </ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\Fippa.Common\Fippa.Common.csproj" />
+	</ItemGroup>
 
 </Project>
   

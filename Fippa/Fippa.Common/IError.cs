@@ -2,7 +2,7 @@
 {
     public interface IError
     {
-        string ToString();
+        string? ToString();
     }
 
     public interface IError<out T> : IError

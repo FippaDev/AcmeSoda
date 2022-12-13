@@ -37,7 +37,8 @@ namespace AcmeSodaConsoleApp
             _vendingMachine.Initialise();
 
             var input = _container.Resolve<IUserInput>();
-            input.Run(_vendingMachine);
+            input.SetVendingMachineType(_vendingMachine);
+            input.Run();
         }
     }
 }

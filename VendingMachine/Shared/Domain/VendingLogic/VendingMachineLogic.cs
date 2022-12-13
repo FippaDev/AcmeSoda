@@ -21,8 +21,14 @@ namespace VendingMachine.Shared.Domain.DomainServices
         private readonly List<IPayment> _deposits = new List<IPayment>();
         private readonly List<StockItem> _purchases = new List<StockItem>();
 
-        public PriceList PriceList { get; set; }
-        public EventHandler<BalanceChangedEvent> BalanceChanged { get; set; }
+        private PriceList _priceList = new PriceList(new List<PriceListStockItem>());
+
+        public PriceList PriceList
+        {
+            get { return _priceList; }
+        }
+
+        public EventHandler<BalanceChangedEvent>? BalanceChanged { get; set; }
 
         public decimal Balance
         {
@@ -44,6 +50,7 @@ namespace VendingMachine.Shared.Domain.DomainServices
 
             _coinModule.MoneyAdded += OnMoneyAdded;
         }
+
 
         private void OnMoneyAdded(object sender, MoneyAddedEvent e)
         {
@@ -100,6 +107,11 @@ namespace VendingMachine.Shared.Domain.DomainServices
         public ReadOnlyCollection<StockReportLine> GetStockReport(IStockReporting reportGenerator)
         {
             return _dispenserModule.GetStockReport(reportGenerator, PriceList);
+        }
+
+        public void InitialisePriceList(PriceList priceList)
+        {
+            _priceList = priceList;
         }
     }
 }

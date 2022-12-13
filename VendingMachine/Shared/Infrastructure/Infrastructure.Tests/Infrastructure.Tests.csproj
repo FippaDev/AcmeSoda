@@ -1,11 +1,10 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
-
-    <IsPackable>false</IsPackable>
-
-    <AssemblyName>VendingMachine.Shared.Infrastructure.Infrastructure.Tests</AssemblyName>
+    <TargetFramework>net7.0</TargetFramework>
+	  <IsPackable>false</IsPackable>
+	  <AssemblyName>VendingMachine.Shared.Infrastructure.Infrastructure.Tests</AssemblyName>
+	  <Nullable>enable</Nullable>
   </PropertyGroup>
 
   <ItemGroup>

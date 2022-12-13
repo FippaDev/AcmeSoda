@@ -1,5 +1,4 @@
-﻿using System;
-using FluentAssertions;
+﻿using FluentAssertions;
 using Xunit;
 
 namespace Fippa.Common.Tests.Results
@@ -25,15 +24,6 @@ namespace Fippa.Common.Tests.Results
             ((TestError<string>)result.Error).Value.Should().Be("Something went wrong");
 
             result.Successful.Should().Be(false);
-        }
-
-        [Fact]
-        public void Constructor_WithNull_ThrowsAnArgumentNullException()
-        {
-            Assert.Throws<ArgumentNullException>(() =>
-            {
-                new Fippa.Common.Results.Failure(null);
-            });
         }
     }
 }

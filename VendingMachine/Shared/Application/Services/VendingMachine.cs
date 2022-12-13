@@ -71,7 +71,7 @@ namespace VendingMachine.Shared.Services
 
         public void LoadPriceList(string filename)
         {
-            _logic.PriceList = _priceListService.Load(filename);
+            _logic.InitialisePriceList(_priceListService.Load(filename));
         }
 
         public void LoadStock(string filename)

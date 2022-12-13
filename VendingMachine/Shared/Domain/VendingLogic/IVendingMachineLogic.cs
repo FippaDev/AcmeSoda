@@ -12,8 +12,8 @@ namespace VendingMachine.Shared.Domain.DomainServices
     public interface IVendingMachineLogic
     {
         decimal Balance { get; }
-        PriceList PriceList { get; set; }
-        EventHandler<BalanceChangedEvent> BalanceChanged { get; set; }
+        PriceList PriceList { get; }
+        EventHandler<BalanceChangedEvent>? BalanceChanged { get; set; }
 
         void AddPayment(IPayment payment);
         void AddProduct(StockItem item);
@@ -21,5 +21,6 @@ namespace VendingMachine.Shared.Domain.DomainServices
         SelectionResult MakeSelection(string input);
         void LoadInventory(IEnumerable<InventoryItem> items);
         ReadOnlyCollection<StockReportLine> GetStockReport(IStockReporting reportGenerator);
+        void InitialisePriceList(PriceList priceList);
     }
 }

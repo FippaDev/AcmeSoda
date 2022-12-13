@@ -4,7 +4,7 @@
     {
         public static class HasValueExtension
         {
-            public static bool HasValue(this string input)
+            public static bool HasValue(this string? input)
             {
                 return input != null && !string.IsNullOrWhiteSpace(input);
             }

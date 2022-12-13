@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using FluentAssertions;
-using JetBrains.Annotations;
 using Moq;
 using VendingMachine.Shared.Domain.Models.Dispenser;
 using VendingMachine.Shared.Domain.Models.Dispenser.Modules;
@@ -15,7 +14,7 @@ namespace VendingMachine.Shared.Domain.Models.Tests.Dispenser.Module
     {
         private class TestDispenserModule : AbstractDispenserModule
         {
-            public TestDispenserModule([NotNull] ISelectionStrategy selectionStrategy) 
+            public TestDispenserModule(ISelectionStrategy selectionStrategy) 
                 : base(selectionStrategy)
             {
             }

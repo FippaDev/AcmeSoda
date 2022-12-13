@@ -1,19 +1,20 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>netstandard2.1</TargetFramework>
-    <AssemblyName>VendingMachine.Shared.Domain.DomainServices</AssemblyName>
-    <RootNamespace>VendingMachine.Shared.Domain.DomainServices</RootNamespace>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFramework>netstandard2.1</TargetFramework>
+		<AssemblyName>VendingMachine.Shared.Domain.DomainServices</AssemblyName>
+		<RootNamespace>VendingMachine.Shared.Domain.DomainServices</RootNamespace>
+		<Nullable>enable</Nullable>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Unity" Version="5.11.10" />
-  </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="Unity" Version="5.11.10" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\..\..\..\Fippa\Fippa.Money\Fippa.Money.csproj" />
-    <ProjectReference Include="..\..\Infrastructure\Infrastructure\Infrastructure.csproj" />
-    <ProjectReference Include="..\Models\Models.csproj" />
-  </ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\..\..\..\Fippa\Fippa.Money\Fippa.Money.csproj" />
+		<ProjectReference Include="..\..\Infrastructure\Infrastructure\Infrastructure.csproj" />
+		<ProjectReference Include="..\Models\Models.csproj" />
+	</ItemGroup>
 
 </Project>

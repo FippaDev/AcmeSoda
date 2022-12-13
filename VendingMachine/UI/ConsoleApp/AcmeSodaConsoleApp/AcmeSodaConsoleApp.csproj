@@ -1,35 +1,36 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-  <PropertyGroup>
-    <OutputType>Exe</OutputType>
-    <TargetFramework>net7.0</TargetFramework>
-    <StartupObject>AcmeSodaConsoleApp.Program</StartupObject>
-    <AssemblyName>VendingMachine.Shared.UI.ConsoleApp.AcmeSodaConsoleApp</AssemblyName>
-  </PropertyGroup>
-  <ItemGroup>
-    <Compile Remove="CommandLineMenu.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <PackageReference Include="Unity" Version="5.11.10" />
-    <PackageReference Include="Microsoft.DotNet.UpgradeAssistant.Extensions.Default.Analyzers" Version="0.4.355802">
-      <PrivateAssets>all</PrivateAssets>
-    </PackageReference>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\..\..\Fippa\Fippa.DependencyInjection\Fippa.DependencyInjection.csproj" />
-    <ProjectReference Include="..\..\..\..\Fippa\Fippa.Money\Fippa.Money.csproj" />
-    <ProjectReference Include="..\..\..\Shared\Application\Services\Services.csproj" />
-    <ProjectReference Include="..\..\..\Shared\Domain\VendingLogic\DomainServices.csproj" />
-    <ProjectReference Include="..\..\..\Shared\UI\UserInterface\UserInterface.csproj" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Update="Data\Mars\Mars.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="Data\Pepsi\pepsiPrice.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="Data\Pepsi\pepsiStock.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-  </ItemGroup>
+	<PropertyGroup>
+		<OutputType>Exe</OutputType>
+		<TargetFramework>net7.0</TargetFramework>
+		<StartupObject>AcmeSodaConsoleApp.Program</StartupObject>
+		<AssemblyName>VendingMachine.Shared.UI.ConsoleApp.AcmeSodaConsoleApp</AssemblyName>
+		<Nullable>enable</Nullable>
+	</PropertyGroup>
+	<ItemGroup>
+		<Compile Remove="CommandLineMenu.cs" />
+	</ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="Unity" Version="5.11.10" />
+		<PackageReference Include="Microsoft.DotNet.UpgradeAssistant.Extensions.Default.Analyzers" Version="0.4.355802">
+			<PrivateAssets>all</PrivateAssets>
+		</PackageReference>
+	</ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\..\..\..\Fippa\Fippa.DependencyInjection\Fippa.DependencyInjection.csproj" />
+		<ProjectReference Include="..\..\..\..\Fippa\Fippa.Money\Fippa.Money.csproj" />
+		<ProjectReference Include="..\..\..\Shared\Application\Services\Services.csproj" />
+		<ProjectReference Include="..\..\..\Shared\Domain\VendingLogic\DomainServices.csproj" />
+		<ProjectReference Include="..\..\..\Shared\UI\UserInterface\UserInterface.csproj" />
+	</ItemGroup>
+	<ItemGroup>
+		<None Update="Data\Mars\Mars.json">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+		<None Update="Data\Pepsi\pepsiPrice.json">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
+		<None Update="Data\Pepsi\pepsiStock.json">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
+	</ItemGroup>
 </Project>

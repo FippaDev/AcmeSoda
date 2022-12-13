@@ -14,6 +14,12 @@ namespace Fippa.IO.Streams
     {
         private System.IO.StreamReader _stream;
 
+        public StreamReaderWrapper(string filename)
+        {
+            Guard.Against.NullOrWhiteSpace(filename, nameof(filename));
+            _stream = new System.IO.StreamReader(filename);
+        }
+
         public void Load(string filename)
         {
             Guard.Against.NullOrWhiteSpace(filename, nameof(filename));
@@ -25,6 +31,7 @@ namespace Fippa.IO.Streams
             Guard.Against.Null(_stream, nameof(_stream));
             return _stream.ReadToEnd();
         }
+
         public void Dispose()
         {
             _stream.Dispose();

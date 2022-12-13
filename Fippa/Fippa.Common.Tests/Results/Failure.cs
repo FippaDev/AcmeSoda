@@ -1,5 +1,4 @@
-﻿using System;
-using FluentAssertions;
+﻿using FluentAssertions;
 using Xunit;
 
 namespace Fippa.Common.Tests.Results
@@ -17,15 +16,6 @@ namespace Fippa.Common.Tests.Results
 
             result.Error.Should().BeOfType(typeof(TestError));
             result.Successful.Should().Be(false);
-        }
-
-        [Fact]
-        public void Constructor_WithNull_ThrowsAnArgumentNullException()
-        {
-            Assert.Throws<ArgumentNullException>(() =>
-            {
-                new Fippa.Common.Results.Failure(null);
-            });
         }
     }
 }

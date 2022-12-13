@@ -1,5 +1,4 @@
-﻿using System;
-using VendingMachine.Shared.Domain.DomainServices.Payments;
+﻿using VendingMachine.Shared.Domain.DomainServices.Payments;
 using VendingMachine.Shared.Domain.Models.Pricing;
 using Xunit;
 
@@ -7,12 +6,6 @@ namespace VendingMachine.Shared.Domain.DomainServices.Tests.Payments
 { 
     public class ItemDispensedNotificationEventTests
     {
-        [Fact]
-        public void ItemDispensedNotificationEvent_PassNull_ThrowsException()
-        {
-            Assert.Throws<ArgumentNullException>(() => new ItemDispensedNotificationEvent(null));
-        }
-
         [Fact]
         public void ItemDispensedNotificationEvent_GivenItem_SetsProperty()
         {

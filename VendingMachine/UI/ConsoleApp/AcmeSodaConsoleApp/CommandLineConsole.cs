@@ -10,7 +10,7 @@ namespace AcmeSodaConsoleApp
             Console.WriteLine(line);
         }
 
-        public string ReadLine()
+        public string? ReadLine()
         {
             return Console.ReadLine();
         }

@@ -10,13 +10,6 @@ namespace Fippa.Common.Tests.GuardClauses
     public class EmptyCollectionTests
     {
         [Fact]
-        public void EmptyCollection_IfInputIsNull_ThrowsException()
-        {
-            Assert.Throws<ArgumentNullException>(() =>
-                Guard.Against.EmptyCollection((int[])null, string.Empty));
-        }
-
-        [Fact]
         public void EmptyCollection_IfInputIsAnEmptyCollection_ThrowsException()
         {
             var collection = new int[0];
