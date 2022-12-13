@@ -1,7 +1,7 @@
 ﻿using Fippa.Money.Currencies;
 using Fippa.Money.Payments;
 
-namespace Fippa.Money.Change
+namespace Fippa.Money.Tests.Change
 {
     internal static class CashFloatSetup
     {
