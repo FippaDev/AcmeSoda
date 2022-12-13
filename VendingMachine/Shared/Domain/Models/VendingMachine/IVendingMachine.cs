@@ -2,19 +2,18 @@
 using VendingMachine.Shared.Domain.Models.Selection;
 using VendingMachine.Shared.Domain.Models.Stock;
 
-namespace VendingMachine.Shared.Domain.Models.VendingMachine
+namespace VendingMachine.Shared.Domain.Models.VendingMachine;
+
+public interface IVendingMachine
 {
-    public interface IVendingMachine
-    {
-        string Manufacturer { get; }
+    string Manufacturer { get; }
 
-        void Initialise();
-        void AddPayment(IPayment payment);
-        void AddProduct(StockItem item);
+    void Initialise();
+    void AddPayment(IPayment payment);
+    void AddProduct(StockItem item);
 
-        SelectionResult MakeSelection(string input);
-        void ShowStockLevels(IStockReporting reportGenerator);
-        void LoadPriceList(string filename);
-        void LoadStock(string filename);
-    }
+    SelectionResult MakeSelection(string input);
+    void ShowStockLevels(IStockReporting reportGenerator);
+    void LoadPriceList(string filename);
+    void LoadStock(string filename);
 }

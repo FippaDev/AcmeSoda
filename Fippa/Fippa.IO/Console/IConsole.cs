@@ -1,8 +1,7 @@
-﻿namespace Fippa.IO.Console
+﻿namespace Fippa.IO.Console;
+
+public interface IConsole
 {
-    public interface IConsole
-    {
-        void WriteLine(string line);
-        string? ReadLine();
-    }
+    void WriteLine(string line);
+    string? ReadLine();
 }

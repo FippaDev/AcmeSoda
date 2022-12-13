@@ -4,35 +4,34 @@ using VendingMachine.Shared.Domain.DomainServices;
 using VendingMachine.Shared.Domain.Models.Dispenser;
 using VendingMachine.Shared.Domain.Models.VendingMachine;
 
-namespace VendingMachine.Shared.Services.Factories
+namespace VendingMachine.Shared.Services.Factories;
+
+public class VendingMachineFactory : IVendingMachineFactory
 {
-    public class VendingMachineFactory : IVendingMachineFactory
+    private readonly IUnityContainer _unityContainer;
+
+    public VendingMachineFactory(IUnityContainer unityContainer)
     {
-        private readonly IUnityContainer _unityContainer;
+        _unityContainer = unityContainer;
+    }
 
-        public VendingMachineFactory(IUnityContainer unityContainer)
-        {
-            _unityContainer = unityContainer;
-        }
+    public IVendingMachine BuildVendingMachine(
+        IDispenserModule dispenserModule,
+        string branding)
+    {
+        var logic = _unityContainer.Resolve<IVendingMachineLogic>(
+            new ParameterOverride("dispenserModule", dispenserModule));
 
-        public IVendingMachine BuildVendingMachine(
-            IDispenserModule dispenserModule,
-            string branding)
-        {
-            var logic = _unityContainer.Resolve<IVendingMachineLogic>(
-                new ParameterOverride("dispenserModule", dispenserModule));
+        var userOutput = _unityContainer.Resolve<IUserOutput>();
 
-            var userOutput = _unityContainer.Resolve<IUserOutput>();
+        var vendingMachine =
+            new VendingMachine(
+                userOutput,
+                _unityContainer.Resolve<IPriceListService>(),
+                _unityContainer.Resolve<IStockLoaderService>(),
+                logic,
+                branding);
 
-            var vendingMachine =
-                new VendingMachine(
-                    userOutput,
-                    _unityContainer.Resolve<IPriceListService>(),
-                    _unityContainer.Resolve<IStockLoaderService>(),
-                    logic,
-                    branding);
-
-            return vendingMachine;
-        }
+        return vendingMachine;
     }
 }

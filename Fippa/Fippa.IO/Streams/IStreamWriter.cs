@@ -1,9 +1,8 @@
 ﻿using System;
 
-namespace Fippa.IO.Streams
+namespace Fippa.IO.Streams;
+
+public interface IStreamWriter : IDisposable
 {
-    public interface IStreamWriter : IDisposable
-    {
-        void Write(string buffer);
-    }
+    void Write(string buffer);
 }

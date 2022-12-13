@@ -2,10 +2,9 @@
 using System.Collections.Generic;
 using VendingMachine.Shared.Domain.Models.Selection;
 
-namespace VendingMachine.Shared.Domain.Models.Dispenser
+namespace VendingMachine.Shared.Domain.Models.Dispenser;
+
+public interface ISelectionStrategy
 {
-    public interface ISelectionStrategy
-    {
-        Tuple<SelectionResult, IDispenser> GetDispenser(IEnumerable<IDispenser> dispensers, string input);
-    }
+    Tuple<SelectionResult, IDispenser> GetDispenser(IEnumerable<IDispenser> dispensers, string input);
 }

@@ -10,59 +10,58 @@ using VendingMachine.Shared.Domain.Models.Selection;
 using VendingMachine.Shared.Domain.Models.Stock;
 
 [assembly:InternalsVisibleTo("VendingMachine.Shared.Domain.Models.Tests")]
-namespace VendingMachine.Shared.Domain.Models.Dispenser.Modules
+namespace VendingMachine.Shared.Domain.Models.Dispenser.Modules;
+
+public abstract class AbstractDispenserModule : IDispenserModule
 {
-    public abstract class AbstractDispenserModule : IDispenserModule
+    private readonly ISelectionStrategy _selectionStrategy;
+
+    // Key = spiral identifier (e.g. A3)
+    // value = spiral
+    protected internal readonly List<IDispenser> _holders;
+
+    public bool IsEmpty => _holders.All(s => s.StockCount() == 0);
+
+    protected AbstractDispenserModule(ISelectionStrategy selectionStrategy)
     {
-        private readonly ISelectionStrategy _selectionStrategy;
+        _selectionStrategy = selectionStrategy;
+        Guard.Against.Null(selectionStrategy, nameof(selectionStrategy));
 
-        // Key = spiral identifier (e.g. A3)
-        // value = spiral
-        protected internal readonly List<IDispenser> _holders;
+        _holders = new List<IDispenser>();
+    }
 
-        public bool IsEmpty => _holders.All(s => s.StockCount() == 0);
+    public virtual void Initialise(ushort[] dimensions)
+    {
+    }
 
-        protected AbstractDispenserModule(ISelectionStrategy selectionStrategy)
+    public StockItem Dispense(string input)
+    {
+        var resultAndStockItem = _selectionStrategy.GetDispenser(_holders, input);
+        var selectionResult = resultAndStockItem.Item1;
+        var dispenser = resultAndStockItem.Item2;
+
+        Debug.Assert(selectionResult == SelectionResult.ValidSelection);
+        return dispenser.Dispense();
+    }
+
+    public Tuple<SelectionResult, IDispenser> GetDispenser(string input)
+    {
+        return _selectionStrategy.GetDispenser(_holders, input);
+    }
+
+    public void Load(IEnumerable<InventoryItem> items)
+    {
+        Debug.Assert(_holders.Count > 0, "No dispensers found. Forgotten to initialise the dispenser module?");
+
+        foreach (var item in items)
         {
-            _selectionStrategy = selectionStrategy;
-            Guard.Against.Null(selectionStrategy, nameof(selectionStrategy));
-
-            _holders = new List<IDispenser>();
+            var dispenser = _holders[item.DispenserId];
+            dispenser.BulkLoadItems(item.StockKeepingUnit, item.Quantity);
         }
+    }
 
-        public virtual void Initialise(ushort[] dimensions)
-        {
-        }
-
-        public StockItem Dispense(string input)
-        {
-            var resultAndStockItem = _selectionStrategy.GetDispenser(_holders, input);
-            var selectionResult = resultAndStockItem.Item1;
-            var dispenser = resultAndStockItem.Item2;
-
-            Debug.Assert(selectionResult == SelectionResult.ValidSelection);
-            return dispenser.Dispense();
-        }
-
-        public Tuple<SelectionResult, IDispenser> GetDispenser(string input)
-        {
-            return _selectionStrategy.GetDispenser(_holders, input);
-        }
-
-        public void Load(IEnumerable<InventoryItem> items)
-        {
-            Debug.Assert(_holders.Count > 0, "No dispensers found. Forgotten to initialise the dispenser module?");
-
-            foreach (var item in items)
-            {
-                var dispenser = _holders[item.DispenserId];
-                dispenser.BulkLoadItems(item.StockKeepingUnit, item.Quantity);
-            }
-        }
-
-        public virtual ReadOnlyCollection<StockReportLine> GetStockReport(IStockReporting reportGenerator, PriceList priceList)
-        {
-            return new List<StockReportLine>().AsReadOnly();
-        }
+    public virtual ReadOnlyCollection<StockReportLine> GetStockReport(IStockReporting reportGenerator, PriceList priceList)
+    {
+        return new List<StockReportLine>().AsReadOnly();
     }
 }

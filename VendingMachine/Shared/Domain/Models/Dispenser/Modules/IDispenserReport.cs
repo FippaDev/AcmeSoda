@@ -2,10 +2,9 @@
 using VendingMachine.Shared.Domain.Models.Pricing;
 using VendingMachine.Shared.Domain.Models.Stock;
 
-namespace VendingMachine.Shared.Domain.Models.Dispenser.Modules
+namespace VendingMachine.Shared.Domain.Models.Dispenser.Modules;
+
+public interface IDispenserReport
 {
-    public interface IDispenserReport
-    {
-        ReadOnlyCollection<StockReportLine> GetStockReport(PriceList priceList);
-    }
+    ReadOnlyCollection<StockReportLine> GetStockReport(PriceList priceList);
 }

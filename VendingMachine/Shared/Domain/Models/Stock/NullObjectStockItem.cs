@@ -1,16 +1,15 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 
-namespace VendingMachine.Shared.Domain.Models.Stock
+namespace VendingMachine.Shared.Domain.Models.Stock;
+
+/// <summary>
+/// This object represents a null or missing object
+/// </summary>
+[ExcludeFromCodeCoverage]
+internal class NullObjectStockItem : StockItem
 {
-    /// <summary>
-    /// This object represents a null or missing object
-    /// </summary>
-    [ExcludeFromCodeCoverage]
-    internal class NullObjectStockItem : StockItem
+    public NullObjectStockItem() 
+        : base("NullObject") 
     {
-        public NullObjectStockItem() 
-            : base("NullObject") 
-        {
-        }
     }
 }

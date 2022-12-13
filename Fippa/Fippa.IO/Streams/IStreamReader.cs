@@ -1,10 +1,9 @@
 ﻿using System;
 
-namespace Fippa.IO.Streams
+namespace Fippa.IO.Streams;
+
+public interface IStreamReader : IDisposable
 {
-    public interface IStreamReader : IDisposable
-    {
-        void Load(string filename);
-        string ReadToEnd();
-    }
+    void Load(string filename);
+    string ReadToEnd();
 }

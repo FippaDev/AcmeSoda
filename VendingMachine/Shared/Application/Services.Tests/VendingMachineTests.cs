@@ -5,42 +5,41 @@ using Moq;
 using VendingMachine.Shared.Domain.DomainServices;
 using VendingMachine.Shared.Domain.Models.Stock;
 
-namespace VendingMachine.Shared.Services.Tests
+namespace VendingMachine.Shared.Services.Tests;
+
+[TestClass, ExcludeFromCodeCoverage]
+public class VendingMachineTests
 {
-    [TestClass, ExcludeFromCodeCoverage]
-    public class VendingMachineTests
+    private readonly Mock<IUserOutput> _mockOutput = new Mock<IUserOutput>();
+    private readonly Mock<IPriceListService> _mockPriceListService = new Mock<IPriceListService>();
+    private readonly Mock<IStockLoaderService> _mockStockLoaderService = new Mock<IStockLoaderService>();
+    private readonly Mock<IVendingMachineLogic> _mockLogic = new Mock<IVendingMachineLogic>();
+    private readonly Mock<IStockReporting> _mockStockReporting = new Mock<IStockReporting>();
+
+    [TestMethod]
+    public void VendingMachine_WithEmptyManufacturerName_ThrowsException()
     {
-        private readonly Mock<IUserOutput> _mockOutput = new Mock<IUserOutput>();
-        private readonly Mock<IPriceListService> _mockPriceListService = new Mock<IPriceListService>();
-        private readonly Mock<IStockLoaderService> _mockStockLoaderService = new Mock<IStockLoaderService>();
-        private readonly Mock<IVendingMachineLogic> _mockLogic = new Mock<IVendingMachineLogic>();
-        private readonly Mock<IStockReporting> _mockStockReporting = new Mock<IStockReporting>();
-
-        [TestMethod]
-        public void VendingMachine_WithEmptyManufacturerName_ThrowsException()
+        Assert.ThrowsException<ArgumentException>(() =>
         {
-            Assert.ThrowsException<ArgumentException>(() =>
-            {
-                new VendingMachine(
-                    _mockOutput.Object,
-                    _mockPriceListService.Object,
-                    _mockStockLoaderService.Object,
-                    _mockLogic.Object,
-                    string.Empty);
-            });
-        }
-
-        [TestMethod]
-        public void VendingMachine_GivenManufacturer_SetsManufacturerProperty()
-        {
-            var pepsiMachine = new VendingMachine(
+            new VendingMachine(
                 _mockOutput.Object,
                 _mockPriceListService.Object,
                 _mockStockLoaderService.Object,
                 _mockLogic.Object,
-                "Pepsi");
+                string.Empty);
+        });
+    }
 
-            Assert.AreEqual("Pepsi", pepsiMachine.Manufacturer);
-        }
+    [TestMethod]
+    public void VendingMachine_GivenManufacturer_SetsManufacturerProperty()
+    {
+        var pepsiMachine = new VendingMachine(
+            _mockOutput.Object,
+            _mockPriceListService.Object,
+            _mockStockLoaderService.Object,
+            _mockLogic.Object,
+            "Pepsi");
+
+        Assert.AreEqual("Pepsi", pepsiMachine.Manufacturer);
     }
 }

@@ -1,9 +1,8 @@
 ﻿using System.Collections.Generic;
 
-namespace VendingMachine.Shared.Domain.Models.Stock
+namespace VendingMachine.Shared.Domain.Models.Stock;
+
+public interface IStockReporting
 {
-    public interface IStockReporting
-    {
-        object CreateReport(IEnumerable<StockReportLine> stockLines);
-    }
+    object CreateReport(IEnumerable<StockReportLine> stockLines);
 }

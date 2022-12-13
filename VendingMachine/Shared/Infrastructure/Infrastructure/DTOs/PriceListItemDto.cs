@@ -1,13 +1,12 @@
 ﻿using System;
 using System.Diagnostics.CodeAnalysis;
 
-namespace Infrastructure.DTOs
+namespace Infrastructure.DTOs;
+
+[Serializable, ExcludeFromCodeCoverage]
+public class PriceListStockItemDto
 {
-    [Serializable, ExcludeFromCodeCoverage]
-    public class PriceListStockItemDto
-    {
-        public string DisplayName { get; set; }
-        public decimal RetailPrice { get; set; }
-        public string StockKeepingUnit { get; set; }
-    }
+    public string DisplayName { get; set; }
+    public decimal RetailPrice { get; set; }
+    public string StockKeepingUnit { get; set; }
 }

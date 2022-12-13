@@ -1,7 +1,6 @@
-﻿namespace AcmeSodaConsoleApp
+﻿namespace AcmeSodaConsoleApp;
+
+public interface IConsoleApplication
 {
-    public interface IConsoleApplication
-    {
-        void Run();
-    }
+    void Run();
 }

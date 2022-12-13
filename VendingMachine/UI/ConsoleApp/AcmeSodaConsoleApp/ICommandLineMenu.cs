@@ -1,8 +1,7 @@
-﻿namespace AcmeSodaConsoleApp
+﻿namespace AcmeSodaConsoleApp;
+
+public interface ICommandLineMenu
 {
-    public interface ICommandLineMenu
-    {
-        void Action(in string input);
-        bool IsExitCommand(in string input);
-    }
+    void Action(in string input);
+    bool IsExitCommand(in string input);
 }

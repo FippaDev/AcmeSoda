@@ -1,7 +1,6 @@
-﻿namespace Infrastructure
+﻿namespace Infrastructure;
+
+public interface IDataLoader<out T>
 {
-    public interface IDataLoader<out T>
-    {
-        T Load(string filename);
-    }
+    T Load(string filename);
 }

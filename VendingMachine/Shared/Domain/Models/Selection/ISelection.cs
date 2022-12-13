@@ -1,6 +1,5 @@
-﻿namespace VendingMachine.Shared.Domain.Models.Selection
+﻿namespace VendingMachine.Shared.Domain.Models.Selection;
+
+public interface ISelection
 {
-    public interface ISelection
-    {
-    }
 }
