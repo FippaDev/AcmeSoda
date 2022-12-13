@@ -16,7 +16,7 @@ namespace Fippa.Money.Change
             Guard.Against.Null(cashFloat, nameof(cashFloat));
         }
 
-        public Result GetChange(IEnumerable<T> coinsIn, decimal purchase)
+        public IResult GetChange(IEnumerable<T> coinsIn, decimal purchase)
         {
             Guard.Against.Null(coinsIn, nameof(coinsIn));
 
@@ -24,10 +24,10 @@ namespace Fippa.Money.Change
             decimal coinsInSum = coinsIn.Sum(c => c.Value);
             if (purchase > coinsInSum)
             {
-                return Result.Fail(new InsufficientFundsError());
+                return new Failure(new InsufficientFundsError(purchase, coinsInSum));
             }
 
-            return Result.Success(coinsOut);
+            return new Success<Collection<T>>(coinsOut);
         }
     }
 }
